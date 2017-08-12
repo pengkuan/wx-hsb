@@ -1,0 +1,101 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<view class="mun-view-body">
+    <view class="mun-view-0">
+        <view class="main-view">
+            <view id="main">
+                <view class="oops">
+                    <input focus="{{focus}}" class="search-input-2" value="{{searchInitGod}}" bindinput="searchInit" placeholder="搜索您要卖的机型型号" />
+                </view>
+                <view wx:if="{{closeSearch}}" class="oops" bindtap="closeSearch" >取消</view>
+            </view>
+        </view>
+    </view>
+    <view class="pagesearch" hidden="{{taggle !== 'search'}}">
+        <view class="main-oop" >
+            <scroll-view
+                class="search-result-view"
+                scroll-y="true"
+                bindscrolltolower="searchUpdate"
+                lower-threshold="400"
+            >
+                <navigator  class="search-result"
+                            wx:for-items="{{search.list}}"
+                            wx:for-item="sl"
+                            url="../gujia/gujia?itemid={{sl.itemid}}&name={{sl.name}}"
+                >
+                    <view class="result-name">{{sl.name}}</view>
+                    <view class="result-maxprice">
+                        <text class="maxprice-text">最高价:</text>
+                        <maxprice class="maxprice-num color-f9be00">{{sl.maxprice / 100}}</maxprice>
+                    </view>
+                </navigator>
+                <view class="info-view">{{search.info}}</view>
+                <view class="item"></view>
+            </scroll-view>
+        </view>
+    </view>
+
+    <view class="mun-view-1" hidden="{{taggle !== 'product'}}">
+
+        <view class="page__bd" >
+          <view style="width:26%;float:left; height:100%;">
+            <scroll-view
+                style="height:100%;"
+                scroll-y="true"
+            >
+                <navigator
+                    class        = "item brand {{item.mid == product.bid ? 'actives' : ''}}"
+                    wx:for-items = "{{brands}}"
+                    data-bid     = "{{item.mid}}"
+                    data-index   = "{{index}}"
+                    bindtap      = "productTap"
+                >
+                    {{item.name}}
+                </navigator>
+                <view class="item"></view>
+            </scroll-view>
+          </view>
+
+          <view style="width:74%;  height:100%; float:left;">
+                <scroll-view
+                    style="height:100%;"
+                    scroll-y="true"
+                    bindscrolltolower="productUpdate"
+                    lower-threshold="400"
+                >
+                    <navigator class="navigator-view" url="../gujia/gujia?itemid={{item.itemid}}&name={{item.name}}" wx:for-items="{{product.list}}">
+                        <view class="item {{xxx}}" style="transition: color {{index / 10 + 0.5 }}s;" >
+                            <view class="text-num">{{index + 1}}</view>
+                            {{item.name}}
+                        </view>
+                    </navigator>
+                    <view class="info-view">{{product.info}}</view>
+                    <view class="item"></view>
+                </scroll-view>
+          </view>
+      </view>
+    </view>
+</view>

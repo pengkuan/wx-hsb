@@ -1,0 +1,58 @@
+
+<view hidden="{{toggle != 'orderliston'}}">
+    <view class="order-list" wx:for="{{orderList}}">
+
+        <navigator url="../order-details/order-details?oid={{item.oid}}">
+            <view class="order-item">
+                <text class="item-left">{{item.ts}}</text>
+                <text class="item-right">{{item.statusname}}</text>
+            </view>
+            <view class="mun-info">
+                <view class="img-view">
+                    <image class="img" mode="aspectFit" src="http://1251010403.cdn.myqcloud.com/1251010403/img/phone/{{item.picurl}}"></image>
+                </view>
+                <view class="text-view">
+                    <view class="title-view">{{item.goods}}</view>
+                    <view class="color-999">自主评估价：{{item.price/100}}元</view>
+                </view>
+            </view>
+            <view class="order-item">
+                <text class="item-left">订单号：{{item.ordernum}}</text>
+                <text class="item-right-1">查看详情</text>
+            </view>
+        </navigator>
+    </view>
+    <view class="more-list">{{index == -1 ? '暂无更多订单' :'正在加载数据'}}</view>
+
+</view>
+<view class="order-success-view" hidden="{{toggle != 'ordersuccess'}}">
+    <view class="text-0">
+        <image class="success-icon" mode="aspectFit" src="/image/icon/success-0.png"></image>
+        <view class="text-1">成功提交订单！</view>
+        <view class="success-t">订单号：{{orderNum}}</view>
+        <view class="success-t">{{orderTime}}</view>
+    </view>
+    <view class="success-text-view">
+        <view class="success-title">请您在回收手机前</view>
+        <view class="success-text-0">(1)备份联系人与短信</view>
+        <view class="success-text-0">(2)格式化手机所有数据并解除绑定账号</view>
+        <view class="success-text-0">(3)确保无SD卡或SIM卡遗留在手机</view>
+    </view>
+    <view class="success-tip">
+        TIP：如果你无法进行数据清理，我们工程师将使用专业工具帮您清
+        理，保证您的隐私安全
+    </view>
+    <view class="order-success-btn">
+        <view wx:if="{{!type}}">
+            <view class="list-btn" bindtap="orderListBtn">订单列表</view>
+            <view bindtap="sfBtn" class="sf-btn" >顺丰下单</view>
+        </view>
+        <button wx:if="{{type == 2}}" bindtap="orderListBtn" class="mail-btn">朕知道了!</button>
+    </view>
+</view>
+<view class="order-no" hidden="{{toggle!='orderlistoff'}}">
+<!-- <view class="order-no"> -->
+    <image class="order-icon" mode="aspectFit" src="/image/icon/order-no.png"></image>
+    暂无订单
+    <button bindtap="switchTab" data-url="/page/hsb/index/index" class="mail-btn">去下单</button>
+</view>

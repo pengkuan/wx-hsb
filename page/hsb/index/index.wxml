@@ -1,0 +1,75 @@
+<view class="page">
+
+    <view class="index-logo-img" style="overflow: initial;">
+        <image mode="aspectFit" class="index-logo-icon" src="/image/icon/bg-img-0.png" />
+        <div class="search-top-view">
+            <navigator hover-class="search-view-hover" class="search-view" url="../huishou/huishou?search=&ooo=ooo">
+                <view class="search-img-view" >
+                    <image mode="aspectFit" class="search-icon" src="/image/icon/search-0.png" />
+                </view>
+                <view class="search-img-view">搜索您要卖的机型</view>
+            </navigator>
+        </div>
+    </view>
+
+    <view class="btn-view">
+        <navigator url="../huishou/huishou?index=0&bid=11" class="btn-left">出售其他机型</navigator>
+        <navigator url="../huishou/huishou?search={{systemInfo.model}}" class="btn-right">出售本机</navigator>
+    </view>
+
+    <view wx:if="{{record.length}}">
+        <view class="index-title">历史评估机型</view>
+        <view class="valuation-models-view">
+            <view wx:for-items="{{record}}">
+                <navigator url="../gujia/gujia?index={{index}}&name={{item.pName}}" class="record-view">
+                    <view class="record-left"><view class="record-left-txt">{{item.pName}}</view></view>
+                    <view class="record-right">
+                        <text class="record-right-t1">最高回收价 :</text>
+                        <text class="record-right-t2"> ￥{{item.price}}</text>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+
+    <view class="index-title">热门回收机型</view>
+    <view class="hot-view">
+        <view class="page-section">
+            <view class="page-section-spacing">
+                <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
+
+                    <navigator url="../gujia/gujia?itemid={{item.itemid}}&name=i{{item.name}}" class="hot-list" wx:for-items="{{hotList}}">
+                        <view class="hot-img-view">
+                            <image mode="aspectFit" class="hot-icon" src="http://1251010403.cdn.myqcloud.com/1251010403/img/phone/{{item.picurl}}" />
+                        </view>
+                        <view class="hot-title">{{item.name}}</view>
+                        <view class="hot-mun">
+                            平均回收价<text class="color-f85b62">￥{{item.maxprice/100}}</text>
+                        </view>
+                        <view class="hot-btn">立即回收</view>
+                    </navigator>
+
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+
+    <view class="index-title">品牌列表</view>
+    <swiper
+            indicator-dots="true"
+            circular      ="true"
+            class         ="brands-view"
+    >
+        <swiper-item class="swiper-index" wx:for-items="{{brandsList}}">
+            <navigator url="../huishou/huishou?name={{item.name}}&bid={{item.mid}}" class="brands-list-view" wx:for-items="{{item}}">
+                <view class="brands-img">
+                    <!-- <image mode="aspectFit" class="brands-icon" src="{{item.url}}" /> -->
+                    <image mode="aspectFit" class="brands-icon" src="/image/index/{{item.mid}}.png" />
+                </view>
+                {{item.name}}
+            </navigator>
+        </swiper-item>
+        <view class="indicator-dots"></view>
+    </swiper>
+
+</view>

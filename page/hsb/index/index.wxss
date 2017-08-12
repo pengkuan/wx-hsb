@@ -1,0 +1,371 @@
+.swiper-item{
+    display: block;
+    height: 150px;
+}
+
+.img-brand {
+    width  : 40px;
+    height : 24px;
+}
+
+.history-view {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    height: 40px;
+    margin-top: 8px;
+}
+.history {
+    width: 30.66%;
+    line-height: 40px;
+    text-align: center;
+    float: left;
+    margin-left: 2%;
+    background: #fff;
+}
+
+.title-view {
+    width: 100%;
+    background: #fff;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 40px;
+}
+.index-list {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    background: #fff;
+}
+.brand-icon {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+.search-view {
+    width: 100%;
+    text-align: center;
+}
+.search-btn {
+    font-size: 14px;
+    color: #666;
+    padding: 6px 0;
+    width: 92%;
+    background: #fff;
+    margin: 14px auto;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    height: 100%;
+    -webkit-box-orient: vertical;
+    text-align: center;
+}
+.main-view {
+    width: 100%;
+    padding: 14px 0;
+    line-height: 30px;
+    font-size: 12px;
+    color: #999;
+    display: flex;
+}
+.sousuo-text {
+    width: 94%;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+}
+
+
+.brand-title {
+    width: 100%;
+    text-align: center;
+    line-height: 50px;
+    background: #fff;
+    color: #333;
+    font-family: "微软雅黑";
+}
+.parent {
+    overflow: hidden;
+    border-top: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+}
+.column {
+    float: left;
+    width: 33.3333%;
+    box-sizing: border-box;
+    border-left: 1px solid #f5f5f5;
+}
+.column .widget {
+    width: 100%;
+    float: left;
+    text-align: center;
+    font-size: 12px;
+    border-bottom: 1px solid #f5f5f5;
+    background: #fff;
+    font-family: "微软雅黑";
+    padding-bottom: 10px;
+}
+
+
+
+
+
+.record-view {
+    width: 100%;
+    line-height: 34px;
+    font-size: 14px;
+    color: #666;
+}
+.index-title {
+    width: 94%;
+    line-height: 43px;
+    height: 43px;
+    font-size: 18px;
+    text-align: center;
+    background: #fff;
+    margin: 0 auto;
+    margin-top: 16px;
+    border-bottom: 1px solid #f5f5f5;
+    color: #3e3a39;
+}
+.valuation-models-view {
+    width: 94%;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 6px 0;
+    background: #fff;
+}
+.record-left,.record-right {
+    width: 44%;
+    line-height: 18px;
+    padding: 10px 0;
+    display: inline-block;
+}
+.record-left {
+    float: left;
+    margin-left: 6%;
+}
+.record-right {
+    float: right;
+    text-align: right;
+    margin-right: 6%;
+}
+
+.record-right-t2 {
+    display: inline-block;
+    color: #f63808;
+    width: 48px;
+}
+.brands-view {
+    width : 94%;
+    height: 372rpx;
+    margin: 0 auto;
+    position: relative;
+}
+.indicator-dots {
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #f5f5f5;
+    position: absolute;
+    bottom: 66rpx;
+    left: 0;
+}
+.swiper-index {
+    height: 390rpx;
+    background: #fff;
+    font-family: "微软雅黑";
+    color: #353535;
+}
+.brands-list-view {
+    width: 25%;
+    float: left;
+    height: 150rpx;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    color: #353535;
+}
+.brands-img {
+    width: 100%;
+    height: 90rpx;
+}
+.brands-icon {
+    width: 76%;
+    height: inherit;
+}
+.btn-view {
+    width: 100%;
+    height: 46px;
+    margin-top: 16px;
+}
+.btn-left,.btn-right {
+    width: 45.5%;
+    line-height: 46px;
+    color: #666;
+    text-align: center;
+    border-radius: 4px;
+    margin-left: 3%;
+    font-size: 14px;
+    float: left;
+}
+.btn-left {
+    background: #fff;
+}
+.btn-right {
+    background: #f9be00;
+}
+.index-logo-img {
+    width: 100%;
+    height: 328rpx;
+    position: relative;
+    background: #f9be00;
+    margin-top: 46px;
+}
+.index-logo-icon {
+    width: 100%;
+    height: 328rpx;
+}
+.index-logo-img .search-view-hover {
+    background: #fcfcfc;
+}
+.search-box {
+    width: 100%;
+    height: 23px;
+    background: #f5f5f5;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.search-top-view {
+    width: 100%;
+    height: 46px;
+    position: absolute;
+    top: -46px;
+    left: 0;
+    background: #f9be00;
+}
+.search-view {
+    width: 94%;
+    height: 40px;
+    background: #fff;
+    text-align: center;
+    border-radius: 4px;
+    margin: 0 auto;
+}
+.search-img-view {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #ccc;
+}
+.search-icon {
+    width: 16px;
+    height: 16px;
+    margin-top: 12px;
+    margin-right: 6px;
+}
+
+.hot-list {
+    width: 110px;
+    height: 214px;
+    margin-left: 30px;
+    display: inline-block;
+}
+.hot-list:first-child {
+    margin-left: 0;
+}
+.hot-img-view {
+    width: 100%;
+    height: 130px;
+}
+.hot-icon {
+    width: inherit;
+    height: 100px;
+    margin-top: 20px;
+}
+.hot-title,.hot-mun {
+    width: 100%;
+    text-align: center;
+    font-size: 11px;
+    color: #333;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.hot-mun {
+    margin-top: 6px;
+    /*overflow: inherit;*/
+}
+.color-f85b62 {
+    color: #f85b62;
+}
+.hot-btn {
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    background: #f9be00;
+    font-size: 11px;
+    text-align: center;
+    border-radius: 2px;
+    margin-top: 4px;
+}
+.index-title-no {
+    width: 94%;
+    margin: 0 auto;
+    line-height: 40px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    background: #fff;
+}
+
+.brands-view .wx-swiper-dots.wx-swiper-dots-horizontal{
+     margin-bottom: 10rpx;
+}
+.brands-view .wx-swiper-dot{
+    width: 20rpx;
+    display: inline-flex;
+    height: 20rpx;
+    margin-left: 20rpx;
+    justify-content:space-between;
+}
+.brands-view .wx-swiper-dot::before{
+    content: '';
+    flex-grow: 1;
+    background: #dfdcdc;
+    border-radius: 50%;
+}
+.brands-view .wx-swiper-dot-active::before{
+    background: #f9be00;
+}
+
+
+
+
+.hot-view {
+    width: 94%;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #fff;
+}
+.page-section-spacing{
+    width: 94%;
+    margin: 0 auto;
+    background: #fff;
+}
+.scroll-view_H{
+    white-space: nowrap;
+}
+.scroll-view-item{
+    height: 300rpx;
+}
+.scroll-view-item_H{
+    display: inline-block;
+    width: 150px;
+    height: 300rpx;
+}
+
