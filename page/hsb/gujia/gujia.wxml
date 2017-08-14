@@ -19,7 +19,7 @@
             <view class="swiper-item-{{current2==index}}">
                 <view class="icon-view">
                     <view class="icon-border">
-                        <image src="../../../image/icon/{{item.id}}.png" mode="aspectFit" class="icon-img"></image>
+                        <image src="../../../image/icon/110.png" mode="aspectFit" class="icon-img"></image>
                     </view>
                 </view>
                 <view class="title">{{item.name}}</view>
