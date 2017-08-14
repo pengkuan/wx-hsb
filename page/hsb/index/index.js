@@ -27,7 +27,6 @@ Page({
     },
 
     onLoad () {
-
         that = this;
 
         wx.getSystemInfo({

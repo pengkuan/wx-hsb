@@ -37,7 +37,6 @@
         <view class="page-section">
             <view class="page-section-spacing">
                 <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
-
                     <navigator url="../gujia/gujia?itemid={{item.itemid}}&name=i{{item.name}}" class="hot-list" wx:for-items="{{hotList}}">
                         <view class="hot-img-view">
                             <image mode="aspectFit" class="hot-icon" src="http://1251010403.cdn.myqcloud.com/1251010403/img/phone/{{item.picurl}}" />

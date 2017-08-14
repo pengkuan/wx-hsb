@@ -1,4 +1,5 @@
-var baseUrl  = 'https://doop.www.huishoubao.com/v2/1196/api/';
+// var baseUrl  = 'https://doop.www.huishoubao.com/v2/1196/api/';
+var baseUrl  = 'https://www.huishoubao.com/v2/1196/api/';
 var baseUrl2 = 'https://www.huishoubao.com/v2/1196/api/';
 
 
