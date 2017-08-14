@@ -39,7 +39,7 @@
                 <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
                     <navigator url="../gujia/gujia?itemid={{item.itemid}}&name=i{{item.name}}" class="hot-list" wx:for-items="{{hotList}}">
                         <view class="hot-img-view">
-                            <image mode="aspectFit" class="hot-icon" src="http://1251010403.cdn.myqcloud.com/1251010403/img/phone/{{item.picurl}}" />
+                            <image mode="aspectFit" class="hot-icon" src="http://s1.huishoubao.com/img/phone/{{item.picurl}}" />
                         </view>
                         <view class="hot-title">{{item.name}}</view>
                         <view class="hot-mun">
@@ -61,10 +61,10 @@
     >
         <swiper-item class="swiper-index" wx:for-items="{{brandsList}}">
             <navigator url="../huishou/huishou?name={{item.name}}&bid={{item.mid}}" class="brands-list-view" wx:for-items="{{item}}">
-                <view class="brands-img">
-                    <!-- <image mode="aspectFit" class="brands-icon" src="{{item.url}}" /> -->
-                    <image mode="aspectFit" class="brands-icon" src="/image/index/{{item.mid}}.png" />
+                <!-- <view class="brands-img">
+                        <image mode="aspectFit" class="brands-icon" src="/image/index/{{item.mid}}.png" />
                 </view>
+                 -->
                 {{item.name}}
             </navigator>
         </swiper-item>
