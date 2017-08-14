@@ -9,7 +9,7 @@
             </view>
             <view class="mun-info">
                 <view class="img-view">
-                    <image class="img" mode="aspectFit" src="http://1251010403.cdn.myqcloud.com/1251010403/img/phone/{{item.picurl}}"></image>
+                    <image class="img" mode="aspectFit" src="http://s1.huishoubao.com/img/phone/{{item.picurl}}"></image>
                 </view>
                 <view class="text-view">
                     <view class="title-view">{{item.goods}}</view>
