@@ -61,10 +61,9 @@
     >
         <swiper-item class="swiper-index" wx:for-items="{{brandsList}}">
             <navigator url="../huishou/huishou?name={{item.name}}&bid={{item.mid}}" class="brands-list-view" wx:for-items="{{item}}">
-                <!-- <view class="brands-img">
-                        <image mode="aspectFit" class="brands-icon" src="/image/index/{{item.mid}}.png" />
+                <view class="brands-img">   
+                    <image mode="aspectFit" class="brands-icon" src="/image/index/{{item.mid}}.png" />
                 </view>
-                 -->
                 {{item.name}}
             </navigator>
         </swiper-item>
