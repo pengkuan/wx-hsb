@@ -1,6 +1,7 @@
 // var baseUrl  = 'https://doop.www.huishoubao.com/v2/1196/api/';
 var baseUrl  = 'https://www.huishoubao.com/v2/1196/api/';
-var baseUrl2 = 'https://www.huishoubao.com/v2/1196/api/';
+var baseUrl_v2 = 'https://www.huishoubao.com/api/';
+
 
 
 var exports = module.exports = {
@@ -15,13 +16,14 @@ var exports = module.exports = {
     orderDetails : baseUrl  + 'getOrderDetails/',
     // wxLogin      : baseUrl  + 'wxappLogin/',
     wxLogin      : baseUrl  + 'wxAppLogin2/',
-    sfInService  : baseUrl2 + 'InService',
-    sfOrder      : baseUrl2 + 'reservationSFOrder/',
+    sfInService  : baseUrl + 'InService',
+    sfOrder      : baseUrl + 'reservationSFOrder/',
     city         : baseUrl  + 'city_list/',
     area         : baseUrl  + 'GetRegionConfig/',
     visitDate    : baseUrl  + 'visitDate',
     location     : baseUrl  + 'baidu',
     hotList      : baseUrl  + 'hot6',
     visitTime    : baseUrl  + 'get_visit_appoint_info',
+    evaluatePrice : baseUrl_v2 + 'get_product_param',
 
 }

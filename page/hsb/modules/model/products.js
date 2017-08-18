@@ -125,7 +125,7 @@ var exports = module.exports = {
             url : url.hotList,
             success (res) {
 
-                console.log(res);
+                console.log("hotList :",res);
 
                 var data = res.data.data;
                 data.quotation = Math.round(data.quotation / 100);
