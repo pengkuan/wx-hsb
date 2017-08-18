@@ -1,0 +1,7 @@
+.topcontainer {
+    position : relative;
+}
+
+.top-progress-text {
+    size: 3;
+}

@@ -2,8 +2,6 @@ let products = require('../modules/model/products.js');
 let url = require('../modules/url.js')
 let that;
 
-
-
 Page({
 
     data : {
@@ -72,17 +70,11 @@ Page({
     },
 
     onHotListItemClick: function(event) {
-        console.log(event);
         let itemid = event.currentTarget.dataset.itemid;
-        console.log(itemid);
-        wx.request({
-            url : url.evaluatePrice,
-            data : "itemid=" + itemid + "&pid=1196",
-            method : 'POST',
-            success: function(res) {
-                console.log(res.data)
-            }
+        products.getSelectOption((data) => {
+            
         });
+        
     },
 
 });

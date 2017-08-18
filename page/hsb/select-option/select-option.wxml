@@ -1,0 +1,10 @@
+<view class="container">
+  
+    <view class="topcontainer"  >
+
+        <text class="top-progress-text" >{{modelname}}评估进度{{progress}}%</text>
+        <progress percent="50" stroke-width="10" color="#f9be00"   />
+
+    </view>
+
+</view>

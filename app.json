@@ -14,8 +14,8 @@
     "page/hsb/door-method/door-method",
     "page/hsb/subway-method/subway-method",
     "page/hsb/choice/choice",
-    "page/hsb/get-location/get-location"
-
+    "page/hsb/get-location/get-location",
+    "page/hsb/select-option/select-option"
   ],
   "window": {
     "navigationBarTextStyle": "#36322f",

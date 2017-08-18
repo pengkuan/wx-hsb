@@ -1,7 +1,5 @@
-
-
-
 var url     = require('../url');
+import { PID } from '../constant';
 
 var exports = module.exports = {
 
@@ -23,6 +21,17 @@ var exports = module.exports = {
 
             fail : function(err){
                 console.log(err);
+            }
+        });
+    },
+    getSelectOption(itemid, callback) {
+
+        wx.request({
+            url : url.getSelectOption,
+            data : "itemid=" + itemid + "&pid=" + PID,
+            method : 'POST',
+            success: function(res) {
+                callback(res.data);
             }
         });
     },
