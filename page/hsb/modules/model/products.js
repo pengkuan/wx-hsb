@@ -1,5 +1,7 @@
 var url     = require('../url');
 import { PID } from '../constant';
+const commonUtil = require('./common')
+// var commonUtil = require('./common')
 
 var exports = module.exports = {
 
@@ -30,8 +32,10 @@ var exports = module.exports = {
             url : url.getSelectOption,
             data : "itemid=" + itemid + "&pid=" + PID,
             method : 'POST',
-            success: function(res) {
-                callback(res.data);
+            success: function(response) {
+                if(commonUtil.isResponseSuccess(response.data, true)) {
+                    callback(response.data.data);
+                }
             }
         });
     },

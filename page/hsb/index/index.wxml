@@ -37,7 +37,7 @@
         <view class="page-section">
             <view class="page-section-spacing">
                 <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
-                    <navigator url="../select-option/select-option?index={{index}}&name={{item.pName}}" class="hot-list" wx:for-items="{{hotList}}">
+                    <navigator url="../select-option/select-option?itemid={{item.itemid}}&name={{item.name}}" class="hot-list" wx:for-items="{{hotList}}">
                         <view class="hot-img-view">
                             <image mode="aspectFit" class="hot-icon" src="http://s1.huishoubao.com/img/phone/{{item.picurl}}" />
                         </view>
