@@ -3,7 +3,7 @@
 Page({
   data: {
     text: "Page select-option",
-    modelname : 'text',
+    modelname : 'modelname',
     progress : 10,
   },
   onLoad: function (options) {
