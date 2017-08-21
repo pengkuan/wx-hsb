@@ -41,3 +41,8 @@
     margin-bottom: 28rpx;
     
 }
+
+.select-option-list {
+    position: relative;
+    width: 100%;
+}

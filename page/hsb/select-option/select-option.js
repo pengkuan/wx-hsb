@@ -1,24 +1,29 @@
 
 import products from '../modules/model/products.js'
 
+let that;
+
 Page({
     data: {
         text: "Page select-option",
         modelname: 'modelname',
         progress: 10,
-        selectOptions: '',
+        selectOptions : {},
         itemid : 0
     },
     onLoad: function (options) {
+        that = this;
         this.setData({
             modelname : options.name,
             itemid : options.itemid
         });
-        
+    
         products.getSelectOption(this.data.itemid, (response) => {
-            this.selectOptions = response;
-            console.log("selectOptions" + response);
-            console.log(JSON.stringify(response));
+            that.setData({
+                selectOptions : response.itemList
+            })
+            console.log("selectOptions" + response.itemList);
+            console.log(JSON.stringify(response.itemList));
         });
 
     },
