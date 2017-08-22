@@ -14,6 +14,10 @@ Page({
     },
     onLoad: function (options) {
         that = this;
+        selectResultMap.clear();
+        wx.setNavigationBarTitle({
+            title : options.name
+        })
         this.setData({
             modelname : options.name,
             itemid : options.itemid

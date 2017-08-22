@@ -69,12 +69,4 @@ Page({
         return o;
     },
 
-    onHotListItemClick: function(event) {
-        let itemid = event.currentTarget.dataset.itemid;
-        products.getSelectOption((data) => {
-            
-        });
-        
-    },
-
 });
