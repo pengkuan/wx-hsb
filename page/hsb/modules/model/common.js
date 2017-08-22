@@ -7,7 +7,8 @@ export function isResponseSuccess(response, toastError = false) {
     } else {
         if(toastError) {
             wx.showToast({
-                title : response.errcode + ":" + response.errstr
+                title : response.errcode + ":" + response.errstr,
+                icon : 'loading'
             })
         }
     }

@@ -2,6 +2,7 @@
 import products from '../modules/model/products.js'
 
 let that;
+let selectResultMap = new Map();
 
 Page({
     data: {
@@ -21,12 +22,40 @@ Page({
         products.getSelectOption(this.data.itemid, (response) => {
             that.setData({
                 selectOptions : response.itemList
-            })
-            console.log("selectOptions" + response.itemList);
-            console.log(JSON.stringify(response.itemList));
+            });
         });
 
     },
+
+    chooseItem : function(event) {
+        let questionId = event.currentTarget.dataset.questionId;
+        let answerId = event.currentTarget.dataset.answerId;
+        selectResultMap.set(questionId, answerId);
+        this.updateSelectOptions();
+        
+    },
+
+    updateSelectOptions : function() {
+        let selectOptions = this.data.selectOptions;
+        for(let questionItem of selectOptions) {
+            let id = questionItem.id;
+            if(selectResultMap.has(id)) {
+                let selectAnswerId = selectResultMap.get(id);
+                for(let answerItem of questionItem.question) {
+                    if(selectAnswerId == answerItem.id) {
+                        answerItem.isSelected = true;
+                    } else {
+                        answerItem.isSelected = false;
+                    }
+                }
+
+            }
+        }
+        this.setData({
+            selectOptions : selectOptions
+        });
+    },
+
     onReady: function () {
         // 页面渲染完成
     },

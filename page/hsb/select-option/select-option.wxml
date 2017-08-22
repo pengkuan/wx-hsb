@@ -10,12 +10,15 @@
     
     <view class="select-option-list" wx:for="{{selectOptions}}" wx:for-item="optionItem" wx:for-index="optionIndex">
         <view class="select-title" >{{optionItem.name}}</view>
-        <view class="select-question-list" wx:for="{{optionItem.question}}" wx:for-item="questionItem" wx:for-index="questionIndex" >
-            <view class="select-question-item-select" >
+        <view class="select-question-list" wx:for="{{optionItem.question}}" wx:for-item="questionItem" wx:for-index="questionIndex"
+                bindtap="chooseItem" data-question-id="{{optionItem.id}}" data-answer-id="{{questionItem.id}}"
+         >
+            <view class="select-question-item-{{questionItem.isSelected ? 'selected' : 'unselected'}}" >
                 {{questionItem.name}}
             </view>
         </view>
     </view>
+
 
 
 </view>

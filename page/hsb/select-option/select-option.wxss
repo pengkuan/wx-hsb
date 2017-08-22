@@ -1,6 +1,7 @@
 .page {
     justify-content: flex-start;
     flex-direction: column;
+    background: #FFFFFF;
 }
 
 .topcontainer {
@@ -66,7 +67,7 @@
     margin: 7rpx;
 }
 
-.select-question-item-select {
+.select-question-item-selected {
     background-color: #F9BE00;
     width: 100%;
     height: 88rpx;
@@ -75,6 +76,18 @@
     justify-content: center;
     align-content: center;
     color : #FFFFFF;
+    font-size: 24rpx;  
+}
+
+.select-question-item-unselected {
+    background-color: #F5F5F5;
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    color : #666666;
     font-size: 24rpx;
     
     
