@@ -10,7 +10,8 @@ Page({
         modelname: 'modelname',
         progress: 10,
         selectOptions : {},
-        itemid : 0
+        itemid : 0,
+        evaluateEnable : false
     },
     onLoad: function (options) {
         that = this;
@@ -41,6 +42,7 @@ Page({
 
     updateSelectOptions : function() {
         let selectOptions = this.data.selectOptions;
+        let allSelected = true;
         for(let questionItem of selectOptions) {
             let id = questionItem.id;
             if(selectResultMap.has(id)) {
@@ -53,10 +55,21 @@ Page({
                     }
                 }
 
+            } else {
+                allSelected = false;
             }
+        }
+        if(allSelected) {
+            that.onAllOptionSelected();
         }
         this.setData({
             selectOptions : selectOptions
+        });
+    },
+
+    onAllOptionSelected : function() {
+        this.setData({
+            evaluateEnable : true
         });
     },
 

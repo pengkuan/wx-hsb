@@ -20,6 +20,10 @@
         </view>
     </view>
 
+    <view class="bottom-btn-{{evaluateEnable ? 'enable' : 'disable'}}" >
+        查看估价
+    </view>
+
 
 
 </view>

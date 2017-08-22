@@ -90,3 +90,30 @@
     
 }
 
+.bottom-btn-enable {
+    position: relative;
+    margin: 0 auto;
+    width: 90%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    vertical-align: center;
+    border-radius: 24rpx;
+    background-color: #F9BE00;
+    font-size: 32rpx;
+    color: white;
+}
+
+.bottom-btn-disable {
+    position: relative;
+    margin: 0 auto;
+    width: 90%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    vertical-align: center;
+    border-radius: 24rpx;
+    background-color: #CCCCCC;
+    font-size: 32rpx;
+    color: white;
+}
