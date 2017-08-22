@@ -9,9 +9,11 @@
     </view>
     
     <view class="select-option-list" wx:for="{{selectOptions}}" wx:for-item="optionItem" wx:for-index="optionIndex">
-        <text>{{optionItem.id}}:{{optionItem.name}}</text>
-        <view class="select-option-list" wx:for="{{optionItem.question}}" wx:for-item="questionItem" wx:for-index="questionIndex" >
-            <text>{{questionItem.name}}</text>
+        <view class="select-title" >{{optionItem.name}}</view>
+        <view class="select-question-list" wx:for="{{optionItem.question}}" wx:for-item="questionItem" wx:for-index="questionIndex" >
+            <view class="select-question-item-select" >
+                {{questionItem.name}}
+            </view>
         </view>
     </view>
 

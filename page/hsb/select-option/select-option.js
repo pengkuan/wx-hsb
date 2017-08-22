@@ -17,7 +17,7 @@ Page({
             modelname : options.name,
             itemid : options.itemid
         });
-    
+        
         products.getSelectOption(this.data.itemid, (response) => {
             that.setData({
                 selectOptions : response.itemList
