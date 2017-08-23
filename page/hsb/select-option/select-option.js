@@ -73,6 +73,12 @@ Page({
         });
     },
 
+    onEvaluateBtnClicked : function() {
+        wx.navigateTo({
+            url : '../evaluate-result/evaluate-result'
+        });
+    },
+
     onReady: function () {
         // 页面渲染完成
     },

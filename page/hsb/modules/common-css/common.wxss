@@ -1,0 +1,4 @@
+.small-black-text {
+    color: #333333;
+    font-size: 22rpx;
+}

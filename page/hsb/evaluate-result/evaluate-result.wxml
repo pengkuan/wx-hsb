@@ -1,0 +1,21 @@
+<view class="container">
+
+    <view class="top-bar" >
+        若检测结果与您评估一致，您将在24小时以内以当前价格收款
+    </view>
+
+    <view class="evaluate-price-bg">
+        <text class="evaluate-title-text">估价结果</text>
+        <view class="evaluate-price-text-bg" >
+            <view class="rmb-black-text">¥</view>
+            <view class="evaluate-price-text" >8888</view>
+        </view>
+    </view>
+
+    <view class="evaluate-model-line-bg" >
+        <view class="yellow-square-point" />
+        <text class="evaluate-model-title" >评估机型：</text>
+    </view>
+
+
+</view>
