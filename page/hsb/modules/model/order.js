@@ -47,8 +47,8 @@ var exports = module.exports = {
             data    : orderInfo,
 
             success : function(res) {
-                var data = res.data;
-                if (data.errcode == 3002){
+                var data = res.data.data;
+                if (res.data.errcode == 3002){
 
                     return user.login(function(){
                         exports.getOrder(orderInfo, callback);

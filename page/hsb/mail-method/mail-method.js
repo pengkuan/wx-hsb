@@ -74,16 +74,19 @@ Page({
             }
 
             order.getOrder(data, function(data){
+                data = new Object();
+                data.orderNum = 888888888;
+                data.orderid = 88888888;
 
                 that.prompt('下单成功!');
 
                 wx.setStorageSync('orderSuccess', {
 
-                    orderNum : data.data.ordernum,
+                    orderNum : data.ordernum,
                 });
-                wx.setStorageSync('orderId', data.data.orderid);
+                wx.setStorageSync('orderId', data.orderid);
 
-                if (data.data) {
+                if (data) {
 
                     wx.switchTab({
 

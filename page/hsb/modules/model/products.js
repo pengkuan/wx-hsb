@@ -118,17 +118,21 @@ var exports = module.exports = {
 
     evaluate (itemid, selects, callback) {
 
-        wx.request({
+        let data = new Object();
+        data.quotation = 888;
+        callback && callback(data);
 
-            url : url.evaluate + itemid + '/'  + selects,
+        // wx.request({
 
-            success (res) {
+        //     url : url.evaluate + itemid + '/'  + selects,
 
-                var data = res.data.data;
-                data.quotation = Math.round(data.quotation / 100);
-                callback && callback(data);
-            }
-        });
+        //     success (res) {
+
+        //         var data = res.data.data;
+        //         data.quotation = Math.round(data.quotation / 100);
+        //         callback && callback(data);
+        //     }
+        // });
     },
 
     hotList (callback) {
