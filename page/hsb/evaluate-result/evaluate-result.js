@@ -4,10 +4,9 @@ const constant = require('../modules/constant.js');
 let that;
 Page({
     data: {
-        text: "Page evaluate-result",
         evaluatePrice : '',
         modelname : '',
-        questionArray : [],
+        answerArray : [1,2,3,4,5,6,7,8,9],
         isExpanded : false
     },
     onLoad: function (options) {
@@ -28,7 +27,7 @@ Page({
             key : constant.LOCAL_OPTION_KEY,
             success : (res) => {
                 that.setData({
-                    questionArray : res.data
+                    answerArray : res.data
                 });
             }
         });

@@ -21,9 +21,10 @@
     </view>
     <view style="width : 96%; height:2rpx; background-color : #E4E4E4;margin-top : 8rpx;margin-bottom: 8rpx;" />
 
-    <view wx:for="{{questionArray}}" wx:key="*this" > 
-        <text  >{{item}}</text>
-        
+    <view class="answer-items-bg" >
+        <view style="display : flex; flex-wrap: wrap;" >
+        <view class="answer-item" wx:for="{{answerArray}}" wx:key="*this" >{{item}}</view>
+        </view>
     </view>
 
 </view>
