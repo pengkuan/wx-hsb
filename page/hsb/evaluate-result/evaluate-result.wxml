@@ -15,6 +15,9 @@
     <view class="evaluate-model-line-bg" >
         <view class="yellow-square-point" />
         <text class="evaluate-model-title" >评估机型：</text>
+        <text class="evaluate-model-title" >iphone 6s</text>
+        <view style="flex : 1;" />
+        <text class="reevaluate-text" >重新估价</text>
     </view>
 
 

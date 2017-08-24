@@ -1,4 +1,3 @@
-@import "../modules/common-css/common.wxss";
 
 .container {
   height: 100%;
@@ -66,17 +65,29 @@
 
 .evaluate-model-line-bg  {
     display: flex;
+    width: 96%;
     flex-direction: row;
     align-items: center;
+    padding: 2%;
+
 
 }
 
 .yellow-square-point {
-    width: 10rpx;
-    height: 50rpx;
+    width: 7rpx;
+    height: 30rpx;
     background-color: #F9BD00;
+    margin-right: 15rpx;
 }
 
-.evaluate-model-title  {
-    font-size: 59rpx;
+ .evaluate-model-title  {
+    font-size: 22rpx;
+    margin-right: 12rpx;
+}
+
+.reevaluate-text {
+    display: flex;
+    font-size: 22rpx;
+    text-align: right;
+    color: #F9BD00
 }
