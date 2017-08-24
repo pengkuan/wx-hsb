@@ -1,5 +1,6 @@
 
 import products from '../modules/model/products.js'
+const constant = require('../modules/constant.js');
 
 let that;
 let selectResultMap = new Map();
@@ -74,9 +75,28 @@ Page({
     },
 
     onEvaluateBtnClicked : function() {
-        wx.navigateTo({
-            url : '../evaluate-result/evaluate-result'
+        let answersArray = that.getSelectQuestionArray();
+        wx.setStorage({
+            key : constant.LOCAL_OPTION_KEY,
+            data : answersArray
         });
+        wx.navigateTo({
+            url : '../evaluate-result/evaluate-result?name=' + that.data.modelname + '&evaluatePrice=testval' 
+        });
+    },
+
+    getSelectQuestionArray : function() {
+        let result = [];
+        let selectOptions = this.data.selectOptions;
+        for(let questionItem of selectOptions) {
+            let answers = questionItem.question;
+            for(let answerItem of answers) {
+                if(answerItem.isSelected) {
+                    result.push(answerItem.name);
+                }
+            }
+        }
+        return result;
     },
 
     onReady: function () {

@@ -8,17 +8,22 @@
         <text class="evaluate-title-text">估价结果</text>
         <view class="evaluate-price-text-bg" >
             <view class="rmb-black-text">¥</view>
-            <view class="evaluate-price-text" >8888</view>
+            <view class="evaluate-price-text" >{{evaluatePrice}}</view>
         </view>
     </view>
 
     <view class="evaluate-model-line-bg" >
         <view class="yellow-square-point" />
         <text class="evaluate-model-title" >评估机型：</text>
-        <text class="evaluate-model-title" >iphone 6s</text>
+        <text class="evaluate-model-title" >{{modelname}}</text>
         <view style="flex : 1;" />
         <text class="reevaluate-text" >重新估价</text>
     </view>
+    <view style="width : 96%; height:2rpx; background-color : #E4E4E4;margin-top : 8rpx;margin-bottom: 8rpx;" />
 
+    <view wx:for="{{questionArray}}" wx:key="*this" > 
+        <text  >{{item}}</text>
+        
+    </view>
 
 </view>
