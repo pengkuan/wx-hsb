@@ -43,8 +43,8 @@
                         </view>
                         <view class="hot-title">{{item.name}}</view>
                         <view class="hot-mun">
-                            平均回收价<text class="color-f85b62">
-                            ￥{{item.maxprice/100}}</text>
+                            平均回收价
+                            <text class="color-f85b62">￥{{item.maxprice/100}}</text>
                         </view>
                         <view class="hot-btn">立即回收</view>
                     </navigator>
@@ -52,11 +52,12 @@
             </view>
         </view>
     </view>
-
-    <view class="recycle-flow-bg" >
-        <text class="index-title" >手机回收流程</text>
-        
-
+    <view class="index-title">手机回收流程</view>
+    <view class="home-big-block-bg" >
+        <view class="home-big-block-item"  wx:for="{{hsbGuarantee}}" wx:key="text">
+            <image style="width : 50rpx; height : 50rpx; margin-bottom: 3rpx;" src="{{item.img}}" mode="aspectFit" />
+            <text>{{item.text}}</text>
+        </view>
     </view>
 
     <view class="index-title">品牌列表</view>
