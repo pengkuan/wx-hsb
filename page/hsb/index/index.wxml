@@ -74,12 +74,18 @@
     </swiper>
 
     <view class="index-title">回收宝保证</view>
-    <view class="hsb-guarantee-bg" >
-        <view class="hsb-guarantee-item"  wx:for="{{hsbGuarantee}}" wx:key="text">
-            <image style="width : 50rpx; height : 50rpx;" src="{{item.img}}" mode="aspectFit" />
+    <view class="home-big-block-bg" >
+        <view class="home-big-block-item"  wx:for="{{hsbGuarantee}}" wx:key="text">
+            <image style="width : 50rpx; height : 50rpx; margin-bottom: 3rpx;" src="{{item.img}}" mode="aspectFit" />
             <text>{{item.text}}</text>
         </view>
-
+    </view>
+    <view class="index-title">我们的合作伙伴</view>
+    <view class="home-big-block-bg" >
+        <view class="home-big-block-item"  wx:for="{{hsbFriends}}" wx:key="text">
+            <image style="width : 100rpx; height : 50rpx; margin-bottom: 3rpx;" src="{{item.img}}" mode="aspectFit" />
+            <text>{{item.text}}</text>
+        </view>
     </view>
 
 </view>

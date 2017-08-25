@@ -369,7 +369,7 @@
     height: 300rpx;
 }
 
-.hsb-guarantee-bg {
+.home-big-block-bg {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
@@ -382,7 +382,7 @@
     position: relative;
 }
 
-.hsb-guarantee-item {
+.home-big-block-item {
     display: flex;
     flex-direction: column;
     justify-content: center;

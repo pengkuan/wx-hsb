@@ -24,6 +24,20 @@ Page({
                 img : '/image/icon/11.png',
                 text : '隐私保护'
             }
+        ],
+        hsbFriends : [
+            {
+                img : '/image/icon/12.png',
+                text : '华为商城'
+            },
+            {
+                img : '/image/icon/13.png',
+                text : '58转转'
+            },
+            {
+                img : '/image/icon/14.png',
+                text : '微信京东'
+            }
         ]
     },
 
