@@ -369,3 +369,22 @@
     height: 300rpx;
 }
 
+.hsb-guarantee-bg {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background: white;
+    width : 94%;
+    height: 220rpx;
+    margin: 0 auto;
+    position: relative;
+}
+
+.hsb-guarantee-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

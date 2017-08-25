@@ -7,6 +7,24 @@ Page({
     data : {
         record : '',
         url : url,
+        hsbGuarantee : [
+            {
+                img : '/image/icon/8.png',
+                text : '全国包邮'
+            },
+            {
+                img : '/image/icon/9.png',
+                text : '三天保价'
+            },
+            {
+                img : '/image/icon/10.png',
+                text : '闪电打款'
+            },
+            {
+                img : '/image/icon/11.png',
+                text : '隐私保护'
+            }
+        ]
     },
 
     onShow () {
