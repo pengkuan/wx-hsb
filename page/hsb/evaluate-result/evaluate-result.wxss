@@ -127,5 +127,5 @@
 .falldown-text-bg {
     display: flex;
     flex-direction: row;
-    
+    border-bottom: 1px solid #f5f5f5;
 }

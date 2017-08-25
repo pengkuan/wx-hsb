@@ -54,9 +54,9 @@
     </view>
     <view class="index-title">手机回收流程</view>
     <view class="home-big-block-bg" >
-        <view class="home-big-block-item"  wx:for="{{hsbGuarantee}}" wx:key="text">
-            <image style="width : 50rpx; height : 50rpx; margin-bottom: 3rpx;" src="{{item.img}}" mode="aspectFit" />
-            <text>{{item.text}}</text>
+        <view class="home-big-block-item" style="width: 25%"  wx:for="{{flowData}}" wx:key="text">
+            <image style="width : 100%; height : 50rpx; margin-bottom: 3rpx;" src="{{item.img}}" mode="widthFix" />
+            <text class="home-big-block-text" >{{item.text}}</text>
         </view>
     </view>
 
@@ -78,14 +78,14 @@
     <view class="home-big-block-bg" >
         <view class="home-big-block-item"  wx:for="{{hsbGuarantee}}" wx:key="text">
             <image style="width : 50rpx; height : 50rpx; margin-bottom: 3rpx;" src="{{item.img}}" mode="aspectFit" />
-            <text>{{item.text}}</text>
+            <text class="home-big-block-text" >{{item.text}}</text>
         </view>
     </view>
     <view class="index-title">我们的合作伙伴</view>
     <view class="home-big-block-bg" >
         <view class="home-big-block-item"  wx:for="{{hsbFriends}}" wx:key="text">
             <image style="width : 100rpx; height : 50rpx; margin-bottom: 3rpx;" src="{{item.img}}" mode="aspectFit" />
-            <text>{{item.text}}</text>
+            <text class="home-big-block-text">{{item.text}}</text>
         </view>
     </view>
 

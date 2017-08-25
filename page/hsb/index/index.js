@@ -38,6 +38,24 @@ Page({
                 img : '/image/icon/14.png',
                 text : '微信京东'
             }
+        ],
+        flowData : [
+           {
+                img : '/image/icon/flow1.png',
+                text : '查找机型\n在线估价'
+            },
+            {
+                img : '/image/icon/flow2.png',
+                text : '下单回收\n顺丰速递'
+            },
+            {
+                img : '/image/icon/flow3.png',
+                text : '专业质检\n确认价格'
+            },
+            {
+                img : '/image/icon/flow4.png',
+                text : '坐等收钱\n安全可靠'
+            }
         ]
     },
 
