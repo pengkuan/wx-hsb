@@ -1,13 +1,13 @@
 
 const constant = require('../modules/constant.js');
-const product = require('../modules/model/products.js');
+const products = require('../modules/model/products.js');
 
 let that;
 Page({
     data: {
         evaluatePrice : '',
         modelname : '',
-        answerArray : [1,2,3,4,5,6,7,8,9],
+        answerArray : [],
         isExpanded : false
     },
     onLoad: function (options) {
@@ -15,11 +15,18 @@ Page({
         wx.setNavigationBarTitle({
             title: options.name
         });
+        
         this.setData({
             evaluatePrice : options.evaluatePrice,
             modelname : options.name
         });
         this.initQuestionArr();
+        let selected = options.selected
+        products.evaluate(options.itemid,selected,(data) => {
+            that.setData({
+                evaluatePrice: data.quotation
+            })
+        });
 
     },
 

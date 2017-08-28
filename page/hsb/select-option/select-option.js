@@ -76,12 +76,15 @@ Page({
 
     onEvaluateBtnClicked : function() {
         let answersArray = that.getSelectQuestionArray();
+        let selected = that.getSelected();
         wx.setStorage({
             key : constant.LOCAL_OPTION_KEY,
             data : answersArray
         });
         wx.navigateTo({
-            url : '../evaluate-result/evaluate-result?name=' + that.data.modelname + '&evaluatePrice=testval' 
+            url : '../evaluate-result/evaluate-result?name=' + that.data.modelname + 
+            '&selected=' + selected + 
+            '&itemid=' + that.data.itemid
         });
     },
 
@@ -97,6 +100,21 @@ Page({
             }
         }
         return result;
+    },
+
+    getSelected : function() {
+        let result = '';
+        let selectOptions = this.data.selectOptions.options;
+        for(let questionItem of selectOptions) {
+            let answers = questionItem.list;
+            for(let answerItem of answers) {
+                if(answerItem.isSelected) {
+                    result += answerItem.id + '-';
+                }
+            }
+        }
+        return result.substring(0, result.length - 1);
+        
     },
 
     onReady: function () {
