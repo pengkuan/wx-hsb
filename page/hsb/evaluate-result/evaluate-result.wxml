@@ -21,34 +21,43 @@
     </view>-->
     <view style="width : 96%; height:1rpx; background-color : #E4E4E4;margin-top : 8rpx;margin-bottom: 8rpx;" />
 
-    <view class="falldown-text-bg">
-        <text style="font-size: 22rpx;font-color: #B6B6B6;" >预计下月跌</text>
-        <image src="/image/icon/5.png" style="width: 22rpx;height: 22rpx;" mode="aspectFit" ></image>
-        <text style="font-size: 22rpx;color: #FD2626" >107</text>
-        <text style="font-size: 22rpx;font-color: #B6B6B6;" >元，与其现在,不如还钱买买买</text>
-    </view>
+    <!--<scroll-view>-->
 
-    <view style="width : 96%; height:1rpx; background-color : #E4E4E4;margin-top : 8rpx;margin-bottom: 8rpx;" />
-
-    <view class="answer-items-bg" >
-        <view style="display : flex; flex-wrap: wrap;" >
-        <view class="answer-item" wx:for="{{answerArray}}" wx:key="*this" >{{item}}</view>
+        <view class="falldown-text-bg">
+            <text style="font-size: 22rpx;font-color: #B6B6B6;" >预计下月跌</text>
+            <image src="/image/icon/5.png" style="width: 22rpx;height: 22rpx;" mode="aspectFit" ></image>
+            <text style="font-size: 22rpx;color: #FD2626" >107</text>
+            <text style="font-size: 22rpx;font-color: #B6B6B6;" >元，与其现在,不如还钱买买买</text>
         </view>
-    </view>
 
-    <image src="/image/icon/7.png" style="width: 32rpx;height: 32rpx;" mode="aspectFit" ></image>
+        <view style="width : 96%; height:1rpx; background-color : #E4E4E4;margin-top : 8rpx;margin-bottom: 8rpx;" />
 
-    <view class="chart-title-bg" >
-        <view class="hsb-quotation" >
-            <view class="hsb-quotation-line" />
-            <text style="font-size:22rpx;color:#F9BE04" >回收宝报价</text>
+        <view class="answer-items-bg" >
+            <view style="display : flex; flex-wrap: wrap;" >
+            <view class="answer-item" wx:for="{{answerArray}}" wx:key="*this" >{{item}}</view>
+            </view>
         </view>
-        <view class="market-quotation" >
-            <view class="market-quotation-line" />
-            <text style="font-size:22rpx;color:#4FC7FE" >市场均价</text>
-        </view>
-    </view>
 
-    <view> this is canvas</view>
+        <image src="/image/icon/7.png" style="width: 32rpx;height: 32rpx;" mode="aspectFit" ></image>
+
+        <view class="chart-title-bg" >
+            <view class="hsb-quotation" >
+                <view class="hsb-quotation-line" />
+                <text style="font-size:22rpx;color:#F9BE04" >回收宝报价</text>
+            </view>
+            <view class="market-quotation" >
+                <view class="market-quotation-line" />
+                <text style="font-size:22rpx;color:#4FC7FE" >市场均价</text>
+            </view>
+        </view>
+
+        <view> this is canvas</view>
+        <view> this is canvas</view>
+        <view> this is canvas</view>
+
+        <view style="display:flex;flex: 1;" />
+    <!--</scroll-view>-->
+    <text style="font-size:22rpx;color:#B6B6B6;margin:14rpx;" >手机回收成功后，我们会付款到你的微信账户</text>
+    <view class="bottom-btn-enable" >立即回收</view>
 
 </view>

@@ -1,15 +1,15 @@
-var url     = require('../url');
+var url = require('../url');
 import { PID } from '../constant';
 const commonUtil = require('./common')
 // var commonUtil = require('./common')
 
 var exports = module.exports = {
 
-    getBrands (callback){
+    getBrands(callback) {
         var brands = this.brands;
-        brands ? callback(brands) :  wx.request({
-            url     : url.brands,
-            success : function(res) {
+        brands ? callback(brands) : wx.request({
+            url: url.brands,
+            success: function (res) {
 
                 brands = res.data.data.items;
 
@@ -21,71 +21,59 @@ var exports = module.exports = {
                 callback(brands);
             },
 
-            fail : function(err){
+            fail: function (err) {
                 console.log(err);
             }
         });
     },
-    getSelectOption(itemid, callback) {
 
-        wx.request({
-            url : url.getSelectOption,
-            data : "itemid=" + itemid + "&pid=" + PID,
-            method : 'POST',
-            success: function(response) {
-                if(commonUtil.isResponseSuccess(response.data, true)) {
-                    callback(response.data.data);
-                }
-            }
-        });
-    },
-    getList(bid, index, count, callback){
+    getList(bid, index, count, callback) {
 
         return wx.request({
 
-            url     : url.productsList + bid + '/' + index,
-            success : function(res) {
+            url: url.productsList + bid + '/' + index,
+            success: function (res) {
                 var data = res.data.data;
                 // var items = res.data.data.items;
                 callback && callback(data && data.items, count);
             },
-            fail    : function(err){
+            fail: function (err) {
                 console.log(err);
             }
         })
     },
-    search(key, index, count, callback){
+    search(key, index, count, callback) {
         return wx.request({
 
-            url     : url.search + key + '/' + index,
-            success : function(res) {
+            url: url.search + key + '/' + index,
+            success: function (res) {
                 var data = res.data.data;
                 // var items = res.data.data.items;
                 callback && callback(data && data.items, count);
             },
-            fail    : function(err){
+            fail: function (err) {
                 console.log(err);
             }
         })
     },
-    options(itemid, callback){
+    options(itemid, callback) {
 
         wx.request({
 
-            url     :  url.options + itemid,
-            success : function(res) {
-
-                var data    = res.data.data;
-                var items   = data.items;
+            url: url.options + itemid,
+            success: function (res) {
+                //excuseme ? why the data is a object ,not an array?
+                var data = res.data.data;
+                var items = data.items;
 
                 var listA = [];
                 var listB = [];
 
-                Object.keys(items).forEach(function(key){
+                Object.keys(items).forEach(function (key) {
 
-                    var its  = items[key];
+                    var its = items[key];
                     its.list = [];
-                    Object.keys(its.items).forEach(function (key){
+                    Object.keys(its.items).forEach(function (key) {
                         its.list.push(its.items[key]);
                     });
                     delete its.items;
@@ -95,7 +83,7 @@ var exports = module.exports = {
 
                 delete data.items;
 
-                data.options  = listA;
+                data.options = listA;
                 data.options2 = listB;
 
                 for (var i in data.options) {
@@ -115,34 +103,33 @@ var exports = module.exports = {
             }
         });
     },
-
-    evaluate (itemid, selects, callback) {
+    evaluate(itemid, selects, callback) {
 
         let data = new Object();
         data.quotation = 888;
         callback && callback(data);
 
-        // wx.request({
-
-        //     url : url.evaluate + itemid + '/'  + selects,
-
-        //     success (res) {
-
-        //         var data = res.data.data;
-        //         data.quotation = Math.round(data.quotation / 100);
-        //         callback && callback(data);
-        //     }
-        // });
-    },
-
-    hotList (callback) {
-        
         wx.request({
 
-            url : url.hotList,
-            success (res) {
+            url: url.evaluate + itemid + '/' + selects,
 
-                console.log("hotList :",res);
+            success(res) {
+
+                var data = res.data.data;
+                data.quotation = Math.round(data.quotation / 100);
+                callback && callback(data);
+            }
+        });
+    },
+
+    hotList(callback) {
+
+        wx.request({
+
+            url: url.hotList,
+            success(res) {
+
+                console.log("hotList :", res);
 
                 var data = res.data.data;
                 data.quotation = Math.round(data.quotation / 100);

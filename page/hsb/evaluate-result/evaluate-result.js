@@ -1,5 +1,6 @@
 
 const constant = require('../modules/constant.js');
+const product = require('../modules/model/products.js');
 
 let that;
 Page({
