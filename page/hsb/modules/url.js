@@ -24,6 +24,6 @@ var exports = module.exports = {
     location     : baseUrl  + 'baidu',
     hotList      : baseUrl  + 'hot6',
     visitTime    : baseUrl  + 'get_visit_appoint_info',
-    getSelectOption : baseUrl_v2 + 'get_product_param',
+    getSelectOption : baseUrl_v2 + 'get_product_param'
 
 }
