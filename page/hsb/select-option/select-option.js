@@ -25,9 +25,9 @@ Page({
             itemid : options.itemid
         });
         
-        products.options(this.data.itemid, (response) => {
+        products.getSelectOption(this.data.itemid, (response) => {
             that.setData({
-                selectOptions : response
+                selectOptions : response.itemList
             });
         });
 
@@ -44,11 +44,11 @@ Page({
     updateSelectOptions : function() {
         let selectOptions = this.data.selectOptions;
         let allSelected = true;
-        for(let questionItem of selectOptions.options) {
+        for(let questionItem of selectOptions) {
             let id = questionItem.id;
             if(selectResultMap.has(id)) {
                 let selectAnswerId = selectResultMap.get(id);
-                for(let answerItem of questionItem.list) {
+                for(let answerItem of questionItem.question) {
                     if(selectAnswerId == answerItem.id) {
                         answerItem.isSelected = true;
                     } else {
@@ -90,9 +90,9 @@ Page({
 
     getSelectQuestionArray : function() {
         let result = [];
-        let selectOptions = this.data.selectOptions.options;
+        let selectOptions = this.data.selectOptions;
         for(let questionItem of selectOptions) {
-            let answers = questionItem.list;
+            let answers = questionItem.question;
             for(let answerItem of answers) {
                 if(answerItem.isSelected) {
                     result.push(answerItem.name);
@@ -104,9 +104,9 @@ Page({
 
     getSelected : function() {
         let result = '';
-        let selectOptions = this.data.selectOptions.options;
+        let selectOptions = this.data.selectOptions;
         for(let questionItem of selectOptions) {
-            let answers = questionItem.list;
+            let answers = questionItem.question;
             for(let answerItem of answers) {
                 if(answerItem.isSelected) {
                     result += answerItem.id + '-';

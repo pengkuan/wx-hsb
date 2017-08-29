@@ -8,9 +8,9 @@
     </view>
 
     <view class="listcontainer">
-        <view class="select-option-list" wx:for="{{selectOptions.options}}" wx:key="id" wx:for-item="optionItem" wx:for-index="optionIndex">
+        <view class="select-option-list" wx:for="{{selectOptions}}" wx:key="id" wx:for-item="optionItem" wx:for-index="optionIndex">
             <view class="select-title" >{{optionItem.name}}</view>
-            <view class="select-question-list" wx:for="{{optionItem.list}}" wx:key="id" wx:for-item="questionItem" wx:for-index="questionIndex"
+            <view class="select-question-list" wx:for="{{optionItem.question}}" wx:key="id" wx:for-item="questionItem" wx:for-index="questionIndex"
                     bindtap="chooseItem" data-question-id="{{optionItem.id}}" data-answer-id="{{questionItem.id}}"
             >
                 <view class="select-question-item-{{questionItem.isSelected ? 'selected' : 'unselected'}}" >

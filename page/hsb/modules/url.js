@@ -1,6 +1,6 @@
 var baseUrl  = 'https://doop.www.huishoubao.com/v2/1196/api/';
 // var baseUrl  = 'https://www.huishoubao.com/v2/1196/api/';
-// var baseUrl_v2 = 'https://doop.www.huishoubao.com/api/';
+var baseUrl_v2 = 'https://doop.www.huishoubao.com/api/';
 
 
 
@@ -23,6 +23,6 @@ var exports = module.exports = {
     visitDate    : baseUrl  + 'visitDate',
     location     : baseUrl  + 'baidu',
     hotList      : baseUrl  + 'hot6',
-    visitTime    : baseUrl  + 'get_visit_appoint_info'
-
+    visitTime    : baseUrl  + 'get_visit_appoint_info',
+    getSelectOption : baseUrl_v2 + 'get_product_param' 
 }

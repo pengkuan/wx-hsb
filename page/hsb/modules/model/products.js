@@ -56,6 +56,19 @@ var exports = module.exports = {
             }
         })
     },
+    getSelectOption(itemid, callback) { 
+ 
+        wx.request({ 
+            url : url.getSelectOption, 
+            data : "itemid=" + itemid + "&pid=" + PID, 
+            method : 'POST', 
+            success: function(response) { 
+                if(commonUtil.isResponseSuccess(response.data, true)) { 
+                    callback(response.data.data); 
+                } 
+            } 
+        }); 
+    },
     options(itemid, callback) {
 
         wx.request({
@@ -104,11 +117,6 @@ var exports = module.exports = {
         });
     },
     evaluate(itemid, selects, callback) {
-
-        let data = new Object();
-        data.quotation = 888;
-        callback && callback(data);
-
         wx.request({
 
             url: url.evaluate + itemid + '/' + selects,
@@ -128,9 +136,6 @@ var exports = module.exports = {
 
             url: url.hotList,
             success(res) {
-
-                console.log("hotList :", res);
-
                 var data = res.data.data;
                 data.quotation = Math.round(data.quotation / 100);
                 callback && callback(data);
