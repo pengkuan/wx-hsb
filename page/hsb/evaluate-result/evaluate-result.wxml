@@ -58,6 +58,6 @@
         <view style="display:flex;flex: 1;" />
     <!--</scroll-view>-->
     <text style="font-size:22rpx;color:#B6B6B6;margin:14rpx;" >手机回收成功后，我们会付款到你的微信账户</text>
-    <view class="bottom-btn-enable" >立即回收</view>
+    <view class="bottom-btn-enable" bindtap="onRecycleBtnClick" >立即回收</view>
 
 </view>
