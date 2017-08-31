@@ -74,9 +74,6 @@ Page({
             }
 
             order.getOrder(data, function(data){
-                data = new Object();
-                data.orderNum = 888888888;
-                data.orderid = 88888888;
 
                 that.prompt('下单成功!');
 
