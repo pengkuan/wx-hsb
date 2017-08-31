@@ -10,46 +10,81 @@ Page({
         text: "Page select-option",
         modelname: 'modelname',
         progress: 10,
-        selectOptions : {},
-        itemid : 0,
-        evaluateEnable : false
+        selectOptions: [],
+        allOptions: [],
+        nowSelectIndex: 0,
+        itemid: 0,
+        evaluateEnable: false,
+        scrollToView: {},
+        wHeight : 800,
     },
     onLoad: function (options) {
         that = this;
         selectResultMap.clear();
         wx.setNavigationBarTitle({
-            title : options.name
+            title: options.name
         })
+
+        wx.getSystemInfo({
+            success: function (res) {
+                that.setData({
+                    wHeight: res.windowHeight - 78
+                })
+            }
+        })
+
         this.setData({
-            modelname : options.name,
-            itemid : options.itemid
+            modelname: options.name,
+            itemid: options.itemid
         });
-        
+
         products.getSelectOption(this.data.itemid, (response) => {
+            that.data.allOptions = response.itemList;
+            let i = 0;
+            for (let item of that.data.allOptions) {
+                that.data.selectOptions.push(JSON.parse(JSON.stringify(item)));
+                if (i > that.data.nowSelectIndex) {
+                    that.data.selectOptions[i].question = [];
+                }
+                i++;
+            }
             that.setData({
-                selectOptions : response.itemList
+                selectOptions: that.data.selectOptions
             });
         });
 
     },
 
-    chooseItem : function(event) {
-        let questionId = event.currentTarget.dataset.questionId;
-        let answerId = event.currentTarget.dataset.answerId;
-        selectResultMap.set(questionId, answerId);
-        this.updateSelectOptions();
-        
+    refreshSelectOptionsBySelectIndex: function () {
+        let i = 0;
+        for (let item of that.data.allOptions) {
+            if (i <= that.data.nowSelectIndex) {
+                this.data.selectOptions[i].question = item.question;
+            }
+            i++;
+        }
     },
 
-    updateSelectOptions : function() {
+    chooseItem: function (event) {
+        let questionId = event.currentTarget.dataset.questionId;
+        let answerId = event.currentTarget.dataset.answerId;
+        let selectIndex = event.currentTarget.dataset.index;
+        selectResultMap.set(questionId, answerId);
+        that.data.nowSelectIndex = selectIndex + 1;
+        that.refreshSelectOptionsBySelectIndex();
+        this.updateSelectOptions();
+
+    },
+
+    updateSelectOptions: function () {
         let selectOptions = this.data.selectOptions;
         let allSelected = true;
-        for(let questionItem of selectOptions) {
+        for (let questionItem of selectOptions) {
             let id = questionItem.id;
-            if(selectResultMap.has(id)) {
+            if (selectResultMap.has(id)) {
                 let selectAnswerId = selectResultMap.get(id);
-                for(let answerItem of questionItem.question) {
-                    if(selectAnswerId == answerItem.id) {
+                for (let answerItem of questionItem.question) {
+                    if (selectAnswerId == answerItem.id) {
                         answerItem.isSelected = true;
                     } else {
                         answerItem.isSelected = false;
@@ -60,41 +95,43 @@ Page({
                 allSelected = false;
             }
         }
-        if(allSelected) {
+
+        if (allSelected) {
             that.onAllOptionSelected();
         }
-        this.setData({
-            selectOptions : selectOptions
+        that.setData({
+            selectOptions: selectOptions,
+            scrollToView: "option_" + that.data.nowSelectIndex
         });
     },
 
-    onAllOptionSelected : function() {
+    onAllOptionSelected: function () {
         this.setData({
-            evaluateEnable : true
+            evaluateEnable: true
         });
     },
 
-    onEvaluateBtnClicked : function() {
+    onEvaluateBtnClicked: function () {
         let answersArray = that.getSelectQuestionArray();
         let selected = that.getSelected();
         wx.setStorage({
-            key : constant.LOCAL_OPTION_KEY,
-            data : answersArray
+            key: constant.LOCAL_OPTION_KEY,
+            data: answersArray
         });
         wx.navigateTo({
-            url : '../evaluate-result/evaluate-result?name=' + that.data.modelname + 
-            '&selected=' + selected + 
+            url: '../evaluate-result/evaluate-result?name=' + that.data.modelname +
+            '&selected=' + selected +
             '&itemid=' + that.data.itemid
         });
     },
 
-    getSelectQuestionArray : function() {
+    getSelectQuestionArray: function () {
         let result = [];
         let selectOptions = this.data.selectOptions;
-        for(let questionItem of selectOptions) {
+        for (let questionItem of selectOptions) {
             let answers = questionItem.question;
-            for(let answerItem of answers) {
-                if(answerItem.isSelected) {
+            for (let answerItem of answers) {
+                if (answerItem.isSelected) {
                     result.push(answerItem.name);
                 }
             }
@@ -102,19 +139,19 @@ Page({
         return result;
     },
 
-    getSelected : function() {
+    getSelected: function () {
         let result = '';
         let selectOptions = this.data.selectOptions;
-        for(let questionItem of selectOptions) {
+        for (let questionItem of selectOptions) {
             let answers = questionItem.question;
-            for(let answerItem of answers) {
-                if(answerItem.isSelected) {
+            for (let answerItem of answers) {
+                if (answerItem.isSelected) {
                     result += answerItem.id + '-';
                 }
             }
         }
         return result.substring(0, result.length - 1);
-        
+
     },
 
     onReady: function () {

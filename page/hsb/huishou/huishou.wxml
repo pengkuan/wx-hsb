@@ -36,7 +36,7 @@
                     <view class="item"></view>
                 </scroll-view>
             </view>
-            <view style="width:74%;  height:100%; float:left;">
+            <view style="width:74%;  height:100%; float:left;" >
                 <scroll-view style="height:100%;" scroll-y="true" bindscrolltolower="productUpdate"
                              lower-threshold="400">
                     <navigator class="navigator-view" url="../gujia/gujia?itemid={{item.itemid}}&name={{item.name}}"
