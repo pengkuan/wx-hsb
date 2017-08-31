@@ -15,7 +15,7 @@
             <scroll-view class="search-result-view" scroll-y="true" bindscrolltolower="searchUpdate"
                          lower-threshold="400">
                 <navigator class="search-result" wx:for-items="{{search.list}}" wx:for-item="sl"
-                           url="../gujia/gujia?itemid={{sl.itemid}}&name={{sl.name}}">
+                           url="../select-option/select-option?itemid={{sl.itemid}}&name={{sl.name}}">
                     <view class="result-name">{{sl.name}}</view>
                     <view class="result-maxprice">
                         <text class="maxprice-text">最高价:</text>
@@ -39,7 +39,7 @@
             <view style="width:74%;  height:100%; float:left;" >
                 <scroll-view style="height:100%;" scroll-y="true" bindscrolltolower="productUpdate"
                              lower-threshold="400">
-                    <navigator class="navigator-view" url="../gujia/gujia?itemid={{item.itemid}}&name={{item.name}}"
+                    <navigator class="navigator-view" url="../select-option/select-option?itemid={{item.itemid}}&name={{item.name}}"
                                wx:for-items="{{product.list}}">
                         <view class="item {{xxx}}" style="transition: color {{index / 10 + 0.5 }}s;">
                             <view class="text-num">{{index + 1}}</view>
