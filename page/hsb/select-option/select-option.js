@@ -9,7 +9,6 @@ Page({
     data: {
         text: "Page select-option",
         modelname: 'modelname',
-        progress: 10,
         selectOptions: [],
         allOptions: [],
         nowSelectIndex: 0,
@@ -17,6 +16,7 @@ Page({
         evaluateEnable: false,
         scrollToView: {},
         wHeight : 800,
+        choosePercent : 0,
     },
     onLoad: function (options) {
         that = this;
@@ -101,7 +101,8 @@ Page({
         }
         that.setData({
             selectOptions: selectOptions,
-            scrollToView: "option_" + that.data.nowSelectIndex
+            scrollToView: "option_" + that.data.nowSelectIndex,
+            choosePercent :  parseInt(that.data.nowSelectIndex / 1.0 / that.data.allOptions.length * 100)
         });
     },
 
@@ -112,6 +113,9 @@ Page({
     },
 
     onEvaluateBtnClicked: function () {
+        if(!that.data.evaluateEnable) {
+            return;
+        }
         let answersArray = that.getSelectQuestionArray();
         let selected = that.getSelected();
         wx.setStorage({
