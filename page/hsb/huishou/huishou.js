@@ -3,6 +3,8 @@ var that;
 Page({
     data : {
         brands  : products.brands,
+        catShow1:false,
+        catShow2:false,
         index   : 0,
         product : {
             all  : {
@@ -34,9 +36,9 @@ Page({
     },
 
     onLoad (options) {
-
+        
         that = this;
-
+        
         if (options.search || options.ooo) {
 
             this.setData({
@@ -62,14 +64,35 @@ Page({
         }
 
     },
+    
+    catTap1 (e) {
+        var dataset = e.currentTarget.dataset;
+        var cat=dataset.cat;
+        this.setData({
+            catShow1:!that.data.catShow1,
+            cat1:cat
+        });
+        wx.setNavigationBarTitle({title: '手机'});
+    },
+    catTap2 (e) {
+        var dataset = e.currentTarget.dataset;
+        var cat=dataset.cat;
+        this.setData({
+            catShow2:!that.data.catShow2,
+            cat2:cat
+        });
+        wx.setNavigationBarTitle({title: '平板'});
+        this.padTap();
+    },
 
     productTap (e) {
-
+        
         if (this.data.product.sync) {
             return;
         }
         var dataset = e.currentTarget.dataset;
         var data    = this.data.product;
+        
         if (dataset.bid == data.bid) {
             return;
         }
@@ -82,13 +105,13 @@ Page({
         this.productInit(dataset.bid, products.brands[dataset.index].name);
     },
 
-    productInit (bid, name) {
+    productInit (bid=null, name='') {
 
         wx.setNavigationBarTitle({title: name});
 
         this.setData({
             taggle  : 'product',
-            brands  : products.brands,
+            brands  : products.brands
         });
 
         var data  = this.data.product;
@@ -144,6 +167,23 @@ Page({
         });
     },
 
+    padTap(){
+        var padData=products.pads;
+        var pads={
+            all  : {},
+            size : 20,
+            sync : false,
+            bid  : null,
+            list : padData,
+            info : [],
+            count : 0
+        };
+        if (!padData || !padData.length) {
+            pads.info = '没有更多商品了';
+        }
+        that.setData({product :pads});
+    },
+    
     searchInit (e) {
 
         var key = e.detail ? e.detail.value : e;

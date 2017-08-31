@@ -26,6 +26,25 @@ var exports = module.exports = {
             }
         });
     },
+    
+    getPads() {
+        var pads = this.pads;
+        wx.request({
+            url: url.padList+'?mid=pad',
+            success: function (res) {
+                
+                pads = res.data.data.items;
+
+                if (pads) {
+                    exports.pads = pads;
+                }
+            },
+
+            fail: function (err) {
+                console.log(err);
+            }
+        });
+    },
 
     getList(bid, index, count, callback) {
 

@@ -302,3 +302,42 @@ navigator {
     width:auto;
     display:block;
 }
+
+/*jhl*/
+.cat-view{
+    width:26%;
+    float:left;
+    height:100%;
+}
+
+.cat-view .cat-scroll{
+    height:100%;
+}
+.cat-item .item-title{
+    height:118rpx;
+    line-height:118rpx;
+    text-align:center;
+    color:#000000;
+    font-size:14px;
+    z-index:9;
+}
+.cat-item .item-title1{
+    background:#fff url(../../../image/icon/6.png) no-repeat 8% center;
+    background-size:28rpx auto;
+}
+.cat-item .item-title2{
+    background:#fff url(../../../image/icon/1.png) no-repeat 8% center;
+    background-size:34rpx auto;
+}
+.cat-item .item-title.actives{
+    color:#f9be00;
+    border:none;
+}
+.none{
+    display:none;
+}
+.cat-item2{
+    position:fixed;
+    bottom:0;
+    width:26%;
+}
