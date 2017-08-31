@@ -99,10 +99,14 @@ Page({
         if (allSelected) {
             that.onAllOptionSelected();
         }
+        let percent = parseInt(that.data.nowSelectIndex / 1.0 / that.data.allOptions.length * 100);
+        if(that.data.choosePercent < percent) {
+            that.data.choosePercent = percent;
+        }
         that.setData({
             selectOptions: selectOptions,
             scrollToView: "option_" + that.data.nowSelectIndex,
-            choosePercent :  parseInt(that.data.nowSelectIndex / 1.0 / that.data.allOptions.length * 100)
+            choosePercent :  that.data.choosePercent
         });
     },
 
