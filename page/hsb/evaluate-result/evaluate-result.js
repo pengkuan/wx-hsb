@@ -8,6 +8,7 @@ Page({
         evaluatePrice: '',
         modelname: '',
         answerArray: [],
+        allAnswers: [],
         isExpanded: false,
         itemid: {},
         selected: {}
@@ -38,9 +39,9 @@ Page({
         wx.getStorage({
             key: constant.LOCAL_OPTION_KEY,
             success: (res) => {
-                that.setData({
-                    answerArray: res.data
-                });
+                that.data.allAnswers = res.data;
+                that.collapseOptions();
+
             }
         });
     },
@@ -48,6 +49,39 @@ Page({
         wx.navigateTo({
             url: "../mail-method/mail-method?itemid=" + this.data.itemid + "&selects=" + this.data.selected
         });
+    },
+
+    onExpandBtnClick: function (event) {
+        if (that.data.isExpanded) {
+            that.collapseOptions();
+        } else {
+            that.expandOptions();
+        }
+    },
+    collapseOptions: function (event) {
+        that.data.answerArray = [];
+        let i = 0;
+        for (let item of that.data.allAnswers) {
+            if (i >= 3) {
+                break;
+            }
+            that.data.answerArray.push(JSON.parse(JSON.stringify(item)));
+            i++;
+        }
+        that.setData({
+            answerArray: that.data.answerArray,
+            isExpanded: false
+        });
+
+    },
+    expandOptions: function (event) {
+        that.data.answerArray = [];
+        that.data.answerArray = JSON.parse(JSON.stringify(that.data.allAnswers));
+        that.setData({
+            answerArray: that.data.answerArray,
+            isExpanded: true
+        });
+
     },
 
     onReady: function () {
