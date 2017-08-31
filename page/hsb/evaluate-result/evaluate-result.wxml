@@ -51,8 +51,7 @@
             </view>
         </view>
 
-        <view> this is canvas</view>
-        
+        <canvas style="width:{{chartWidth}}px;height:{{chartHeight}}px;" canvas-id="chartCanvas"></canvas>
 
         <view style="display:flex;flex: 1;" />
     <!--</scroll-view>-->

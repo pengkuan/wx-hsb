@@ -1,6 +1,7 @@
 
 const constant = require('../modules/constant.js');
 const products = require('../modules/model/products.js');
+const chart = require("../modules/chartutils/chart.js");
 
 let that;
 Page({
@@ -31,6 +32,57 @@ Page({
             that.setData({
                 evaluatePrice: data.quotation
             })
+            that.refreshChart(data.quotation);
+        });
+
+
+    },
+
+    refreshChart: function (price) {
+        price = parseFloat(price);
+        let x4 = price;
+        let x5 = x4 / (1 - 0.07);
+        let x3 = x4 / (1 - 0.04);
+        let x2 = x3 / (1 - 0.08);
+        let x1 = x2 / (1 - 0.06);
+        let xmonth = new Date().getMonth();
+        let x3month = (xmonth - 1 + 12) % 12 + 1 + '月';
+        let x2month = (xmonth - 2 + 12) % 12 + 1 + '月';
+        let x1month = (xmonth - 3 + 12) % 12 + 1 + '月';
+        let x5month = (xmonth + 1) % 12 + 1 + '月';
+        let x4month = xmonth + 1 + '月';
+
+        chart.draw(this, 'chartCanvas', {
+            title: {
+                text: "",
+                color: "#000000"
+            },
+            xAxis: {
+                data: [x1month, x2month, x3month, x4month, x5month]
+            },
+            color: ["#F9BE04", "#4FC7FE"],
+            series: [
+                // {
+                //   name: "第一季度",
+                //   category: "bar",
+                //   data: [37, 63, 60, 78, 92, 63, 57, 48]
+                // },
+                {
+                    name: "回收宝估价",
+                    category: "line",
+                    data: [parseInt(x1), parseInt(x2), parseInt(x3), parseInt(x4), parseInt(x5)]
+                },
+                {
+                    name: "市场均价",
+                    category: "line",
+                    data: [parseInt(x1 * 0.9), parseInt(x2 * 0.9), parseInt(x3 * 0.9), parseInt(x4 * 0.9), parseInt(x5 * 0.9)]
+                },
+                // {
+                //   name: ['北京', '上海', '杭州', '深圳', '广州', '成都'],
+                //   category: "pie",
+                //   data: [40, 38, 39, 28, 27, 33]
+                // }
+            ]
         });
 
     },
