@@ -3,6 +3,8 @@
     <view class="top-bar" >
         若检测结果与您评估一致，您将在24小时以内以当前价格收款
     </view>
+    
+    <scroll-view scroll-y="true" class="scroll-bg" >
 
     <view class="evaluate-price-bg">
         <text class="evaluate-title-text">估价结果</text>
@@ -21,7 +23,7 @@
     </view>-->
     <view style="width : 96%; height:1rpx; background-color : #E4E4E4;margin-top : 8rpx;margin-bottom: 8rpx;" />
 
-    <!--<scroll-view>-->
+    
 
         <view class="falldown-text-bg">
             <text style="font-size: 22rpx;font-color: #B6B6B6;" >预计下月跌</text>
@@ -36,11 +38,12 @@
             <view style="display : flex; flex-wrap: wrap;width:100%;justify-content: space-around" >
                 <view class="answer-item" wx:for="{{answerArray}}" wx:key="*this" >{{item}}</view>
             </view>
+            <image src="/image/icon/{{isExpanded ? 16 : 7}}.png" style="width: 32rpx;height: 32rpx;" mode="aspectFit" bindtap="onExpandBtnClick" ></image>
         </view>
 
-        <image src="/image/icon/{{isExpanded ? 16 : 7}}.png" style="width: 32rpx;height: 32rpx;" mode="aspectFit" bindtap="onExpandBtnClick" ></image>
+        
 
-        <view class="chart-title-bg" >
+        <!--<view class="chart-title-bg" >
             <view class="hsb-quotation" >
                 <view class="hsb-quotation-line" />
                 <text style="font-size:22rpx;color:#F9BE04" >回收宝报价</text>
@@ -49,13 +52,13 @@
                 <view class="market-quotation-line" />
                 <text style="font-size:22rpx;color:#4FC7FE" >市场均价</text>
             </view>
-        </view>
+        </view>-->
 
         <canvas style="width:{{chartWidth}}px;height:{{chartHeight}}px;" canvas-id="chartCanvas"></canvas>
 
         <view style="display:flex;flex: 1;" />
-    <!--</scroll-view>-->
-    <text style="font-size:22rpx;color:#B6B6B6;margin:14rpx;" >手机回收成功后，我们会付款到你的微信账户</text>
+    
+    <text style="font-size:22rpx;color:#B6B6B6;margin:14rpx;display:flex;justify-content: center;align-items: center;" >手机回收成功后，我们会付款到你的微信账户</text>
     <view class="bottom-btn-enable" bindtap="onRecycleBtnClick" >立即回收</view>
-
+    </scroll-view>
 </view>
