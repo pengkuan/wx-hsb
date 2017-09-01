@@ -309,8 +309,7 @@ navigator {
     float:left;
     height:100%;
 }
-
-.cat-view .cat-scroll{
+.cat-item1{
     height:100%;
 }
 .cat-item .item-title{
@@ -319,7 +318,6 @@ navigator {
     text-align:center;
     color:#000000;
     font-size:14px;
-    z-index:9;
 }
 .cat-item .item-title1{
     background:#fff url(../../../image/icon/6.png) no-repeat 8% center;

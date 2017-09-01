@@ -3,7 +3,7 @@ var that;
 Page({
     data : {
         brands  : products.brands,
-        catShow1:false,
+        catShow1:true,
         catShow2:false,
         index   : 0,
         product : {
@@ -65,24 +65,24 @@ Page({
 
     },
     
-    catTap1 (e) {
+    catTap(e){
         var dataset = e.currentTarget.dataset;
         var cat=dataset.cat;
+        if(cat==0){
+            that.data.catShow2=false;
+            that.data.catShow1=true;
+        }
+        if(cat==1){
+            that.data.catShow1=false;
+            that.data.catShow2=true;
+            wx.setNavigationBarTitle({title: '平板'});
+            this.padTap();
+        }
         this.setData({
-            catShow1:!that.data.catShow1,
-            cat1:cat
+            catShow2:that.data.catShow2,
+            catShow1:that.data.catShow1,
+            cat:cat
         });
-        wx.setNavigationBarTitle({title: '手机'});
-    },
-    catTap2 (e) {
-        var dataset = e.currentTarget.dataset;
-        var cat=dataset.cat;
-        this.setData({
-            catShow2:!that.data.catShow2,
-            cat2:cat
-        });
-        wx.setNavigationBarTitle({title: '平板'});
-        this.padTap();
     },
 
     productTap (e) {
@@ -105,7 +105,7 @@ Page({
         this.productInit(dataset.bid, products.brands[dataset.index].name);
     },
 
-    productInit (bid=null, name='') {
+    productInit (bid=11, name='苹果') {
 
         wx.setNavigationBarTitle({title: name});
 
@@ -168,6 +168,7 @@ Page({
     },
 
     padTap(){
+        wx.setNavigationBarTitle({title: '热门'});
         var padData=products.pads;
         var pads={
             all  : {},
