@@ -33,15 +33,14 @@ input {
 .item{
     line-height: 50px;
     height: 50px;
-    border-left: 4px solid #fff;
+    border-left: 4px solid #f6f6f6;
     font-size: 14px;
     font-family: "微软雅黑";
     overflow: hidden; text-overflow:ellipsis; white-space: nowrap;
 }
 .brand {
-    border-bottom: 1px solid #f1f1f1;
-    border-right : 2px solid #f1f1f1;
     text-align: center;
+    background:#f6f6f6;
 }
 .right .item:hover {
 
@@ -316,16 +315,8 @@ navigator {
     height:118rpx;
     line-height:118rpx;
     text-align:center;
-    color:#000000;
+    color:#333333;
     font-size:14px;
-}
-.cat-item .item-title1{
-    background:#fff url(../../../image/icon/6.png) no-repeat 8% center;
-    background-size:28rpx auto;
-}
-.cat-item .item-title2{
-    background:#fff url(../../../image/icon/1.png) no-repeat 8% center;
-    background-size:34rpx auto;
 }
 .cat-item .item-title.actives{
     color:#f9be00;
@@ -338,4 +329,18 @@ navigator {
     position:fixed;
     bottom:0;
     width:26%;
+}
+.item-title .phone-icon{
+    width:24rpx;
+    height:36rpx;
+    margin-right:20rpx;
+    vertical-align:middle;
+    margin-top:-3px;
+}
+.item-title .pad-icon{
+    width:29rpx;
+    height:31rpx;
+    margin-right:20rpx;
+    vertical-align:middle;
+    margin-top:-3px;
 }

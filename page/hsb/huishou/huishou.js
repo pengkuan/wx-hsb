@@ -39,6 +39,11 @@ Page({
         
         that = this;
         
+        this.setData({
+            catShow2:that.data.catShow2,
+            catShow1:that.data.catShow1,
+            cat:0
+        });
         if (options.search || options.ooo) {
 
             this.setData({
