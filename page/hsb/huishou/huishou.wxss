@@ -33,7 +33,6 @@ input {
 .item{
     line-height: 50px;
     height: 50px;
-    border-left: 4px solid #f6f6f6;
     font-size: 14px;
     font-family: "微软雅黑";
     overflow: hidden; text-overflow:ellipsis; white-space: nowrap;
@@ -317,10 +316,12 @@ navigator {
     text-align:center;
     color:#333333;
     font-size:14px;
+    border-right:1px solid #f6f6f6;
 }
 .cat-item .item-title.actives{
     color:#f9be00;
     border:none;
+    border-right:1px solid #f6f6f6;
 }
 .none{
     display:none;

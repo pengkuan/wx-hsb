@@ -129,6 +129,9 @@ Page({
 
             product = all[bid];
             data.list = product.list;
+            if (!data.list || data.list.length<data.size) {
+                data.info = '没有更多商品了';
+            }
             if (data.list.length){
                 this.setData({
                     product : data,
@@ -184,7 +187,7 @@ Page({
             info : [],
             count : 0
         };
-        if (!padData || !padData.length) {
+        if (!padData || padData.length<pads.size) {
             pads.info = '没有更多商品了';
         }
         that.setData({product :pads});
