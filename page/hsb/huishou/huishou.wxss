@@ -345,3 +345,8 @@ navigator {
     vertical-align:middle;
     margin-top:-3px;
 }
+.img-num{
+    width:29rpx;
+    height:39rpx;
+    margin:15px 10px 0 22px;
+}
