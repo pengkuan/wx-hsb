@@ -150,15 +150,15 @@ Page({
         data.sync = true;
         
         if(data.bid=='pad'){
-            var reqPads=products.getPads(bid, product.index++, ++data.count, function(items, count){
+            var reqPads=products.getPads(bid, (++product.index)*20, ++data.count, function(items, count,total){
                 if (data.count !== count) return;
 
-                if (!items || items.length < data.size) {
+                if (!items || items.length == total) {
                     product.index = -1;
                     data.info = '没有更多商品了';
                 }
 
-                if (items) list.push.apply(list, items);
+                if (items) data.list=items;
 
                 data.sync = false;
                 that.setData({product : data});
