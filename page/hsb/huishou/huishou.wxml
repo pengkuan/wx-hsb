@@ -38,8 +38,8 @@
                     </scroll-view>
                     <view class="cat-item {{catShow1?'cat-item2':''}}">
                         <view class="item-title item-title2 {{cat==1 ? 'actives' : ''}}" data-cat="1" bindtap="catTap" style="background:#fff;"><image src="/image/icon/1.png" class="pad-icon"/>平板</view>
-                        <view style="height:100%;background-color:#fff;" scroll-y="true" class="{{catShow2 ? 'block' : 'none'}}">
-                            <navigator class="item brand actives" bindtap="padTap">热门</navigator>
+                        <view style="height:100%;background-color:#fff;" class="{{catShow2 ? 'block' : 'none'}}">
+                            <navigator class="item brand {{'pad' == product.bid ? 'actives' : ''}}" data-bid="pad" bindtap="productTap">热门</navigator>
                         </view>
                     </view>
                 </view>

@@ -27,19 +27,13 @@ var exports = module.exports = {
         });
     },
     
-    getPads() {
-        var pads = this.pads;
-        wx.request({
-            url: url.padList+'?mid=pad',
+    getPads(bid,index,count,callback) {
+        return wx.request({
+            url: url.padList + '?mid='+bid+'&size='+index,
             success: function (res) {
-                
-                pads = res.data.data.items;
-
-                if (pads) {
-                    exports.pads = pads;
-                }
+                var data = res.data.data;
+                callback && callback(data && data.items, count);
             },
-
             fail: function (err) {
                 console.log(err);
             }

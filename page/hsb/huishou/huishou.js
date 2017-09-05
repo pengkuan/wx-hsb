@@ -36,7 +36,6 @@ Page({
     },
 
     onLoad (options) {
-        
         that = this;
         
         this.setData({
@@ -62,12 +61,10 @@ Page({
 
             this.searchInit(options.search);
         }
-
         else {
 
             this.productInit(options.bid, options.name);
         }
-
     },
     
     catTap(e){
@@ -76,12 +73,12 @@ Page({
         if(cat==0){
             that.data.catShow2=false;
             that.data.catShow1=true;
+            this.productInit(11,'苹果');
         }
         if(cat==1){
             that.data.catShow1=false;
             that.data.catShow2=true;
-            wx.setNavigationBarTitle({title: '平板'});
-            this.padTap();
+            this.productInit('pad','热门');
         }
         this.setData({
             catShow2:that.data.catShow2,
@@ -91,7 +88,6 @@ Page({
     },
 
     productTap (e) {
-        
         if (this.data.product.sync) {
             return;
         }
@@ -106,12 +102,14 @@ Page({
         this.setData({
                 product : data,
         });
-
-        this.productInit(dataset.bid, products.brands[dataset.index].name);
+        if(dataset.bid=='pad'){
+            this.productInit(dataset.bid,'热门');
+        }else{
+            this.productInit(dataset.bid, products.brands[dataset.index].name);
+        }
     },
 
     productInit (bid=11, name='苹果') {
-
         wx.setNavigationBarTitle({title: name});
 
         this.setData({
@@ -126,22 +124,16 @@ Page({
         data.info = '正在加载更多数据';
         data.sync = false;
         if (bid in all){
-
             product = all[bid];
             data.list = product.list;
             if (!data.list || data.list.length<data.size) {
                 data.info = '没有更多商品了';
             }
-            if (data.list.length){
-                this.setData({
-                    product : data,
-                })
-                return;
-            }
-        }
-
-        else {
-
+            this.setData({
+                product : data,
+            })
+            return;
+        }else {
             product = all[bid] = { index : 0 };
             data.list = product.list = [];
         }
@@ -149,7 +141,6 @@ Page({
     },
 
     productUpdate () {
-
         var data    = this.data.product;
         var list    = data.list
         var bid     = data.bid;
@@ -157,44 +148,40 @@ Page({
 
         if (data.sync || product.index === -1) return;
         data.sync = true;
+        
+        if(data.bid=='pad'){
+            var reqPads=products.getPads(bid, product.index++, ++data.count, function(items, count){
+                if (data.count !== count) return;
 
-        var req = products.getList(bid, product.index++, ++data.count, function(items, count){
+                if (!items || items.length < data.size) {
+                    product.index = -1;
+                    data.info = '没有更多商品了';
+                }
 
-            if (data.count !== count) return;
+                if (items) list.push.apply(list, items);
 
-            if (!items || items.length < data.size) {
+                data.sync = false;
+                that.setData({product : data});
+            });
+        }else{
+            var req = products.getList(bid, product.index++, ++data.count, function(items, count){
 
-                product.index = -1;
-                data.info = '没有更多商品了';
-            }
+                if (data.count !== count) return;
 
-            if (items) list.push.apply(list, items);
+                if (!items || items.length < data.size) {
+                    product.index = -1;
+                    data.info = '没有更多商品了';
+                }
 
-            data.sync = false;
-            that.setData({product : data});
-        });
-    },
+                if (items) list.push.apply(list, items);
 
-    padTap(){
-        wx.setNavigationBarTitle({title: '热门'});
-        var padData=products.pads;
-        var pads={
-            all  : {},
-            size : 20,
-            sync : false,
-            bid  : null,
-            list : padData,
-            info : [],
-            count : 0
-        };
-        if (!padData || padData.length<pads.size) {
-            pads.info = '没有更多商品了';
+                data.sync = false;
+                that.setData({product : data});
+            });
         }
-        that.setData({product :pads});
     },
     
     searchInit (e) {
-
         var key = e.detail ? e.detail.value : e;
         var data  = this.data.search;
         data.list = [];
@@ -259,7 +246,6 @@ Page({
     },
 
     searchUpdate () {
-
         var data    = this.data.search;
         var list    = data.list
         var key     = data.key;
@@ -286,7 +272,6 @@ Page({
     },
 
     closeSearch () {
-
         this.setData({searchInitGod : ''});
         this.searchInit('');
     }

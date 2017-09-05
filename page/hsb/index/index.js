@@ -99,8 +99,6 @@ Page({
 
         });
         
-        products.getPads();
-        
         products.hotList( (b) => {
 
             that.setData({ hotList : b.items });
