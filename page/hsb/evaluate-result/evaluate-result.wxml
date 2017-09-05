@@ -43,7 +43,7 @@
 
         
 
-        <!--<view class="chart-title-bg" >
+         <view class="chart-title-bg" >
             <view class="hsb-quotation" >
                 <view class="hsb-quotation-line" />
                 <text style="font-size:22rpx;color:#F9BE04" >回收宝报价</text>
@@ -52,7 +52,7 @@
                 <view class="market-quotation-line" />
                 <text style="font-size:22rpx;color:#4FC7FE" >市场均价</text>
             </view>
-        </view>-->
+        </view> 
 
         <canvas style="width:{{chartWidth}}px;height:{{chartHeight}}px;" canvas-id="chartCanvas"></canvas>
 
