@@ -32,7 +32,8 @@ var exports = module.exports = {
             url: url.padList + '?mid='+bid+'&size='+index,
             success: function (res) {
                 var data = res.data.data;
-                callback && callback(data && data.items, count);
+                var total = data.pageinfo.total;
+                callback && callback(data && data.items, count,total);
             },
             fail: function (err) {
                 console.log(err);

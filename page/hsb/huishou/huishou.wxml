@@ -50,7 +50,10 @@
                     <navigator class="navigator-view" url="../select-option/select-option?itemid={{item.itemid}}&name={{item.name}}"
                                wx:for-items="{{product.list}}">
                         <view class="item {{xxx}}" style="transition: color {{index / 10 + 0.5 }}s;">
-                            <view class="text-num">{{index + 1}}</view>
+                            <image src="/image/icon/2.png" wx:if="{{index + 1 == 1}}" class="img-num"/>
+                            <image src="/image/icon/3.png" wx:elif="{{index+1 == 2}}" class="img-num"/>
+                            <image src="/image/icon/4.png" wx:elif="{{index+1 == 3}}" class="img-num"/>
+                            <view class="text-num" wx:else>{{index + 1}}</view>
                             {{item.name}}
                         </view>
                         </navigator>
