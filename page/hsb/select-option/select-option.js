@@ -74,9 +74,16 @@ Page({
         for (let item of allOptions) {
             let newItem = JSON.parse(JSON.stringify(item));
             if(item.conftype == '3') {
+                let showQuestionItem;
                 for(let questionItem of newItem.question) {
                     if(questionItem.show == '1') {
+                        showQuestionItem = questionItem;
                         multiItem.question.push(questionItem);
+                    }
+                }
+                for(let questionItem of newItem.question) {
+                    if(questionItem.show != '1') {
+                        showQuestionItem.otherAnswerId = questionItem.id;
                     }
                 }
             } else {
@@ -164,6 +171,13 @@ Page({
             return;
         }
         let answersArray = that.getSelectQuestionArray();
+        if(answersArray.includes('iCloud无法注销')) {
+            wx.showToast({
+                title : 'iCloud无法注销(不回收)',
+                icon: 'success'
+            });
+            return ;
+        }
         let selected = that.getSelected();
         wx.setStorage({
             key: constant.LOCAL_OPTION_KEY,
@@ -195,11 +209,22 @@ Page({
         let selectOptions = this.data.selectOptions;
         for (let questionItem of selectOptions) {
             let answers = questionItem.question;
-            for (let answerItem of answers) {
-                if (answerItem.isSelected) {
-                    result += answerItem.id + '-';
+            if(!questionItem.isMulti) {
+                for (let answerItem of answers) {
+                    if (answerItem.isSelected) {
+                        result += answerItem.id + '-';
+                    }
+                }
+            } else {
+                for (let answerItem of answers) {
+                    if (answerItem.isSelected) {
+                        result += answerItem.id + '-';
+                    } else {
+                        result += answerItem.otherAnswerId + '-';
+                    }
                 }
             }
+            
         }
         return result.substring(0, result.length - 1);
 
