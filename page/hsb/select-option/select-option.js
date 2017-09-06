@@ -110,20 +110,21 @@ Page({
         let questionId = event.currentTarget.dataset.questionId;
         let answerId = event.currentTarget.dataset.answerId;
         let selectIndex = event.currentTarget.dataset.index;
-        selectResultMap.set(questionId, answerId);
+        // selectResultMap.set(questionId, answerId);
         that.data.nowSelectIndex = selectIndex + 1;
         that.refreshSelectOptionsBySelectIndex();
-        this.updateSelectOptions();
+        this.updateSelectOptions(questionId, answerId);
 
     },
 
-    updateSelectOptions: function () {
+    updateSelectOptions: function (questionId, answerId) {
+        selectResultMap.set(questionId, answerId);
         let selectOptions = this.data.selectOptions;
         let allSelected = true;
         for (let item of selectOptions) {
             let id = item.id;
             if(item.isMulti) {
-                let selectAnswerId = selectResultMap.get(id);
+                let selectAnswerId = answerId;
                 for (let answerItem of item.question) {
                     if (selectAnswerId == answerItem.id) {
                         answerItem.isSelected = !answerItem.isSelected;
@@ -140,7 +141,6 @@ Page({
                         answerItem.isSelected = false;
                     }
                 }
-
             } else {
                 allSelected = false;
             }
@@ -156,7 +156,8 @@ Page({
         that.setData({
             selectOptions: selectOptions,
             scrollToView: "option_" + that.data.nowSelectIndex,
-            choosePercent: that.data.choosePercent
+            choosePercent: that.data.choosePercent,
+            nowSelectIndex: that.data.nowSelectIndex
         });
     },
 

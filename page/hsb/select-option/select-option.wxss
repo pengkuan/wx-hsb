@@ -54,6 +54,14 @@
     font-size: 38rpx;
     margin-bottom: 14rpx;
     width: 100%;
+    color: black;
+}
+
+.select-title-gray {
+    font-size: 38rpx;
+    margin-bottom: 14rpx;
+    width: 100%;
+    color: #CCCCCC;
 }
 
 .select-question-list {
