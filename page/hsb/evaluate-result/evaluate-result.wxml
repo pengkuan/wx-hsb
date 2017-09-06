@@ -40,7 +40,7 @@
             <text style="font-size: 22rpx;color: #FD2626" >107</text>
             <text style="font-size: 22rpx;font-color: #B6B6B6;" >元，与其现在,不如还钱买买买</text>
         </view>
-
+        
         <view class="chart-title-bg" >
             <view class="hsb-quotation" >
                 <view class="hsb-quotation-line" />

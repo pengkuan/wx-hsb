@@ -11,18 +11,19 @@ Page({
         modelname: 'modelname',
         selectOptions: [],
         allOptions: [],
+        allTransOptions: [],
         nowSelectIndex: 0,
         itemid: 0,
         evaluateEnable: false,
         scrollToView: {},
-        wHeight : 800,
-        choosePercent : 0,
+        wHeight: 800,
+        choosePercent: 0,
     },
     onLoad: function (options) {
         that = this;
         selectResultMap.clear();
         wx.setNavigationBarTitle({
-            title: options.name
+            title: '评估价格'
         })
 
         wx.getSystemInfo({
@@ -40,14 +41,8 @@ Page({
 
         products.getSelectOption(this.data.itemid, (response) => {
             that.data.allOptions = response.itemList;
-            let i = 0;
-            for (let item of that.data.allOptions) {
-                that.data.selectOptions.push(JSON.parse(JSON.stringify(item)));
-                if (i > that.data.nowSelectIndex) {
-                    that.data.selectOptions[i].question = [];
-                }
-                i++;
-            }
+            that.data.allTransOptions = that.transMultOptions(response.itemList);
+            that.data.selectOptions = that.transNowOptions(that.data.allTransOptions);
             that.setData({
                 selectOptions: that.data.selectOptions
             });
@@ -55,9 +50,55 @@ Page({
 
     },
 
+    transNowOptions : function(allTransOptions) {
+        let result = [];
+        let i = 0;  
+        for (let item of allTransOptions) {
+            let newItem = JSON.parse(JSON.stringify(item));
+            result.push(newItem);
+            if (i > that.data.nowSelectIndex) {
+                result[i].question = [];
+            }
+            i++;
+        }
+        return result;
+    },
+
+    transMultOptions: function (allOptions) {
+        let i = 0;
+        let allTransOptions = [];
+        let multiItem = new Object();
+        multiItem.isMulti = true;
+        multiItem.question = [];
+        multiItem.name = '功能性选项(可多选或不选)';
+        for (let item of allOptions) {
+            let newItem = JSON.parse(JSON.stringify(item));
+            if(item.conftype == '3') {
+                let showQuestionItem;
+                for(let questionItem of newItem.question) {
+                    if(questionItem.show == '1') {
+                        showQuestionItem = questionItem;
+                        multiItem.question.push(questionItem);
+                    }
+                }
+                for(let questionItem of newItem.question) {
+                    if(questionItem.show != '1') {
+                        showQuestionItem.otherAnswerId = questionItem.id;
+                    }
+                }
+            } else {
+                    
+                allTransOptions.push(newItem);
+            }
+            
+        }
+        allTransOptions.push(multiItem);
+        return allTransOptions;
+    },
+
     refreshSelectOptionsBySelectIndex: function () {
         let i = 0;
-        for (let item of that.data.allOptions) {
+        for (let item of that.data.allTransOptions) {
             if (i <= that.data.nowSelectIndex) {
                 this.data.selectOptions[i].question = item.question;
             }
@@ -79,11 +120,20 @@ Page({
     updateSelectOptions: function () {
         let selectOptions = this.data.selectOptions;
         let allSelected = true;
-        for (let questionItem of selectOptions) {
-            let id = questionItem.id;
+        for (let item of selectOptions) {
+            let id = item.id;
+            if(item.isMulti) {
+                let selectAnswerId = selectResultMap.get(id);
+                for (let answerItem of item.question) {
+                    if (selectAnswerId == answerItem.id) {
+                        answerItem.isSelected = !answerItem.isSelected;
+                    }
+                }
+                continue;
+            }
             if (selectResultMap.has(id)) {
                 let selectAnswerId = selectResultMap.get(id);
-                for (let answerItem of questionItem.question) {
+                for (let answerItem of item.question) {
                     if (selectAnswerId == answerItem.id) {
                         answerItem.isSelected = true;
                     } else {
@@ -99,14 +149,14 @@ Page({
         if (allSelected) {
             that.onAllOptionSelected();
         }
-        let percent = parseInt(that.data.nowSelectIndex / 1.0 / that.data.allOptions.length * 100);
-        if(that.data.choosePercent < percent) {
+        let percent = parseInt(that.data.nowSelectIndex / 1.0 / that.data.allTransOptions.length * 100);
+        if (that.data.choosePercent < percent) {
             that.data.choosePercent = percent;
         }
         that.setData({
             selectOptions: selectOptions,
             scrollToView: "option_" + that.data.nowSelectIndex,
-            choosePercent :  that.data.choosePercent
+            choosePercent: that.data.choosePercent
         });
     },
 
@@ -117,10 +167,17 @@ Page({
     },
 
     onEvaluateBtnClicked: function () {
-        if(!that.data.evaluateEnable) {
+        if (!that.data.evaluateEnable) {
             return;
         }
         let answersArray = that.getSelectQuestionArray();
+        if(answersArray.includes('iCloud无法注销')) {
+            wx.showToast({
+                title : 'iCloud无法注销(不回收)',
+                icon: 'success'
+            });
+            return ;
+        }
         let selected = that.getSelected();
         wx.setStorage({
             key: constant.LOCAL_OPTION_KEY,
@@ -152,11 +209,22 @@ Page({
         let selectOptions = this.data.selectOptions;
         for (let questionItem of selectOptions) {
             let answers = questionItem.question;
-            for (let answerItem of answers) {
-                if (answerItem.isSelected) {
-                    result += answerItem.id + '-';
+            if(!questionItem.isMulti) {
+                for (let answerItem of answers) {
+                    if (answerItem.isSelected) {
+                        result += answerItem.id + '-';
+                    }
+                }
+            } else {
+                for (let answerItem of answers) {
+                    if (answerItem.isSelected) {
+                        result += answerItem.id + '-';
+                    } else {
+                        result += answerItem.otherAnswerId + '-';
+                    }
                 }
             }
+            
         }
         return result.substring(0, result.length - 1);
 
