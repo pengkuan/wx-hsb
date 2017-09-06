@@ -9,7 +9,7 @@
         <view class="listcontainer">
             <view id="option_{{optionIndex}}" class="select-option-list" wx:for="{{selectOptions}}" wx:key="id"
                   wx:for-item="optionItem" wx:for-index="optionIndex">
-                <view class="select-title">{{optionItem.name}}</view>
+                <view class="select-title{{optionItem.question.length > 0 ? '' : '-gray'}}">{{optionItem.name}}</view>
                 <view class="select-question-list" wx:for="{{optionItem.question}}" wx:key="id"
                       wx:for-item="questionItem" wx:for-index="questionIndex" bindtap="chooseItem"
                       data-question-id="{{optionItem.id}}" data-answer-id="{{questionItem.id}}"
