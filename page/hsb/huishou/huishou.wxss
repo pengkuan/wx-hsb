@@ -46,8 +46,8 @@ input {
     color : #666;
 }
 .page__bd .actives {
-    color : #ff9300;
-    border-left : 4px solid #ff9300;
+    color : #f9be00;
+    border-left : 4px solid #f9be00;
     border-right-color: transparent;
 }
 .text-num {
