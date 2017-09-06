@@ -67,7 +67,7 @@ Page({
         var cat=dataset.cat;
         if(cat==0){
             if(!that.data.catShow1){
-                this.productInit(11,'苹果');
+                this.productInit(11);
             }
             that.data.catShow1=true;
             that.data.catShow2=false;
@@ -75,7 +75,7 @@ Page({
         if(cat==1){
             that.data.catShow1=false;
             that.data.catShow2=true;
-            this.productInit('pad','热门');
+            this.productInit('pad');
         }
         this.setData({
             catShow2:that.data.catShow2,
@@ -99,14 +99,14 @@ Page({
                 product : data,
         });
         if(dataset.bid=='pad'){
-            this.productInit(dataset.bid,'热门');
+            this.productInit(dataset.bid);
         }else{
-            this.productInit(dataset.bid, products.brands[dataset.index].name);
+            this.productInit(dataset.bid);
         }
     },
 
-    productInit (bid=11, name='苹果') {
-        wx.setNavigationBarTitle({title: name});
+    productInit (bid=11) {
+        wx.setNavigationBarTitle({title: '选择机型'});
 
         this.setData({
             taggle  : 'product',
@@ -194,18 +194,7 @@ Page({
 
         if (!key) {
             this.setData({ closeSearch : false });
-            var bid = this.data.product.bid;
-            var title='';
-            if(bid=='pad'){
-                title='热门';
-            }else{
-                for(var i in products.brands){
-                    if(products.brands[i].mid==bid){
-                        title=products.brands[i].name;
-                    }
-                }
-            }
-            wx.setNavigationBarTitle({title:title});
+            wx.setNavigationBarTitle({title:'选择机型'});
             return;
         }
 

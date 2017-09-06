@@ -1,32 +1,21 @@
 <view class="container">
 
     <view class="top-bar" >
-        若检测结果与您评估一致，您将在24小时以内以当前价格收款
+        若最终检测结果与您评估情况一致，您将在24小时内以当前价格收款
     </view>
     
     <scroll-view scroll-y="true" class="scroll-bg" >
-
-    <view class="evaluate-price-bg">
-        <text class="evaluate-title-text">估价结果</text>
-        <view class="evaluate-price-text-bg" >
-            <view class="rmb-black-text">¥</view>
-            <view class="evaluate-price-text" >{{evaluatePrice}}</view>
+        <view class="evaluate-price-bg">
+            <text class="evaluate-title-text">估价结果</text>
+            <view class="evaluate-price-text-bg" >
+                <view class="rmb-black-text">¥</view>
+                <view class="evaluate-price-text" >{{evaluatePrice}}</view>
+            </view>
+            <view class="reevaluate-view" bindtap="reevaluate">重新估价</view>
+            <view class="reevaluate-sj"></view>
         </view>
-        <view class="reevaluate-view" bindtap="reevaluate">重新估价</view>
-        <view class="reevaluate-sj"></view>
-    </view>
 
-    <!--<view class="evaluate-model-line-bg" >
-        <view class="yellow-square-point" />
-        <text class="evaluate-model-title" >评估机型：</text>
-        <text class="evaluate-model-title" >{{modelname}}</text>
-        <view style="flex : 1;" />
-        <text class="reevaluate-text" >重新估价</text>
-    </view>-->
-    <!--<view style="width : 96%; height:1rpx; background-color : #E4E4E4;margin-top : 8rpx;margin-bottom: 8rpx;" />-->
-
-        <view style="width : 100%; height:1rpx; background-color : #E4E4E4;margin-bottom:25rpx;" />
-
+        <view style="width : 100%; height:1rpx; background-color : #f5f5f5;margin-bottom:20rpx;" />
         <view class="answer-items-bg" >
             <view style="display : flex; flex-wrap: wrap;width:100%;justify-content: flex-start" >
                 <view class="answer-item" wx:for="{{answerArray}}" wx:key="*this" >{{item}}</view>
@@ -35,24 +24,23 @@
         </view>
 
         <view class="falldown-text-bg">
-            <text style="font-size: 22rpx;font-color: #B6B6B6;" >预计下月跌</text>
+            <text style="font-size: 26rpx;font-color: #B6B6B6;" >预计下月跌</text>
             <image src="/image/icon/5.png" style="width: 22rpx;height: 22rpx;" mode="aspectFit" ></image>
-            <text style="font-size: 22rpx;color: #FD2626" >107</text>
-            <text style="font-size: 22rpx;font-color: #B6B6B6;" >元，与其现在,不如还钱买买买</text>
+            <text style="font-size: 26rpx;color: #FD2626" >107</text>
+            <text style="font-size: 26rpx;font-color: #B6B6B6;" >元，与其现在,不如换钱买买买</text>
         </view>
         
         <view class="chart-title-bg" >
             <view class="hsb-quotation" >
                 <view class="hsb-quotation-line" />
-                <text style="font-size:22rpx;color:#F9BE04" >回收宝报价</text>
+                <text style="font-size:26rpx;color:#F9BE04" >回收宝报价</text>
             </view>
             <view class="market-quotation" >
                 <view class="market-quotation-line" />
-                <text style="font-size:22rpx;color:#4FC7FE" >市场均价</text>
+                <text style="font-size:26rpx;color:#4FC7FE" >市场均价</text>
             </view>
         </view>
-
-        <!--<canvas style="width:{{chartWidth}}px;height:{{chartHeight}}px;" canvas-id="chartCanvas"></canvas>-->
+       
         <view class="chart-view">
             <view class="chart-left">
                 <text class="y-text">900</text>
@@ -72,9 +60,7 @@
         </view>
 
         <view style="display:flex;flex: 1;" />
-    
-        <text style="font-size:24rpx;color:#B6B6B6;margin:14rpx;display:flex;justify-content: center;align-items: center;" >手机回收成功后，我们会付款到你的微信账户</text>
-        
+        <text style="font-size:26rpx;color:#B6B6B6;margin:14rpx;display:flex;justify-content: center;align-items: center;" >手机回收成功后，我们会付款到你的微信账户</text>
         <view class="bottom-btn-enable" bindtap="onRecycleBtnClick" >立即回收</view>
         
         <view class="evaluate-result">

@@ -17,7 +17,7 @@ Page({
     onLoad: function (options) {
         that = this;
         wx.setNavigationBarTitle({
-            title: options.name
+            title: '评估结果'
         });
 
         this.setData({
