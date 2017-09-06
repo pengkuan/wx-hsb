@@ -38,11 +38,6 @@ Page({
     onLoad (options) {
         that = this;
         
-        this.setData({
-            catShow2:that.data.catShow2,
-            catShow1:that.data.catShow1,
-            cat:0
-        });
         if (options.search || options.ooo) {
 
             this.setData({
@@ -71,9 +66,11 @@ Page({
         var dataset = e.currentTarget.dataset;
         var cat=dataset.cat;
         if(cat==0){
-            that.data.catShow2=false;
+            if(!that.data.catShow1){
+                this.productInit(11,'苹果');
+            }
             that.data.catShow1=true;
-            this.productInit(11,'苹果');
+            that.data.catShow2=false;
         }
         if(cat==1){
             that.data.catShow1=false;
@@ -82,8 +79,7 @@ Page({
         }
         this.setData({
             catShow2:that.data.catShow2,
-            catShow1:that.data.catShow1,
-            cat:cat
+            catShow1:that.data.catShow1
         });
     },
 
@@ -126,11 +122,11 @@ Page({
         if (bid in all){
             product = all[bid];
             data.list = product.list;
-            if (!data.list || data.list.length<data.size) {
+            if (data.bid=='pad' || !data.list || data.list.length<data.size) {
                 data.info = '没有更多商品了';
             }
             this.setData({
-                product : data,
+                product : data
             })
             return;
         }else {
@@ -150,7 +146,8 @@ Page({
         data.sync = true;
         
         if(data.bid=='pad'){
-            var reqPads=products.getPads(bid, (++product.index)*20, ++data.count, function(items, count,total){
+            list.length=0;
+            var reqPads=products.getPads(bid, (++product.index)*data.size, ++data.count, function(items, count,total){
                 if (data.count !== count) return;
 
                 if (!items || items.length == total) {
@@ -158,7 +155,11 @@ Page({
                     data.info = '没有更多商品了';
                 }
 
-                if (items) data.list=items;
+                if (items){
+                    for(var i in items){
+                        list.push(items[i]);
+                    }
+                } 
 
                 data.sync = false;
                 that.setData({product : data});
@@ -191,25 +192,24 @@ Page({
             search : data,
         });
 
-
-
         if (!key) {
-
             this.setData({ closeSearch : false });
-
-            var index = this.data.index;
-            this.data.product.list.length
-
-                ? wx.setNavigationBarTitle({title: products.brands[index].name})
-                : this.productInit(products.brands[index].mid, index);
+            var bid = this.data.product.bid;
+            var title='';
+            if(bid=='pad'){
+                title='热门';
+            }else{
+                for(var i in products.brands){
+                    if(products.brands[i].mid==bid){
+                        title=products.brands[i].name;
+                    }
+                }
+            }
+            wx.setNavigationBarTitle({title:title});
             return;
-
         }
 
         if (key && key != "搜索") {
-
-            console.log(key);
-
             this.setData({ closeSearch : true });
         }
 

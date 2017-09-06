@@ -37,6 +37,10 @@ Page({
 
 
     },
+    
+    reevaluate:function(){
+        wx.navigateBack(); 
+    },
 
     refreshChart: function (price) {
         price = parseFloat(price);
