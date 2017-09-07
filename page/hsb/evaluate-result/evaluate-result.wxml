@@ -26,7 +26,7 @@
         <view class="falldown-text-bg">
             <text style="font-size: 26rpx;font-color: #B6B6B6;" >预计下月跌</text>
             <image src="/image/icon/5.png" style="width: 22rpx;height: 22rpx;" mode="aspectFit" ></image>
-            <text style="font-size: 26rpx;color: #FD2626" >107</text>
+            <text style="font-size: 26rpx;color: #FD2626" >{{downPrice}}</text>
             <text style="font-size: 26rpx;font-color: #B6B6B6;" >元，与其现在,不如换钱买买买</text>
         </view>
         
@@ -43,18 +43,12 @@
        
         <view class="chart-view">
             <view class="chart-left">
-                <text class="y-text">900</text>
-                <text class="y-text">600</text>
-                <text class="y-text">300</text>
-                <text class="y-text">0</text>
+                <text class="y-text" wx:for="{{values}}" >{{item}}</text>
             </view>
             <view class="chart-right">
                 <image src="/image/icon/chart.png" class="chart-image"/>
                 <view class="chart-x">
-                    <text class="x-text">2月</text>
-                    <text class="x-text">3月</text>
-                    <text class="x-text">4月</text>
-                    <text class="x-text">5月</text>
+                    <text class="x-text" wx:for="{{month}}" wx:key="*this" >{{item}}月</text>
                 </view>
             </view>
         </view>

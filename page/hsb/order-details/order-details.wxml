@@ -53,7 +53,7 @@
             </view>
         <view class="mun-info">
             <view class="img-view">
-                <image class="img" mode="aspectFit" src="http://s1.huishoubao.com/img/phone/{{picurl}}"></image>
+                <image class="img" mode="aspectFit" src="{{picurl}}"></image>
             </view>
             <view class="text-view">
                 <view class="title-view">商品名称 : {{goods}}</view>
