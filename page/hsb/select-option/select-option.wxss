@@ -112,7 +112,6 @@
     background-color: #F9BE00;
     font-size: 32rpx;
     color: white;
-    margin-bottom: 18rpx;
 }
 
 .bottom-btn-disable {
@@ -127,5 +126,4 @@
     background-color: #CCCCCC;
     font-size: 32rpx;
     color: white;
-    margin-bottom: 18rpx;
 }
