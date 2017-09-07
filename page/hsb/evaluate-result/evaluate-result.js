@@ -34,7 +34,7 @@ Page({
         products.evaluate(options.itemid, selected, (data) => {
             that.setData({
                 evaluatePrice: data.quotation,
-                downPrice: parseInt((data.quotation) / (1 - 0.07) - data.quotation)
+                downPrice: parseInt((data.quotation) * (1 - 0.07))
             })
             that.refreshChart(data.quotation);
         });

@@ -5,7 +5,7 @@
         <text class="top-desc-text">请根据实际情况评估您的手机；如最终检测结果与您评估一致，收款速度提升30%以上！</text>
     </view>
     <scroll-view scroll-y="true" scroll-into-view="{{scrollToView}}" 
-                style="height : {{wHeight}}px;margin-top: 78px;margin-bottom:30rpx" scroll-with-animation="true" >
+                style="height : {{wHeight}}px;margin-top: 78px;margin-bottom:30rpx;padding-top:25rpx" scroll-with-animation="true" >
         <view class="listcontainer">
             <view id="option_{{optionIndex}}" class="select-option-list" wx:for="{{selectOptions}}" wx:key="id"
                   wx:for-item="optionItem" wx:for-index="optionIndex">
