@@ -65,16 +65,12 @@ Page({
     catTap(e){
         var dataset = e.currentTarget.dataset;
         var cat=dataset.cat;
-        if(cat==0){
-            if(!that.data.catShow1){
-                this.productInit(11);
-            }
-            that.data.catShow1=true;
-            that.data.catShow2=false;
+        that.data.catShow1=!that.data.catShow1;
+        that.data.catShow2=!that.data.catShow2;
+        if(that.data.catShow1){
+            this.productInit(11);
         }
-        if(cat==1){
-            that.data.catShow1=false;
-            that.data.catShow2=true;
+        if(that.data.catShow2){
             this.productInit('pad');
         }
         this.setData({

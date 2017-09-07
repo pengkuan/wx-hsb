@@ -31,12 +31,12 @@
     display: flex;
     position: relative;
     background: white;
-    margin-top: 58rpx;
     height: 300rpx;
-    width: 100%;
+    width: 90%;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin:58rpx auto 0;
 }
 
 .evaluate-title-text {
@@ -106,25 +106,25 @@
     position: relative;
     justify-content:  center;
     align-items: center;
-    width: 100%;
+    width: 90%;
     flex-wrap: wrap;
-    margin-bottom:20rpx;
+    margin:0 auto 20rpx;
 }
 
 .answer-item {
-    display: block;
-    position: relative;
-    text-align: center;
-    height: 94rpx;
-    line-height: 94rpx;
-    width: 31%;
-    font-size: 26rpx;
-    background-color: #f5f5f5;  
-    margin:8rpx;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    display:block;
+    position:relative;
+    text-align:center;
+    height:94rpx;
+    line-height:94rpx;
+    font-size:26rpx;
+    background-color:#f5f5f5;
+    margin:8rpx 0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
     color:#656565;
+    width:30%;
 }
 
 .arrow {
@@ -202,7 +202,7 @@
     color:#f9bd03;
     font-size:26rpx;
     position:absolute;
-    right:42rpx;
+    right:24rpx;
     bottom:60rpx;
 }
 .reevaluate-sj{
@@ -211,7 +211,7 @@
     border:12rpx solid #ffffff;
     border-left:22rpx solid #f9bb08;
     position:absolute;
-    right:0;
+    right:-12rpx;
     bottom:64rpx;
 }
 .chart-view{
@@ -258,10 +258,10 @@
     display:flex;
     flex-wrap:nowrap;
     flex-direction:row;
-    justify-content:space-around;
+    justify-content:space-between;
     align-items:center;
     background:white;
-    width:94%;
+    width:90%;
     height:160rpx;
     margin:50rpx auto 0;
 }
