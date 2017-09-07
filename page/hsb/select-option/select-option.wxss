@@ -51,14 +51,14 @@
 }
 
 .select-title {
-    font-size: 38rpx;
+    font-size: 28rpx;
     margin-bottom: 14rpx;
     width: 100%;
     color: black;
 }
 
 .select-title-gray {
-    font-size: 38rpx;
+    font-size: 28rpx;
     margin-bottom: 14rpx;
     width: 100%;
     color: #CCCCCC;
@@ -82,7 +82,7 @@
     justify-content: center;
     align-content: center;
     color : #FFFFFF;
-    font-size: 24rpx;  
+    font-size: 28rpx;  
 }
 
 .select-question-item-unselected {
@@ -95,7 +95,7 @@
     justify-content: center;
     align-content: center;
     color : #666666;
-    font-size: 24rpx;
+    font-size: 28rpx;
     
     
 }
