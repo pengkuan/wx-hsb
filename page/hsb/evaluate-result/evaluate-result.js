@@ -7,6 +7,7 @@ let that;
 Page({
     data: {
         evaluatePrice: '',
+        downPrice: '',
         modelname: '',
         answerArray: [],
         allAnswers: [],
@@ -32,7 +33,8 @@ Page({
         this.data.selected = options.selected;
         products.evaluate(options.itemid, selected, (data) => {
             that.setData({
-                evaluatePrice: data.quotation
+                evaluatePrice: data.quotation,
+                downPrice: parseInt((data.quotation) / (1 - 0.07) - data.quotation)
             })
             that.refreshChart(data.quotation);
         });
