@@ -31,7 +31,7 @@
     display: flex;
     position: relative;
     background: white;
-    height: 300rpx;
+    height: 230rpx;
     width: 90%;
     justify-content: center;
     align-items: center;
@@ -92,10 +92,10 @@
 }
 
 .reevaluate-text {
-    display: flex;
     font-size: 22rpx;
-    text-align: right;
-    color: #F9BD00
+    color: #F9BD00;
+    display:inline-block;
+    margin-right:8rpx;
 }
 
 .answer-items-bg {
@@ -120,7 +120,7 @@
     overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;
-    color:#656565;
+    color:#666666;
     width:30%;
 }
 
@@ -199,23 +199,21 @@
     color:#f9bd03;
     font-size:26rpx;
     position:absolute;
-    right:24rpx;
+    right:0;
     bottom:60rpx;
 }
 .reevaluate-sj{
     width:0;
     height:0;
-    border:12rpx solid #ffffff;
-    border-left:22rpx solid #f9bb08;
-    position:absolute;
-    right:-12rpx;
-    bottom:64rpx;
+    border:14rpx solid #ffffff;
+    border-left:24rpx solid #f9bb08;
+    display:inline-block;
 }
 .chart-view{
     width:90%;
     height:340rpx;
     display:flex;
-    margin:0 auto;
+    margin:0 auto 50rpx;
 }
 .chart-view .chart-left{
     width:80rpx;
@@ -225,7 +223,7 @@
 .chart-left .y-text{
     height:76rpx;
     line-height:76rpx;
-    color:#9a9a9a;
+    color:#999999;
     font-size:24rpx;
     align-items:center;
     text-align:center;
@@ -292,6 +290,7 @@
     height:0;
     border:10px solid #ffffff;
     border-bottom:10px solid #fafafa;
+    margin-top:-10px;
 }
 .marginL0{
     margin-left:8%;

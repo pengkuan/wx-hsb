@@ -94,11 +94,8 @@ Page({
         this.setData({
                 product : data,
         });
-        if(dataset.bid=='pad'){
-            this.productInit(dataset.bid);
-        }else{
-            this.productInit(dataset.bid);
-        }
+        
+        this.productInit(dataset.bid);
     },
 
     productInit (bid=11) {
@@ -190,7 +187,7 @@ Page({
 
         if (!key) {
             this.setData({ closeSearch : false });
-            wx.setNavigationBarTitle({title:'选择机型'});
+            this.data.product.list.length?wx.setNavigationBarTitle({title:'选择机型'}):this.productInit();
             return;
         }
 
