@@ -48,14 +48,11 @@
 }
 
 .rmb-black-text  {
-    position: relative;
     color: #E6413C;
-    font-size: 32rpx;
-    text-align: center;
-    margin: 0 auto;
-    margin-bottom: 15rpx;
+    font-size: 40rpx;
     margin-right: 8rpx;
     font-weight: bold;
+    display:inline;
 }
 
 .evaluate-price-text-bg {
@@ -295,5 +292,16 @@
     height:0;
     border:10px solid #ffffff;
     border-bottom:10px solid #fafafa;
-    margin-left:70rpx;
+}
+.marginL0{
+    margin-left:8%;
+}
+.marginL1{
+    margin-left:33%;
+}
+.marginL2{
+    margin-left:60%;
+}
+.marginL3{
+    margin-left:84%;
 }

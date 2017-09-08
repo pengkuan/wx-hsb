@@ -8,8 +8,9 @@
         <view class="evaluate-price-bg">
             <text class="evaluate-title-text">估价结果</text>
             <view class="evaluate-price-text-bg" >
-                <view class="rmb-black-text">¥</view>
-                <view class="evaluate-price-text" >{{evaluatePrice}}</view>
+                <view class="evaluate-price-text" >
+                    <view class="rmb-black-text">¥</view>{{evaluatePrice}}
+                </view>
             </view>
             <view class="reevaluate-view" bindtap="reevaluate">重新估价</view>
             <view class="reevaluate-sj"></view>
@@ -58,24 +59,15 @@
         <view class="bottom-btn-enable" bindtap="onRecycleBtnClick" >立即回收</view>
         
         <view class="evaluate-result">
-            <view class="result-item">
-                <image src="/image/icon/result1.png" class="item-image"/>
-                <text class="item-text">0元包邮</text>
-            </view>
-            <view class="result-item">
-                <image src="/image/icon/result2.png" class="item-image"/>
-                <text class="item-text">24小时收款</text>
-            </view>
-            <view class="result-item">
-                <image src="/image/icon/result3.png" class="item-image"/>
-                <text class="item-text">隐私0泄露</text>
-            </view>
-            <view class="result-item">
-                <image src="/image/icon/result4.png" class="item-image"/>
-                <text class="item-text">专业检测</text>
+            <view class="result-item" bindtap="switchInfo" wx:for="{{hsbFeature}}" data-index="{{index}}">
+                <image src="{{item.img}}" class="item-image"/>
+                <text class="item-text">{{item.text}}</text>
             </view>
         </view>
-        <view class="tip-sj"></view>
-        <view class="tip-view">请优先选择顺丰到付，全国包邮；若不满足检测结果，我们将免费寄回您的手机。</view>
+        <view class="tip-sj marginL0" wx:if="{{index==0}}"></view>
+        <view class="tip-sj marginL1" wx:if="{{index==1}}"></view>
+        <view class="tip-sj marginL2" wx:if="{{index==2}}"></view>
+        <view class="tip-sj marginL3" wx:if="{{index==3}}"></view>
+        <view class="tip-view">{{tipInfo}}</view>
     </scroll-view>
 </view>
