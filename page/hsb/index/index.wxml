@@ -77,7 +77,7 @@
     <view class="index-title">回收宝保证</view>
     <view class="home-big-block-bg" >
         <view class="home-big-block-item"  wx:for="{{hsbGuarantee}}" wx:key="text">
-            <image style="width : 50rpx; height : 50rpx; margin-bottom: 3rpx;" src="{{item.img}}" mode="aspectFit" />
+            <image style="width : 50rpx; height : 50rpx; margin-bottom: 20rpx;" src="{{item.img}}" mode="aspectFit" />
             <text class="home-big-block-text" >{{item.text}}</text>
         </view>
     </view>

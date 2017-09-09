@@ -17,7 +17,7 @@ Page({
         evaluateEnable: false,
         scrollToView: {},
         wHeight: 800,
-        choosePercent: 0,
+        choosePercent: 0
     },
     onLoad: function (options) {
         that = this;
@@ -110,6 +110,13 @@ Page({
         let questionId = event.currentTarget.dataset.questionId;
         let answerId = event.currentTarget.dataset.answerId;
         let selectIndex = event.currentTarget.dataset.index;
+        if(answerId==82){
+            wx.showToast({
+                title : '于未解锁iPhone，我们将不予回收',
+                icon: ''
+            });
+            return ;
+        }
         // selectResultMap.set(questionId, answerId);
         that.data.nowSelectIndex = selectIndex + 1;
         that.refreshSelectOptionsBySelectIndex();
