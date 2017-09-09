@@ -65,16 +65,12 @@ Page({
     catTap(e){
         var dataset = e.currentTarget.dataset;
         var cat=dataset.cat;
-        if(cat==0){
-            if(!that.data.catShow1){
-                this.productInit(11);
-            }
-            that.data.catShow1=true;
-            that.data.catShow2=false;
+        that.data.catShow1=!that.data.catShow1;
+        that.data.catShow2=!that.data.catShow2;
+        if(that.data.catShow1){
+            this.productInit(11);
         }
-        if(cat==1){
-            that.data.catShow1=false;
-            that.data.catShow2=true;
+        if(that.data.catShow2){
             this.productInit('pad');
         }
         this.setData({
@@ -98,11 +94,8 @@ Page({
         this.setData({
                 product : data,
         });
-        if(dataset.bid=='pad'){
-            this.productInit(dataset.bid);
-        }else{
-            this.productInit(dataset.bid);
-        }
+        
+        this.productInit(dataset.bid);
     },
 
     productInit (bid=11) {
@@ -194,7 +187,7 @@ Page({
 
         if (!key) {
             this.setData({ closeSearch : false });
-            wx.setNavigationBarTitle({title:'选择机型'});
+            this.data.product.list.length?wx.setNavigationBarTitle({title:'选择机型'}):this.productInit();
             return;
         }
 

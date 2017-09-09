@@ -3,8 +3,9 @@
         <view class="main-view">
             <view id="main">
                 <view class="oops">
+                    <image src="/image/icon/search-0.png" class="search-icon"/>
                     <input focus="{{focus}}" class="search-input-2" value="{{searchInitGod}}" bindinput="searchInit"
-                           placeholder="搜索您要卖的机型型号"  />
+                           placeholder="请输入搜索内容"  />
                 </view>
                 <view wx:if="{{closeSearch}}" class="oops" bindtap="closeSearch">取消</view>
             </view>

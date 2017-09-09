@@ -101,9 +101,13 @@ input {
     color: rgb(153, 153, 153);
 }
 .search-icon {
-    width: 50px;
-    margin-top: 7px;
-    text-align: center;
+    width: 34rpx;
+    height: 34rpx;
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:30%;
+    margin:auto;
 }
 .closeSearch {
     height: 34px;
@@ -145,6 +149,7 @@ input {
     outline: none;
     padding-left: 3%;
     font-size: 12px;
+    text-align:center;
 }
 .search-icon-2 {
     width: 34px;
@@ -154,7 +159,6 @@ input {
     left: 0;
     text-align: center;
 }
-
 
 .search-result {
     width: 94%;
@@ -220,6 +224,7 @@ input {
     border-radius: 4px;
     height: 30px;
     line-height: 30px;
+    position:relative;
 }
 .oops:nth-of-type(2) {
     flex-grow: 1;

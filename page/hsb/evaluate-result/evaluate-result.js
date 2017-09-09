@@ -15,7 +15,27 @@ Page({
         itemid: {},
         selected: {},
         month : [],
-        values : []
+        values : [],
+        tipInfo:'请优先选择顺丰到付，全国包邮；若不满足检测结果，我们将免费寄回您的手机。',
+        index:0,
+        hsbFeature : [
+            {
+                img : '/image/icon/result1.png',
+                text : '0元包邮'
+            },
+            {
+                img : '/image/icon/result2.png',
+                text : '24小时收款'
+            },
+            {
+                img : '/image/icon/result3.png',
+                text : '隐私0泄露'
+            },
+            {
+                img : '/image/icon/result4.png',
+                text : '专业检测'
+            }
+        ]
     },
     onLoad: function (options) {
         that = this;
@@ -34,7 +54,7 @@ Page({
         products.evaluate(options.itemid, selected, (data) => {
             that.setData({
                 evaluatePrice: data.quotation,
-                downPrice: parseInt((data.quotation) * (1 - 0.07))
+                downPrice: parseInt((data.quotation) * 0.07)
             })
             that.refreshChart(data.quotation);
         });
@@ -44,6 +64,20 @@ Page({
     
     reevaluate:function(){
         wx.navigateBack(); 
+    },
+    
+    switchInfo:function(e){
+        var dataset = e.currentTarget.dataset;
+        var index=dataset.index*1;
+        var tipInfo=that.data.tipInfo;
+        index==0 && (tipInfo='请优先选择顺丰到付，全国包邮；若不满意检测结果，我们将免费寄回您的手机。');
+        index==1 && (tipInfo='收到手机后（以快递签收时间为准），我们会在24小时内完成检测并且给您付款。');
+        index==2 && (tipInfo='同意回收后，我们会对您的手机进行专业的数据删除服务，清理过程全程录像监控。');
+        index==3 && (tipInfo='规范的流水作业操作，采用盲检技术，全流程视频监控，从业5年以上的检测工程师。');
+        that.setData({
+            tipInfo:tipInfo,
+            index:index
+        })
     },
 
     refreshChart: function (price) {
