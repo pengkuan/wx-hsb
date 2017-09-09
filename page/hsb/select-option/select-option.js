@@ -84,6 +84,7 @@ Page({
                 for(let questionItem of newItem.question) {
                     if(questionItem.show != '1') {
                         showQuestionItem.otherAnswerId = questionItem.id;
+                        showQuestionItem.otherAnswerName = questionItem.name;
                     }
                 }
             } else {
@@ -203,10 +204,21 @@ Page({
         let selectOptions = this.data.selectOptions;
         for (let questionItem of selectOptions) {
             let answers = questionItem.question;
-            for (let answerItem of answers) {
+
+            if (!questionItem.isMulti) {
+              for (let answerItem of answers) {
                 if (answerItem.isSelected) {
-                    result.push(answerItem.name);
+                  result.push(answerItem.name);
                 }
+              }
+            } else {
+              for (let answerItem of answers) {
+                if (answerItem.isSelected) {
+                  result.push(answerItem.name);
+                } else {
+                  result.push(answerItem.otherAnswerName);
+                }
+              }
             }
         }
         return result;
