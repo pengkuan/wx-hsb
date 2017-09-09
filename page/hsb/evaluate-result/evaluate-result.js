@@ -44,7 +44,6 @@ Page({
         });
 
         this.setData({
-            evaluatePrice: options.evaluatePrice,
             modelname: options.name
         });
         this.initQuestionArr();
