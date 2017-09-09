@@ -41,13 +41,10 @@
 }
 
 .select-option-list {
-    position: relative;
-    width: 100%;
-    padding-left: 12rpx;
-    padding-right: 12rpx;
-    margin-bottom: 12rpx;
-    flex-direction: row;
-    
+    position:relative;
+    width:94%;
+    flex-direction:row;
+    margin:0 auto 12rpx;
 }
 
 .select-title {
@@ -67,9 +64,8 @@
 .select-question-list {
     position: relative;
     display: inline-block;
-    flex: 1;
-    width: 47%;
-    margin: 7rpx;
+    width: 48%;
+    margin: 12rpx 0;
 }
 
 .select-question-item-selected {
