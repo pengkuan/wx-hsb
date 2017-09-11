@@ -113,7 +113,7 @@ Page({
         let selectIndex = event.currentTarget.dataset.index;
         if(answerId==82){
             wx.showToast({
-                title : '于未解锁iPhone，我们将不予回收',
+                title : '对未解锁iPhone，我们将不予回收',
                 icon: ''
             });
             return ;
@@ -157,9 +157,12 @@ Page({
         if (allSelected) {
             that.onAllOptionSelected();
         }
-        let percent = parseInt(that.data.nowSelectIndex / 1.0 / that.data.allTransOptions.length * 100);
+        let percent = parseInt(that.data.nowSelectIndex / 1.0 / (that.data.allTransOptions.length-1) * 100);
         if (that.data.choosePercent < percent) {
             that.data.choosePercent = percent;
+        }
+        if(that.data.choosePercent>100){
+            that.data.choosePercent = 100;
         }
         that.setData({
             selectOptions: selectOptions,
@@ -192,6 +195,31 @@ Page({
             key: constant.LOCAL_OPTION_KEY,
             data: answersArray
         });
+        
+        let historyInfo=wx.getStorageSync('options') || [];
+        let evaluatePrice=0;
+        let isPush=true;
+        products.evaluate(that.data.itemid, selected, (data) => {
+            evaluatePrice=data.quotation;
+            for(var i=0;i<historyInfo.length;i++){
+                if(historyInfo[i].itemid==that.data.itemid){
+                    if(historyInfo[i].price<evaluatePrice){
+                        historyInfo[i].price=evaluatePrice;
+                    }
+                    isPush=false;
+                }
+            }
+            isPush && historyInfo.push({
+                pName:that.data.modelname,
+                itemid:that.data.itemid,
+                price:evaluatePrice
+            });
+            wx.setStorage({
+                key: 'options',
+                data: historyInfo
+            });
+        });
+        
         wx.navigateTo({
             url: '../evaluate-result/evaluate-result?name=' + that.data.modelname +
             '&selected=' + selected +

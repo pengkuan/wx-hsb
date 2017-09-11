@@ -49,7 +49,7 @@
 
 .rmb-black-text  {
     color: #E6413C;
-    font-size: 40rpx;
+    font-size: 42rpx;
     margin-right: 8rpx;
     font-weight: bold;
     display:inline;
@@ -66,7 +66,7 @@
 .evaluate-price-text {
     position: relative;
     color: #E6413C;
-    font-size: 80rpx;
+    font-size: 84rpx;
 }
 
 .evaluate-model-line-bg  {
@@ -201,7 +201,7 @@
     font-size:26rpx;
     position:absolute;
     right:0;
-    bottom:60rpx;
+    bottom:22%;
 }
 .reevaluate-sj{
     width:0;

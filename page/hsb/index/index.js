@@ -63,7 +63,7 @@ Page({
 
         if (!wx.getStorageSync('orderid')) wx.setStorageSync('orderid', '');
 
-        this.setData({ record : wx.getStorageSync('options2') });
+        this.setData({ record : wx.getStorageSync('options') });
 
         // console.log(wx.getStorageSync('options2'));
     },
