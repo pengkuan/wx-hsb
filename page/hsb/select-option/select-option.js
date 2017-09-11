@@ -196,23 +196,14 @@ Page({
             data: answersArray
         });
         
-        let historyInfo=wx.getStorageSync('options') || [];
-        let evaluatePrice=0;
-        let isPush=true;
+        let historyInfo=[];
         products.evaluate(that.data.itemid, selected, (data) => {
-            evaluatePrice=data.quotation;
-            for(var i=0;i<historyInfo.length;i++){
-                if(historyInfo[i].itemid==that.data.itemid){
-                    if(historyInfo[i].price<evaluatePrice){
-                        historyInfo[i].price=evaluatePrice;
-                    }
-                    isPush=false;
-                }
-            }
-            isPush && historyInfo.push({
+            let evaluatePrice=data.quotation;
+            historyInfo.push({
                 pName:that.data.modelname,
                 itemid:that.data.itemid,
-                price:evaluatePrice
+                price:evaluatePrice,
+                selects:selected
             });
             wx.setStorage({
                 key: 'options',

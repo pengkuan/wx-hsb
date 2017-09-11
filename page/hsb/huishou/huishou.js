@@ -32,7 +32,8 @@ Page({
         searchInitGod : '',
         focus : false,
         // toggle : 'brand',
-        closeSearch : false
+        closeSearch : false,
+        scrollToNav: ''
     },
 
     onLoad (options) {
@@ -103,7 +104,8 @@ Page({
 
         this.setData({
             taggle  : 'product',
-            brands  : products.brands
+            brands  : products.brands,
+            scrollToNav:'brand_'+bid
         });
 
         var data  = this.data.product;

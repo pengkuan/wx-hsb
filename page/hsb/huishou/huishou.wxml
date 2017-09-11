@@ -33,8 +33,8 @@
             <view class="cat-view">
                 <view class="cat-item cat-item1">
                     <view class="item-title item-title1" data-cat="0" bindtap="catTap" style="background:#fff;" ><image src="/image/icon/6.png" class="phone-icon"/>手机</view>
-                    <scroll-view style="height:70%;background-color:#fff;" scroll-y="true" class="{{catShow1 ? 'block' : 'none'}}">
-                        <navigator class="item brand {{item.mid == product.bid ? 'actives' : ''}}" wx:for-items="{{brands}}"
+                    <scroll-view scroll-into-view="{{scrollToNav}}" style="height:70%;background-color:#fff;" scroll-y="true" class="{{catShow1 ? 'block' : 'none'}}">
+                        <navigator id="brand_{{item.mid}}" class="item brand {{item.mid == product.bid ? 'actives' : ''}}" wx:for-items="{{brands}}"
                                    data-bid="{{item.mid}}" data-index="{{index}}" bindtap="productTap">{{item.name}}</navigator>
                     </scroll-view>
                     <view class="cat-item {{catShow1?'cat-item2':''}}">

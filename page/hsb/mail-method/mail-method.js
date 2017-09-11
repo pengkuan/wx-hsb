@@ -49,7 +49,7 @@ Page({
 
         if (this.checkInput(this.prompt)) {
 
-            let arr = [];
+            /*let arr = [];
             let ooo = wx.getStorageSync('options2');
 
             for (let i in ooo) {
@@ -60,7 +60,7 @@ Page({
             var pos = arr.indexOf(this.order.itemid);
             var ooo = wx.getStorageSync('options2');
             ooo.splice(pos, 1);
-            wx.setStorageSync('options2', ooo);
+            wx.setStorageSync('options2', ooo);*/
 
             var data = {
 
@@ -74,22 +74,20 @@ Page({
             }
 
             order.getOrder(data, function(data){
-
-                that.prompt('下单成功!');
-
-                wx.setStorageSync('orderSuccess', {
-
-                    orderNum : data.ordernum,
-                });
-                wx.setStorageSync('orderId', data.orderid);
-
                 if (data) {
+                    that.prompt('下单成功!');
 
+                    wx.setStorageSync('orderSuccess', {
+
+                        orderNum : data.ordernum,
+                    });
+                    wx.setStorageSync('orderId', data.orderid);
                     wx.switchTab({
 
                         url: '/page/hsb/my-order/my-order'
                     });
-
+                }else{
+                    that.prompt('下单失败!');
                 }
 
             });

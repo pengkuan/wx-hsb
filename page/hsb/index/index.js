@@ -14,7 +14,7 @@ Page({
             },
             {
                 img : '/image/icon/9.png',
-                text : '三天保价'
+                text : '七天保价'
             },
             {
                 img : '/image/icon/10.png',
@@ -46,7 +46,7 @@ Page({
             },
             {
                 img : '/image/icon/flow2.png',
-                text : '下单回收\n顺丰速递'
+                text : '下单回收\n顺丰邮寄'
             },
             {
                 img : '/image/icon/flow3.png',

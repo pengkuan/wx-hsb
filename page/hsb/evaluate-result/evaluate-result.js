@@ -16,7 +16,7 @@ Page({
         selected: {},
         month : [],
         values : [],
-        tipInfo:'请优先选择顺丰到付，全国包邮；若不满足检测结果，我们将免费寄回您的手机。',
+        tipInfo:'请优先选择顺丰到付，全国包邮；若不满意检测结果，我们将免费寄回您的手机。',
         index:0,
         hsbFeature : [
             {
