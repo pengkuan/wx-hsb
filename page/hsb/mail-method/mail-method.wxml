@@ -57,6 +57,9 @@
     <view class="order-btn-{{btn}}" bindtap="orderBtn">
         立即下单
     </view>
+    <view class="mask mask-{{isShow}}">
+        <image src="/image/icon/loading.gif" class="loading"/>
+    </view>
 </view>
 
 

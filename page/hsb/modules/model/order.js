@@ -55,6 +55,9 @@ var exports = module.exports = {
                     })
                 }
                 callback && callback(data);
+            },
+            fail:function(res){
+                callback && callback();
             }
         });
     },

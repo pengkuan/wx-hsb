@@ -20,6 +20,7 @@ Page({
             name      : sfInputs.name || '',
             tel       : sfInputs.tel  || '',
             btn       : this.checkInput(),
+            isShow:false
         });
         // order.getOrderHash(function(data){});
     },
@@ -48,7 +49,9 @@ Page({
     orderBtn : function () {
 
         if (this.checkInput(this.prompt)) {
-
+            that.setData({
+                isShow:true
+            });
             /*let arr = [];
             let ooo = wx.getStorageSync('options2');
 
@@ -72,9 +75,12 @@ Page({
                 'payment'       : 'wepay',
 
             }
-
+            
             order.getOrder(data, function(data){
                 if (data) {
+                    that.setData({
+                        isShow:false
+                    });
                     that.prompt('下单成功!');
 
                     wx.setStorageSync('orderSuccess', {
@@ -87,6 +93,9 @@ Page({
                         url: '/page/hsb/my-order/my-order'
                     });
                 }else{
+                    that.setData({
+                        isShow:false
+                    });
                     that.prompt('下单失败!');
                 }
 

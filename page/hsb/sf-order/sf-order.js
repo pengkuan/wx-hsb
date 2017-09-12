@@ -111,7 +111,7 @@ Page({
             area       : area,
             sfName     : sfInputs.name,
             sfTel      : sfInputs.tel,
-            pickerText : '请选择城市区域!',
+            pickerText : this.data.pickerText || '请选择城市区域!',
             sfAddress  : this.sfInputs.sfAddress || this.data.sfAddress,
         });
 

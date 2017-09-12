@@ -57,7 +57,7 @@
             </view>
             <view class="text-view">
                 <view class="title-view">商品名称 : {{goods}}</view>
-                <view class="color-666" style="margin-top: 4px;">自主评估价：<text class="color-f35454">{{price/100}}元</text></view>
+                <view class="color-666" style="margin-top: 4px;">自主评估价：<text class="color-f35454">{{price && price/100}}元</text></view>
             </view>
         </view>
     </view>
