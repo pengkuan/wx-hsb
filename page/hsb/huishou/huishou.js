@@ -212,6 +212,9 @@ Page({
 
             search = all[key];
             data.list = search.list;
+            if (!data.list || data.list.length<data.size) {
+                data.info = '没有更多商品了';
+            }
             if (data.list.length) {
 
                 this.setData({

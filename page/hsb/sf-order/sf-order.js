@@ -89,20 +89,19 @@ Page({
 
         let sfInputs = this.sfInputs = wx.getStorageSync('sfInputs') || {};
         let data = target.data.options;
-
+        if(!this.data.pickerText){
+            province.length=0;
+        }
         for (let i in pickerData) {
 
             province.push(pickerData[i].name);
         }
-
-        if (!pickerData[0].sub[0].sub) {
-
+        if (!pickerData[0].sub[0].sub && !this.data.pickerText) {
+            city.length=0;
             for (let i in pickerData[0].sub) {
-
                 city.push(pickerData[0].sub[i].name);
             }
-
-            area.push('');
+            area.length=0;
         }
 
         target.setData({
@@ -183,7 +182,7 @@ Page({
 
                 city.push(picker[i].name);
             }
-            area.push('');
+            
         }
 
         else {
@@ -243,7 +242,8 @@ Page({
         this.setData({
             city       : city,
             area       : area,
-            pickerText : province[provinceIndex] + city[cityIndex] + (area[val] ? area[val] : '')
+            pickerText : province[provinceIndex] + city[cityIndex] + (area[val] ? area[val] : ''),
+            areaIndex:val
         });
     },
 
