@@ -89,11 +89,9 @@ Page({
 
         let sfInputs = this.sfInputs = wx.getStorageSync('sfInputs') || {};
         let data = target.data.options;
-        if(!this.data.pickerText){
-            province.length=0;
-        }
+        
+        province.length=0;
         for (let i in pickerData) {
-
             province.push(pickerData[i].name);
         }
         if (!pickerData[0].sub[0].sub && !this.data.pickerText) {

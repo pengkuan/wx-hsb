@@ -101,7 +101,7 @@
             </view>
             <picker-view class="picker-view" indicator-style="height: 50px;" value="{{provinceIndex}}" bindchange="provinceChange">
                 <picker-view-column>
-                    <view class="picker-list" wx:for="{{province}}" wx:if="{{index<31}}" >{{item}}</view>
+                    <view class="picker-list" wx:for="{{province}}" >{{item}}</view>
                 </picker-view-column>
             </picker-view>
             <picker-view class="picker-view" indicator-style="height: 50px;" value="{{cityIndex}}" bindchange="cityChange">
