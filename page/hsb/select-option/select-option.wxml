@@ -17,6 +17,7 @@
                           data-index="{{optionIndex}}">
                         <view class="select-question-item-{{questionItem.isSelected ? 'selected' : 'unselected'}}">{{questionItem.name}}</view>
                     </view>
+                    <view wx:if="{{optionItem.id==81}}" class="tip tip-{{tipShow}}">对未解锁iPhone，我们将不予回收</view>
                 </view>
             </view>
         </view>

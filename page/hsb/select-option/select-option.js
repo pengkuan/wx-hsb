@@ -17,7 +17,8 @@ Page({
         evaluateEnable: false,
         scrollToView: {},
         wHeight: 800,
-        choosePercent: 0
+        choosePercent: 0,
+        tipShow:false
     },
     onLoad: function (options) {
         that = this;
@@ -112,10 +113,14 @@ Page({
         let answerId = event.currentTarget.dataset.answerId;
         let selectIndex = event.currentTarget.dataset.index;
         if(answerId==82){
-            wx.showToast({
-                title : '对未解锁iPhone，我们将不予回收',
-                icon: ''
+            that.setData({
+                tipShow: true
             });
+            setTimeout(function(){
+                that.setData({
+                    tipShow: false
+                });
+            },1000);
             return ;
         }
         // selectResultMap.set(questionId, answerId);

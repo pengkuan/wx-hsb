@@ -123,3 +123,25 @@
     font-size: 32rpx;
     color: white;
 }
+.tip{
+    position:absolute;
+    color:#fff;
+    width:90%;
+    background:rgba(0,0,0,0.5);
+    text-align:center;
+    bottom:0;
+    z-index:9;
+    border-radius:5px;
+    margin:auto;
+    height:70rpx;
+    line-height:70rpx;
+    left:0;
+    right:0;
+    font-size:30rpx;
+}
+.tip-true{
+    display:block;
+}
+.tip-false{
+    display:none;
+}
