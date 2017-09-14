@@ -23,7 +23,7 @@
                 <view class="margin-mun">深圳市南山区科技园威新软件园8号楼7楼  回收宝（收）</view>
             </view>
             <view class="color-999 margin-l-28" style="line-height: 26px;margin-top: 10px;">
-                <view class="margin-mun">Tel : 400-080-9966<view class="sf-order" bindtap="sfBtn">顺丰下单</view></view>
+                <view class="margin-mun">Tel : 13530189007<view class="sf-order" bindtap="sfBtn">顺丰下单</view></view>
             </view>
         </view>
     </view>

@@ -30,7 +30,11 @@
         <image class="success-icon" mode="aspectFit" src="/image/icon/success-0.png"></image>
         <view class="text-1">成功提交订单！</view>
         <view class="success-t">订单号：{{orderNum}}</view>
-        <view class="success-t">{{orderTime}}</view>
+        <!--<view class="success-t">{{orderTime}}</view>-->
+        <view class="address-t">邮寄地址</view>
+        <view class="address-c">深圳市南山区科技园威新软件园8号楼7楼</view>
+        <view class="receive-name">回收宝（收）</view>
+        <view class="tel-num">Tel : 13530189007</view>
     </view>
     <view class="success-text-view">
         <view class="success-title">请您在回收手机前</view>
