@@ -9,7 +9,7 @@ Page({
         index        : 0,
         sync         : false,
         moreListText : '正在加载中。。。',
-
+        isExit:false
     },
 
     onShow () {
@@ -17,7 +17,7 @@ Page({
         var orderSuccess = wx.getStorageSync('orderSuccess');
 
         if (orderSuccess) {
-
+            this.data.isExit=true;
             wx.removeStorageSync('orderSuccess');
 
             this.setData({
@@ -27,6 +27,7 @@ Page({
             });
 
         } else {
+            this.data.isExit=false;
             if (this.data.orderList.length){
                 return this.setData({
                     toggle : 'orderliston',
@@ -47,7 +48,7 @@ Page({
     onLoad (data) {},
 
     orderListBtn () {
-
+        this.data.isExit=false;
         this.setData({
             orderList : [],
             index     : 0,
@@ -57,52 +58,53 @@ Page({
     },
 
     onReachBottom () {
+        if(!this.data.isExit){
+            var data = this.data;
 
-        var data = this.data;
+            if(data.sync || data.index === -1){
+                return false;
+            }
 
-        if(data.sync || data.index === -1){
-            return false;
-        }
+            var list = data.orderList;
+            var size = 6;
+            var that = this;
+            data.sync = true;
+            order.orderList(data.index, function(items){
 
-        var list = data.orderList;
-        var size = 6;
-        var that = this;
-        data.sync = true;
-        order.orderList(data.index, function(items){
+                console.log(items)
 
-            console.log(items)
+                if (!data.index){
+                    if (items){
 
-            if (!data.index){
+                        that.setData({
+                            toggle : 'orderliston',
+                        });
+                    } else {
+
+                        that.setData({
+                            toggle : 'orderlistoff',
+                            sync   : false
+                        });
+                        return false;
+                    }
+                }
                 if (items){
 
+                    list.push.apply(list, items);
                     that.setData({
-                        toggle : 'orderliston',
+                        orderList   : list,
+                        sync        : false,
+                        index       : data.index + 1
                     });
-                } else {
-
-                    that.setData({
-                        toggle : 'orderlistoff',
-                        sync   : false
-                    });
-                    return false;
                 }
-            }
-            if (items){
-
-                list.push.apply(list, items);
-                that.setData({
-                    orderList   : list,
-                    sync        : false,
-                    index       : data.index + 1
-                });
-            }
-            if (!items || items.length < size) {
-                that.setData({
-                    moreListText     : '没有更多商品了',
-                    index            : -1,
-                });
-            }
-        });
+                if (!items || items.length < size) {
+                    that.setData({
+                        moreListText     : '没有更多商品了',
+                        index            : -1,
+                    });
+                }
+            });
+        }
     },
 
     switchTab : plus.switchTab,

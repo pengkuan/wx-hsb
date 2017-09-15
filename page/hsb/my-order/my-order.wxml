@@ -43,8 +43,7 @@
         <view class="success-text-0">(3)确保无SD卡或SIM卡遗留在手机</view>
     </view>
     <view class="success-tip">
-        TIP：如果你无法进行数据清理，我们工程师将使用专业工具帮您清
-        理，保证您的隐私安全
+        TIP：如果你无法进行数据清理，我们工程师将使用专业工具帮您清理，保证您的隐私安全
     </view>
     <view class="order-success-btn">
         <view wx:if="{{!type}}">
