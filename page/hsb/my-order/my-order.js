@@ -28,11 +28,11 @@ Page({
 
         } else {
             this.data.isExit=false;
-            if (this.data.orderList.length){
-                return this.setData({
-                    toggle : 'orderliston',
-                });
-            }
+            this.setData({
+                orderList : [],
+                index     : 0,
+                sync      : false,
+            });
             this.onReachBottom();
         }
 
