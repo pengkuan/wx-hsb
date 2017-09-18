@@ -180,7 +180,7 @@ Page({
 
                 city.push(picker[i].name);
             }
-            
+            area.push('');
         }
 
         else {

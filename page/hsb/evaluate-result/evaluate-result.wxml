@@ -12,9 +12,8 @@
                     <view class="rmb-black-text">¥</view>{{evaluatePrice}}
                 </view>
             </view>
-            <view class="reevaluate-view">
-                <view class="reevaluate-text" bindtap="reevaluate">重新估价</view>
-                <view class="reevaluate-sj"></view>
+            <view class="reevaluate-view" bindtap="reevaluate">
+                重新估价<image src="/image/icon/icon-sj.png" class="reevaluate-sj"></image>
             </view>
         </view>
 
