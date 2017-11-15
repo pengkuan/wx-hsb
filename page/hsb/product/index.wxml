@@ -1,0 +1,20 @@
+ <view class="page">
+    <view class="search-wrapper">
+        <view class="search-link">请输入搜索机型</view>
+    </view>
+    <view class="category-wrapper">
+      <scroll-view class="cate-cols" scroll-x scroll-with-animation="true" style="height: 40px;">
+        <view class="cate-col">手机</view>
+        <view class='cate-col'>平板</view>
+        <view class='cate-col'>笔记本</view>
+      </scroll-view>
+    </view>
+</view>
+
+<view class="page-section-spacing">
+    <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
+        <view id="demo1" class="scroll-view-item_H demo-text-1"></view>
+        <view id="demo2"  class="scroll-view-item_H demo-text-2"></view>
+        <view id="demo3" class="scroll-view-item_H demo-text-3"></view>
+    </scroll-view>
+</view>

@@ -1,0 +1,192 @@
+.mail-input-list {
+    background-size: 12px;
+    background-position: 10px 50%;
+    font-family: "微软雅黑";
+    color: #999;
+    background: #fff;
+    font-size: 14px;
+    display: flex;
+}
+.mail-list-left {
+    width: 68px;
+    float: left;
+    display: flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    padding: 12px 0;
+    line-height: 24px;
+}
+.mail-list-right {
+    flex: 1;
+    float: left;
+    position: relative;
+    padding: 12px 0;
+}
+.mail-input {
+    margin-left: 12px;
+    font-size: 14px;
+    line-height: 24px;
+    font-family: "微软雅黑";
+    color: #666;
+    width: 92%;
+}
+.mail-input-list-tel {
+    background-size: 12px;
+    background-position: 10px 50%;
+    font-family: "微软雅黑";
+    color: #999;
+    height: 46px;
+    line-height: 46px;
+    background: #fff;
+    font-size: 14px;
+    display: flex;
+}
+.mail-list-left-tel {
+    width: 68px;
+    float: left;
+    display: flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+.mail-list-right-tel {
+    flex: 1;
+    float: left;
+    border-bottom: 1px solid #f5f5f5;
+    position: relative;
+    height: 46px;
+}
+.mail-input-tel {
+    margin-left: 12px;
+    font-size: 14px;
+    line-height: 46px;
+    height: 46px;
+    font-family: "微软雅黑";
+    color: #666;
+    width: 100%;
+}
+.mail-icon {
+    width   : 20px;
+    height  : 20px;
+    float: left;
+    margin: 13px 3% 0 3%;
+}
+.margin-top-10 {
+    width: 100%;
+    height: 10px;
+}
+.order-btn-true,.order-btn-false {
+    width: 94%;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 20px;
+    left: 3%;
+    font-size: 14px;
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+}
+.order-btn-true {
+    background: #f9be00;
+    color: #333;
+}
+.order-btn-false {
+    background: #ccc;
+    color: #fff;
+}
+.popup-child-block,.popup-child-none {
+    width: 100%;
+    line-height: 40px;
+    font-size: 16px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    z-index: 4;
+    color: #fff;
+    text-align: center;
+    -webkit-transition: all .4s linear;
+    transition: all .4s linear;
+}
+.popup-child-block {
+    opacity: 1;
+}
+.popup-child-none {
+    opacity: 0;
+}
+.popup-child-text {
+    padding: 10px 20px;
+    background: #222;
+    border-radius: 4px;
+    font-family: "微软雅黑";
+}
+.pages .picker-body-0 {
+    position: fixed;
+    bottom: -250px;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    z-index: 999999;
+    -webkit-transition: all .4s linear;
+    transition: all .4s linear;
+    background: #fff;
+}
+.pages .picker-body-1 {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    z-index: 999999;
+    -webkit-transition: all .4s linear;
+    transition: all .4s linear;
+    background: #fff;
+}
+.picker-title {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background: #f1f1f1;
+    text-align: center;
+    position: relative;
+    font-size: 16px;
+}
+.picker-list {
+    font-size: 14px;
+    line-height: 50px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.picker-close {
+    padding: 0 20px;
+    color: #666;
+    background: #f1f1f1;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.picker-view {
+    width: 100%;
+    height: 200px;
+    background: #fff;
+    float: left;
+}
+.picker-view-0 {
+    width: 33.33%;
+    height: 200px;
+    background: #fff;
+    float: left
+}
+.none {
+    position: fixed;
+    bottom: -250px;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    z-index: 999999;
+    -webkit-transition: all .4s linear;
+    transition: all .4s linear;
+    background: #fff;
+}

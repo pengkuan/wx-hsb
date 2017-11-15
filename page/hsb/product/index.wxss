@@ -1,0 +1,28 @@
+.search-wrapper {
+    display: block;
+    padding: 8px 0;
+    background: #ececec;
+}
+
+.search-link {
+    display: block;
+    width: 94%;
+    height: 32px;
+    padding: 0 10px; 
+    margin: 0 auto;
+    color: #ccc;
+    font-size: 12px;
+    background: #fff;
+    line-height: 32px;
+    box-sizing: border-box;
+}
+
+.cate-cols {
+    display: flex;
+    width: 100%;
+    white-space:nowrap;
+}
+
+.cate-col {
+    width: 100%;
+}

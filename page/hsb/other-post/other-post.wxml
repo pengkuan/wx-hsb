@@ -1,0 +1,75 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<view>
+    <view class="info-name">
+        <image class="mail-icon" mode="aspectFit" src="/image/icon/icon-12.png"></image>
+        寄件人信息
+    </view>
+    <view class="mailview">
+        <view class="info-list">
+            <view class="list-left">
+                <text>收</text>
+                <text>货</text>
+                <text>人</text>
+            </view>
+            <view class="list-right right-0">回收宝</view>
+        </view>
+        <view class="info-list">
+            <view class="list-left">
+                <text>联</text>
+                <text>系</text>
+                <text>电</text>
+                <text>话</text>
+            </view>
+            <view class="list-right right-0">0755-82867168</view>
+        </view>
+        <view class="info-list">
+            <view class="list-left">
+                <text>邮</text>
+                <text>寄</text>
+                <text>地</text>
+                <text>址</text>
+            </view>
+            <view class="list-right">
+                <view class="list-right-addr">
+                    <view class="right-ooo">深圳市南山区科技园威新软件园8号楼7楼</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="info-name" style="margin-top: 12px;">
+        <image class="mail-icon" mode="aspectFit" src="/image/icon/icon-11.png"></image>
+        其他快递下单电话
+    </view>
+
+    <view class="other-post-h">
+        <view class="post-list" wx:for="{{phoneList}}">
+            <view class="list-for" bindtap="makePhoneCall" data-tel="{{item.tel}}">
+                <image class="post-img" mode="aspectFit" src="{{item.img}}"></image>
+                <view class="post-right">
+                    <view>{{item.txt}}</view>
+                    <view class="phone-list">{{item.tel}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+
+
+
+
+    <view bindtap="reIndex" class="return-index-btn">返回首页</view>
+</view>
