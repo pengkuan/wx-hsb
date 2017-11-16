@@ -1,0 +1,59 @@
+<view class="container">
+    <view class="mue-header search">
+        <view class="search-box">
+            <input class="search-input" type="text" value="{{key}}" bindinput="handleKey" placeholder="输入您要回收的机型" placeholder-style="color: #7c829d"/>
+            <image wx:if="{{ !key }}" class="icon-search" src="../../../img/icon-search.svg"></image>
+            <image wx:if="{{ key }}" bindtap="clearKey" class="icon-search" src="../../../img/icon_close.svg"></image>
+        </view>
+        <navigator class="back" open-type="navigateBack" delta="1">取消</navigator>
+    </view>
+    <view class="mue-content" wx:if="{{ !key.length }}">
+        <view class="search-history" wx:if="{{ history.length }}">
+            <view class="hd">
+                <view>最近搜索</view>
+                <image class="icon-delete" src="../../../img/delete.svg" bindtap="clearHistory"></image>
+            </view>
+            <view class="bd">
+                <view wx:for="{{ history }}"
+                      class="p-item{{ (index % 2) == 0 ? ' border-rt' : '' }}"
+                      data-url="../product/index?productId={{item.id}}"
+                      bindtap="switchPage"
+                      wx:key="{{index}}">
+                    <view>{{ item.name }}</view>
+                </view>
+            </view>
+            <view class="divider"></view>
+        </view>
+        <view class="search-hot">
+            <view class="hd">热门搜索</view>
+            <view class="bd">
+                <view wx:for="{{ hotList }}"
+                      class="p-item{{ (index % 2) == 0 ? ' border-rt' : '' }}"
+                      data-url="../product/index?productId={{item.productid}}"
+                      bindtap="switchPage"
+                      wx:key="{{index}}">
+                    <view>{{ item.productname }}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="mue-content" wx:if="{{ key.length }}">
+        <scroll-view class="searchList" wx:if="{{ searchList.length }}" scroll-y bindscrolltolower="loadMore">
+            <view class="p-item" wx:for="{{ searchList }}" wx:key="{{index}}"
+                  data-url="../product/index?productId={{item.productid}}"
+                  data-log="true"
+                  data-name="{{item.productname}}"
+                  data-id="{{item.productid}}"
+                  bindtap="switchPage">
+                <view>{{ item.productname }}</view>
+            </view>
+            <view wx:if="{{ isShowNoMoreText }}" class="no-more">-没有更多蛋了不要再拉扯了(黑人问号)-</view>
+        </scroll-view>
+        <view class="blank-wrapper" wx:if="{{ !searchList.length }}">
+            <image class="icon-blank" src="../../../img/search/blank-bg.png"></image>
+            <view class="title">没找到该机型</view>
+            <view class="desc">抱歉，请核对输入内容或进行公益回收</view>
+            <navigator class="mue-button" url="../products/index" open-type="switchTab">立即回收</navigator>
+        </view>
+    </view>
+</view>

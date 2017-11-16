@@ -1,0 +1,5 @@
+<view class="container">
+    <image class="about-us" src="../../../../img/about/where.png"></image>
+    <view class="content">我们的团队来自互联网、供应链、运营商和手机行业等各个领域，我们有数码产品供应链行业上下游的各方资源，我们熟知手机行业渠道零售和回收业务的各个环节，我们还有腾讯系带来的快速迭代、服务用户的产品理念。</view>
+    <image class="bottom-bg" src="../../../../img/about/bottom-bg.png"></image>
+</view>

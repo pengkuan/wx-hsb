@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="44" height="44" viewBox="0 0 44 44">
+  <defs>
+    <style>
+      .cls-1 {
+        fill-rule: evenodd;
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="374" y1="750" x2="374" y2="706" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fda9fa"/>
+      <stop offset="1" stop-color="#fbb3eb"/>
+    </linearGradient>
+  </defs>
+  <path id="电话" class="cls-1" d="M395,720.722V721h-8a2,2,0,0,1-2-2v-3a1.993,1.993,0,0,1,.027-0.269,23.627,23.627,0,0,0-22.054,0A1.993,1.993,0,0,1,363,716v3a2,2,0,0,1-2,2h-8v-0.278A1.991,1.991,0,0,1,352,719v-3a1.993,1.993,0,0,1,1-1.723v-0.058a30.938,30.938,0,0,1,42,0v0.058A1.993,1.993,0,0,1,396,716v3A1.991,1.991,0,0,1,395,720.722ZM356,726a2,2,0,0,1,2-2h8v-2.5a1.5,1.5,0,0,1,3,0V724h10v-2.5a1.5,1.5,0,0,1,3,0V724h9a2,2,0,0,1,2,2l2,18a6,6,0,0,1-6,6H360a6,6,0,0,1-6-6Zm18.5,20a8.5,8.5,0,1,0-8.5-8.5A8.5,8.5,0,0,0,374.5,746Zm0-14a5.5,5.5,0,1,1-5.5,5.5A5.5,5.5,0,0,1,374.5,732Z" transform="translate(-352 -706)"/>
+</svg>

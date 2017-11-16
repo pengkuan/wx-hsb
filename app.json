@@ -1,46 +1,54 @@
 {
   "pages": [
-    "page/hsb/index/index",
-    "page/hsb/mail-method/mail-method",
-    "page/hsb/sf-order/sf-order",
-    "page/hsb/sf-success/sf-success",
-    "page/hsb/order-details/order-details",
-    "page/hsb/my-order/my-order",
-    "page/hsb/huishou/huishou",
-    "page/hsb/gujia/gujia",
-    "page/hsb/price/price",
-    "page/hsb/other-post/other-post",
-    "page/hsb/door-method/door-method",
-    "page/hsb/subway-method/subway-method",
-    "page/hsb/choice/choice",
-    "page/hsb/get-location/get-location",
-    "page/hsb/select-option/select-option",
-    "page/hsb/evaluate-result/evaluate-result",
-    "page/hsb/product/index"
+    "page/pages/welcome/index",
+    "page/pages/products/index",
+    "page/pages/person/index",
+    "page/pages/search/index",
+    "page/pages/product/index",
+    "page/pages/price/index",
+    "page/pages/trade/index",
+    "page/pages/orders/index",
+    "page/pages/order/index",
+    "page/pages/bind/index",
+    "page/pages/coupons/index",
+    "page/pages/success/index",
+
+    "page/pages/about/index",
+    "page/pages/about/who/index",
+    "page/pages/about/where/index",
+    "page/pages/about/how/index",
+    "page/pages/about/price/index",
+    "page/pages/help/index",
+    "page/pages/address/index",
+    "page/pages/contact/index"
+
   ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "回收宝",
-    "navigationBarBackgroundColor": "#f9be00",
-    "backgroundColor": "#f5f5f5"
+    "backgroundColor": "#f9f9fb",
+    "navigationBarBackgroundColor": "#ffffff"
   },
   "tabBar": {
     "color": "#888",
+    "borderStyle": "white",
     "selectedColor": "#353535",
-    "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "page/hsb/index/index",
-        "iconPath": "image/icon/index-0.png",
-        "selectedIconPath": "image/icon/index-1.png",
-        "text": "回收宝"
+        "pagePath": "page/pages/welcome/index",
+        "iconPath": "img/icon_home_gray_60.png",
+        "selectedIconPath": "img/icon_home_black_60.png"
       },
       {
-        "pagePath": "page/hsb/my-order/my-order",
-        "iconPath": "image/icon/order-0.png",
-        "selectedIconPath": "image/icon/order-1.png",
-        "text": "订单"
+        "pagePath": "page/pages/products/index",
+        "iconPath": "img/icon_product_gray_60.png",
+        "selectedIconPath": "img/icon_product_black_60.png"
+      },
+      {
+        "pagePath": "page/pages/person/index",
+        "iconPath": "img/icon_person_gray_60.png",
+        "selectedIconPath": "img/icon_person_black_60.png"
       }
     ]
   },

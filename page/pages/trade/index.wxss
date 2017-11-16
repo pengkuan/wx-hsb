@@ -1,0 +1,200 @@
+.container {
+  background: #fff;
+}
+
+.mue-header {
+  display: flex;
+  width: 750rpx;
+  height: 70rpx;
+  padding: 0 40rpx;
+  color: #e2c361;
+  font-size: 24rpx;
+  text-align: center;
+  align-items: center;
+  background-color: #fff9e5;
+}
+
+.icon-face {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 15rpx;
+}
+
+.grid-col {
+  float: none;
+  display: block;
+  width: 100%;
+  line-height: 1;
+  background-color: #fff;
+}
+
+/** cell-item**/
+.cell-item {
+  position: relative;
+}
+
+.cell-item-inner {
+  display: flex;
+  height: 100rpx;
+  padding: 40rpx 0;
+  margin: 0 40rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cell-item .icon-link {
+  width: 12rpx;
+  height: 21rpx;
+}
+
+.cell-item-left {
+  display: flex;
+  color: #292e3e;
+  font-size: 32rpx;
+  line-height: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cell-item-left .label {
+  margin-left: 20rpx;
+  color: #cacee0;
+  font-size: 26rpx;
+}
+
+
+.pink {
+  color: #ff5c7f;
+  font-size: 28rpx;
+}
+
+/** .grid-col-1 .input **/
+.grid-col-1 .inline-list {
+  display: flex;
+  padding: 0 40rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.grid-col-1 .input {
+  display: inline-block;
+  width: 315rpx;
+  color: #292e3e;
+  font-size: 30rpx;
+  margin-top: 10rpx;
+	font-family: PingFang-SC-Medium;
+}
+
+.recycle-cols {
+  overflow:visible;
+  display: flex;
+  padding: 0 27rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.recycle-col {
+  width: 322rpx;
+  height: 150rpx;
+  margin: 10rpx 13rpx;
+  font-size: 26rpx;
+  border-radius: 6rpx;
+  text-align: center;
+  color: #7c829d;
+  background: #fff;
+  box-shadow: 0px 10rpx 27rpx 3rpx rgba(135, 142, 160, 0.1);
+}
+
+.col-sf .icon {
+  width: 48rpx;
+  height: 44rpx;
+  margin: 26rpx auto;
+}
+
+.col-visit .icon {
+  width: 50rpx;
+  height: 50rpx;
+  margin: 16rpx auto;
+}
+
+.recycle-col.selected{
+  color: #ffffff;
+  background-color: #fabe00;
+}
+
+/** picker **/
+.grid-col-3 .cell-item-inner {
+  border-bottom: 1rpx solid #eff0f6;
+}
+
+.picker .cell-item-left {
+  color: #5498ff;
+  font-size: 28rpx;
+}
+
+.picker-selected .cell-item-left {
+  color: #000;
+}
+
+/** footer **/
+.mue-footer button {
+  width: 670rpx;
+  height: 90rpx;
+  color: #cacee0;
+  font-size: 32rpx;
+  line-height: 90rpx;
+  border-radius: 4rpx;
+  background-color: #ffffff;
+}
+
+.mue-footer button:after {
+  display: none;
+}
+
+.grid-col-3 .fore1 .cell-item-inner {
+  border-bottom: none;
+}
+
+.cell-item-right .mue-button {
+  display: flex;
+  height: 60rpx;
+  padding: 0 20rpx;
+  color: #5498ff;
+  align-items: center;
+}
+
+.cell-item-right .mue-button text {
+  margin-right: 10rpx;
+}
+
+.cell-item-left .icon-query {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 10rpx;
+}
+
+.grid-col-1 .form-control {
+  position: relative;
+  padding-bottom: 10rpx;
+  margin-bottom: 50rpx;
+  border-bottom: 1rpx solid #cacee0;
+}
+
+.grid-col-1 .form-control .label {
+  height: 26rpx;
+  color: #cacee0;
+  font-size: 26rpx;
+  transition: all 300ms;
+  transform: translateY(40rpx);
+}
+
+.grid-col-1 .form-control.mue-focus .label,
+.grid-col-1 .form-control.has-value .label  {
+  color: #5498ff;
+  font-size: 22rpx;
+  transform: translateY(0);
+}
+
+.input-ph {
+  color: #cacee0;
+}

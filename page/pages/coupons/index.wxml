@@ -1,0 +1,58 @@
+<view class="container">
+    <view class="grid-rows cps-menu">
+        <view class="grid-row {{ menuIndex == index ? 'current' : '' }}"
+              wx:for="{{ menuList }}"
+              wx:key="{{ index }}"
+              bindtap="handleMenu"
+              data-index="{{index}}">{{ item.text }} ({{
+            item.data.length }})
+        </view>
+        <view class="line" style="left: {{ (menuIndex / menuList.length) * 100 + '%' }}"></view>
+    </view>
+    <view class="input-wrapper">
+        <input class="input-add-cps" type="text" value="{{token}}"
+               placeholder="请输入现金券号码"
+               bindinput="handleToken"
+               placeholder-style="font-size: 26rpx;color: #7c829d;"/>
+        <button class="button-add-cps" plain="true" size="mini" bindtap="addCoupon">添加</button>
+    </view>
+    <view class="grid-cols">
+        <view wx:if="{{ menuIndex == i }}" wx:for="{{ menuList }}" class="grid-col gird-col-{{ i }}" wx:for-index="i" wx:key="{{ i }}">
+            <view class="coupon-item {{ item.value <= 20 ? 'coupon-20' : '' }}{{ item.value > 20 && item.value <= 50  ? 'coupon-50' : '' }}{{ item.value > 50 ? 'coupon-100' : '' }}"
+                  wx:for="{{ menuList[i]['data'] }}" wx:key="{{ index }}">
+                <view class="price-wrapper">
+                      
+            <view class="price-num">
+              <text class="price-label">￥</text>
+              <text class="number">{{ item.value }}</text>
+              </view>
+          
+                </view>
+                <view class="coupon-desc">
+                    <view class="label">加价券</view>
+                    <view class="limit-desc">回收金额满{{ item.useLimited / 100 }}元以上使用</view>
+                </view>
+                <view class="coupon-deadline">
+                    <block wx:if="{{ i == 0 }}">
+                        <view>有效期至</view>
+                        <view>{{ item.deadline }}</view>
+                    </block>
+                    <block wx:if="{{ i == 1 }}">
+                        <view>已使用</view>
+                    </block>
+                    <block wx:if="{{ i == 2 }}">
+                        <view>已过期</view>
+                    </block>
+                </view>
+            </view>
+            <block wx:if="{{ (i == 0) && !(menuList[i]['data'].length) }}">
+                <view class="blank-wrapper">
+                    <image class="icon-blank" src="../../../img/coupons/blank-bg.png"></image>
+                    <view class="title">暂无加价券</view>
+                    <view class="desc">关注“回收宝”微信公众号，送万千好礼</view>
+                    <navigator class="mue-button" url="../products/index" open-type="switchTab">立即下单</navigator>
+                </view>
+            </block>
+        </view>
+    </view>
+</view>

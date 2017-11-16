@@ -1,7 +1,32 @@
 <component name="ProjectDictionaryState">
   <dictionary name="SEELE">
     <words>
+      <w>appid</w>
+      <w>appidwx</w>
+      <w>bindcolumnchange</w>
+      <w>csrf</w>
+      <w>ctext</w>
+      <w>dtext</w>
+      <w>fweyco</w>
+      <w>indexs</w>
+      <w>olduid</w>
       <w>orderid</w>
+      <w>ordertype</w>
+      <w>otext</w>
+      <w>placehd</w>
+      <w>productid</w>
+      <w>ptext</w>
+      <w>qgby</w>
+      <w>qtbj</w>
+      <w>regionid</w>
+      <w>sddk</w>
+      <w>sendtime</w>
+      <w>unionid</w>
+      <w>userkey</w>
+      <w>vamll</w>
+      <w>wechatpayouttype</w>
+      <w>wxappid</w>
+      <w>ysbh</w>
     </words>
   </dictionary>
 </component>

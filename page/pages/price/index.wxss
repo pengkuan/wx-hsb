@@ -1,0 +1,308 @@
+.container {
+  background: #fff;
+}
+
+.price-result {
+  position: relative;
+  width: 670rpx;
+  height: 280rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  font-size: 0;
+  color: #ffffff;
+  text-align: center;
+}
+
+.price-result-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx;
+}
+
+.price-result-inner {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+}
+
+.price-result .icon-money {
+  display: block;
+  width: 100rpx;
+  height: 100rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+}
+
+.price-wrapper {
+  overflow: visible;
+  position: relative;
+  display: inline-block;
+  margin-top: 29rpx;
+  font-size: 0;
+  line-height: 1;
+}
+
+.price-wrapper .label {
+  position: absolute;
+  top: 4rpx;
+  left: -36rpx;
+  font-size: 36rpx;
+}
+
+.price-wrapper .number {
+  font-size: 66rpx;
+  line-height: 1;
+}
+
+.price-desc {
+  margin-top: 9rpx;
+  font-size: 22rpx;
+}
+
+.select-info {
+  padding: 0 40rpx;
+}
+
+.grid-col {
+  display: flex;
+  float: none;
+  width: 100%;
+  margin-top: 50rpx;
+  color: #292e3e;
+  font-size: 32rpx;
+  line-height: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.grid-col-rit {
+  color: #5498ff;
+  font-size: 26rpx;
+}
+
+.select-list {
+  overflow: hidden;
+  max-height: 70rpx;
+  margin-top: 39rpx;
+  transition: all 300ms;
+}
+
+.select-list.open {
+  max-height: 1000rpx;
+}
+
+.select-item {
+  float: left;
+  width: 217rpx;
+  height: 70rpx;
+  padding:0 4rpx;
+  margin-right: 10rpx;
+  margin-bottom: 10rpx;
+  color: #aab0cb;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 70rpx;
+  background-color: #f9f9fb;
+}
+
+.mr-0 {
+  margin-right: 0;
+}
+
+.next-predict {
+  height: 70rpx;
+  color: #7c829d;
+  font-size: 26rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border-top: 1rpx solid #eff0f6;
+  border-bottom: 1rpx solid #eff0f6;
+}
+
+.next-predict .arrow_down {
+  width: 10rpx;
+  height: 24rpx;
+  color: #66d4bb;
+}
+
+.chart {
+  margin-top: 22rpx;
+  padding: 0 40rpx;
+}
+
+.chart-tit {
+  display: flex;
+  margin-top: 30rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-tit .mine-price,
+.chart-tit .mrk-price {
+  display: inline-block;
+  margin: 0 20rpx;
+  color: #aab0cb;
+  font-size: 22rpx;
+  text-align: center;
+}
+
+.mrk-price .line,
+.mine-price .line {
+  width: 38rpx;
+  height: 4rpx;
+  margin: 0 auto;
+  margin-bottom: 19rpx;
+}
+
+.mine-price .line {
+  background: #fabe00;
+}
+
+.mrk-price .line {
+  background: #b967ea;
+}
+
+.chart-wrapper {
+  overflow: hidden;
+  display: flex;
+}
+
+.chart-left {
+  overflow: hidden;
+  width: 90rpx;
+}
+
+.chart-right {
+  overflow: hidden;
+  flex: 1;
+}
+
+.chart-left .axis-y {
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-left .axis-text {
+  color: #cacee0;
+  font-size: 24rpx;
+  line-height: 64rpx;
+}
+
+.chart-right .axis-x {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 1rpx solid #e7e8f0;
+}
+
+.chart-right .axis-text {
+  padding-top: 20rpx;
+  color: #cacee0;
+  font-size: 24rpx;
+  text-align: right;
+}
+
+.chart-right .mue-chart {
+  height: 288rpx;
+}
+
+.chart-rights .canvas-img {
+  width: 100%;
+  height: 100%;
+}
+
+.plug-canvas {
+  position: relative;
+  z-index: 99;
+  width: 690rpx;
+  height: 400rpx;
+  margin: 0 auto;
+  margin-left:2%;
+  box-sizing: border-box;
+}
+
+.mue-footer {
+  z-index: 10000;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 25rpx 40rpx;
+  background-color: #ffffff;
+}
+
+.mue-content {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 140rpx;
+}
+
+.button-take-order {
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #fff;
+  text-align: center;
+  font-size: 32rpx;
+  background: #fabe00;
+}
+
+.button-take-order:after {
+  display: none;
+}
+
+.arrow_dir {
+  display: flex;
+  height: 70rpx;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow_dir image {
+  width: 28rpx;
+  height: 28rpx;
+  padding: 20rpx;
+  transition: transform 400ms;
+}
+
+.arrow_dir .icon-arrow-down {
+  transform: rotate(90deg);
+}
+
+.arrow_dir .icon-arrow-up {
+  transform: rotate(-90deg);
+}
+
+.arrow-button {
+  height: 64rpx;
+  padding: 0 20rpx;
+  background: transparent;
+  border: none;
+  line-height: 62rpx;
+}
+
+.arrow-button::after {
+  display: none;
+}
+
+.button-back {
+  padding: 20rpx;
+  padding-right: 0;  
+  border-radius: 4rpx;
+}
+
+.select-info .grid-col {
+  margin-top: 30rpx;
+}
+
+.grid-col-tit {
+  width: 80%;
+}
