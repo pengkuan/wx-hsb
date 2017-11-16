@@ -1,4 +1,4 @@
-var order = ['demo1', 'demo2', 'demo3']
+
 import product from '../../../model/product';
 let ctx;
 Page({
