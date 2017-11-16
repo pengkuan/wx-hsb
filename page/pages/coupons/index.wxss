@@ -1,0 +1,251 @@
+.container {
+  min-height: 100%;
+  background: #fff;
+}
+
+/** cps-menu **/
+.cps-menu {
+  position: relative;
+  display: flex;
+  height: 90rpx;
+  line-height: 90rpx;
+  flex-direction: row;
+  border-bottom: 1rpx solid #e7e8f0;
+}
+
+.cps-menu .grid-row {
+  flex: 1;
+  color: #aab0cb;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.cps-menu .current {
+  color: #fabe00;
+}
+
+.cps-menu .line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 33.3333%;
+  height: 6rpx;
+  background-color: #fabe00;
+  transform: scaleX(.2);
+  transform-origin: 50% 50%;
+}
+
+/** grid-cols **/
+.grid-col {
+  display: block;
+  width: 100%;
+}
+
+.input-wrapper {
+  display: flex;
+  padding: 0 40rpx;
+  margin-top: 40rpx;
+}
+
+.input-wrapper .input-add-cps {
+  width: 570rpx;
+  height: 70rpx;
+  padding: 0 30rpx;
+  color: #7c829d;
+  font-size: 26rpx;
+  line-height: 30rpx;
+  border-radius: 4rpx;
+  box-sizing: border-box;
+  background-color: #f9f9fb;
+}
+
+.input-wrapper .button-add-cps {
+  display: inline-block;
+  padding: 0;
+  color: #292e3e;
+  font-size: 28rpx;
+  border: none;
+}
+
+.coupon-item {
+  position: relative;
+  width: 670rpx;
+  height: 176rpx;
+  margin: 0 auto;
+  margin-top: 40rpx;
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 16rpx;
+}
+
+.price-wrapper {
+  position: relative;
+  float: left;
+  width: 126rpx;
+  height: 126rpx;
+  margin-left: 30rpx;
+  margin-top: 25rpx;
+  margin-bottom: 25rpx;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+ justify-content: center;
+}
+
+.price-wrapper .price-num {
+  position: relative;
+  display:flex;
+  overflow: visible;
+  font-family: PingFang-SC-Heavy;
+}
+
+.price-wrapper .price-label {
+  position: absolute;
+  left: -15rpx;
+  width: 15rpx;
+  height: 18rpx;
+  font-size:24rpx;
+  font-family: PingFang-SC-Heavy;
+}
+
+.price-wrapper .number {
+font-size:66rpx;
+line-height:62rpx;
+font-family:PingFang-SC-Heavy;
+vertical-align:top;
+}
+
+.coupon-desc {
+  display: inline-block;
+  float: left;
+  margin-top: 57rpx;
+  margin-left: 12rpx;
+  font-size: 0;
+  line-height: 1;
+}
+
+.coupon-desc .label {
+  font-size: 30rpx;
+}
+
+.coupon-desc .limit-desc {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+}
+
+.coupon-deadline {
+  float: right;
+  margin-top: 56rpx;
+  margin-right: 20rpx;
+  line-height: 36rpx;
+  text-align: center;
+}
+
+.coupon-20 {
+  background-image: linear-gradient(0deg, #f9cea3 0%, #fd8a83 100%);
+}
+
+.coupon-20 .price-wrapper {
+  background: #fbd2b2;
+}
+
+.coupon-50 {
+  background-image: linear-gradient(0deg, #fdc0c3 0%, #f8a5b6 100%);
+}
+
+.coupon-50 .price-wrapper {
+  background: #fdcace;
+}
+
+.coupon-100 {
+  background-image: linear-gradient(0deg, #d1d0fd 0%, #ccbcf8 100%);
+}
+
+.coupon-100 .price-wrapper {
+  background: #d9d8fd;
+}
+
+.coupon-100 .number {
+  font-size: 50rpx;
+}
+
+.coupon-100 .price-label {
+  top: 7rpx;
+}
+
+.grid-cols {
+  padding-bottom: 40rpx;
+}
+
+.blank-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.blank-wrapper .icon-blank {
+    width: 326rpx;
+    height: 289rpx;
+    margin: 0 auto;
+    margin-top: 150rpx;
+}
+
+.blank-wrapper .title {
+    margin-top: 78rpx;
+	color: #292e3e;
+	line-height: 1;
+	font-size: 36rpx;
+	text-align: center;
+	font-weight: normal;
+	font-stretch: normal;
+	font-family: PingFang-SC-Bold;
+}
+
+.blank-wrapper .desc {
+    margin-top: 49rpx;
+    color: #cacee0;
+ 	font-size: 28rpx;
+ 	font-weight: normal;
+ 	font-stretch: normal;
+ 	line-height: 1;
+ 	letter-spacing: 0rpx;
+ 	text-align: center;
+}
+
+.blank-wrapper .mue-button {
+    width: 220rpx;
+    height: 80rpx;
+    padding: 0;
+    margin: 0 auto;
+    margin-top: 80rpx;
+    font-size: 32rpx;
+    line-height: 80rpx;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 4rpx;
+    background-color: #fabe00;
+}
+
+.blank-wrapper .mue-button:after {
+    display: none;
+}
+
+.gird-col-1 .coupon-deadline,
+.gird-col-2 .coupon-deadline{
+    font-size:34rpx;
+    font-family:PingFang-SC-Bold;
+    transform:rotate(-35deg);
+    transform-origin:30px 30px;
+}
+
+.gird-col-1 .coupon-item::after,
+.gird-col-2 .coupon-item::after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(255, 255, 255, .4);
+}

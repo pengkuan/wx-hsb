@@ -1,0 +1,21 @@
+<view class="container">
+    <image class="about-us" src="../../../img/about/about-us.png"></image>
+    <view class="version">
+      <image class="logo" src="../../../img/about/logo.png"></image>
+      <view class="cont">
+        <view>回收宝 +</view>
+        <view class="ver">V2.0.0</view>
+      </view>
+    </view> 
+    <view class="content"> 
+      <view class="section"><image class="goto" src="../../../img/about/arrow.svg"></image><navigator hover-class="none" url="who/index">我们是谁？</navigator></view>
+      <view class="section"><image class="goto" src="../../../img/about/arrow.svg"></image><navigator hover-class="none" url="where/index">我们来自哪里？</navigator></view>
+      <view class="section"><image class="goto" src="../../../img/about/arrow.svg"></image><navigator hover-class="none" url="how/index">我们回收的手机怎么处理？</navigator></view>
+      <view class="section"><image class="goto" src="../../../img/about/arrow.svg"></image><navigator hover-class="none" url="price/index">我们的价格？</navigator></view>
+    </view>
+    <view class="copy-right">
+        <view>Copyright © 2012-2017 , Huishoubao Tech , All Rights Reserved</view>
+        <view>深圳回收宝科技有限公司  服务时间：周一至周五9:00-19:00</view>
+    </view>
+    <image class="bottom-bg" src="../../../img/about/bottom-bg.png"></image>
+</view>

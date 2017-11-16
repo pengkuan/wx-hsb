@@ -1,4 +1,6 @@
 {
-   "exclude": [],
-   "compilerOptions": {}
+	"compilerOptions": {
+		"target": "es2015",
+		"module": "commonjs"
+	}	
 }

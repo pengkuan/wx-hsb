@@ -1,0 +1,5 @@
+<view class="container">
+    <image class="about-us" src="../../../../img/about/how.png"></image>
+    <view class="content">回收来的数码产品，回收宝都会进行全面的评测和检查，并进行专业的数据清除。对于那些价值仍然较高的数码产品，我们会进行售卖，销往二三线城市或经济欠发达地区。价值相对较低或者无法继续使用的数码产品，则由有专业资质的环保合作企业进行回收拆解，避免电子垃圾可能对环境带来的各种污染。</view>
+    <image class="bottom-bg" src="../../../../img/about/bottom-bg.png"></image>
+</view>

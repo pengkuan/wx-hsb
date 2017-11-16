@@ -1,0 +1,44 @@
+<view class="container">
+    <view class="order-banner">
+        <div class="order-banner-right">
+            <view class="right-info-hd">订单提交成功</view>
+            <view class="right-info-desc" wx:if="{{ orderInfo.ordertype == 'post' }}">
+                <block wx:if="{{ orderInfo.trackNum }}">快递大哥将于{{ orderInfo.displayVisitTime }}左右上门取件，请保持手机畅通</block>
+                <block wx:if="{{ !orderInfo.trackNum }}">呼叫顺丰失败了，需要您自己联系快递哦！</block>
+            </view>
+            <view class="right-info-desc" wx:if="{{ orderInfo.ordertype == 'visit' }}">客服稍后会联系您确认上门时间及地点，请保持手机畅通</view>
+        </div>
+        <image class='wrapper-bg' src='../../../img/success/success-bg.png'></image>
+    </view>
+    <view class="order-info">
+        <view>订单号：{{ orderInfo.ordernum }}</view>
+        <view wx:if="{{ orderInfo.trackNum }}">物流单号：{{ orderInfo.trackNum }}</view>
+        <view>订单时间：{{curTime}}</view>
+        <view>上门时间：{{ orderInfo.displayVisitTime }}</view>
+    </view>
+    <view class="pro-list">
+        <view class="pro-item">
+            <image class="icon" src="../../../img/success/icon_clear.png"></image>
+            <view class="pro-item-hd">1.清理数据，解锁账号</view>
+            <view class="pro-item-bd">请备份手机内重要数据，解锁账户及开机密码，将手机恢复出厂设置</view>
+        </view>
+        <view class="pro-item">
+            <image class="icon" src="../../../img/success/icon_post.png"></image>
+            <view class="pro-item-hd">2.邮寄手机</view>
+            <view class="pro-item-bd">
+                <view>请选择快递到付，免费邮寄手机至以下地址：</view>
+                <view>深圳市南山区威新软件园8号楼7楼（回收宝收）</view>
+                <view>咨询热线：400-080-9966</view>
+            </view>
+        </view>
+        <view class="pro-item">
+            <image class="icon" src="../../../img/success/icon_01.png"></image>
+            <view class="pro-item-hd">3.清理数据，解锁账号</view>
+            <view class="pro-item-bd">请备份手机内重要数据，解锁账户及开机密码，将手机恢复出厂设置</view>
+        </view>
+    </view>
+    <view class="mue-footer">
+        <navigator class="mue-button back-index" open-type="reLaunch" url="../welcome/index">返回首页</navigator>
+        <button class="mue-button" data-needlogin="true" data-url="../order/index?orderid={{ orderInfo.orderid }}" bindtap="switchPage">订单详情</button>
+    </view>
+</view>

@@ -1,0 +1,45 @@
+<view class="container">
+    <view class="order-head">
+        <image class="icon_order-state" src="../../../img/order-state.png"></image>
+        <view class="order-state-cols">
+            <view class="order-state-col" wx:if="{{ orderInfo.order_status_list.length }}">
+                <view class="order-state-name">{{ orderInfo.order_status_list[orderInfo.order_status_list.length - 1].order_status_name }}</view>
+                <view class="order-state-time">{{ orderInfo.order_status_list[orderInfo.order_status_list.length - 1].order_status_time }}</view>
+            </view>
+        </view>
+    </view>
+    <view class="view-cols">
+        <view class="view-col view-col-1">
+            <view class="view-col-title font-medium">邮寄地址</view>
+            <view class="view-col-content">
+                <view>广东省深圳市南山区威新软件园8号楼7楼 回收宝（收）</view>
+                <view>Tel：400-080-9966</view>
+            </view>
+        </view>
+        <view class="view-col view-col-2">
+            <view class="view-col-title font-medium">交易信息</view>
+            <view class="view-col-content">
+                <view class="p-img-wrapper">
+                    <image wx:if="{{ orderInfo.product_info }}" class="p-img" src="{{ cdn + orderInfo.product_info.product_pic_url }}"></image>
+                </view>
+                <view class="p-desc">
+                    <view class="p-name text-overflow">{{ orderInfo.product_info.product_name }}</view>
+                    <view class="user-price">自主估价：
+                        <text class="color-pink">￥{{ orderInfo.pay_info.order_price/100 }}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="view-col view-col-3">
+            <view class="view-col-content">
+                <view class="order-num">订单编号：{{ orderInfo.order_num }}</view>
+                <view class="order-time">下单时间：{{ orderInfo.order_time }}</view>
+                <view class="">回收方式：{{ orderInfo.recycle_type_name }}</view>
+                <view class="">收款方式：{{ orderInfo.pay_info.payway_name }}</view>
+                <!-- <view class="">质检报告：{{ orderInfo.qt_md5num || '暂无' }}</view> -->
+                <!-- <view class="">加价：{{ orderInfo.pay_info.addpay_price || '无加价券' }}</view> -->
+                <view class="">成交价：{{ orderInfo.pay_info.trans_price / 100 || '订单未完成' }}</view>
+            </view>
+        </view>
+    </view>
+</view>
