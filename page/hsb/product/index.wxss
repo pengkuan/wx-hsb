@@ -1,0 +1,43 @@
+.search-wrapper {
+    display: block;
+    padding: 8px 0;
+    background: #ececec;
+}
+
+.search-link {
+    display: block;
+    width: 94%;
+    height: 32px;
+    padding: 0 10px; 
+    margin: 0 auto;
+    color: #ccc;
+    font-size: 12px;
+    background: #fff;
+    text-align: center;
+    line-height: 32px;
+    box-sizing: border-box;
+}
+
+.category-wrapper {
+    position: fixed;
+    top: 48px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+}
+
+.cate-cols {
+    padding: 0 3%;
+    height: 32px;
+    line-height: 32px;
+    white-space:nowrap;
+    box-sizing: border-box;
+}
+
+.cate-col {
+    display: inline-block;
+    width: 33%;
+    color: #aab2bd;
+    text-align: center;
+}

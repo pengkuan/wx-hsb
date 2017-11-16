@@ -1,26 +1,24 @@
 var url = require('../url');
 import { PID } from '../constant';
 const commonUtil = require('./common')
-// var commonUtil = require('./common')
 
 var exports = module.exports = {
 
+  brands: [],
+
+    // 获取 
     getBrands(callback) {
         var brands = this.brands;
-        brands ? callback(brands) : wx.request({
+        brands.length ? callback(brands) : wx.request({
             url: url.brands,
             success: function (res) {
-
                 brands = res.data.data.items;
-
                 if (brands) {
                     brands.splice(15, 1);
                     exports.brands = brands;
                 }
-
                 callback(brands);
             },
-
             fail: function (err) {
                 console.log(err);
             }

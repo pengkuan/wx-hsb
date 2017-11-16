@@ -74,10 +74,10 @@ function isRightSlide(e, _this) {
 function formatTime(time) {
 
     if (typeof time !== 'number' || time < 0) {
-      return time
+        return time
     }
 
-    var hour   = parseInt(time / 3600)
+    var hour = parseInt(time / 3600)
     time = time % 3600
     var minute = parseInt(time / 60)
     time = time % 60
@@ -92,9 +92,9 @@ function formatTime(time) {
 module.exports = {
     formatTime: formatTime,
     Promise: Promise,
-        Gesture: {
-            touchstart: touchstart,
-            isLeftSlide: isLeftSlide,
-            isRightSlide: isRightSlide
-        }
+    Gesture: {
+        touchstart: touchstart,
+        isLeftSlide: isLeftSlide,
+        isRightSlide: isRightSlide
+    }
 }

@@ -1,0 +1,22 @@
+ <view class="page">
+    <view class="search-wrapper">
+        <view class="search-link">请输入搜索机型</view>
+    </view>
+    <view class="category-wrapper">
+        <scroll-view class="cate-cols" scroll-x="true" scroll-with-animation="true">
+            <view wx:for="{{cateList}}" class="cate-col">{{item.classname}}</view>
+        </scroll-view>
+    </view>
+    <view class="scroll-wrapper">
+        <view class="brands-cols">
+            <view class='brands-col'>
+
+            </view>
+        </view>
+        <view class="product-cols">
+            <view class="product-col">
+
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,11 +1,8 @@
-var baseUrl  = 'https://doop.www.huishoubao.com/v2/1196/api/';
+var baseUrl  = 'https://www.huishoubao.com/v2/1196/api/';
 // var baseUrl  = 'https://www.huishoubao.com/v2/1196/api/';
-var baseUrl_v2 = 'https://doop.www.huishoubao.com/api/';
-
-
+var baseUrl_v2 = 'https://gaox.www.huishoubao.com/api/';
 
 var exports = module.exports = {
-
     orderList    : baseUrl  + 'getOrdreList_6/',
     brands       : baseUrl  + 'brands',
     productsList : baseUrl  + 'products20/',

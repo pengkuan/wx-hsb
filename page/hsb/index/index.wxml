@@ -11,6 +11,9 @@
         </div>
     </view>
     <view class="btn-view">
+        <navigator url="../product/index?index=0&bid=11" class="btn-left">新机型页面</navigator>
+    </view>
+    <view class="btn-view">
         <navigator url="../huishou/huishou?index=0&bid=11" class="btn-left">出售其他机型</navigator>
         <navigator url="../huishou/huishou?search={{systemInfo.model}}" class="btn-right">出售本机</navigator>
     </view>
@@ -88,5 +91,4 @@
             <text class="home-big-block-text">{{item.text}}</text>
         </view>
     </view>
-
 </view>
