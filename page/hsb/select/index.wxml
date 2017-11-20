@@ -1,0 +1,62 @@
+<view class="page new">
+    <view class="progressbar">
+        <view class="tip">选择和机器情况相符，将一次性通过验收并快速付款</view>
+        <view class="count">1/10</view>
+    </view>
+    <view>
+        <view>{{ product.maxPrice }}</view>
+    </view>
+    <view>基本选项</view>
+    <view class="item-cols">
+        <view class="item-col" wx:for="{{ base }}" wx:for-item="i">
+            <view class="item-col-title">{{ i.name }}</view>
+            <view class="item-col-option">
+                <view class="option-cols">
+                    <view class="option-col{{ selects[i.id] == j.id ? ' selected' : ''}}" wx:for="{{ i.question }}" wx:for-item="j" wx:key="j.id"> 
+                        <view class="option-col-title" bindtap="baseTapHandler" data-pid="{{ i.id }}" data-cid="{{ j.id }}">
+                            <view class="radio"></view>
+                            <view class="text">{{ j.name }}</view>
+                        </view>
+                        <view class="query" wx:if="{{ j.picture.length }}">详情</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view>外观选项</view>
+    <view class="item-cols">
+        <view class="item-col" wx:for="{{ outlook }}" wx:for-item="i">
+            <view class="item-col-title">{{ i.name }}</view>
+            <view class="item-col-option">
+                <view class="option-cols">
+                    <view class="option-col{{ selects[i.id] == j.id ? ' selected' : ''}}" wx:for="{{ i.question }}" wx:for-item="j" wx:key="j.id"> 
+                        <view class="option-col-title" bindtap="baseTapHandler" data-pid="{{ i.id }}" data-cid="{{ j.id }}">
+                            <view class="radio"></view>
+                            <view class="text">{{ j.name }}</view>
+                        </view>
+                        <view class="query" wx:if="{{ j.picture.length }}">详情</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    功能选项
+    <view class="item-cols">
+        <view class="item-col" wx:for="{{ func }}" >
+            <view class="item-col-option">
+                <view class="option-cols">
+                    <view class="option-col{{ selects[item.kid] == item.oid ? ' selected' : ''}}"> 
+                        <view class="option-col-title" 
+                            bindtap="funcTapHandler" data-kid="{{ item.kid }}" data-did="{{ item.did }}" data-oid="{{ item.oid }}">
+                            <view class="radio"></view>
+                            <view class="text">{{ item.desc }}{{ selects[item.kid] }}</view>
+                        </view>
+                        <view class="query" wx:if="{{ item.picture.length }}">详情</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="onSubmit">估价</view>
+    <navigator class="product-col text-overflow" url="../trade/index">下单</navigator>    
+</view>

@@ -1,0 +1,58 @@
+.progressbar {
+  display: flex;
+  height: 30px;
+  padding: 0 3%;
+  font-size: 12px;
+  line-height: 30px;
+  color: #fff;
+  background: #56b7e2;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.option-col {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 40px;
+}
+
+.radio {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  border-radius: 50%;
+  border: 1px #ccc solid;
+}
+
+.item-cols {
+  padding: 0 3%;
+}
+
+.item-col-option {
+  background: #fff;
+}
+
+.option-col {
+  padding: 10px 0;
+  padding-left: 6px;
+}
+
+.option-col.selected .option-col-title{
+  color: #56b7e2;
+}
+
+.item-col-title {
+  height: 40px;
+  line-height: 40px;
+}
+
+.option-col-title {
+  display: flex;
+  align-items: center;
+}
+
+.query {
+  /* float: right; */
+  margin-right: 6px;
+}

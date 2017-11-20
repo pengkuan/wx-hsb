@@ -253,3 +253,13 @@ checkbox, radio{
     background: #f9be00;
 }
 /*改变 swiper 显示面板指示点样式*/
+
+/**
+ * Made by GX
+ * Common Css
+ */
+.text-overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

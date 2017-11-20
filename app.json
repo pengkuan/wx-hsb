@@ -16,12 +16,16 @@
     "page/hsb/get-location/get-location",
     "page/hsb/select-option/select-option",
     "page/hsb/evaluate-result/evaluate-result",
-    "page/hsb/product/index"
+
+    "page/hsb/product/index",
+    "page/hsb/select/index",
+    "page/hsb/trade/index",
+    "page/hsb/person/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "回收宝",
-    "navigationBarBackgroundColor": "#f9be00",
+    "navigationBarBackgroundColor": "#ffda44",
     "backgroundColor": "#f5f5f5"
   },
   "tabBar": {

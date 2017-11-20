@@ -1,8 +1,10 @@
+'use strict';
+
 var baseUrl = 'https://www.huishoubao.com/v2/1196/api/';
 // var baseUrl  = 'https://www.huishoubao.com/v2/1196/api/';
 var baseUrl_v2 = 'https://www.huishoubao.com/api/';
 
-var exports = module.exports = {
+var _exports = module.exports = {
   orderList: baseUrl + 'getOrdreList_6/',
   brands: baseUrl + 'brands',
   productsList: baseUrl + 'products20/',
@@ -24,3 +26,4 @@ var exports = module.exports = {
   getSelectOption: baseUrl_v2 + 'get_product_param',
   padList: baseUrl + 'getProductsByItemID'
 };
+//# sourceMappingURL=url.js.map
