@@ -20,7 +20,8 @@
     "page/hsb/product/index",
     "page/hsb/select/index",
     "page/hsb/trade/index",
-    "page/hsb/person/index"
+    "page/hsb/person/index",
+    
   ],
   "window": {
     "navigationBarTextStyle": "black",
