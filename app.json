@@ -21,7 +21,7 @@
     "page/hsb/select/index",
     "page/hsb/trade/index",
     "page/hsb/person/index",
-    
+    "page/hsb/bind/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

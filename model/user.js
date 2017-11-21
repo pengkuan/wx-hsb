@@ -1,4 +1,4 @@
-const url = 'https://gaox.www.huishoubao.com/common/user/wxAppLogin';
+const url = 'https://www.huishoubao.com/common/user/wxAppLogin';
 import Utils from '../util/utils';
 export default {
     // 获取code
@@ -7,9 +7,11 @@ export default {
             let self = this;
             wx.login({
                 success (res) {
+                    console.log(res);
                     resolve(res.code);
                 },
                 fail (res) {
+                    console.log(res);
                     resolve(res.errMsg);
                 }
             })
@@ -30,9 +32,11 @@ export default {
             wx.request({
                 url: `${url}/${code}`,
                 success (res) {
+                    console.log(res);
                     resolve(res.data);
                 },
                 fail (res) {
+                    console.log(res);
                     reject(res.errMsg);
                 }
             })
@@ -44,9 +48,10 @@ export default {
      * @param {*} openid 
      */
     login (openid) {
+        console.log('login');
         return new Promise((resolve, reject) => {
             Utils.post({
-                url: 'https://gaox.www.huishoubao.com/common/user/authUserLogin?pid=1196',
+                url: 'https://www.huishoubao.com/common/user/authUserLogin?pid=1196',
                 data: {
                     openid,
                     auth_type: 2,
@@ -54,10 +59,15 @@ export default {
                     appid: 'wx3543d54ab3d1a24e'
                 },
                 success (res) {
+                    console.log(res);
                     resolve(res.data)
                 },
                 fail (res) {
+                    console.log(res);
                     reject(res.retinfo);
+                },
+                complete () {
+                    console.log('complete');
                 }
             })
         })
