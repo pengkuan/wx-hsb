@@ -1,14 +1,11 @@
 export default {
     post (config) {
+        config['method'] = 'POST';
         if (config.header) {
             config.header['Content-Type'] = "application/x-www-form-urlencoded";
         } else {
-            config.header = {
-                "Content-Type": "application/x-www-form-urlencoded"
-            }
+            config.header = {"Content-Type": "application/x-www-form-urlencoded"};
         }
-        config.method = 'POST';
-        config.data = this.filedFormat(config.data);
         return wx.request(config);
     },
     filedFormat(obj) {

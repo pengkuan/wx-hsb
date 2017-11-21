@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../page/hsb/trade/index.js"],"names":["context","Page"],"mappings":";;AAAA,IAAIA,gBAAJ;;AAEAC,KAAK,EAAL","file":"index.js","sourcesContent":["let context;\n\nPage({});"]}

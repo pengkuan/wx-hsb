@@ -6,23 +6,15 @@ Page({
         // 获取code
         user.getWxCode().then(code => {
             // 获取 openid
-            console.log('code', code)
             user.getWxOpenId(code).then(data => {
                 // 登录
-                console.log(data);
-                console.log('getWxOpenId');
                 user.login(data.openid).then(res => {
-                    console.log(res);
+                    // 没有绑定手机号码
                     if(!res.tel) {
-                        wx.navigateTo({
-                            url: '../bind/index'
-                        })
+                        wx.navigateTo({ url: `../bind/index?openid=${ data.openid }&unionid=${ data.unionid }`})
                     }
                 })
             })
         })
-    },
-    onShow () {
-
     }
 });
