@@ -1,0 +1,7 @@
+<template name="search-entry">
+    <view class="search-entry">
+        <view class="left-text">iPhone6</view>
+        <view class="icon-search"></view>
+    </view>
+</template>
+

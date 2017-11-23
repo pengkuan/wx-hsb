@@ -1,11 +1,12 @@
-import config from '../config/index.js';
-const url = 'https://www.huishoubao.com/common/product/';
+import { url } from '../config/index';
+import Utils from '../util/utils';
+
 export default {
   // 类目
   category() {
     return new Promise((resolve, reject) => {
-      wx.request({
-        url: `${url}categories?pid=1056`,
+      Utils.get({
+        url: url.categories,
         success: function (res) {
           if (res.data) {
             resolve(res.data.data);
@@ -13,15 +14,15 @@ export default {
             reject(res.errmsg);
           }
         }
-      })
+      });
     })
   },
   // 品牌
-  brands(params) {
-    let cid = params.cid;
+  brands({ cid }) {
     return new Promise((resolve, reject) => {
-      wx.request({
-        url: `${ url }brands?classId=${ cid }&pid=1056`,
+      Utils.get({
+        url: url.brands,
+        data: { classId: cid },
         success(res) {
           if (res.data) {
             resolve(res.data.data);
@@ -29,17 +30,19 @@ export default {
             reject(res.errmsg);
           }
         }
-      })
+      });
     })
   },
   // 机型
-  products(params) {
-    let cid = params.cid;
-    let bid = params.bid;
-    let num = params.num;
+  products({ cid, bid, num }) {
     return new Promise((resolve, reject) => {
-      wx.request({
-        url: `${url}products?classId=${cid}&brandId=${bid}&pageIndex=${num}&pid=1056`,
+      Utils.get({
+        url: url.products,
+        data: {
+          classId: cid,
+          brandId: bid,
+          pageIndex: num
+        },
         success(res) {
           if (res.data) {
             resolve(res.data.data);
@@ -47,7 +50,7 @@ export default {
             reject(res.errmsg);
           }
         }
-      })
+      });
     })
   },
   // 获取产品信息

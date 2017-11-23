@@ -4,18 +4,18 @@
     </view>
     <view class="category-wrapper">
         <scroll-view class="cate-cols" scroll-x="true" scroll-with-animation="true">
-            <view bindtap="cateTapHandler" wx:for="{{cateList}}" class="cate-col " data-cid="{{item.classid}}">{{item.classname}}</view>
+            <view bindtap="cateTapHandler" wx:for="{{cateList}}" wx:key="{{index}}" class="cate-col" data-cid="{{item.classid}}">{{item.classname}}</view>
         </scroll-view>
     </view>
     <view class="content-wrapper">
         <view class="brand-cols-wrapper">
             <scroll-view class="brand-cols" scroll-y="true" scroll-with-animation="true" scroll-top="{{brandScrollTop}}">
-                <view bindtap="brandTapHandler" wx:for="{{brandList}}" class="brand-col text-overflow" data-bid="{{item.brandid}}">{{item.brandname}}</view>
+                <view bindtap="brandTapHandler" wx:for="{{brandList}}" wx:key="{{index}}" class="brand-col text-overflow" data-bid="{{item.brandid}}">{{item.brandname}}</view>
             </scroll-view>
         </view>
         <view class="product-cols-wrapper">
             <scroll-view class="product-cols" scroll-y="true" scroll-with-animation="true" scroll-top="{{productScrollTop}}" bindscrolltoupper="refreshProduct" bindscrolltolower="loadMoreProduct">
-                <navigator class="product-col text-overflow" url="../select/index?productId={{item.productid}}&name={{item.productname}}" wx:for-items="{{productList}}">{{item.productname}}</navigator>
+                <navigator class="product-col text-overflow" wx:for="{{productList}}" wx:key="{{index}}" url="../select/index?productId={{item.productid}}&name={{item.productname}}">{{item.productname}}</navigator>
                 <view class="product-col" wx:if="{{ productList.length === 0 }}">此品牌暂无机型</view>
                 <view class="product-col" wx:if="{{ !hasMore }}">没有更多了</view>
             </scroll-view>

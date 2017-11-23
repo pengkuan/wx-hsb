@@ -1,0 +1,9 @@
+<view>
+    <!--顺丰上门地址-->
+    <view class="section">
+        <view class="section__title">顺丰上门地址</view>
+        <picker mode="multiSelector" value="{{sfAddrIndex}}" bindchange="sfAddrPickerChange" bindcolumnchange="sfAddrPickerColumnChange" range="{{sfAddrSelect}}" range-key="name">
+            <view class="picker">当前选择：{{sfAddrSelect[0][sfAddrIndex[0]]['name']}}，{{sfAddrSelect[1][sfAddrIndex[1]]['name']}}，{{sfAddrSelect[2][sfAddrIndex[2]]['name']}}</view>
+        </picker>
+    </view>
+</view>

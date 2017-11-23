@@ -1,0 +1,100 @@
+@import "../../components/search-entry.wxss";
+
+.swiper-wrapper {
+    width: 670rpx;
+    margin: 0 auto;
+    margin-top: 40rpx;
+    border-radius: 8rpx;
+    background: #fff;
+}
+
+.swiper-wrapper .slide-image {
+    width: 100%;
+    height: 100%;
+}
+
+.category-cols {
+    display: flex;
+    width: 100%;
+    padding-top: 40rpx;
+    padding-bottom: 40rpx;
+    background: #fff;
+}
+
+.category-col {
+    display: flex;
+    flex: 1;
+    color: #666;
+    font-size: 28rpx;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.category-col .icon {
+    width: 90rpx;
+    height: 90rpx;
+    margin: 0 auto;
+}
+
+.category-col .text {
+    margin-top: 10rpx;
+}
+
+.section-title {
+    display: flex;
+    font-weight: 600;
+    padding-top: 50rpx;
+    padding-bottom: 40rpx;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.products-wrapper .section-title {
+    padding-bottom: 20rpx;
+}
+
+.section-title .right {
+    color: #666;
+    font-size: 28rpx;
+}
+
+.product-cols {
+    width: 100%;
+    padding-left: 20rpx;
+    white-space:nowrap;
+}
+
+.product-col {
+    display: inline-block;
+    width: 290rpx;
+    margin: 20rpx;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0 0 10px #d6d6d6;
+}
+
+.product-col .p-img {
+    width: 100rpx;
+    height: 200rpx;
+    margin-top:20px;
+}
+
+.product-col .p-button {
+    width: 120rpx;
+    height: 40rpx;
+    margin:  0 auto;
+    color: #ccc;
+    font-size: 24rpx;
+    border: 1rpx solid #ccc;
+}
+
+.product-col .p-name {
+    font-size: 28rpx;
+    font-weight: bold;
+}
+
+.product-col .p-desc {
+    color: #ccc;
+    font-size: 28rpx;
+}

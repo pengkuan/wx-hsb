@@ -1,0 +1,17 @@
+.search-entry {
+  width: 670rpx;
+  height: 80rpx;
+  padding-left: 20rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  background: #fff;
+  line-height: 80rpx;
+  border-radius: 4rpx;
+  box-sizing: border-box;
+  box-shadow:0 0 20rpx #ddd;
+}
+
+.search-entry .left-text {
+  color: #7c829d;
+  font-size: 28rpx;
+}

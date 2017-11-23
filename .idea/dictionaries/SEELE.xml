@@ -5,6 +5,7 @@
       <w>appidwx</w>
       <w>orderid</w>
       <w>unionid</w>
+      <w>wxappid</w>
     </words>
   </dictionary>
 </component>

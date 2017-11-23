@@ -1,0 +1,48 @@
+<import src="../../components/search-entry.wxml"/>
+<view class="container">
+    <template is="search-entry"/>
+    <view class="swiper-wrapper">
+        <swiper indicator-dots="true" autoplay="true" interval="2000">
+            <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+                <swiper-item>
+                    <image src="{{item}}" class="slide-image"/>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view class="category-cols">
+        <view class="category-col">
+            <image class="icon" src="../../../img/icon2.png"></image>
+            <view class="text">手机回收</view>
+        </view>
+        <view class="category-col">
+            <image class="icon" src="../../../img/icon2.png"></image>
+            <view class="text">平板回收</view>
+        </view>
+        <view class="category-col">
+            <image class="icon" src="../../../img/icon2.png"></image>
+            <view class="text">笔记本回收</view>
+        </view>
+    </view>
+    <view class="section products-wrapper">
+        <view class="section-title common-padding sub-title">
+            <view class="left">热门回收</view>
+            <view class="right">更多</view>
+        </view>
+        <view class="section-content">
+            <scroll-view class="product-cols" scroll-x="true" scroll-with-animation="true">
+                <view class="product-col" wx:for="{{productList}}" wx:key="{{index}}" data-pid="{{item.productid}}">
+                    <image class="p-img" src="{{ cdn + item.productlogo}}"></image>
+                    <view class="p-name">{{item.productname}}</view>
+                    <view class="p-desc">最高回收价|<text class="p-price">{{item.maxprice}}</text></view>
+                    <view class="p-button">马上回收</view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+    <view class="section">
+        <view class="section-title common-padding sub-title">
+            <view class="left">回收流程</view>
+        </view>
+    </view>
+</view>

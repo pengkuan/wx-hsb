@@ -6,11 +6,12 @@ Page({
     brandList: [], // 品牌列表
     productList: [], // 机型列表
     cid: 1, // 类目id
-    bid: undefined, // 品牌id
+    bid: -1, // 品牌id
     num: 0,  // 机型分页
     hasMore: true, //是否具有更多
     brandScrollTop: 0,
-    productScrollTop: 0
+    productScrollTop: 0,
+    left: 0
   },
   onLoad(params) {
     ctx = this;
@@ -29,7 +30,10 @@ Page({
    */
   cateTapHandler(event) {
     let dataSet = event.currentTarget.dataset;
-    ctx.setData({cid: dataSet.cid});
+    ctx.setData({
+      cid: dataSet.cid,
+      left: (dataSet.index / ctx.data.cateList.length * 100 + '%' )
+    });
     ctx.onCidChanged();
   },
 

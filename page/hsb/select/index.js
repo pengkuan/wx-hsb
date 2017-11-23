@@ -1,7 +1,5 @@
 import product from '../../../model/product';
-import index from "../../../config/index";
 let ctx;
-
 Page({
   data: {
     base: [],
@@ -30,9 +28,9 @@ Page({
         }
       });
       func = ctx.funcHandler(func);
-      ctx.setData({ 
+      ctx.setData({
         base,
-        outlook, 
+        outlook,
         func,
         product: {
           picUrl: res.picurl,
@@ -50,7 +48,7 @@ Page({
   /**
    * 生成功能选项对应的数据结构
    * 功能选项本质是一个具有默认值和可选值的单选框
-   * @param {*} data 
+   * @param {*} data
    */
   funcHandler(list) {
     let func = [];
@@ -73,7 +71,7 @@ Page({
 
   /**
    * 基本选项 外观选项 切换
-   * @param {*} event 
+   * @param {*} event
    */
   baseTapHandler (event) {
     let selects = ctx.data.selects;
@@ -85,7 +83,7 @@ Page({
 
   /**
    * 设置初始默认值 功能选项有key和value 非功能选项只有key
-   * @param {*} list 
+   * @param {*} list
    */
   setInitValue (list) {
     let initData = {}, funcItem;
@@ -107,7 +105,7 @@ Page({
 
   /**
    * 功能选项切换
-   * @param {*} event 
+   * @param {*} event
    */
   funcTapHandler (event) {
     let dataset = event.currentTarget.dataset;

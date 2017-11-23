@@ -1,10 +1,29 @@
-const url = 'https://www.huishoubao.com/common/user/wxAppid';
+import {url, WX_APP_ID, WX_AUTH_TYPE} from '../config/index';
 import Utils from '../util/utils';
+
+// 微信开放信息
+let wxOpenInfo = null;
+
 export default {
+
+  // 获取微信用户的 微信开发信息
+  getWxOpenInfo () {
+    return new Promise((resolve, reject) => {
+      if (wxOpenInfo !== null) resolve(wxOpenInfo);
+      wx.getUserInfo({
+        lang: 'zh_CN',
+        withCredentials: false,
+        success(res) {
+          wxOpenInfo = res.userInfo;
+          resolve(wxOpenInfo)
+        }
+      });
+    });
+  },
+
   // 获取code
   getWxCode () {
     return new Promise((resolve, reject) => {
-      let self = this;
       wx.login({
         success (res) {
           resolve(res.code);
@@ -17,99 +36,106 @@ export default {
   },
 
   /**
-   * 获取openid
-   * expires_in: 7200
-   * openid: "oYf8X0bQGSTh6fweycoGItY29kK0"
-   * session_key: "glxzkciJLttS8felWGyUGQ=="
-   * unionid: "ox3Blw4Kekggsk1tl4IdS3VhcWxw"
-   * @param {*} code
+   * 获取微信openid
+   * @param code
+   * @return {Promise}
    */
   getWxOpenId (code) {
-    let self = this;
     return new Promise((resolve, reject) => {
-      wx.request({
-        url: `${url}/${code}`,
+      Utils.get({
+        url: `${ url.wxOpenId }/${code}`,
         success (res) {
           resolve(res.data.data);
         },
         fail (res) {
           reject(res.errMsg);
         }
-      })
+      });
     })
   },
 
   /**
-   * 登录回收宝
-   * @param {*} openid
+   * @param openid 开发授权id
+   * @param auth_type 授权类型 1：微信公众号、2：微信小程序、3：支付宝 必填
+   * @param appid 第三方应用号/公众号/生活号，可空 必填
+   * @return {Promise}
    */
-  login (openid) {
+  login (openid, auth_type = WX_AUTH_TYPE, appid = WX_APP_ID) {
     return new Promise((resolve, reject) => {
       Utils.post({
-        url: 'https://www.huishoubao.com/common/user/authUserLogin?pid=1169',
-        data: {
-          openid: openid,
-          auth_type: 2,
-          valid_days: 1,
-          appid: 'wx3543d54ab3d1a24e'
-        },
-        success (res) {
-          resolve(res.data)
-        },
-        fail (res) {
-          reject(res.retinfo);
-        }
-      })
-    })
-  },
-
-  /**
-   * 绑定手机号
-   * auth_type 授权类型（1：微信公众号、2：微信小程序、3：支付宝|必填）
-   * code 短信验证码
-   * appid 应用id
-   * tel 手机号码
-   * openid 第三方授权ID
-   * unionid 微信类应用用户唯一标识（非必填）
-   * valid_days 登录有效天数
-   * @param {*} params
-   */
-  bindTelLogin (params) {
-    const appid = 'appidwx3543d54ab3d1a24e';
-    const auth_type = 2;
-    return new Promise((resolve, reject) => {
-      Utils.post({
-        url: 'https://gaox.www.huishoubao.com/common/user/authUserBindTelLogin?pid=1169',
+        url: url.authUserLogin,
         data: {
           appid,
+          openid,
           auth_type,
-          tel: params.tel,
-          code: params.code,
-          openid: params.openid,
-          valid_days: params.valid_days,
+          valid_days: 0.1
         },
         success (res) {
-          resolve(res.data)
-        },
-        fail (res) {
-          reject(res.retinfo);
+          res = res.data;
+          if (res.retcode == 0) {
+            resolve(res.data)
+          } else {
+            reject(res.retinfo)
+          }
         }
       })
     })
   },
 
   // 获取手机验证码
-  getCode () {
+  getCode ({tel}) {
     return new Promise((resolve, reject) => {
       Utils.post({
-        url: 'https://gaox.www.huishoubao.com/common/user/getCode?pid=1169',
-        data: {
-          tel: "13249064450",
-        },
+        url: url.getCode,
+        data: {tel},
         success(res) {
           resolve(res.data);
-        },
+        }
       })
+    })
+  },
+
+  /**
+   * 绑定手机号并登录
+   * @param tel 手机号码
+   * @param code
+   * @param openid
+   * @param unionid
+   * @param valid_days
+   * @return {Promise}
+   */
+  bindTelLogin ({tel, code, openid, unionid, valid_days}) {
+    return new Promise((resolve, reject) => {
+      Utils.post({
+        url: url.bindTelLogin,
+        data: {
+          tel,
+          code,
+          openid,
+          unionid,
+          appid: WX_APP_ID,
+          auth_type: WX_AUTH_TYPE,
+        },
+        success (res) {
+          res = res.data;
+          if (res.retcode == 0) {
+            resolve(res.data)
+          } else {
+            reject(res.retinfo);
+          }
+        }
+      })
+    })
+  },
+
+  /**
+   * 将登录后的用户信息存到本地
+   * @param params
+   */
+  setUserInfo (params = {}) {
+    wx.setStorage({
+      key: 'userInfo',
+      data: params
     })
   }
 }
