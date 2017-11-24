@@ -3,6 +3,7 @@ let ctx;
 Page({
   data: {
     userInfo: {},
+    wxOpenInfo: {},
     grid1Cols: [{
       text: '我的订单',
       path: '',
@@ -38,10 +39,35 @@ Page({
     ctx = this;
     wx.setNavigationBarTitle({title: '个人中心'});
     user.getWxOpenInfo().then(res => {
-      console.log(res);
       ctx.setData({
-        userInfo: res
+        wxOpenInfo: res
       })
     });
+    let userInfo = wx.getStorageSync('userInfo');
+    if(!(userInfo && userInfo.tel && userInfo.us_uid)) {
+      ctx.login();
+    } else {
+      console.log(userInfo);
+      ctx.setData({
+        userInfo: userInfo
+      })
+    }
+  },
+  login () {
+    user.getWxCode().then(code => {
+      user.getWxOpenId(code).then(data => {
+        user.login(data.openid).then(loginRes => {
+          user.setUserInfo(loginRes);
+        }, err => {
+          // C++不支持errCode识别，这里假设错误都是用户没有绑定手机号
+          wx.navigateTo({ url: `../bind/index?openid=${ data.openid }&unionid=${ data.unionid }` })
+        })
+      })
+    })
+  },
+  switchBind () {
+    wx.navigateTo({
+
+    })
   }
 });

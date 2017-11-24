@@ -8,6 +8,7 @@ export default {
       config.header = {"Content-Type": "application/x-www-form-urlencoded"};
     }
     config.url += `?pid=${ PID }`;
+    console.log(config.url);
     return wx.request(config);
   },
   get (config) {
