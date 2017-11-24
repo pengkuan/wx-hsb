@@ -1,4 +1,5 @@
-export const PID = 1196;
+let app = getApp();
+export const PID = app.globalData.pid;
 // 微信授权在回收宝中的授权类型ID
 export const WX_AUTH_TYPE = 2;
 // 微信小程序的APPID
@@ -11,7 +12,6 @@ const user = `${host}common/user/`;
 const product = `${host}common/product/`;
 
 export const url = {
-
   // 获取微信openid
   wxOpenId: `${user}wx_openid`,
   // 第三方授权登录
@@ -34,5 +34,4 @@ export const url = {
   // 获取顺丰地址
   sfCity: `https://www.huishoubao.com/common/order/getSfCity`,
   // 高速产品查找
-
 };

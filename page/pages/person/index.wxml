@@ -1,27 +1,24 @@
 <view class="page">
-    <view class="userInfo">
+    <view class="user-box">
         <image class="avator" mode="scaleToFill" src="{{userInfo.avatarUrl}}"></image>
-        <view class="nickname">微信名称</view>
-        <view class="mobile">18620343136</view>
+        <view class="box-middle">
+            <view class="nickname">{{userInfo.nickName}}</view>
+            <view class="mobile">18620343136</view>
+        </view>
+        <view class="box-right">
+            <button size="mini" plain="true" class="button">解绑</button>
+        </view>
     </view>
-    <view class="cell-cols">
-        <view class="cell-col">
-            <navigator>我的订单</navigator>
-        </view>
-        <view class="cell-col">
-            <navigator>我的优惠券</navigator>
-        </view>
-        <view class="cell-col">
-            <navigator>邮寄地址</navigator>
-        </view>
-        <view class="cell-col">
-            <navigator>帮助中心</navigator>
-        </view>
-        <view class="cell-col">
-            <navigator>在线客服</navigator>
-        </view>
-        <view class="cell-col">
-            <navigator>关于我们</navigator>
-        </view>
+    <view class="grid-cols grid-fore1">
+        <button class="grid-col mue-button" wx:for="{{ grid1Cols }}">
+            <image class="grid-col-icon" src="{{ item.icon }}"></image>
+            <view class="grid-col-text">{{ item.text }}</view>
+        </button>
+    </view>
+    <view class="grid-cols grid-fore2">
+        <button class="grid-col mue-button" wx:for="{{ grid2Cols }}">
+            <image class="grid-col-icon" src="{{ item.icon }}"></image>
+            <view class="grid-col-text">{{ item.text }}</view>
+        </button>
     </view>
 </view>

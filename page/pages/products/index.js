@@ -11,7 +11,8 @@ Page({
     hasMore: true, //是否具有更多
     brandScrollTop: 0,
     productScrollTop: 0,
-    left: 0
+    left: 0,
+    iconSearch: '../../../img/icon-search.svg',
   },
   onLoad(params) {
     ctx = this;

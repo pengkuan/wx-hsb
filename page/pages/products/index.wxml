@@ -1,6 +1,6 @@
 <import src="../../components/search-entry.wxml"/>
 <view class="page">
-    <template is="search-entry"/>
+    <template is="search-entry" data="{{ iconSearch: iconSearch }}"/>
     <view class="category-wrapper">
         <scroll-view class="cate-cols" scroll-x="true" scroll-with-animation="true">
             <view bindtap="cateTapHandler"

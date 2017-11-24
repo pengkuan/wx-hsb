@@ -9,6 +9,9 @@ App({
     url: require('page/hsb/modules/url.js'),
   },
   globalData: {
+    cid: undefined,
+    bid: undefined,
+    pid: 1196,
     cdn: 'http://s1.huishoubao.com/img/phone/'
   },
   onHide () {

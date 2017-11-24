@@ -1,17 +1,35 @@
 .search-entry {
+  display: flex;
   width: 670rpx;
-  height: 80rpx;
-  padding-left: 20rpx;
+  height: 78rpx;
   margin: 0 auto;
   margin-top: 20rpx;
-  background: #fff;
   line-height: 80rpx;
-  border-radius: 4rpx;
+  border-radius: 6rpx;
+  align-items: center;
   box-sizing: border-box;
-  box-shadow:0 0 20rpx #ddd;
+  background-color: #ffffff;
+  justify-content: space-between;
+  box-shadow: 0rpx 8rpx 27rpx 3rpx rgba(135, 142, 160, 0.15);
 }
 
 .search-entry .left-text {
+  margin-left: 30rpx;
   color: #7c829d;
-  font-size: 28rpx;
+  font-size: 26rpx;
+}
+
+.search-entry .icon-search {
+  position: relative;
+  margin-right: 26rpx;
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.search-entry .icon-search .icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

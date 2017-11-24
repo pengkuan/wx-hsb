@@ -3,6 +3,16 @@
     "page/pages/welcome/index",
     "page/pages/products/index",
     "page/pages/person/index",
+    "page/pages/search/index",
+    "page/pages/product/index",
+    "page/pages/price/index",
+    "page/pages/trade/index",
+    "page/pages/orders/index",
+    "page/pages/order/index",
+    "page/pages/bind/index",
+    "page/pages/help/index",
+    "page/pages/about/index",
+    "page/pages/coupon/index",
 
     "page/hsb/index/index",
     "page/hsb/mail-method/mail-method",
@@ -35,27 +45,24 @@
   },
   "tabBar": {
     "color": "#888",
-    "selectedColor": "#353535",
     "borderStyle": "black",
+    "selectedColor": "#353535",
     "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "page/pages/welcome/index",
-        "iconPath": "image/icon/index-0.png",
-        "selectedIconPath": "image/icon/index-1.png",
-        "text": "回收宝"
+        "iconPath": "img/icon_home_gray_60.png",
+        "selectedIconPath": "img/icon_home_black_60.png"
       },
       {
         "pagePath": "page/pages/products/index",
-        "iconPath": "image/icon/order-0.png",
-        "selectedIconPath": "image/icon/order-1.png",
-        "text": "机型"
+        "iconPath": "img/icon_product_60.png",
+        "selectedIconPath": "img/icon_product_60.png"
       },
       {
         "pagePath": "page/pages/person/index",
-        "iconPath": "image/icon/order-0.png",
-        "selectedIconPath": "image/icon/order-1.png",
-        "text": "我的"
+        "iconPath": "img/icon_person_gray_60.png",
+        "selectedIconPath": "img/icon_person_black_60.png"
       }
     ]
   },

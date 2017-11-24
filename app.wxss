@@ -1,7 +1,7 @@
 view {
   overflow: hidden;
   box-sizing: border-box;
-  font-family: "Microsoft YaHei";
+  font-family: PingFang-SC-Medium;
 }
 
 page {
@@ -23,7 +23,7 @@ page {
 
 .sub-title {
   font-weight: bold;
-  font-size: 32rpx;
+  font-size: 36rpx;
 }
 
 .common-width {
@@ -44,4 +44,34 @@ page {
 
 .padding-right {
   padding-right: 40rpx;
+}
+
+
+/** grid **/
+.grid-cols {
+  overflow: hidden;
+}
+
+.grid-col {
+  float: left;
+  width: 25%;
+}
+
+.grid-cols-2 .grid-col {
+  width: 50%;
+}
+
+.grid-cols-3 .grid-col {
+  width: 33.3333%;
+}
+
+/** mue-button **/
+.page .mue-button {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.page .mue-button::after {
+  display: none;
 }

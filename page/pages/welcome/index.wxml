@@ -1,8 +1,9 @@
 <import src="../../components/search-entry.wxml"/>
 <view class="container">
-    <template is="search-entry"/>
+    <template is="search-entry" data="{{ iconSearch: iconSearch }}"/>
     <view class="swiper-wrapper">
-        <swiper indicator-dots="true" autoplay="true" interval="2000">
+        <swiper indicator-dots="true" autoplay="true" interval="2000" indicator-color="#cda8df"
+                indicator-active-color="#fff">
             <block wx:for="{{imgUrls}}" wx:key="{{index}}">
                 <swiper-item>
                     <image src="{{item}}" class="slide-image"/>
@@ -10,39 +11,101 @@
             </block>
         </swiper>
     </view>
-    <view class="category-cols">
-        <view class="category-col">
-            <image class="icon" src="../../../img/icon2.png"></image>
-            <view class="text">手机回收</view>
-        </view>
-        <view class="category-col">
-            <image class="icon" src="../../../img/icon2.png"></image>
-            <view class="text">平板回收</view>
-        </view>
-        <view class="category-col">
-            <image class="icon" src="../../../img/icon2.png"></image>
-            <view class="text">笔记本回收</view>
-        </view>
+
+    <view class="cate-cols">
+        <button class="cate-col mue-navigator" bindtap="switchProducts" data-cid="{{ item.cid }}" data-bid="{{ item.bid }}"
+                plain="true" hover-class="mue-active" wx:for="{{ cateList }}">
+            <image class="icon" src="{{ item.imgSrc }}"></image>
+            <view class="text">{{ item.text }}</view>
+        </button>
     </view>
-    <view class="section products-wrapper">
-        <view class="section-title common-padding sub-title">
+
+    <view class="sec products-wrapper">
+        <view class="sec-title common-padding sub-title">
             <view class="left">热门回收</view>
-            <view class="right">更多</view>
+            <navigator class="right" url="../products/index" open-type="switchTab">更多</navigator>
         </view>
-        <view class="section-content">
+        <view class="sec-content">
             <scroll-view class="product-cols" scroll-x="true" scroll-with-animation="true">
-                <view class="product-col" wx:for="{{productList}}" wx:key="{{index}}" data-pid="{{item.productid}}">
+                <navigator url="../products/index" class="product-col" wx:for="{{productList}}" wx:key="{{index}}"
+                           data-pid="{{item.productid}}">
                     <image class="p-img" src="{{ cdn + item.productlogo}}"></image>
                     <view class="p-name">{{item.productname}}</view>
-                    <view class="p-desc">最高回收价|<text class="p-price">{{item.maxprice}}</text></view>
+                    <view class="p-desc">最高回收价 |
+                        <text class="p-price">￥{{item.maxprice / 100}}</text>
+                    </view>
                     <view class="p-button">马上回收</view>
-                </view>
+                </navigator>
             </scroll-view>
         </view>
     </view>
-    <view class="section">
-        <view class="section-title common-padding sub-title">
+
+    <view class="sec recycle-process">
+        <view class="sec-title common-padding sub-title">
             <view class="left">回收流程</view>
+        </view>
+        <view class="sec-content">
+            <view class="grid-cols">
+                <view class="grid-col">
+                    <image class="icon" src="../../../img/icon-evaluate.png"></image>
+                    <view class="col-text">在线估价</view>
+                </view>
+                <view class="grid-col">
+                    <image class="icon" src="../../../img/icon-post.png"></image>
+                    <view class="col-text">顺丰邮寄</view>
+                </view>
+                <view class="grid-col">
+                    <image class="icon" src="../../../img/icon-check.png"></image>
+                    <view class="col-text">专业检测</view>
+                </view>
+                <view class="grid-col">
+                    <image class="icon" src="../../../img/icon-cash.png"></image>
+                    <view class="col-text">坐等收款</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="sec service-ensure">
+        <view class="sec-title common-padding sub-title">
+            <view class="left">服务保障</view>
+        </view>
+        <view class="sec-content">
+            <view class="grid-cols grid-cols-2">
+                <view class="grid-col">
+                    <image class="icon" src="../../../img/icon-qgby.png"></image>
+                    <view class="col-text">全国包邮</view>
+                </view>
+                <view class="grid-col">
+                    <image class="icon" src="../../../img/icon-qtbj.png"></image>
+                    <view class="col-text">七天保价</view>
+                </view>
+                <view class="grid-col">
+                    <image class="icon" src="../../../img/icon-sddk.png"></image>
+                    <view class="col-text">闪电打款</view>
+                </view>
+                <view class="grid-col">
+                    <image class="icon" src="../../../img/icon-ysbh.png"></image>
+                    <view class="col-text">隐私保护</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="sec partner">
+        <view class="sec-title common-padding sub-title">
+            <view class="left">合作伙伴</view>
+        </view>
+        <view class="sec-content">
+            <view class="grid-cols grid-cols-3">
+                <view class="grid-col">
+                    <image class="icon" src="../../../img/logo-hw.png"></image>
+                </view>
+                <view class="grid-col">
+                    <image class="icon" src="../../../img/logo-wx.png"></image>
+                </view>
+                <view class="grid-col">
+                    <image class="icon" src="../../../img/logo-58.png"></image>
+                </view>
+            </view>
         </view>
     </view>
 </view>

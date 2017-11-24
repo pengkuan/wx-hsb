@@ -46,6 +46,12 @@
 					"name": "trade",
 					"pathName": "page/hsb/trade/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "welcome",
+					"pathName": "page/pages/welcome/index",
+					"query": ""
 				}
 			]
 		}

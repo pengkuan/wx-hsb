@@ -1,7 +1,8 @@
 <template name="search-entry">
-    <view class="search-entry">
-        <view class="left-text">iPhone6</view>
-        <view class="icon-search"></view>
-    </view>
+    <navigator class="search-entry" url="../search/index">
+        <text class="left-text">iPhoneX</text>
+        <view class="icon-search">
+            <image class="icon" src="{{ iconSearch }}"></image>
+        </view>
+    </navigator>
 </template>
-
