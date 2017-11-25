@@ -183,6 +183,7 @@ export default {
     return this.userInfo;
   },
 
+
   /**
    * 设置微信token {openid, unionid}
    */
@@ -195,29 +196,5 @@ export default {
    */
   getWxToken () {
     return this.wxToken;
-  },
-
-  // 查询订单列表
-  orders (pageIndex = 1, pageSize = 6) {
-    let ctx = this;
-    return new Promise((resolve, reject) => {
-      Utils.post({
-        url: url.orders,
-        data: {
-          uid: ctx.userInfo.uid,
-          userkey: ctx.userInfo.userkey,
-          pageIndex,
-          pageSize
-        },
-        success (res) {
-          res = res.data;
-          if (res.retcode == 0) {
-            resolve(res.data)
-          } else {
-            reject(res.retinfo);
-          }
-        }
-      })
-    })
   },
 }

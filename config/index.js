@@ -28,6 +28,10 @@ export const url = {
 
   // 订单分页查询
   orders: `${user}getOrderList`,
+  // 订单详情
+  order: `${user}getOrderDetails`,
+  // 取消订单
+  cancelOrder: `${order}cancelOrder`,
 
   // 获取机型分类
   categories: `${product}categories`,
