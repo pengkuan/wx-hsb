@@ -1,21 +1,27 @@
 import {url, WX_APP_ID, WX_AUTH_TYPE} from '../config/index';
 import Utils from '../util/utils';
-
-// 微信开放信息
-let wxOpenInfo = null;
+let app = getApp();
 
 export default {
 
+  // 微信开放信息
+  wxOpenInfo: {},
+  // 回收宝账户信息
+  userInfo: {},
+  // 微信票据
+  wxToken: {}, // {openid, unionid}
+
   // 获取微信用户的 微信开发信息
   getWxOpenInfo () {
+    let ctx = this;
     return new Promise((resolve, reject) => {
-      if (wxOpenInfo !== null) resolve(wxOpenInfo);
+      if (Object.keys(this.wxOpenInfo).length !== 0) resolve(this.wxOpenInfo);
       wx.getUserInfo({
         lang: 'zh_CN',
         withCredentials: false,
         success(res) {
-          wxOpenInfo = res.userInfo;
-          resolve(wxOpenInfo)
+          ctx.wxOpenInfo = res.userInfo;
+          resolve(ctx.wxOpenInfo)
         }
       });
     });
@@ -129,6 +135,35 @@ export default {
   },
 
   /**
+   * 已经绑定手机号的用户解绑手机号
+   * @param uid
+   * @param userkey
+   * @param openid
+   * @return {Promise}
+   */
+  authUserUnbindTel ({uid, userkey, openid}) {
+    return new Promise((resolve, reject) => {
+      Utils.post({
+        url: url.authUserUnbindTel,
+        data: {
+          uid,
+          openid,
+          userkey,
+          auth_type: WX_AUTH_TYPE
+        },
+        success (res) {
+          res = res.data;
+          if (res.retcode == 0) {
+            resolve(res.data)
+          } else {
+            reject(res.retinfo);
+          }
+        }
+      })
+    })
+  },
+
+  /**
    * 将登录后的用户信息存到本地
    * @param params
    */
@@ -136,6 +171,53 @@ export default {
     wx.setStorage({
       key: 'userInfo',
       data: params
+    });
+    this.userInfo = params;
+  },
+
+  /**
+   * 获取用户的登录信息
+   * @return {*}
+   */
+  getUserInfo () {
+    return this.userInfo;
+  },
+
+  /**
+   * 设置微信token {openid, unionid}
+   */
+  setWxToken (wxToken) {
+    this.wxToken = wxToken;
+  },
+
+  /**
+   * 获取微信token
+   */
+  getWxToken () {
+    return this.wxToken;
+  },
+
+  // 查询订单列表
+  orders (pageIndex = 1, pageSize = 6) {
+    let ctx = this;
+    return new Promise((resolve, reject) => {
+      Utils.post({
+        url: url.orders,
+        data: {
+          uid: ctx.userInfo.uid,
+          userkey: ctx.userInfo.userkey,
+          pageIndex,
+          pageSize
+        },
+        success (res) {
+          res = res.data;
+          if (res.retcode == 0) {
+            resolve(res.data)
+          } else {
+            reject(res.retinfo);
+          }
+        }
+      })
     })
-  }
+  },
 }

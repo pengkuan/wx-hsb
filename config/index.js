@@ -10,8 +10,11 @@ export const host = 'https://www.huishoubao.com/';
 const user = `${host}common/user/`;
 // Product Model
 const product = `${host}common/product/`;
+// Order Model
+const order = `${host}common/order/`;
 
 export const url = {
+
   // 获取微信openid
   wxOpenId: `${user}wx_openid`,
   // 第三方授权登录
@@ -20,6 +23,11 @@ export const url = {
   bindTelLogin: `${user}authUserBindTelLogin`,
   // 获取手机验证码
   getCode: `${user}getCode`,
+  // 第三方用户手机号解除绑定(用户已经将手机号和openid绑定起来)
+  authUserUnbindTel: `${user}authUserUnbindTel`,
+
+  // 订单分页查询
+  orders: `${user}getOrderList`,
 
   // 获取机型分类
   categories: `${product}categories`,
@@ -32,6 +40,6 @@ export const url = {
   // 估价
   price: `${host}v2/1196/api/products_evaluate`,
   // 获取顺丰地址
-  sfCity: `https://www.huishoubao.com/common/order/getSfCity`,
+  sfCity: `${order}getSfCity`,
   // 高速产品查找
 };

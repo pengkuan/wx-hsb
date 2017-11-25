@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -51,6 +51,18 @@
 					"id": -1,
 					"name": "welcome",
 					"pathName": "page/pages/welcome/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "bind",
+					"pathName": "page/pages/bind/index",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "orders",
+					"pathName": "page/pages/orders/index",
 					"query": ""
 				}
 			]

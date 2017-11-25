@@ -12,7 +12,7 @@
     "page/pages/bind/index",
     "page/pages/help/index",
     "page/pages/about/index",
-    "page/pages/coupon/index",
+    "page/pages/coupons/index",
 
     "page/hsb/index/index",
     "page/hsb/mail-method/mail-method",
@@ -56,8 +56,8 @@
       },
       {
         "pagePath": "page/pages/products/index",
-        "iconPath": "img/icon_product_60.png",
-        "selectedIconPath": "img/icon_product_60.png"
+        "iconPath": "img/icon_product_gray_60.png",
+        "selectedIconPath": "img/icon_product_black_60.png"
       },
       {
         "pagePath": "page/pages/person/index",

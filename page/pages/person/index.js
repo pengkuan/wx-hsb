@@ -1,16 +1,16 @@
 import user from '../../../model/user';
-let ctx;
+let ctx, app = getApp();
 Page({
   data: {
     userInfo: {},
     wxOpenInfo: {},
     grid1Cols: [{
       text: '我的订单',
-      path: '',
+      path: '../orders/index',
       icon: '../../../img/icon-order.png',
     }, {
       text: '我的优惠券',
-      path: '',
+      path: '/coupons/index',
       icon: '../../../img/icon-coupon.png',
     }, {
       text: '邮寄地址',
@@ -39,35 +39,41 @@ Page({
     ctx = this;
     wx.setNavigationBarTitle({title: '个人中心'});
     user.getWxOpenInfo().then(res => {
-      ctx.setData({
-        wxOpenInfo: res
-      })
+      ctx.setData({ wxOpenInfo: res })
     });
-    let userInfo = wx.getStorageSync('userInfo');
-    if(!(userInfo && userInfo.tel && userInfo.us_uid)) {
+    let userInfo = user.getUserInfo();
+    if (!(userInfo && userInfo.tel && userInfo.us_uid))
       ctx.login();
-    } else {
-      console.log(userInfo);
-      ctx.setData({
-        userInfo: userInfo
-      })
-    }
+    else
+      ctx.setData({ userInfo });
   },
   login () {
     user.getWxCode().then(code => {
       user.getWxOpenId(code).then(data => {
+        // 保存wx票据 绑定和解绑都有用到
+        user.setWxToken(data);
         user.login(data.openid).then(loginRes => {
+          // 保存账户的回收宝信息
           user.setUserInfo(loginRes);
+          ctx.setData({ userInfo: loginRes });
         }, err => {
           // C++不支持errCode识别，这里假设错误都是用户没有绑定手机号
-          wx.navigateTo({ url: `../bind/index?openid=${ data.openid }&unionid=${ data.unionid }` })
+          // wx.navigateTo({ url: `../bind/index?openid=${ data.openid }&unionid=${ data.unionid }` })
         })
       })
     })
   },
-  switchBind () {
+  switchBind (e) {
+    let dataSet = e.currentTarget.dataset;
     wx.navigateTo({
-
+      url: `../bind/index?type=${dataSet.mark}`
+    })
+  },
+  // 页面跳转
+  switchPage (e) {
+    let dataSet = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: dataSet.url
     })
   }
 });

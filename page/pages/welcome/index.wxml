@@ -13,7 +13,10 @@
     </view>
 
     <view class="cate-cols">
-        <button class="cate-col mue-navigator" bindtap="switchProducts" data-cid="{{ item.cid }}" data-bid="{{ item.bid }}"
+        <button class="cate-col mue-navigator" bindtap="switchProducts"
+                data-cid="{{ item.cid }}"
+                data-bid="{{ item.bid }}"
+                wx:key="{{index}}"
                 plain="true" hover-class="mue-active" wx:for="{{ cateList }}">
             <image class="icon" src="{{ item.imgSrc }}"></image>
             <view class="text">{{ item.text }}</view>
