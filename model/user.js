@@ -83,6 +83,9 @@ export default {
           } else {
             reject(res.retinfo)
           }
+        },
+        fail (res) {
+            console.log(res);
         }
       })
     })

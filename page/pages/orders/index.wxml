@@ -1,6 +1,7 @@
 <view class="container">
-    <scroll-view class="order-list" scroll-y bindscrolltolower="loadMore" bindscrolltoupper="refresh">
-        <view class="order-item" wx:for="{{ orderList }}" wx:key="{{index}}">
+    <scroll-view class="order-list" scroll-y bindscrolltolower="loadMore">
+        <view class="order-item" wx:for="{{ orderList }}" wx:key="{{index}}" data-needlogin="true" data-url="../order/index?orderid={{item.order_id}}" bindtap="switchPage">
+            <view>{{ test.name }}</view>
             <view class="order-top">
                 <view class="p-img-wrapper">
                     <image class="p-img" src="{{ cdn + item.product_pic_url }}"></image>

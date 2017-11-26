@@ -13,7 +13,7 @@ Page({
     isShowNoMoreText: false
   },
 
-  onLoad () {
+  onShow () {
     ctx = this;
     wx.setNavigationBarTitle({
       title: '订单中心'
@@ -29,9 +29,13 @@ Page({
   // 获取订单列表
   loadMore () {
     if (!ctx.data.hasMore) {
-      ctx.setData({isShowNoMoreText: true});
+      ctx.setData({
+        isShowNoMoreText: true
+      });
       setTimeout(() => {
-        ctx.setData({isShowNoMoreText: false});
+        ctx.setData({
+          isShowNoMoreText: false
+        });
       }, 1000)
     }
     let userInfo = ctx.data.userInfo;
@@ -56,7 +60,10 @@ Page({
     });
   },
 
-  // 刷新订单列表
+  /**
+   * 下拉刷新订单列表
+   * 暂时不开启交互不是很好
+   */
   refresh () {
     ctx.setData({
       num: 0,
@@ -84,5 +91,13 @@ Page({
         }
       }
     });
+  },
+
+  // 套页面跳转
+  switchPage (e) {
+    let dataset = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: dataset.url
+    })
   }
 });

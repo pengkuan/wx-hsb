@@ -1,1 +1,65 @@
-
+<view class="container">
+    <view class="grid-rows cps-menu">
+        <view class="grid-row" wx:for="{{ menuList }}" bindtap="handleMenu" data-index="{{index}}">{{ item.text }} ({{ item.length }})</view>
+        <view class="line" style="left: {{ (menuIndex / menuList.length) * 100 + '%' }}"></view>
+    </view>
+    <view class="grid-cols">
+        <view wx:if="{{ menuIndex == 0 }}" class="grid-col">
+            <view class="input-wrapper">
+                <input class="input-add-cps" type="text" placeholder="请输入现金券号码" placeholder-style="font-size: 26rpx;"/>
+                <button class="button-add-cps" plain="true" size="mini">添加</button>
+            </view>
+            <view class="coupon-30 coupon-item">
+                <view class="price-wrapper">
+                    <view class="price-inner">
+                        <view class="price-label">￥</view>
+                        <view class="price-num">30</view>
+                    </view>
+                </view>
+                <view class="coupon-desc">
+                    <view class="label">加价券</view>
+                    <view class="limit-desc">回收金额满500元以上使用</view>
+                </view>
+                <view class="coupon-deadline">
+                    <view>有效期至</view>
+                    <view>2018-02-14</view>
+                </view>
+            </view>
+            <view class="coupon-80 coupon-item">
+                <view class="price-wrapper">
+                    <view class="price-inner">
+                        <view class="price-label">￥</view>
+                        <view class="price-num">80</view>
+                    </view>
+                </view>
+                <view class="coupon-desc">
+                    <view class="label">加价券</view>
+                    <view class="limit-desc">回收金额满500元以上使用</view>
+                </view>
+                <view class="coupon-deadline">
+                    <view>有效期至</view>
+                    <view>2018-02-14</view>
+                </view>
+            </view>
+            <view class="coupon-280 coupon-item">
+                <view class="price-wrapper">
+                    <view class="price-inner">
+                        <view class="price-label">￥</view>
+                        <view class="price-num">280</view>
+                    </view>
+                </view>
+                <view class="coupon-desc">
+                    <view class="label">加价券</view>
+                    <view class="limit-desc">回收金额满500元以上使用</view>
+                </view>
+                <view class="coupon-deadline">
+                    <view>有效期至</view>
+                    <view>2018-02-14</view>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{ menuIndex == 1 }}" class="grid-col">1</view>
+        <view wx:if="{{ menuIndex == 2 }}" class="grid-col">2</view>
+        <view wx:if="{{ menuList.length == 0 }}" class="grid-col">--您还没有优惠券哦--</view>
+    </view>
+</view>

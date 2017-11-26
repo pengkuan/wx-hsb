@@ -44,5 +44,26 @@ export default {
         }
       })
     })
-  }
+  },
+  // 订单详情
+  order ({ orderid, uid, userkey}) {
+    return new Promise((resolve, reject) => {
+      Utils.post({
+        url: url.order,
+        data: {
+          uid,
+          userkey,
+          order_id: orderid
+        },
+        success (res) {
+          res = res.data;
+          if (res.retcode == 0) {
+            resolve(res.data)
+          } else {
+            reject(res.retinfo);
+          }
+        }
+      })
+    })
+  },
 }

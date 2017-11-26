@@ -6,13 +6,13 @@ export const WX_AUTH_TYPE = 2;
 export const WX_APP_ID = 'wx3543d54ab3d1a24e';
 export const host = 'https://www.huishoubao.com/';
 
-// User Model
+// Model
 const user = `${host}common/user/`;
-// Product Model
 const product = `${host}common/product/`;
-// Order Model
 const order = `${host}common/order/`;
+const coupon = `${host}common/coupon/`;
 
+// Router
 export const url = {
 
   // 获取微信openid
@@ -32,6 +32,9 @@ export const url = {
   order: `${user}getOrderDetails`,
   // 取消订单
   cancelOrder: `${order}cancelOrder`,
+
+  // 获取优惠券
+  coupons: `${coupon}coupons`,
 
   // 获取机型分类
   categories: `${product}categories`,

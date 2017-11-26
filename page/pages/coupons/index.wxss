@@ -1,0 +1,163 @@
+.container {
+  min-height: 100%;
+  background: #fff;
+}
+
+/** cps-menu **/
+.cps-menu {
+  position: relative;
+  display: flex;
+  height: 90rpx;
+  line-height: 90rpx;
+  flex-direction: row;
+  border-bottom: 1rpx solid #e7e8f0;
+}
+
+.cps-menu .grid-row {
+  flex: 1;
+  color: #aab0cb;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.cps-menu .current {
+  color: #fabe00;
+}
+
+.cps-menu .line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 33.3333%;
+  height: 6rpx;
+  background-color: #fabe00;
+  transform: scaleX(.2);
+  transform-origin: 50% 50%;
+}
+
+/** grid-cols **/
+.grid-col {
+  display: block;
+  width: 100%;
+}
+
+.input-wrapper {
+  display: flex;
+  padding: 0 40rpx;
+  margin-top: 40rpx;
+}
+
+.input-wrapper .input-add-cps {
+  width: 570rpx;
+  height: 70rpx;
+  padding: 20rpx 30rpx;
+  color: #7c829d;
+  font-size: 26rpx;
+  line-height: 30rpx;
+  border-radius: 35rpx;
+  box-sizing: border-box;
+  background-color: #f9f9fb;
+}
+
+.input-wrapper .button-add-cps {
+  display: inline-block;
+  padding: 0;
+  color: #292e3e;
+  font-size: 28rpx;
+  border: none;
+}
+
+.coupon-item {
+  width: 670rpx;
+  height: 176rpx;
+  margin: 0 auto;
+  margin-top: 40rpx;
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 16rpx;
+}
+
+.price-wrapper {
+  position: relative;
+  float: left;
+  width: 126rpx;
+  height: 126rpx;
+  margin-left: 30rpx;
+  margin-top: 25rpx;
+  margin-bottom: 25rpx;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  line-height: 126rpx;
+}
+
+.price-wrapper .price-num {
+  font-size: 66rpx;
+}
+
+.price-wrapper .price-label {
+  position: absolute;
+  left: 8rpx;
+  top: 36rpx;
+  height: 30rpx;
+  font-size:24rpx;
+  line-height: 30rpx;
+}
+
+.coupon-desc {
+  display: inline-block;
+  float: left;
+  margin-top: 57rpx;
+  margin-left: 12rpx;
+  font-size: 0;
+  line-height: 1;
+}
+
+.coupon-desc .label {
+  font-size: 30rpx;
+}
+
+.coupon-desc .limit-desc {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+}
+
+.coupon-deadline {
+  float: right;
+  margin-top: 56rpx;
+  margin-right: 20rpx;
+  line-height: 36rpx;
+  text-align: center;
+}
+
+.coupon-30 {
+  background-image: linear-gradient(0deg, #f9cea3 0%, #fd8a83 100%);
+}
+
+.coupon-30 .price-wrapper {
+  background: #fbd2b2;
+}
+
+.coupon-80 {
+  background-image: linear-gradient(0deg, #fdc0c3 0%, #f8a5b6 100%);
+}
+
+.coupon-80 .price-wrapper {
+  background: #fdcace;
+}
+
+.coupon-280 {
+  background-image: linear-gradient(0deg, #d1d0fd 0%, #ccbcf8 100%);
+}
+
+.coupon-280 .price-wrapper {
+  background: #d9d8fd;
+}
+
+.coupon-280 .price-num {
+  font-size: 50rpx;
+}
+
+.coupon-280 .price-label {
+  left: 2rpx;
+}

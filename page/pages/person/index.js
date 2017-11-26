@@ -10,7 +10,7 @@ Page({
       icon: '../../../img/icon-order.png',
     }, {
       text: '我的优惠券',
-      path: '/coupons/index',
+      path: '../coupons/index',
       icon: '../../../img/icon-coupon.png',
     }, {
       text: '邮寄地址',
@@ -36,6 +36,7 @@ Page({
     }]
   },
   onLoad() {
+      console.log(111);
     ctx = this;
     wx.setNavigationBarTitle({title: '个人中心'});
     user.getWxOpenInfo().then(res => {

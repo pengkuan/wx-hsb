@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 8,
 			"list": [
 				{
 					"id": 0,
@@ -63,6 +63,18 @@
 					"id": 6,
 					"name": "orders",
 					"pathName": "page/pages/orders/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "order",
+					"pathName": "page/pages/order/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "coupons",
+					"pathName": "page/pages/coupons/index",
 					"query": ""
 				}
 			]

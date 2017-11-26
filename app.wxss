@@ -5,14 +5,16 @@ view {
 }
 
 page {
+  display: flex;
+  min-height: 100%;
   background: #f9f9fb;
 }
 
 .container {
   display: flex;
-  flex-direction: column;
+  flex: 1;
   min-height: 100%;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .text-overflow {
