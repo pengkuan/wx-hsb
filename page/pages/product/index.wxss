@@ -1,0 +1,112 @@
+.container {
+  background: #fff;
+}
+
+/** ------------------------ progress ---------------------------- **/
+.progress {
+  display: flex;
+  height: 30rpx;
+  box-sizing: border-box;
+  background-color: #f9f9fb;
+  justify-content: space-between;
+}
+
+.progress-inner {
+  color: #fff;
+  font-size: 12px;
+  line-height: 30rpx;
+  text-align: right;
+  background: #56b7e2;
+}
+
+/*** --------------------- product-banner --------------------- **/
+.product-banner {
+  width: 670rpx;
+  height: 160rpx;
+  margin: 30rpx auto;
+  border-radius: 12rpx;
+  background-color: #f8f1e8;
+}
+
+.product-banner .p-img {
+  float: left;
+  width: 43rpx;
+  height: 86rpx;
+  margin: 37rpx 44rpx;
+}
+
+.product-banner .right-info {
+  margin-top: 44rpx;
+  color: #292e3e;
+  font-size: 0;
+  line-height: 1;
+}
+
+.product-banner .p-name {
+  font-size: 36rpx;
+}
+
+.product-banner .p-desc {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+}
+
+.header {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  border-bottom: 2rpx solid #f9f9fb;
+}
+
+.content {
+  margin-top: 250rpx;
+}
+
+.option-col {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 40px;
+}
+
+.radio {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  border-radius: 50%;
+  border: 1px #ccc solid;
+}
+
+.item-cols {
+  padding: 0 3%;
+}
+
+.item-col-option {
+  background: #fff;
+}
+
+.option-col {
+  padding: 10px 0;
+  padding-left: 6px;
+}
+
+.option-col.selected .option-col-title{
+  color: #56b7e2;
+}
+
+.item-col-title {
+  height: 40px;
+  line-height: 40px;
+}
+
+.option-col-title {
+  display: flex;
+  align-items: center;
+}
+
+.query {
+  /* float: right; */
+  margin-right: 6px;
+}

@@ -33,8 +33,8 @@ export const url = {
   // 取消订单
   cancelOrder: `${order}cancelOrder`,
 
-  // 获取优惠券
-  coupons: `${coupon}coupons`,
+  // 优惠券
+  coupon,
 
   // 获取机型分类
   categories: `${product}categories`,
@@ -44,8 +44,11 @@ export const url = {
   products: `${product}products`,
   // 获取选定机型的信息
   product: `${host}api/get_product_param`,
+  // 机型搜索
+  search: `${product}search/`,
   // 估价
   price: `${host}v2/1196/api/products_evaluate`,
+
   // 获取顺丰地址
   sfCity: `${order}getSfCity`,
   // 高速产品查找

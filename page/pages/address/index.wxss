@@ -1,0 +1,21 @@
+.logo-addr {
+  width: 388rpx;
+  height: 288rpx;
+  margin: 0 auto;
+  margin-top: 50rpx;
+}
+
+.title {
+  margin-top: 60rpx;
+  color: #292e3e;
+  font-size: 36rpx;
+  text-align: center;
+}
+
+.addr-text {
+  margin-top: 50rpx;
+  color: #292e3e;
+  font-size: 28rpx;
+  line-height: 46rpx;
+  text-align: center;
+}

@@ -77,3 +77,8 @@ page {
 .page .mue-button::after {
   display: none;
 }
+
+.divider {
+  height: 20rpx;
+  background: #f9f9fb;
+}

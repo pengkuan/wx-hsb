@@ -14,12 +14,12 @@ Page({
       icon: '../../../img/icon-coupon.png',
     }, {
       text: '邮寄地址',
-      path: '',
+      path: '../address/index',
       icon: '../../../img/icon-addr.png',
     }],
     grid2Cols: [{
       text: '帮助中心',
-      path: '',
+      path: '../help/index',
       icon: '../../../img/icon_help.svg',
     }, {
       text: '400-080-9966',

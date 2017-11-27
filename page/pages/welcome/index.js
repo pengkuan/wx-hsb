@@ -35,8 +35,13 @@ Page({
   },
   getProduct () {
     product.products({cid: 1, bid: -1, num: 8, pageSize: 8}).then(data => {
+      let productList = data.productlist.splice(0, 8);
       ctx.setData({
-        productList: data.productlist.splice(0, 8)
+        productList
+      });
+      wx.setStorage({
+        key: 'hotList',
+        data: productList
       })
     })
   },

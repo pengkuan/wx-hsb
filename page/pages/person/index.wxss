@@ -1,4 +1,8 @@
 /** user-box **/
+.container {
+  background: #fff;
+}
+
 .user-box {
   position: relative;
   display: flex;
@@ -68,7 +72,6 @@
 }
 
 .grid-fore2 {
-  height: 800rpx;
   margin-top: 20rpx;
 }
 
@@ -84,4 +87,13 @@
 .grid-fore2 .grid-col-text {
   color: #7c829d;
   font-size: 26rpx;
+}
+
+.mue-button {
+  background: #fff;
+  border: none;
+}
+
+.mue-button:after {
+  border: none;
 }

@@ -1,1 +1,47 @@
-
+<view class="container">
+    <view class="price-result">
+        <view class="price-result-inner">
+            <image class="icon-money" mode="aspectFill" src="../../../img/price/icon_money.png"></image>
+            <view class="price-wrapper">
+                <view class="label">￥</view>
+                <view class="number">5899</view>
+            </view>
+            <view class="price-desc">您的宝贝预估可卖</view>
+        </view>
+        <image class="price-result-bg" mode="aspectFill" src="../../../img/price/icon_price_bg.png"></image>
+    </view>
+    <view class="select-info">
+        <view class="grid-col">
+            <view class="grid-col-tit">评估机型：iPhone X</view>
+            <view class="grid-col-rit">重新估价</view>
+        </view>
+        <view class="select-list">
+            <view class="select-item{{ (index+1) % 3 == 0 ? ' mr-0' : '' }}" wx:for="{{ selectText }}">{{ item }}</view>
+        </view>
+        <view class="next-predict">预计下月下跌
+            <text class="arrow_down">↓</text>
+            113元，与其闲置，不如换钱买买买
+        </view>
+    </view>
+    <view class="chart">
+        <view class="chart-tit">
+            <view class="mine-price">
+                <view class="line"></view>
+                <text>回收宝报价</text>
+            </view>
+            <view class="mrk-price">
+                <view class="line"></view>
+                <text>市场均价</text>
+            </view>
+        </view>
+        <view class="chart-left">
+            <text class="axis-y" wx:for="{{values}}">{{item}}</text>
+        </view>
+        <view class="chart-right">
+            <image src="/image/icon/chart.png" class="chart-image"/>
+            <view class="axis-x">
+                <text class="axis-x-text" wx:for="{{month}}" wx:key="index">{{item}}月</text>
+            </view>
+        </view>
+    </view>
+</view>

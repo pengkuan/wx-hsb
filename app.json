@@ -10,9 +10,10 @@
     "page/pages/orders/index",
     "page/pages/order/index",
     "page/pages/bind/index",
-    "page/pages/help/index",
+    "page/pages/coupons/index",
     "page/pages/about/index",
-    "page/pages/coupons/index"
+    "page/pages/help/index",
+    "page/pages/address/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

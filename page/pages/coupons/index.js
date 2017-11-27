@@ -14,7 +14,8 @@ Page({
     }, {
       text: '已过期',
       length: 2
-    }]
+    }],
+    token: ''
   },
 
   onShow () {
@@ -27,7 +28,10 @@ Page({
       backgroundColor: '#ffffff'
     });
     let userInfo = wx.getStorageSync('userInfo');
-    coupon.coupons({
+    ctx.setData({
+      userInfo
+    });
+    coupon.page({
       uid: userInfo.us_uid,
       userkey: userInfo.userkey
     }).then(cps => {
@@ -49,6 +53,29 @@ Page({
     console.log(dataset);
     ctx.setData({
       menuIndex: dataset.index
+    })
+  },
+
+  handleToken (e) {
+    ctx.setData({
+      token: e.detail.value
+    })
+  },
+
+  addCoupon () {
+    coupon.add({
+      token: ctx.data.token,
+      uid: ctx.data.userInfo.us_uid
+    }).then(res => {
+      wx.showToast({
+        title: '添加成功'
+      })
+    }, err => {
+      wx.showModal({
+        title: '提示',
+        content: err,
+        showCancel: false
+      })
     })
   }
 });

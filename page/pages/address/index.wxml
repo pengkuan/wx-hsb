@@ -1,0 +1,9 @@
+<view class="container">
+    <image class="logo-addr" mode="aspectFit" src="../../../img/icon_addr.png"></image>
+    <view class="title">邮寄地址</view>
+    <view class="addr-text">
+        <view>深圳市南山区科技园威新软件园8号楼7楼</view>
+        <view>回收宝（收）</view>
+        <view>Tel：400-080-9966</view>
+    </view>
+</view>

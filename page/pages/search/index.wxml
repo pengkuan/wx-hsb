@@ -1,1 +1,52 @@
-
+<view class="container">
+    <view class="mue-header search">
+        <view class="search-box">
+            <input class="search-input" type="text" value="{{key}}" bindinput="handleKey"/>
+            <image class="icon-search" src="../../../img/icon-search.svg"></image>
+        </view>
+        <navigator class="back" open-type="navigateBack" delta="1">取消</navigator>
+    </view>
+    <view class="mue-content" wx:if="{{ !key.length }}">
+        <view class="search-history" wx:if="{{ history.length }}">
+            <view class="hd">
+                <view>最近搜索</view>
+                <image class="icon-delete" src="../../../img/delete.svg" bindtap="clearHistory"></image>
+            </view>
+            <view class="bd">
+                <view wx:for="{{ history }}"
+                      class="p-item{{ (index % 2) == 0 ? ' border-rt' : '' }}"
+                      data-url="../product/index?itemid={{item.id}}"
+                      bindtap="switchPage"
+                      wx:key="{{index}}">
+                    <view>{{ item.name }}</view>
+                </view>
+            </view>
+            <view class="divider"></view>
+        </view>
+        <view class="search-hot">
+            <view class="hd">热门搜索</view>
+            <view class="bd">
+                <view wx:for="{{ hotList }}"
+                      class="p-item{{ (index % 2) == 0 ? ' border-rt' : '' }}"
+                      data-url="../product/index?itemid={{item.productid}}"
+                      bindtap="switchPage"
+                      wx:key="{{index}}">
+                    <view>{{ item.productname }}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="mue-content" wx:if="{{ key.length }}">
+        <scroll-view class="searchList" scroll-y bindscrolltolower="loadMore">
+            <view class="p-item" wx:for="{{ searchList }}" wx:key="{{index}}"
+                  data-url="../product/index?itemid={{item.productid}}"
+                  data-log="true"
+                  data-name="{{item.productname}}"
+                  data-id="{{item.productid}}"
+                  bindtap="switchPage">
+                <view>{{ item.productname }}</view>
+            </view>
+            <view wx:if="{{ isShowNoMoreText }}" class="no-more">-没有更多蛋了不要再拉扯了(黑人问号)-</view>
+        </scroll-view>
+    </view>
+</view>

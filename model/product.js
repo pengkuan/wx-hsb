@@ -83,5 +83,22 @@ export default {
         }
       })
     })
+  },
+  search (params) {
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: url.search + params.key,
+        data: {
+          pageIndex: params.pageIndex || 1
+        },
+        success: function(res){
+          if (res.data) {
+            resolve(res.data.data)
+          } else {
+            reject(res)
+          }
+        }
+      })
+    })
   }
 }

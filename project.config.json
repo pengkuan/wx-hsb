@@ -21,11 +21,11 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 13,
 			"list": [
 				{
 					"id": 0,
-					"name": "product",
+					"name": "products",
 					"pathName": "page/pages/products/index",
 					"query": ""
 				},
@@ -76,6 +76,35 @@
 					"name": "coupons",
 					"pathName": "page/pages/coupons/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "search",
+					"pathName": "page/pages/search/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "address",
+					"pathName": "page/pages/address/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "saerch",
+					"pathName": "page/pages/search/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "product",
+					"pathName": "page/pages/product/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "price",
+					"pathName": "page/pages/price/index"
 				}
 			]
 		}

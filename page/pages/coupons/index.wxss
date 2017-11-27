@@ -50,7 +50,7 @@
 .input-wrapper .input-add-cps {
   width: 570rpx;
   height: 70rpx;
-  padding: 20rpx 30rpx;
+  padding: 0 30rpx;
   color: #7c829d;
   font-size: 26rpx;
   line-height: 30rpx;

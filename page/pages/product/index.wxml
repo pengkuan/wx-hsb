@@ -1,1 +1,68 @@
-
+<view class="container">
+    <view class="header">
+        <view class="progress">
+            <view class="progress-inner" style="width:10%">1/10</view>
+        </view>
+        <view class="product-banner">
+            <image class="p-img" src="{{ cdn + pInfo.picUrl }}"></image>
+            <view class="right-info">
+                <view class="p-name">{{ pInfo.productName }}</view>
+                <view class="p-desc">如实填写详细信息，预估更准确，收款更快速！</view>
+            </view>
+        </view>
+    </view>
+    <view class="content">
+        <view class="item-cols">
+            <view class="item-col" wx:for="{{ base }}" wx:for-item="i">
+                <view class="item-col-title">{{ i.name }}</view>
+                <view class="item-col-option">
+                    <view class="option-cols">
+                        <view class="option-col{{ selects[i.id] == j.id ? ' selected' : ''}}" wx:for="{{ i.question }}" wx:for-item="j" wx:key="j.id">
+                            <view class="option-col-title" bindtap="baseTapHandler" data-pid="{{ i.id }}" data-cid="{{ j.id }}">
+                                <view class="radio"></view>
+                                <view class="text">{{ j.name }}</view>
+                            </view>
+                            <view class="query" wx:if="{{ j.picture.length }}">详情</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="item-cols">
+            <view class="item-col" wx:for="{{ outlook }}" wx:for-item="i">
+                <view class="item-col-title">{{ i.name }}</view>
+                <view class="item-col-option">
+                    <view class="option-cols">
+                        <view class="option-col{{ selects[i.id] == j.id ? ' selected' : ''}}" wx:for="{{ i.question }}" wx:for-item="j" wx:key="j.id">
+                            <view class="option-col-title" bindtap="baseTapHandler" data-pid="{{ i.id }}" data-cid="{{ j.id }}">
+                                <view class="radio"></view>
+                                <view class="text">{{ j.name }}</view>
+                            </view>
+                            <view class="query" wx:if="{{ j.picture.length }}">详情</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="item-cols">
+            <view class="item-col" wx:for="{{ func }}" >
+                <view class="item-col-option">
+                    <view class="option-cols">
+                        <view class="option-col{{ selects[item.kid] == item.oid ? ' selected' : ''}}">
+                            <view class="option-col-title"
+                                  bindtap="funcTapHandler" data-kid="{{ item.kid }}" data-did="{{ item.did }}" data-oid="{{ item.oid }}">
+                                <view class="radio"></view>
+                                <view class="text">{{ item.desc }}{{ selects[item.kid] }}</view>
+                            </view>
+                            <view class="query" wx:if="{{ item.picture.length }}">详情</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="footer">
+        <view bindtap="onSubmit">估价</view>
+        <navigator class="product-col text-overflow" url="../trade/index">下单</navigator>
+    </view>
+</view>
