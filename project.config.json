@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 14,
 			"list": [
 				{
 					"id": 0,
@@ -104,7 +104,13 @@
 				{
 					"id": -1,
 					"name": "price",
-					"pathName": "page/pages/price/index"
+					"pathName": "page/pages/price/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "trade",
+					"pathName": "page/pages/trade/index"
 				}
 			]
 		}

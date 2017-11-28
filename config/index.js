@@ -36,6 +36,9 @@ export const url = {
   // 优惠券
   coupon,
 
+  // 获取上门时间
+  support_visit_time: `${host}common/help/support_visit_time/`,
+
   // 获取机型分类
   categories: `${product}categories`,
   // 品牌
@@ -48,8 +51,9 @@ export const url = {
   search: `${product}search/`,
   // 估价
   price: `${host}v2/1196/api/products_evaluate`,
-
+  // 历史价格走势
+  priceHistory: `${product}priceHistory/`,
   // 获取顺丰地址
-  sfCity: `${order}getSfCity`,
+  sfCity: `${order}getSfCity/`,
   // 高速产品查找
 };

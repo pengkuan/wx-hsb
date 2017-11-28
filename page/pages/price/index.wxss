@@ -111,9 +111,12 @@
 
 .next-predict {
   height: 70rpx;
+  margin-top: 20rpx;
   color: #7c829d;
   font-size: 26rpx;
   line-height: 70rpx;
+  border-top: 1rpx solid #eff0f6;
+  border-bottom: 1rpx solid #eff0f6;
 }
 
 .next-predict .arrow_down {
@@ -122,8 +125,14 @@
   color: #66d4bb;
 }
 
+.chart {
+  margin-top: 22rpx;
+  padding: 0 40rpx;
+}
+
 .chart-tit {
   display: flex;
+  margin-top: 30rpx;
   align-items: center;
   justify-content: center;
 }
@@ -131,6 +140,7 @@
 .chart-tit .mine-price,
 .chart-tit .mrk-price {
   display: inline-block;
+  margin: 0 20rpx;
   color: #aab0cb;
   font-size: 22rpx;
   text-align: center;
@@ -139,7 +149,7 @@
 .mrk-price .line,
 .mine-price .line {
   width: 38rpx;
-  height: 4rpx;
+  height: 8rpx;
   margin: 0 auto;
   margin-bottom: 19rpx;
 }
@@ -150,4 +160,88 @@
 
 .mrk-price .line {
   background: #b967ea;
+}
+
+.chart-wrapper {
+  overflow: hidden;
+  display: flex;
+}
+
+.chart-left {
+  overflow: hidden;
+  width: 90rpx;
+}
+
+.chart-right {
+  overflow: hidden;
+  flex: 1;
+}
+
+.chart-left .axis-y {
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-left .axis-text {
+  color: #cacee0;
+  font-size: 24rpx;
+  line-height: 64rpx;
+}
+
+.chart-right .axis-x {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 1rpx solid #e7e8f0;
+}
+
+.chart-right .axis-text {
+  padding-top: 20rpx;
+  color: #cacee0;
+  font-size: 24rpx;
+  text-align: right;
+}
+
+.chart-right .mue-chart {
+  height: 288rpx;
+}
+
+.chart-rights .canvas-img {
+  width: 100%;
+  height: 100%;
+}
+
+.plug-canvas {
+  width: 100%;
+  height: 400rpx;
+  padding-left: 30rpx;
+  padding-right: 50rpx;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.mue-footer {
+  z-index: 99;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 25rpx 40rpx;
+  background-color: #ffffff;
+}
+
+.mue-content {
+  padding-bottom: 140rpx;
+}
+
+.button-take-order {
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #fff;
+  text-align: center;
+  font-size: 32rpx;
+  background: #fabe00;
+}
+
+.button-take-order:after {
+  display: none;
 }

@@ -84,6 +84,7 @@ export default {
       })
     })
   },
+  // 机型搜索
   search (params) {
     return new Promise((resolve, reject) => {
       wx.request({
@@ -91,6 +92,20 @@ export default {
         data: {
           pageIndex: params.pageIndex || 1
         },
+        success: function(res){
+          if (res.data) {
+            resolve(res.data.data)
+          } else {
+            reject(res)
+          }
+        }
+      })
+    })
+  },
+  priceHistory (params) {
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: `${url.priceHistory}/${params.price}/${params.itemid}/`,
         success: function(res){
           if (res.data) {
             resolve(res.data.data)

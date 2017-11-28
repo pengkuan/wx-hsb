@@ -82,3 +82,16 @@ page {
   height: 20rpx;
   background: #f9f9fb;
 }
+
+.input-ph {
+  color: #cacee0;
+  font-size: 26rpx;
+}
+
+.mue-footer {
+  z-index: 2;
+  position: fixed;
+  bottom: 0;
+  padding: 20rpx 40rpx;
+  background-color: #ffff;
+}

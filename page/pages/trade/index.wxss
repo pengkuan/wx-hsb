@@ -1,0 +1,151 @@
+.container {
+  background: #fff;
+}
+
+.mue-header {
+  width: 750rpx;
+  height: 70rpx;
+  color: #e2c361;
+  font-size: 24rpx;
+  line-height: 70rpx;
+  text-align: center;
+  background-color: #fff9e5;
+}
+
+.grid-col {
+  float: none;
+  display: block;
+  width: 100%;
+  line-height: 1;
+  background-color: #fff;
+}
+
+/** cell-item**/
+.cell-item {
+  position: relative;
+}
+
+.cell-item-inner {
+  display: flex;
+  height: 100rpx;
+  padding: 38rpx 0;
+  margin: 0 40rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cell-item .icon-link {
+  position: absolute;
+  float: right;
+  right: 40rpx;
+  top: 50%;
+  margin-top: -11.5rpx;
+  width: 12rpx;
+  height: 21rpx;
+}
+
+.cell-item-left {
+  display: flex;
+  color: #292e3e;
+  font-size: 32rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cell-item-left .label {
+  margin-left: 20rpx;
+  color: #cacee0;
+  font-size: 26rpx;
+}
+
+
+.pink {
+  color: #ff5c7f;
+  font-size: 28rpx;
+}
+
+/** .grid-col-1 .input **/
+
+.grid-col-1 .input {
+  display: inline-block;
+  width: 315rpx;
+  height: 30rpx;
+  padding: 22rpx 0;
+  margin-bottom: 50rpx;
+  color: #292e3e;
+  font-size: 30rpx;
+  border-bottom: 1rpx solid #cacee0;
+}
+
+.grid-col-1 .inline-list {
+  display: flex;
+  padding: 0 40rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.recycle-cols {
+  display: flex;
+  padding: 0 27rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.recycle-col {
+  width: 322rpx;
+  height: 150rpx;
+  margin: 10rpx 13rpx;
+  font-size: 26rpx;
+  border-radius: 6rpx;
+  text-align: center;
+  color: #7c829d;
+  background: #fff;
+  box-shadow: 0px 10rpx 27rpx 3rpx rgba(135, 142, 160, 0.1);
+}
+
+.col-sf .icon {
+  width: 48rpx;
+  height: 44rpx;
+  margin: 26rpx auto;
+}
+
+.col-visit .icon {
+  width: 56rpx;
+  height: 64rpx;
+  margin: 16rpx auto;
+}
+
+.recycle-col.selected{
+  color: #ffffff;
+  background-color: #fabe00;
+}
+
+/** picker **/
+.grid-col-3 .cell-item-inner {
+  border-bottom: 1rpx solid #eff0f6;
+}
+
+.picker .cell-item-left {
+  color: #5498ff;
+  font-size: 28rpx;
+}
+
+.picker-selected .cell-item-left {
+  color: #000;
+}
+
+/** footer **/
+.mue-footer button {
+  width: 670rpx;
+  height: 90rpx;
+  color: #cacee0;
+  font-size: 32rpx;
+  line-height: 90rpx;
+  border-radius: 4rpx;
+  background-color: #ffffff;
+  border: solid 1rpx #cacee0;
+}
+
+.mue-footer button:after {
+  display: none;
+}

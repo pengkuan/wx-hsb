@@ -1,1 +1,83 @@
-
+<view class="container">
+    <view class="mue-header">确认回收后，回收款项将会在24小时内打到您的微信钱包</view>
+    <view class="mue-content">
+        <view class="grid-col grid-col-1">
+            <view class="cell-item">
+                <view class="cell-item-inner">
+                    <view class="cell-item-left">联系方式</view>
+                </view>
+            </view>
+            <view class="inline-list">
+                <input class="input" type="text" placeholder="姓名" placeholder-class="input-ph"/>
+                <input class="input" type="number" placeholder="联系电话" placeholder-class="input-ph"/>
+            </view>
+        </view>
+        <view class="divider"></view>
+        <view class="grid-col grid-col-2">
+            <view class="cell-item">
+                <view class="cell-item-inner">
+                    <view class="cell-item-left">我的现金券</view>
+                    <view class="cell-item-right pink">+30元</view>
+                </view>
+            </view>
+        </view>
+        <view class="divider"></view>
+        <view class="grid-col grid-col-3">
+            <view class="cell-item">
+                <view class="cell-item-inner">
+                    <view class="cell-item-left">
+                        <view>回收方式</view>
+                        <view class="label">北京、上海、深圳、杭州推荐使用上门回收</view>
+                    </view>
+                </view>
+            </view>
+            <view class="recycle-cols">
+                <view class="recycle-col col-{{ item.way }} {{ item.way == way ? 'selected' : '' }}"
+                      wx:for="{{ ways }}" wx:key="{{index}}">
+                    <image class="icon icon-black" wx:if="{{ item.way != way }}"
+                           src="../../../img/trade/{{ item.way }}_black.svg"></image>
+                    <image class="icon icon-white" wx:if="{{ item.way == way }}"
+                           src="../../../img/trade/{{ item.way }}_white.svg"></image>
+                    <view class="text">{{ item.name }}</view>
+                </view>
+            </view>
+            <!--顺丰城市-->
+            <picker class="cell-item picker {{ sf.value.addr.length ? 'picker-selected' : '' }}"
+                    mode="multiSelector"
+                    value="{{sfAddrIndex}}"
+                    bindchange="handleSfAddr"
+                    bindcolumnchange="handleSfAddrCol"
+                    range="{{sfAddrSelect}}"
+                    range-key="name">
+                <view class="cell-item-inner">
+                    <view class="cell-item-left">
+                        <view wx:if="{{ !sf.value.addr.length }}">选择顺丰上门地址</view>
+                        <view>{{ sf.value.addr }}</view>
+                    </view>
+                    <image class="icon-link" src="../../../img/trade/icon_arrow_right.svg"></image>
+                </view>
+            </picker>
+            <!--顺丰详细地址-->
+            <view class="cell-item">
+                <view class="cell-item-inner">
+                    <view class="cell-item-left">
+                        <input type="text" placeholder="街道门牌号" placeholder-class="input-ph"/>
+                    </view>
+                </view>
+            </view>
+            <!--顺丰上门时间-->
+            <picker class="cell-item picker"
+                    mode="multiSelector"
+                    range="{{ sfDateSelect }}"
+                    value="{{ sfDateIndex }}"
+                    bindcolumnchange="handleSfDateCol">
+                <view class="cell-item-inner">
+                    <image class="icon-link" src="../../../img/trade/icon_arrow_right.svg"></image>
+                </view>
+            </picker>
+        </view>
+    </view>
+    <view class="mue-footer">
+        <button>提交订单</button>
+    </view>
+</view>
