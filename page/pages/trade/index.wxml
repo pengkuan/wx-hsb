@@ -8,8 +8,8 @@
                 </view>
             </view>
             <view class="inline-list">
-                <input class="input" type="text" placeholder="姓名" placeholder-class="input-ph"/>
-                <input class="input" type="number" placeholder="联系电话" placeholder-class="input-ph"/>
+                <input class="input" type="text" bindinput="handleName" placeholder="姓名" placeholder-class="input-ph"/>
+                <input class="input" type="number" bindinput="handleTel" placeholder="联系电话" placeholder-class="input-ph"/>
             </view>
         </view>
         <view class="divider"></view>
@@ -33,6 +33,8 @@
             </view>
             <view class="recycle-cols">
                 <view class="recycle-col col-{{ item.way }} {{ item.way == way ? 'selected' : '' }}"
+                      data-way="{{ item.way }}"
+                      bindtap="switchWay"
                       wx:for="{{ ways }}" wx:key="{{index}}">
                     <image class="icon icon-black" wx:if="{{ item.way != way }}"
                            src="../../../img/trade/{{ item.way }}_black.svg"></image>
@@ -41,40 +43,79 @@
                     <view class="text">{{ item.name }}</view>
                 </view>
             </view>
-            <!--顺丰城市-->
-            <picker class="cell-item picker {{ sf.value.addr.length ? 'picker-selected' : '' }}"
-                    mode="multiSelector"
-                    value="{{sfAddrIndex}}"
-                    bindchange="handleSfAddr"
-                    bindcolumnchange="handleSfAddrCol"
-                    range="{{sfAddrSelect}}"
-                    range-key="name">
-                <view class="cell-item-inner">
-                    <view class="cell-item-left">
-                        <view wx:if="{{ !sf.value.addr.length }}">选择顺丰上门地址</view>
-                        <view>{{ sf.value.addr }}</view>
+            <block wx:if="{{ way == 'sf' }}">
+                <!--顺丰城市-->
+                <picker class="cell-item picker {{ sf.addr.value.length ? 'picker-selected' : '' }}"
+                        mode="multiSelector"
+                        value="{{ sf.addr.indexs }}"
+                        bindchange="handleSfAddr"
+                        bindcolumnchange="handleSfAddrCol"
+                        range="{{sf.addr.selects}}"
+                        range-key="name">
+                    <view class="cell-item-inner">
+                        <view class="cell-item-left">
+                            <view wx:if="{{ !sf.addr.value.length }}">顺丰上门地址</view>
+                            <view>{{ sf.addr.value }}</view>
+                        </view>
+                        <image class="icon-link" src="../../../img/trade/icon_arrow_right.svg"></image>
                     </view>
-                    <image class="icon-link" src="../../../img/trade/icon_arrow_right.svg"></image>
-                </view>
-            </picker>
-            <!--顺丰详细地址-->
+                </picker>
+                <!--顺丰上门时间-->
+                <picker class="cell-item picker {{ sf.date.value.length ? 'picker-selected' : '' }}"
+                        mode="multiSelector"
+                        range="{{ sf.date.selects }}"
+                        value="{{ sf.date.indexs }}"
+                        bindcolumnchange="handleSfDateCol">
+                    <view class="cell-item-inner">
+                        <view class="cell-item-left">
+                            <view wx:if="{{ !sf.date.value.length }}">顺丰上门时间</view>
+                            <view>{{ sf.date.value }}</view>
+                        </view>
+                        <image class="icon-link" src="../../../img/trade/icon_arrow_right.svg"></image>
+                    </view>
+                </picker>
+            </block>
+            <block wx:if="{{ way == 'visit' }}">
+                <!--回收宝城市-->
+                <picker class="cell-item picker {{ hsb.addr.value.length ? 'picker-selected' : '' }}"
+                        mode="multiSelector"
+                        value="{{ hsb.addr.indexs }}"
+                        bindcolumnchange="handleHsbAddrCol"
+                        range="{{ hsb.addr.selects}}"
+                        data-ns="hsb"
+                        data-type="addr"
+                        range-key="name">
+                    <view class="cell-item-inner">
+                        <view class="cell-item-left">
+                            <view wx:if="{{ !hsb.addr.value.length }}">上门城市</view>
+                            <view>{{ hsb.addr.value }}</view>
+                        </view>
+                        <image class="icon-link" src="../../../img/trade/icon_arrow_right.svg"></image>
+                    </view>
+                </picker>
+                <!--回收宝上门时间-->
+                <picker class="cell-item picker {{ hsb.date.value.length ? 'picker-selected' : '' }}"
+                        mode="multiSelector"
+                        range="{{ hsb.date.selects }}"
+                        value="{{ hsb.date.indexs }}"
+                        bindcolumnchange="handleHsbDateCol">
+                    <view class="cell-item-inner">
+                        <view class="cell-item-left">
+                            <view wx:if="{{ !hsb.date.value.length }}">上门时间</view>
+                            <view>{{ hsb.date.value }}</view>
+                        </view>
+                        <image class="icon-link" src="../../../img/trade/icon_arrow_right.svg"></image>
+                    </view>
+                </picker>
+            </block>
+            <!--回收宝详细地址-->
             <view class="cell-item">
                 <view class="cell-item-inner">
                     <view class="cell-item-left">
-                        <input type="text" placeholder="街道门牌号" placeholder-class="input-ph"/>
+                        <input type="text" bindinput="handleStreet" placeholder="街道门牌号" placeholder-class="input-ph"/>
                     </view>
                 </view>
             </view>
-            <!--顺丰上门时间-->
-            <picker class="cell-item picker"
-                    mode="multiSelector"
-                    range="{{ sfDateSelect }}"
-                    value="{{ sfDateIndex }}"
-                    bindcolumnchange="handleSfDateCol">
-                <view class="cell-item-inner">
-                    <image class="icon-link" src="../../../img/trade/icon_arrow_right.svg"></image>
-                </view>
-            </picker>
         </view>
     </view>
     <view class="mue-footer">

@@ -11,6 +11,7 @@ const user = `${host}common/user/`;
 const product = `${host}common/product/`;
 const order = `${host}common/order/`;
 const coupon = `${host}common/coupon/`;
+const help = `${host}common/help/`;
 
 // Router
 export const url = {
@@ -35,9 +36,10 @@ export const url = {
 
   // 优惠券
   coupon,
-
+  // 上门城市
+  hsbCity: `${help}hsbCity/`,
   // 获取上门时间
-  support_visit_time: `${host}common/help/support_visit_time/`,
+  support_visit_time: `${help}support_visit_time/`,
 
   // 获取机型分类
   categories: `${product}categories`,

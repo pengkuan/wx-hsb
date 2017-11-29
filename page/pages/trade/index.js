@@ -1,185 +1,244 @@
 import trade from '../../../model/trade';
 let ctx;
 Page({
-  data: {
-    ways: [{
-      name: '顺丰上门取件',
-      way: 'sf',
-    }, {
-      name: '上门回收（免费）',
-      way: 'visit',
-    }],
-    way: 'sf',
-    sfAddr: {
-      origin: [],
-      indexs: [0, 0, 0],
-      selects: [[], [], []],
+    data: {
+        ways: [{
+            name: '顺丰上门取件',
+            way: 'sf',
+        }, {
+            name: '上门回收（免费）',
+            way: 'visit',
+        }],
+        way: 'sf',
+        sf: {
+            addr: {
+                data: [],
+                indexs: [0, 0, 0],
+                selects: [[], [], []],
+                value: '',
+            },
+            date: {
+                data: [],
+                indexs: [0, 0],
+                selects: [[], []],
+                value: ''
+            },
+        },
+        hsb: {
+            addr: {
+                data: [],
+                indexs: [0, 0],
+                selects: [[], []],
+                value: '',
+            },
+            date: {
+                data: [],
+                indexs: [0, 0],
+                selects: [[], []],
+                value: ''
+            },
+        },
+        street: '',
+        name: '',
+        tel: ''
     },
-    sfTime: {
-      origin: [],
-      indexs: [0, 0],
-      selects: [[], []]
+
+    onLoad () {
+
+        ctx = this;
+        let sf = ctx.data.sf;
+        let hsb = ctx.data.hsb;
+        wx.setNavigationBarTitle({
+            title: '提交订单'
+        });
+
+        // 获取顺丰地址
+        trade.sfCity().then(data => {
+            sf.addr.data = data;
+            sf.addr.selects[0] = data;
+            ctx.setData({
+                sf
+            });
+            ctx.onProvinceChanged(data[0]);
+        });
+
+        // 获取上门时间
+        trade.visitTime().then(res => {
+            sf.date.data = res.sf;
+            sf.date.selects[0] = res.sf.date;
+            sf.date.selects[1] = res.sf.time[0];
+            hsb.date.data = res.hsb;
+            hsb.date.selects[0] = res.hsb.date;
+            hsb.date.selects[1] = res.hsb.time[0];
+            ctx.setData({sf, hsb});
+            this.formatSfDate();
+            this.formatHsbDate();
+        });
+
+        // 回收宝城市
+        trade.hsbCity().then(data => {
+            hsb.addr.data = data;
+            hsb.addr.selects[0] = data;
+            hsb.addr.selects[1] = data[0]['sub'];
+            ctx.setData({hsb});
+        })
     },
-    sfPram: {
-      date: '',
-      addr: '',
-      street: ''
+
+    /**
+     * 监听province变化
+     * @param obj
+     */
+    onProvinceChanged (obj) {
+        let sf = ctx.data.sf;
+        if (obj.sub) sf.addr.selects[1] = obj.sub;
+        ctx.setData({sf});
+        ctx.onCityChanged(obj.sub[0]);
     },
-    hsbAddr: {
-      origin: [],
-      indexs: [0, 0],
-      selects: [[], []],
-    },
-    hsbTime: {
-      origin: [],
-      indexs: [0, 0],
-      selects: [[], []],
-    },
-    hsbPram: {
-      addr: '',
-      date: '',
-      street: '',
-    }
-  },
 
-  onLoad () {
-
-    ctx = this;
-    let sfAddr = ctx.data.sfAddr;
-    let sfTime = ctx.data.sfTime;
-    let sfPram = ctx.data.sfPram;
-    let hsbAddr = ctx.data.hsbAddr;
-    let hsbTime = ctx.data.hsbTime;
-    let hsbPram = ctx.data.hsbPram;
-
-    wx.setNavigationBarTitle({
-      title: '提交订单'
-    });
-
-    // 获取顺丰地址
-    trade.sfCity().then(data => {
-      sfAddr.origin = data;
-      sfAddr.selects[0] = data;
-      ctx.setData({
-        sfAddr
-      });
-      // ctx.onProvinceChanged(data[0]);
-    }, err => {
-      console.log(err);
-    });
-
-    // 获取上门时间
-    trade.visitTime().then(res => {
-      sfTime.origin = res.sf.date;
-      sfTime.selects[0] = res.sf.date;
-      ctx.setData({
-        sfTime
-      })
-    }, err => {
-      console.log(err);
-    })
-  },
-
-  /**
-   * 监听province变化
-   * @param obj
-   */
-  onProvinceChanged (obj) {
-    let sfAddrSelect = this.data.sfAddrSelect;
-    let sf = ctx.data.sf;
-    if (obj.sub) {
-      sfAddrSelect[1] = obj.sub;
-      sf.addr.selects[1] = obj.sub;
-    }
-    ctx.setData({
-      sf,
-      sfAddrSelect
-    });
-    ctx.onCityChanged(obj.sub[0]);
-  },
-
-  sfAddrFormat () {
-    let sf = ctx.data.sf;
-    let selects = sf.addr.selects;
-    let indexs = sf.addr.indexs;
-    for (let i = 0; i < 3; i++) {
-      if (selects[i].length) {
-        sf.value.addr += selects[i][indexs[i]]['name'];
-      }
-    }
-    ctx.setData({
-      sf
-    })
-  },
-
-  /**
-   * 监听 city 变化
-   */
-  onCityChanged (obj) {
-    let sfAddrSelect = this.data.sfAddrSelect;
-    if (obj.sub) sfAddrSelect[2] = obj.sub;
-  },
-
-  handleSfAddr (e) {
-    this.setData({
-      sfAddrIndex: e.detail.value
-    })
-  },
-
-  handleSfAddrCol (event) {
-    let index = event.detail.value,
-      column = event.detail.column,
-      sfAddrData = this.data.sfAddrData,
-      sfAddrSelect = this.data.sfAddrSelect,
-      sfAddrIndex = this.data.sfAddrIndex;
-    switch (column) {
-      case 0:
-        sfAddrSelect[1] = sfAddrData[index]['sub'];
-        if (sfAddrSelect[1][0]['sub']) {
-          sfAddrSelect[2] = sfAddrSelect[1][0]['sub']
-        } else {
-          sfAddrSelect[2] = [];
+    sfAddrFormat () {
+        let sf = ctx.data.sf;
+        sf.addr.value = "";
+        for (let i = 0; i < 3; i++) {
+            if (sf.addr.selects[i].length) sf.addr.value += sf.addr.selects[i][sf.addr.indexs[i]]['name'];
         }
-        sfAddrIndex[column + 1] = 0;
-        sfAddrIndex[column + 2] = 0;
-        break;
-      case 1:
-        if (sfAddrSelect[column][index]['sub']) {
-          sfAddrSelect[2] = sfAddrSelect[column][index]['sub']
-        } else {
-          sfAddrSelect[2] = [];
+        ctx.setData({sf});
+    },
+
+    hsbAddrFormat () {
+        let hsb = ctx.data.hsb;
+        hsb.addr.value = "";
+        for (let i = 0; i < 2; i++) {
+            if (hsb.addr.selects[i].length) hsb.addr.value += hsb.addr.selects[i][hsb.addr.indexs[i]]['name'];
         }
-        sfAddrIndex[column + 1] = 0;
-        break;
+        ctx.setData({hsb});
+    },
+
+    /**
+     * 监听 city 变化
+     */
+    onCityChanged (obj) {
+        let sf = this.data.sf;
+        if (obj.sub) sf.addr.selects[2] = obj.sub;
+    },
+
+    handleSfAddr (e) {
+        let sf = this.data.sf;
+        sf.addr.indexs = e.detail.value;
+        this.setData({sf});
+    },
+
+    handleSfAddrCol (event) {
+        let sf = ctx.data.sf;
+        let index = event.detail.value;
+        let column = event.detail.column;
+        switch (column) {
+            case 0:
+                sf.addr.selects[1] = sf.addr.data[index]['sub'];
+                if (sf.addr.selects[1][0]['sub']) {
+                    sf.addr.selects[2] = sf.addr.selects[1][0]['sub']
+                } else {
+                    sf.addr.selects[2] = [];
+                }
+                sf.addr.indexs[column + 1] = 0;
+                sf.addr.indexs[column + 2] = 0;
+                break;
+            case 1:
+                if (sf.addr.selects[column][index]['sub']) {
+                    sf.addr.selects[2] = sf.addr.selects[column][index]['sub']
+                } else {
+                    sf.addr.selects[2] = [];
+                }
+                sf.addr.indexs[column + 1] = 0;
+                break;
+        }
+        sf.addr.indexs[column] = index;
+        this.setData({
+            sf,
+        });
+        ctx.sfAddrFormat();
+    },
+
+    handleHsbAddrCol (e) {
+        let hsb = ctx.data.hsb;
+        let index = e.detail.value;
+        let column = e.detail.column;
+        switch (column) {
+            case 0:
+                hsb.addr.selects[1] = hsb.addr.data[index]['sub'];
+                hsb.addr.indexs[column] = index;
+                hsb.addr.indexs[column + 1] = 0;
+                break;
+            case 1:
+                hsb.addr.indexs[1] = index;
+                break;
+        }
+        this.setData({
+            hsb
+        });
+        ctx.hsbAddrFormat();
+    },
+
+    handleSfDateCol (e) {
+        let sf = ctx.data.sf;
+        let index = e.detail.value;
+        let column = e.detail.column;
+        if (column == 0) sf.date.selects[1] = sf.date.data.time[index];
+        sf.date.indexs[column] = index;
+        this.setData({sf});
+        this.formatSfDate();
+    },
+
+    handleHsbDateCol (e) {
+        let hsb = ctx.data.hsb;
+        let index = e.detail.value;
+        let column = e.detail.column;
+        if (column == 0) hsb.date.selects[1] = hsb.date.data.time[index];
+        hsb.date.indexs[column] = index;
+        this.setData({hsb});
+        this.formatHsbDate();
+    },
+
+    formatSfDate () {
+        let sf = ctx.data.sf;
+        let temp = [];
+        for (let i = 0; i < 2; i++) {
+            if (sf.date.selects[i].length) temp.push(sf.date.selects[i][sf.date.indexs[i]]);
+        }
+        sf.date.value = temp.join(" ");
+        ctx.setData({sf})
+    },
+
+    formatHsbDate () {
+        let hsb = ctx.data.hsb;
+        let temp = [];
+        for (let i = 0; i < 2; i++) {
+            if (hsb.date.selects[i].length) temp.push(hsb.date.selects[i][hsb.date.indexs[i]]);
+        }
+        hsb.date.value = temp.join(" ");
+        ctx.setData({hsb})
+    },
+
+    switchWay(e) {
+        console.log(e);
+        let dataset = e.currentTarget.dataset;
+        ctx.setData({way: dataset.way})
+    },
+
+    handleName (e) {
+        this.setData({
+            name: e.detail.value
+        })
+    },
+
+    handleTel (e) {
+        this.setData({
+            tel: e.detail.value
+        })
+    },
+
+    handleStreet (e) {
+        this.setData({
+            street: e.detail.value
+        })
     }
-    sfAddrIndex[column] = index;
-    this.setData({
-      sfAddrSelect,
-      sfAddrIndex
-    });
-    ctx.sfAddrFormat();
-  },
-
-  handleSfDateCol (event) {
-    let index = event.detail.value,
-      column = event.detail.column,
-      sfDateOpt = this.data.sfDateOpt,
-      sfDateSelect = this.data.sfDateSelect,
-      sfDateIndex = this.data.sfDateIndex;
-    console.log(sfDateOpt);
-    switch (column) {
-      case 0:
-        sfDateSelect[1] = sfDateOpt.time[index];
-        break;
-    }
-    sfDateIndex[column] = index;
-    this.setData({
-      sfDateSelect,
-      sfDateIndex
-    });
-  },
-
-  formatSfDate () {
-
-  }
 });
