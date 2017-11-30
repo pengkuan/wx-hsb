@@ -25,7 +25,7 @@
             <scroll-view class="product-cols" scroll-y="true" scroll-top="{{productScrollTop}}"
                          bindscrolltoupper="refreshProduct" bindscrolltolower="loadMoreProduct">
                 <navigator class="product-col" wx:for="{{productList}}" wx:key="{{index}}"
-                           url="../select/index?productId={{item.productid}}&name={{item.productname}}">
+                           url="../product/index?productId={{item.productid}}&name={{item.productname}}">
                     <view class="sort-number fore{{index+1}}">{{index + 1}}</view>
                     <view class="product-name text-overflow">{{item.productname}}</view>
                 </navigator>

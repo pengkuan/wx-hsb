@@ -1,8 +1,13 @@
-.container {
+.header {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  width: 100%;
   background: #fff;
+  border-bottom: 2rpx solid #f9f9fb;
 }
 
-/** ------------------------ progress ---------------------------- **/
+/** progress **/
 .progress {
   display: flex;
   height: 30rpx;
@@ -12,14 +17,14 @@
 }
 
 .progress-inner {
-  color: #fff;
-  font-size: 12px;
-  line-height: 30rpx;
+  color: #292e3e;
+  font-size: 24rpx;
   text-align: right;
-  background: #56b7e2;
+  line-height: 30rpx;
+  background: #fabe00;
 }
 
-/*** --------------------- product-banner --------------------- **/
+/** product-banner **/
 .product-banner {
   width: 670rpx;
   height: 160rpx;
@@ -51,62 +56,68 @@
   font-size: 24rpx;
 }
 
-.header {
-  z-index: 2;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #fff;
-  border-bottom: 2rpx solid #f9f9fb;
-}
-
+/** content **/
 .content {
   margin-top: 250rpx;
 }
 
+.item-cols {
+  overflow: hidden;
+  padding: 0 40rpx;
+}
+
 .option-col {
-  display: flex;
+  position: relative;
+  height: 100rpx;
+  padding-left: 80rpx;
+  color: #292e3e;
+  font-size: 26rpx;
   align-items: center;
   justify-content: space-between;
-  min-height: 40px;
 }
 
-.radio {
-  width: 20px;
-  height: 20px;
-  margin-right: 6px;
+.option-col .radio {
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  left: 25rpx;
+  top: 34rpx;
   border-radius: 50%;
-  border: 1px #ccc solid;
+  border: 1px #292e3e solid;
 }
 
-.item-cols {
-  padding: 0 3%;
+.option-col .icon-select {
+  border: none;
+  display: none;
+}
+
+.option-col.selected .radio {
+  display: none;
+}
+
+.option-col.selected .icon-select {
+  display: block;
+}
+
+.option-col .query {
+  margin-right: 6px;
 }
 
 .item-col-option {
   background: #fff;
 }
 
-.option-col {
-  padding: 10px 0;
-  padding-left: 6px;
-}
-
-.option-col.selected .option-col-title{
-  color: #56b7e2;
-}
-
-.item-col-title {
+.item-col-hd {
   height: 40px;
+  font-size: 28rpx;
+  color: #292e3e;
   line-height: 40px;
 }
 
-.option-col-title {
-  display: flex;
-  align-items: center;
+.option-col-hd {
+  line-height: 100rpx;
 }
 
-.query {
-  /* float: right; */
-  margin-right: 6px;
+.mue-footer .mue-button {
+  width: 100%;
 }

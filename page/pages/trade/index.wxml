@@ -8,8 +8,8 @@
                 </view>
             </view>
             <view class="inline-list">
-                <input class="input" type="text" bindinput="handleName" placeholder="姓名" placeholder-class="input-ph"/>
-                <input class="input" type="number" bindinput="handleTel" placeholder="联系电话" placeholder-class="input-ph"/>
+                <input class="input" type="text" value="{{nickname}}" bindinput="handleName" placeholder="姓名" placeholder-class="input-ph"/>
+                <input class="input" type="number" value="{{tel}}" bindinput="handleTel" placeholder="联系电话" placeholder-class="input-ph"/>
             </view>
         </view>
         <view class="divider"></view>
@@ -108,17 +108,17 @@
                     </view>
                 </picker>
             </block>
-            <!--回收宝详细地址-->
+            <!--详细地址-->
             <view class="cell-item">
                 <view class="cell-item-inner">
                     <view class="cell-item-left">
-                        <input type="text" bindinput="handleStreet" placeholder="街道门牌号" placeholder-class="input-ph"/>
+                        <input type="text" bindinput="handleStreet" value="{{street}}" placeholder="街道门牌号" placeholder-class="input-ph"/>
                     </view>
                 </view>
             </view>
         </view>
     </view>
     <view class="mue-footer">
-        <button>提交订单</button>
+        <button bindtap="submitOrder">提交订单</button>
     </view>
 </view>

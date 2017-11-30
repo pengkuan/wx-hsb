@@ -1,0 +1,86 @@
+.container {
+  background: #fff;
+}
+.order-banner {
+  display: flex;
+  width: 670rpx;
+  height: 200rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  border-radius: 12rpx;
+  color: #ffffff;
+  font-size: 0;
+  background-image: linear-gradient(0deg, #5be79c 0%, #5dd9ac 100%);
+}
+
+.order-banner .icon-success {
+  width: 100rpx;
+  height: 100rpx;
+  text-align: center;
+  border-radius: 50%;
+  margin: 50rpx 0 50rpx 40rpx;
+  background-color: transparent;
+}
+
+.order-banner-right {
+  flex: 1;
+  margin-top: 47rpx;
+  margin-left: 30rpx;
+  margin-right: 39rpx;
+}
+
+.right-info-hd {
+  font-size: 32rpx;
+}
+
+.right-info-desc {
+  margin-top: 19rpx;
+  font-size: 24rpx;
+}
+
+.order-info {
+  width: 670rpx;
+  padding: 30rpx 30rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  color: #cacee0;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  border-radius: 10rpx;
+  background-color: #f8fafa;
+}
+
+.pro-list {
+  overflow: hidden;
+  padding: 0 40rpx;
+}
+
+.pro-item {
+  position: relative;
+  padding-left: 120rpx;
+  margin-top: 47rpx;
+  font-size: 0;
+  line-height: 1;
+}
+
+.pro-item .icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 90rpx;
+  height: 90rpx;
+}
+
+.pro-item-hd {
+  margin-top: 13rpx;
+  color: #292e3e;
+  font-size: 26rpx;
+}
+
+.pro-item-bd {
+  margin-top: 30rpx;
+  color: #aab0cb;
+  font-size: 22rpx;
+  line-height: 38rpx;
+}
+

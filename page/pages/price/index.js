@@ -4,10 +4,13 @@ let ctx, app = getApp();
 Page({
 
   data: {
-    selectText: ['大陆国行', '64G', '保修一个月以上', '大陆国行', '64G', '保修一个月以上', '大陆国行', '64G'],
-    price: 44500,
-    months: [8, 9, 10, 11, 12],
-    values: [601, 565, 520, 500, 464]
+    desc: [],
+    price: 0,
+    months: [],
+    values: [],
+    selects: [],
+    productName: '',
+    productId: ''
   },
 
   onLoad () {
@@ -15,25 +18,33 @@ Page({
   },
 
   onShow () {
-    this.refreshChart();
+    let pages = getCurrentPages();
+    let curPage = pages[pages.length - 1];
+    let params = curPage.options;
+    let price = parseInt(params.price) / 100;
+    let productId = params.productId;
+    ctx.setData({
+      price,
+      productId,
+      selects: params.ids,
+      desc: params.desc.split('-'),
+      productName: params.productName
+    });
     product.priceHistory({
-      price: 500
+      price,
+      productId
     }).then(data => {
       ctx.setData({
         months: data.months,
-        values: data.prices
+        values: data.prices,
       });
-      this.refreshChart();
-    }, err => {
-      console.log(err);
       this.refreshChart();
     })
   },
 
+  // 价格走势图
   refreshChart: () => {
     let windowWidth = 320;
-    let months = ctx.data.months;
-    console.log(months);
     try {
       let res = wx.getSystemInfoSync();
       windowWidth = res.windowWidth;
@@ -76,4 +87,14 @@ Page({
       }
     });
   },
+
+  // 跳转到下单页面
+  switchTrade () {
+    let selects = ctx.data.selects;
+    let price = ctx.data.price;
+    let productId = ctx.data.productId;
+    wx.navigateTo({
+      url: `../trade/index?selects=${selects}&price=${price}&productId=${productId}`
+    })
+  }
 });

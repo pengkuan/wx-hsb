@@ -41,6 +41,11 @@ export const url = {
   // 获取上门时间
   support_visit_time: `${help}support_visit_time/`,
 
+  // 下单
+  takeOrder: `${host}common/trade/index`,
+  // 顺丰同步订单
+  takeSfOrder: `${host}common/trade/takeSfOrder`,
+
   // 获取机型分类
   categories: `${product}categories`,
   // 品牌

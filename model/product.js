@@ -105,7 +105,7 @@ export default {
   priceHistory (params) {
     return new Promise((resolve, reject) => {
       wx.request({
-        url: `${url.priceHistory}/${params.price}/${params.itemid}/`,
+        url: `${url.priceHistory}${params.price}/${params.productId}/`,
         success: function(res){
           if (res.data) {
             resolve(res.data.data)

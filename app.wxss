@@ -88,10 +88,35 @@ page {
   font-size: 26rpx;
 }
 
+/** 底部提交按钮 **/
 .mue-footer {
   z-index: 2;
   position: fixed;
   bottom: 0;
+  width: 100%;
   padding: 20rpx 40rpx;
   background-color: #ffff;
+}
+
+.mue-footer .mue-button {
+  height: 90rpx;
+  padding: 0;
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 90rpx;
+  border-radius: 4rpx;
+  background-color: #fabe00;
+}
+
+.mue-footer .mue-button:after {
+  border-color: transparent;
+}
+
+.mue-footer .mue-button[disabled] {
+  color: #cacee0;
+  background-color: #fff;
+}
+
+.mue-footer .mue-button[disabled]:after {
+  border-color: #cacee0;
 }

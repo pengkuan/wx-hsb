@@ -5,7 +5,7 @@
                 <image class="icon-money" mode="aspectFill" src="../../../img/price/icon_money.png"></image>
                 <view class="price-wrapper">
                     <view class="label">￥</view>
-                    <view class="number">5899</view>
+                    <view class="number">{{ price }}</view>
                 </view>
                 <view class="price-desc">您的宝贝预估可卖</view>
             </view>
@@ -13,17 +13,17 @@
         </view>
         <view class="select-info">
             <view class="grid-col">
-                <view class="grid-col-tit">评估机型：iPhone X</view>
-                <view class="grid-col-rit">重新估价</view>
+                <view class="grid-col-tit">评估机型：{{ productName }}</view>
+                <view class="grid-col-rit">
+                    <navigator url="../price/index?" open-type="navigateBack" delta="1">重新估价</navigator>
+                </view>
             </view>
             <view class="select-list">
-                <view class="select-item{{ (index+1) % 3 == 0 ? ' mr-0' : '' }}" wx:for="{{ selectText }}"
+                <view class="select-item{{ (index+1) % 3 == 0 ? ' mr-0' : '' }}" wx:for="{{ desc }}"
                       wx:key="{{index}}">{{ item }}
                 </view>
             </view>
-            <view class="next-predict">预计下月下跌
-                <text class="arrow_down">↓</text>
-                113元，与其闲置，不如换钱买买买
+            <view class="next-predict">预计下月下跌<text class="arrow_down">↓</text>{{ values[3] - values[4] }}元，与其闲置，不如换钱买买买
             </view>
         </view>
         <view class="chart-tit">
@@ -67,6 +67,6 @@
         <!--</view>-->
     </view>
     <view class="mue-footer">
-        <navigator class="button-take-order" url="../trade/index?itemid=44">立即回收</navigator>
+        <button class="button-take-order" bindtap="switchTrade">立即回收</button>
     </view>
 </view>

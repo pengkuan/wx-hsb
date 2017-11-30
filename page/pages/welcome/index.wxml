@@ -30,7 +30,7 @@
         </view>
         <view class="sec-content">
             <scroll-view class="product-cols" scroll-x="true" scroll-with-animation="true">
-                <navigator url="../products/index" class="product-col" wx:for="{{productList}}" wx:key="{{index}}"
+                <navigator url="../product/index?productId={{item.productid}}" class="product-col" wx:for="{{productList}}" wx:key="{{index}}"
                            data-pid="{{item.productid}}">
                     <image class="p-img" src="{{ cdn + item.productlogo}}"></image>
                     <view class="p-name">{{item.productname}}</view>
