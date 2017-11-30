@@ -31,7 +31,7 @@ Page({
       icon: '../../../img/icon_contact.svg',
     }, {
       text: '关于我们',
-      path: '',
+      path: '../about/index',
       icon: '../../../img/icon_about.svg',
     }]
   },

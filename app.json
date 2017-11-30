@@ -12,6 +12,10 @@
     "page/pages/bind/index",
     "page/pages/coupons/index",
     "page/pages/about/index",
+    "page/pages/about/who/index",
+    "page/pages/about/where/index",
+    "page/pages/about/how/index",
+    "page/pages/about/price/index",
     "page/pages/help/index",
     "page/pages/address/index"
   ],

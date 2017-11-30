@@ -1,0 +1,5 @@
+<view class="container">
+    <image class="about-us" src="../../../../img/about/who.png"></image>
+    <view class="content">回收宝是深圳回收宝科技有限公司旗下网站，为国内领先的值得信赖的手机回收专家，秉承“价格高、付款快、服务好”的宗旨，通过微信公众号（hsbTech）和官方网站（www.huishoubao.com）帮助用户快速将闲置的二手电子设备变现。回收宝为多家运营商营业厅“以旧换新”业务合作伙伴。</view>
+    <image class="bottom-bg" src="../../../../img/about/bottom-bg.png"></image>
+</view>
