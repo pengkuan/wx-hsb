@@ -20,25 +20,26 @@
     </view>
     <view class="divider"></view>
     <view class="grid-cols grid-fore2">
-        <!--帮助中心-->
         <navigator class="grid-col mue-button" url="../help/index">
             <image class="grid-col-icon" src="../../../img/person/icon_help.svg"></image>
             <view class="grid-col-text">帮助中心</view>
         </navigator>
-        <!--拨打号码-->
         <button class="grid-col mue-button" bindtap="dialNumber">
             <image class="grid-col-icon" src="../../../img/person/icon_phone.svg"></image>
             <view class="grid-col-text">400-080-9966</view>
         </button>
-        <!--在线客服-->
+
         <contact-button class="grid-col mue-button" type="default-light" size="20" session-from="weapp">
             <image class="grid-col-icon" src="../../../img/person/icon_contact.svg"></image>
             <view class="grid-col-text">在线客服</view>
         </contact-button>
-        <!--关于我们-->
-        <button class="grid-col mue-button">
+        <navigator class="grid-col mue-button" url="../about/index">
             <image class="grid-col-icon" src="../../../img/person/icon_about.svg"></image>
             <view class="grid-col-text">关于我们</view>
-        </button>
+        </navigator>
+        <navigator class="grid-col mue-button" url="../contact/index">
+            <image class="grid-col-icon" src="../../../img/person/icon_about.svg"></image>
+            <view class="grid-col-text">关于我们</view>
+        </navigator>
     </view>
 </view>

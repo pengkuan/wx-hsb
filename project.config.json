@@ -103,14 +103,8 @@
 				},
 				{
 					"id": -1,
-					"name": "trade",
-					"pathName": "page/pages/trade/index",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "success",
-					"pathName": "page/pages/success/index",
+					"name": "about",
+					"pathName": "page/pages/about/index",
 					"query": ""
 				}
 			]

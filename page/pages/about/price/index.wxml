@@ -1,0 +1,5 @@
+<view class="container">
+    <image class="about-us" src="../../../../img/about/our-price.png"></image>
+    <view class="content">回收宝让利用户，强大的供应链和互联网背景让回收宝可以重构部分的产业价值链，去掉传统回收产业链中低效高成本的中间环节，将更多价值让利给用户。回收宝诚信经营，坚决不做虚假报价。我们承诺只要您的手机状况与您提交的评估一致，我们绝不压价。回收宝还和各地的移动、联通、电信等运营商保持着良好的合作关系，不定期的与这些运营商合作进行送话费、送流量的回收活动，给您带来更多的实惠。</view>
+    <image class="bottom-bg" src="../../../../img/about/bottom-bg.png"></image>
+</view>

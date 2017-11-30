@@ -24,23 +24,6 @@ Page({
       text: '邮寄地址',
       path: '../address/index',
       icon: '../../../img/icon-addr.png',
-    }],
-    grid2Cols: [{
-      text: '帮助中心',
-      path: '../help/index',
-      icon: '../../../img/person/icon_help.svg',
-    }, {
-      text: '400-080-9966',
-      path: '',
-      icon: '../../../img/person/icon_phone.svg',
-    }, {
-      text: '在线客服',
-      path: '',
-      icon: '../../../img/person/icon_contact.svg',
-    }, {
-      text: '关于我们',
-      path: '',
-      icon: '../../../img/person/icon_about.svg',
     }]
   },
 
