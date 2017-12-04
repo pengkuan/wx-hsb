@@ -1,34 +1,34 @@
 <view class="container">
     <view class="header">
         <view class="progress">
-            <view class="progress-inner" style="width:10%">1/10</view>
+            <view class="progress-inner" style="width: {{ len / baseSelect.length * 100 + '%' }}">{{ len }}/{{ baseSelect.length }}</view>
         </view>
         <view class="product-banner">
-            <image class="p-img" src="{{ cdn + pInfo.picUrl }}"></image>
+            <image wx:if="{{ pInfo.picUrl }}" class="p-img" src="{{ cdn + pInfo.picUrl }}"></image>
             <view class="right-info">
                 <view class="p-name">{{ pInfo.productName }}</view>
                 <view class="p-desc">如实填写详细信息，预估更准确，收款更快速！</view>
             </view>
         </view>
     </view>
-    <view class="content">
+    <view class="mue-content">
         <view class="item-cols">
-            <view class="item-col" wx:for="{{ base }}" wx:for-item="i" wx:for-index="pIndex">
+            <view class="item-col" wx:for="{{ base }}" wx:for-item="i" wx:for-index="pIndex" wx:key="{{ i.id }}">
                 <view class="item-col-hd">{{ i.name }}</view>
                 <view class="item-col-option">
                     <view class="option-cols">
                         <view class="option-col{{ baseSelect[pIndex]['cid'] == j.id ? ' selected' : ''}}"
                               wx:for="{{ i.question }}"
                               wx:for-item="j"
-                              wx:key="j.id">
-                            <view class="radio"></view>
-                            <image class="radio icon-select" src="../../../img/product/icon_select.svg"></image>
+                              wx:key="{{ j.id }}">
                             <view class="option-col-hd"
                                   bindtap="baseTapHandler"
                                   data-cname="{{ j.name }}"
                                   data-pid="{{ i.id }}"
                                   data-cid="{{ j.id }}">
                                 <view class="text">{{ j.name }}</view>
+                                <view class="radio"></view>
+                                <image class="radio icon-select" src="../../../img/product/icon_select.svg"></image>
                             </view>
                             <!--<view class="query" wx:if="{{ j.picture.length }}">详情</view>-->
                         </view>
@@ -38,7 +38,7 @@
         </view>
         <view class="item-cols">
             <view class="item-col-hd">功能选项</view>
-            <view class="item-col" wx:for="{{ func }}" >
+            <view class="item-col" wx:for="{{ func }}" wx:key="{{ index }}">
                 <view class="item-col-option">
                     <view class="option-cols">
                         <view class="option-col{{ funcSelect[index]['cid'] == item.oid ? ' selected' : ''}}">

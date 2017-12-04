@@ -1,6 +1,8 @@
 import product from '../../../model/product';
-let ctx;
+let ctx, app = getApp();
+
 Page({
+
   data: {
     cateList: [], // 类目列表
     brandList: [], // 品牌列表
@@ -14,16 +16,33 @@ Page({
     left: 0,
     iconSearch: '../../../img/icon-search.svg',
   },
-  onLoad(params) {
+
+  onLoad() {
     ctx = this;
     product.category().then(category => {
       ctx.setData({
-        cateList: category.classlist,
-        cid: category.classlist[0]['classid']
+        cateList: category.classlist
       });
-      if (params.cid) ctx.setData({cid: params.cid});
-      ctx.onCidChanged(params.bid);
     });
+  },
+
+  onShow () {
+    let cid = app.globalData.cid;
+    let bid = app.globalData.bid;
+    let cateList = ctx.data.cateList;
+    let index = 0;
+    for (let i = 0; i < cateList.length; i++) {
+      if (cateList[i]['classid'] == cid) {
+        index = i;
+        break;
+      }
+    }
+    ctx.setData({
+      cid,
+      bid,
+      left: index / cateList.length * 100 + '%'
+    });
+    ctx.onCidChanged(bid);
   },
 
   /**
@@ -99,13 +118,6 @@ Page({
     })
   },
 
-  onProductNumChanged () {
-
-  },
-
-  refreshProduct () {
-    console.log('upper');
-  },
   loadMoreProduct () {
     if(!ctx.data.hasMore) { return }
     let num = ++ctx.data.num;
@@ -122,34 +134,4 @@ Page({
       });
     })
   },
-  upper: function (e) {
-    console.log(e)
-  },
-  lower: function (e) {
-    console.log(e)
-  },
-  scroll: function (e) {
-    console.log(e)
-  },
-  scrollToTop: function (e) {
-    this.setAction({
-      scrollTop: 0
-    })
-  },
-  tap: function (e) {
-    for (let i = 0; i < order.length; ++i) {
-      if (order[i] === this.data.toView) {
-        this.setData({
-          toView: order[i + 1],
-          scrollTop: (i + 1) * 200
-        });
-        break
-      }
-    }
-  },
-  tapMove: function (e) {
-    this.setData({
-      scrollTop: this.data.scrollTop + 10
-    })
-  }
 });

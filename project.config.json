@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -39,12 +39,6 @@
 					"id": 2,
 					"name": "person",
 					"pathName": "page/pages/person/index",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "trade",
-					"pathName": "page/hsb/trade/index",
 					"query": ""
 				},
 				{

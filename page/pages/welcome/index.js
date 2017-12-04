@@ -1,6 +1,9 @@
+import user from '../../../model/user';
 import product from '../../../model/product';
 let ctx, app = getApp();
+
 Page({
+
   data: {
     imgUrls: [
       '../../../img/banner.png',
@@ -28,12 +31,23 @@ Page({
       imgSrc: '../../../img/icon-notebook.png'
     }]
   },
+
   onLoad () {
     ctx = this;
-    wx.setNavigationBarTitle({ title: '回收宝' });
+    wx.setNavigationBarTitle({
+      title: '回收宝'
+    });
     this.getProduct();
   },
+
+  // 获取热门机型
   getProduct () {
+    // 先看本地有没有
+    let hotList = wx.getStorageSync('hotList');
+    if(hotList.length)
+      ctx.setData({
+        productList: hotList
+      });
     product.products({cid: 1, bid: -1, num: 8, pageSize: 8}).then(data => {
       let productList = data.productlist.splice(0, 8);
       ctx.setData({
@@ -45,6 +59,8 @@ Page({
       })
     })
   },
+
+  // 跳转到选择机型页面
   switchProducts (e) {
     let dataSet = e.currentTarget.dataset;
     app.globalData.cid = dataSet.cid;

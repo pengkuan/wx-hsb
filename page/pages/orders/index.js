@@ -1,4 +1,5 @@
 import order from '../../../model/order';
+import user from '../../../model/user';
 let ctx, app = getApp();
 Page({
 
@@ -18,7 +19,8 @@ Page({
     wx.setNavigationBarTitle({
       title: '订单中心'
     });
-    let userInfo = wx.getStorageSync('userInfo');
+    // let userInfo = wx.getStorageSync('userInfo');
+    let userInfo = user.getUserInfo();
     ctx.setData({
       isShowLoadText: true,
       userInfo
@@ -74,6 +76,7 @@ Page({
 
   // 取消订单
   handleCancel (e) {
+    console.log()
     wx.showModal({
       title: '提示',
       content: '这是一个模态弹窗',
@@ -84,7 +87,8 @@ Page({
           order.cancelOrder({
             orderid: dataset.orderid,
             uid: userInfo.us_uid,
-            userkey: userInfo.userkey
+            userkey: userInfo.userkey,
+            olduid: userInfo.old_uid
           }).then(res => {
             console.log(res);
           })

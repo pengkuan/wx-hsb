@@ -1,32 +1,35 @@
 import {url, WX_APP_ID, WX_AUTH_TYPE} from '../config/index';
 import Utils from '../util/utils';
 export default {
-  page (params) {
+  couponList: [],
+  page ({ uid, userkey, pageIndex}) {
+    const ctx = this;
     return new Promise((resolve, reject) => {
-      Utils.get({
+      Utils.post({
         url: `${url.coupon}coupons`,
         data: {
-          uid: params.uid,
-          userkey: params.userkey,
-          pageIndex: params.pageIndex || 1
+          uid,
+          userkey,
+          pageIndex: pageIndex || 1
         },
         success (res) {
           res = res.data;
-          if (res.retcode == 0) {
-            resolve(res.data)
+          if (res.errcode == 0) {
+            ctx.couponList = res.data;
+            resolve(res.data);
           } else {
-            reject(res.retinfo);
+            reject(res.errmsg);
           }
         }
       })
     })
   },
-  add (params) {
+  add ({uid, token}) {
     return new Promise((resolve, reject) => {
       Utils.post({
-        url: `${url.coupon}add/${params.token}`,
+        url: `${url.coupon}add/${token}`,
         data: {
-          uid: params.uid
+          uid
         },
         success (res) {
           res = res.data;

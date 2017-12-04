@@ -36,7 +36,7 @@
                 <text>市场均价</text>
             </view>
         </view>
-        <canvas canvas-id="lineCanvas" disable-scroll="true" class="plug-canvas" bindtouchstart="touchHandler"></canvas>
+        <canvas canvas-id="lineCanvas" disable-scroll="true" class="plug-canvas"></canvas>
         <!--<view class="chart">-->
         <!--<view class="chart-tit">-->
         <!--<view class="mine-price">-->

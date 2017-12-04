@@ -1,15 +1,23 @@
 import trade from '../../../model/trade';
 import order from '../../../model/order';
 import user from '../../../model/user';
+import coupon from '../../../model/coupon';
+import Utils from '../../../util/utils';
 let ctx;
+
 Page({
+
   data: {
     ways: [{
       name: '顺丰上门取件',
       way: 'sf',
+      iconBlack: '../../../img/trade/sf_black.svg',
+      iconWhite: '../../../img/trade/sf_white.svg'
     }, {
       name: '上门回收（免费）',
       way: 'visit',
+      iconBlack: '../../../img/trade/visit_black.svg',
+      iconWhite: '../../../img/trade/visit_white.svg'
     }],
     way: 'sf',
     sf: {
@@ -42,7 +50,9 @@ Page({
     },
     street: '测试地址',
     nickname: '测试高雄',
-    tel: '13249064450'
+    tel: '13249064450',
+    coupon: {}, // 选中的优惠券
+    userInfo: {}
   },
 
   /**
@@ -99,6 +109,27 @@ Page({
         hsb
       });
     })
+  },
+
+  onShow () {
+    let userInfo = user.getUserInfo();
+    ctx.setData({
+      userInfo,
+      tel: userInfo.tel ? userInfo.tel : ""
+    });
+    if (userInfo.tel) {
+      coupon.page({
+        uid: userInfo.us_uid,
+        userkey: userInfo.userkey,
+      }).then(cps => {
+        let option = Utils.getCurPageOpt();
+        let coupon = Utils.getAvailableCoupon(cps, parseInt(option.price));
+        if (coupon)
+          ctx.setData({
+            coupon
+          })
+      })
+    }
   },
 
   // 格式化顺丰地址
@@ -252,9 +283,9 @@ Page({
     let date = hsb.date.value;
     let regionId = hsb.addr.selects[0][hsb.addr.indexs[0]]['id'];
     let visitTime = new Date(date.substr(0, 16) + ':00').getTime() / 1000;
+    params['ordertype'] = 'visit';
     params['address'] = address;
     params['regionid'] = regionId;
-    params['ordertype'] = 'visit';
     params['visitTime'] = visitTime;
     params['address'] = address;
     params['displayVisitTime'] = date; // 前端展示上门时间
@@ -285,7 +316,6 @@ Page({
       params['city'] = addrArr[1] || ''; // 市
       params['county'] = addrArr[2] || ''; // 区
       params['addr'] = `${address} ${street}`; // 上门地址
-      params['SF'] = 1;
       params['displayVisitTime'] = date; // 前端展示上门时间
       console.log(JSON.stringify(params));
       wx.navigateTo({
@@ -296,21 +326,27 @@ Page({
 
   // 基本参数
   getParams () {
-    let pages = getCurrentPages();
-    let options = pages[pages.length - 1].options;
+
+    // 需要填写
+    let tel = ctx.data.tel;
+    let nickname = ctx.data.nickname;
+
+    // 不需要填写
+    let options = Utils.getCurPageOpt();
+    let userInfo = user.getUserInfo();
+    let wxToken = user.getWxToken();
+    let coupon = ctx.data.coupon;
+
     if (!options.productId) {
-      option = {
+      options = {
         selects: "137-123-12-73-68-61-65-59-55-53-30-23-21-9-10",
         price: "96400",
         productId: "30800",
         desc: '大陆国行-保修一个月以上-128G-金色-无拆机无维修-显示正常-屏幕完好-外观完好-iCloud已注销-A1586-机身完好-二手-正常开机-非官换机-液晶正常-指纹功能正常-WIFI正常-无进水-通话正常'
       };
     }
-    let tel = ctx.data.tel;
-    let nickname = ctx.data.nickname;
-    let userInfo = wx.getStorageSync('userInfo');
-    let wxToken = user.getWxOpenId();
-    return {
+
+    let params = {
       // 估价选项
       selects: options.selects,
       // 产品id
@@ -320,7 +356,7 @@ Page({
       // 授权id
       openid: wxToken.openid,
       // 收款方式
-      type: 2,
+      type: 9,
       //旧uid
       olduid: userInfo.old_uid,
       userkey: userInfo.userkey,
@@ -329,6 +365,8 @@ Page({
       // 联系电话
       tel: tel
     };
+    Object.keys(coupon).length && (params.couponId = coupon.couponID);
+    return params;
   },
 
   submitOrder () {

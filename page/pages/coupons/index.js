@@ -1,5 +1,8 @@
+import Utils from '../../../util/utils';
 import coupon from '../../../model/coupon';
+import user from '../../../model/user';
 let ctx, app = getApp();
+
 Page({
 
   data: {
@@ -15,7 +18,8 @@ Page({
       text: '已过期',
       length: 2
     }],
-    token: ''
+    token: '',
+    couponList: []
   },
 
   onShow () {
@@ -27,7 +31,8 @@ Page({
       frontColor: '#000000',
       backgroundColor: '#ffffff'
     });
-    let userInfo = wx.getStorageSync('userInfo');
+    // let userInfo = wx.getStorageSync('userInfo');
+    let userInfo = user.getUserInfo();
     ctx.setData({
       userInfo
     });
@@ -35,7 +40,16 @@ Page({
       uid: userInfo.us_uid,
       userkey: userInfo.userkey
     }).then(cps => {
-      console.log(cps);
+      cps = cps.map(item => {
+        let timeObj = Utils.formatDate(parseInt(item.invalidTime) * 1000);
+        item.deadline = `${timeObj.Y}-${timeObj.M}-${timeObj.D}`;
+        item.value = parseInt(item.faceValue) / 1000;
+        return item;
+      });
+      Utils.sortByKey(cps, 'value');
+      ctx.setData({
+        couponList: cps
+      })
     }, err => {
       console.log(err);
     });

@@ -4,11 +4,11 @@
     <view class="swiper-wrapper">
         <swiper indicator-dots="true" autoplay="true" interval="2000" indicator-color="#cda8df"
                 indicator-active-color="#fff">
-            <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+            <navigator open-type="switchTab" url="../products/index" wx:for="{{imgUrls}}" wx:key="{{index}}">
                 <swiper-item>
                     <image src="{{item}}" class="slide-image"/>
                 </swiper-item>
-            </block>
+            </navigator>
         </swiper>
     </view>
 

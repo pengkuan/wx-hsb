@@ -1,5 +1,7 @@
 import user from '../../../model/user';
+import Utils from '../../../util/utils';
 let ctx, timeId, app = getApp();
+
 Page({
 
   data: {
@@ -12,21 +14,15 @@ Page({
     counter: 0 // 默认只需等待0秒
   },
 
-  onLoad (params) {
+  onShow () {
+    let params = Utils.getCurPageOpt();
     ctx = this;
-    // 可能没有
     let tel = user.getUserInfo().tel;
     let title = params.type === 'bind' ? '绑定手机' : '解绑手机';
     wx.setNavigationBarTitle({
       title,
     });
-    wx.setNavigationBarColor({
-      frontColor: '#000000',
-      backgroundColor: '#ffffff',
-      fail (err) {
-        console.log(err)
-      }
-    });
+    Utils.setWhiteNavBar();
     // 有可能没有token 比如直接编译当前页面
     let wxToken = user.getWxToken();
     ctx.setData({
@@ -121,10 +117,8 @@ Page({
       userkey: userInfo.userkey,
       openid: data.openid
     }).then(res => {
-      console.log(res);
       // 解绑成功清除回收宝账户信息
-      // user.setUserInfo({});
-      app.globalData.userInfo = {};
+      user.setUserInfo({});
       wx.reLaunch({
         url: '../person/index',
         success (err) {
@@ -144,42 +138,23 @@ Page({
     if (data.type == 'unbind') ctx.unbindTel()
   },
 
+  // 绑定手机号
   bindTelLogin () {
     let data = ctx.data;
-    // 绑定手机号
     user.bindTelLogin({
       tel: data.tel,
       code: data.code,
       openid: data.openid,
       unionid: data.unionid,
-    }).then(res => {
-      app.globalData.userInfo = res.data;
-      wx.reLaunch({
-        url: '../person/index',
-        success (err) {
-          console.log(err)
-        },
-        fail (err) {
-          console.log(err)
-        }
+    }).then(data => {
+      user.setUserInfo(data);
+      wx.navigateBack({
+        delta: 1
       });
-        // wx.setStorage({
-        //   key: 'userInfo',
-        //   data: res.data,
-        //   success () {
-        //     wx.reLaunch({
-        //       url: '../person/index',
-        //       success (err) {
-        //         console.log(err)
-        //       },
-        //       fail (err) {
-        //         console.log(err)
-        //       }
-        //     });
-        //   }
-        // });
     }, err => {
-      wx.showToast({title: err})
+      wx.showToast({
+        title: err
+      })
     })
   },
 });

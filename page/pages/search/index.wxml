@@ -15,7 +15,7 @@
             <view class="bd">
                 <view wx:for="{{ history }}"
                       class="p-item{{ (index % 2) == 0 ? ' border-rt' : '' }}"
-                      data-url="../product/index?itemid={{item.id}}"
+                      data-url="../product/index?productId={{item.id}}"
                       bindtap="switchPage"
                       wx:key="{{index}}">
                     <view>{{ item.name }}</view>
@@ -28,7 +28,7 @@
             <view class="bd">
                 <view wx:for="{{ hotList }}"
                       class="p-item{{ (index % 2) == 0 ? ' border-rt' : '' }}"
-                      data-url="../product/index?itemid={{item.productid}}"
+                      data-url="../product/index?productId={{item.productid}}"
                       bindtap="switchPage"
                       wx:key="{{index}}">
                     <view>{{ item.productname }}</view>
@@ -39,7 +39,7 @@
     <view class="mue-content" wx:if="{{ key.length }}">
         <scroll-view class="searchList" scroll-y bindscrolltolower="loadMore">
             <view class="p-item" wx:for="{{ searchList }}" wx:key="{{index}}"
-                  data-url="../product/index?itemid={{item.productid}}"
+                  data-url="../product/index?productId={{item.productid}}"
                   data-log="true"
                   data-name="{{item.productname}}"
                   data-id="{{item.productid}}"

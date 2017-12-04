@@ -1,9 +1,7 @@
-let app = getApp();
-export const PID = app.globalData.pid;
 // 微信授权在回收宝中的授权类型ID
 export const WX_AUTH_TYPE = 2;
 // 微信小程序的APPID
-export const WX_APP_ID = 'wx3543d54ab3d1a24e';
+export const WX_APP_ID = 'wxdd35de8f647a231f';
 export const host = 'https://www.huishoubao.com/';
 
 // Model

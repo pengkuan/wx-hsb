@@ -1,4 +1,5 @@
 import order from '../../../model/order';
+import user from '../../../model/user';
 let ctx, app = getApp();
 Page({
   data: {
@@ -14,7 +15,8 @@ Page({
       frontColor: '#000000',
       backgroundColor: '#ffffff'
     });
-    let userInfo = wx.getStorageSync('userInfo');
+    // let userInfo = wx.getStorageSync('userInfo');
+    let userInfo = user.getUserInfo();
     let pages = getCurrentPages();
     let options = pages[pages.length - 1].options;
     order.order({

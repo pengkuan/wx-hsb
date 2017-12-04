@@ -24,14 +24,15 @@ export default {
     })
   },
   // 取消订单
-  cancelOrder ({orderid, uid, userkey}) {
+  cancelOrder ({orderid, uid, userkey, olduid}) {
     return new Promise((resolve, reject) => {
       Utils.post({
         url: url.cancelOrder,
         data: {
           orderid,
           uid,
-          userkey
+          userkey,
+          olduid
         },
         success (res) {
           res = res.data;
@@ -65,14 +66,20 @@ export default {
       })
     })
   },
-  // 下单
+
+  /**
+   * 关于用户信息 没有登录时可以为空字符串
+   * 但是 openid绝对不能为空
+   * @param params
+   * @return {Promise}
+   */
   take (params) {
     return new Promise((resolve, reject) => {
       Utils.post({
         url: url.takeOrder,
         data: {
-          uid: params.uid,
-          userkey: params.userkey,
+          uid: params.uid || "",
+          userkey: params.userkey || "",
           tel: params.tel,
           openid: params.openid,
           type: 9,
@@ -81,10 +88,12 @@ export default {
           csrfToken: new Date(),
           selects: params.selects,
           itemid: params.itemid,
-          olduid: params.olduid,
+          olduid: params.olduid || "",
           ordertype: params.ordertype || 'post',
           visitTime: params.visitTime,
-          address: params.address
+          address: params.address,
+          couponId: params.couponId || "",
+          wechatpayouttype: "9", // 区分小程序
         },
         success (res) {
           res = res.data;

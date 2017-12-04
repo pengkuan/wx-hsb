@@ -130,34 +130,34 @@
   text-align: center;
 }
 
-.coupon-30 {
+.coupon-20 {
   background-image: linear-gradient(0deg, #f9cea3 0%, #fd8a83 100%);
 }
 
-.coupon-30 .price-wrapper {
+.coupon-20 .price-wrapper {
   background: #fbd2b2;
 }
 
-.coupon-80 {
+.coupon-50 {
   background-image: linear-gradient(0deg, #fdc0c3 0%, #f8a5b6 100%);
 }
 
-.coupon-80 .price-wrapper {
+.coupon-50 .price-wrapper {
   background: #fdcace;
 }
 
-.coupon-280 {
+.coupon-100 {
   background-image: linear-gradient(0deg, #d1d0fd 0%, #ccbcf8 100%);
 }
 
-.coupon-280 .price-wrapper {
+.coupon-100 .price-wrapper {
   background: #d9d8fd;
 }
 
-.coupon-280 .price-num {
+.coupon-100 .price-num {
   font-size: 50rpx;
 }
 
-.coupon-280 .price-label {
+.coupon-100 .price-label {
   left: 2rpx;
 }

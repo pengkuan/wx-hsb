@@ -1,6 +1,5 @@
 import {url, WX_APP_ID, WX_AUTH_TYPE} from '../config/index';
 import Utils from '../util/utils';
-let app = getApp();
 
 export default {
 
@@ -171,10 +170,11 @@ export default {
    * @param params
    */
   setUserInfo (params = {}) {
-    wx.setStorage({
-      key: 'userInfo',
-      data: params
-    });
+    // wx.setStorage({
+    //   key: 'userInfo',
+    //   data: params
+    // });
+    console.log('设置userinfo', params);
     this.userInfo = params;
   },
 
@@ -185,7 +185,6 @@ export default {
   getUserInfo () {
     return this.userInfo;
   },
-
 
   /**
    * 设置微信token {openid, unionid}

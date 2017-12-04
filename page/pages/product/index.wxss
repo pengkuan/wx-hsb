@@ -17,11 +17,14 @@
 }
 
 .progress-inner {
+  min-width: 10%;
+  padding-right: 20rpx;
   color: #292e3e;
   font-size: 24rpx;
   text-align: right;
   line-height: 30rpx;
   background: #fabe00;
+  transition: width 400ms;
 }
 
 /** product-banner **/
@@ -57,8 +60,9 @@
 }
 
 /** content **/
-.content {
+.mue-content {
   margin-top: 250rpx;
+  padding-bottom: 150rpx;
 }
 
 .item-cols {
@@ -69,11 +73,16 @@
 .option-col {
   position: relative;
   height: 100rpx;
-  padding-left: 80rpx;
   color: #292e3e;
   font-size: 26rpx;
   align-items: center;
   justify-content: space-between;
+}
+
+.option-col-hd {
+  position: relative;
+  height: 100rpx;
+  padding-left: 80rpx;
 }
 
 .option-col .radio {
