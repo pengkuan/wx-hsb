@@ -17,7 +17,7 @@
                 <view class="item-col-hd">{{ i.name }}</view>
                 <view class="item-col-option">
                     <view class="option-cols">
-                        <view class="option-col{{ baseSelect[pIndex]['cid'] == j.id ? ' selected' : ''}}"
+                        <view class="option-col {{ baseSelect[pIndex]['cid'] == j.id ? 'selected' : ''}} {{ index == (i.question.length - 1) ? 'last' : '' }}"
                               wx:for="{{ i.question }}"
                               wx:for-item="j"
                               wx:key="{{ j.id }}">
@@ -29,8 +29,8 @@
                                 <view class="text">{{ j.name }}</view>
                                 <view class="radio"></view>
                                 <image class="radio icon-select" src="../../../img/product/icon_select.svg"></image>
+                                <!--<view class="query" catchtap="showPictures">详情</view>-->
                             </view>
-                            <!--<view class="query" wx:if="{{ j.picture.length }}">详情</view>-->
                         </view>
                     </view>
                 </view>
@@ -53,8 +53,8 @@
                                   data-oid="{{ item.oid }}">
                                 <view class="radio"></view>
                                 <view class="text">{{ item.desc }}{{ selects[item.kid] }}</view>
+                                <!--<view class="query" catchtap="showPictures">详情</view>-->
                             </view>
-                            <!--<view class="query" wx:if="{{ item.picture.length }}">详情</view>-->
                         </view>
                     </view>
                 </view>

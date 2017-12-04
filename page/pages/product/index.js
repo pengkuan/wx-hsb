@@ -18,11 +18,8 @@ Page({
   },
 
   onLoad() {
-    Utils.setWhiteNavBar();
-  },
-
-  onShow() {
     ctx = this;
+    Utils.setWhiteNavBar();
     let params = Utils.getCurPageOpt();
     product.productInfo({
       productId: params.productId
@@ -184,5 +181,9 @@ Page({
     }, res => {
       console.log(res);
     })
+  },
+
+  showPictures (e) {
+    console.log(e);
   }
 });

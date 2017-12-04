@@ -1,7 +1,8 @@
 import user from './model/user';
+import partner from './model/partner';
 App({
   globalData: {
-    cid: 3,
+    cid: 1,
     bid: -1,
     pid: 1196,
     cdn: 'http://s1.huishoubao.com/img/phone/'
@@ -9,6 +10,10 @@ App({
   // 用户切换到后台时 清除登录态
   onHide () {
     this.clearUserInfo();
+    partner.setPartnerInfo({
+      appId: '',
+      extraData: {}
+    })
   },
   // 清除登录态
   clearUserInfo () {
@@ -16,7 +21,17 @@ App({
       key: 'userInfo'
     });
   },
-  onShow () {
+  onShow (data) {
+    // 小程序打开小程序
+    if(data.scene == 1037) {
+      let appId = data.referrerInfo.appId;
+      let extraData = JSON.parse(data.referrerInfo.extraData);
+      partner.setPartnerInfo({
+        appId,
+        extraData
+      });
+      this.globalData.pid = extraData.pid;
+    }
     this.login();
   },
   login () {
