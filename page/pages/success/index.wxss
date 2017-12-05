@@ -84,3 +84,18 @@
   line-height: 38rpx;
 }
 
+.mue-footer .mue-button {
+  width: 325rpx;
+  box-sizing: border-box;
+}
+
+.mue-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mue-footer .back-index {
+  color: #8187a1;
+  background-color: #fff;
+  border: solid 1rpx #8187a1;
+}

@@ -128,5 +128,9 @@ export default {
     // 价格排序
     this.sortByKey(temp, 'faceValue');
     return temp[0];
+  },
+
+  isMobile (tel) {
+    return /^1\d{10}$/.test(tel);
   }
 }

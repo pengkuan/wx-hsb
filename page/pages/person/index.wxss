@@ -5,7 +5,6 @@
 
 .user-box {
   position: relative;
-  display: flex;
   width: 670rpx;
   height: 200rpx;
   margin: 0 auto;
@@ -13,7 +12,6 @@
   color: #fff;
   font-size: 32rpx;
   border-radius: 12rpx;
-  align-items: center;
   background-color: #fff;
   background-image: linear-gradient(0deg, #f9d45d 0%, #e7b631 100%);
 }
@@ -27,6 +25,17 @@
   border-radius: 50%;
 }
 
+.user-box .box-middle {
+  float: left;
+  margin-top: 62rpx;
+  font-size: 0;
+  line-height: 1;
+}
+
+.user-box .nickname {
+  font-size: 32rpx;
+}
+
 .user-box .mobile {
   margin-top: 20rpx;
   font-size: 26rpx;
@@ -34,13 +43,19 @@
 
 .user-box .button {
   color: #fff;
+  width: 110rpx;
+  height: 54rpx;
+  line-height: 52rpx;
+  padding: 0;
   font-size: 28rpx;
   border-color: #fff;
+  border-radius: 4rpx;
 }
 
-.box-right {
-  position: absolute;
-  right: 20rpx;
+.user-box .box-right {
+  float: right;
+  margin-right: 40rpx;
+  margin-top: 73rpx;
 }
 
 .grid-cols {
@@ -71,20 +86,21 @@
   line-height: 64rpx;
 }
 
-.grid-fore2 {
-  margin-top: 20rpx;
-}
-
 .grid-fore2 .grid-col {
-  margin-bottom: 40rpx;
+  height: 112rpx;
+  margin-bottom: 50rpx;
+  line-height: 1;
 }
 
 .grid-fore2 .grid-col-icon {
+  display: block;
   width: 46rpx;
   height: 46rpx;
+  margin: 0 auto;
 }
 
 .grid-fore2 .grid-col-text {
+  margin-top: 41rpx;
   color: #7c829d;
   font-size: 26rpx;
 }

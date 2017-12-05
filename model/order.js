@@ -125,7 +125,7 @@ export default {
           if (res.errcode == 0) {
             resolve(res.data)
           } else {
-            reject(res.errmsg);
+            // reject(res.errmsg);
           }
         }
       })

@@ -14,6 +14,7 @@
         <view>订单号：{{ orderInfo.ordernum }}</view>
         <view wx:if="{{ orderInfo.trackNum }}">物流单号：{{ orderInfo.trackNum }}</view>
         <view>订单时间：{{curTime}}</view>
+        <view>上门时间：{{ orderInfo.displayVisitTime }}</view>
     </view>
     <view class="pro-list">
         <view class="pro-item">
@@ -37,6 +38,7 @@
         </view>
     </view>
     <view class="mue-footer">
-        <button class="mue-button">订单详情</button>
+        <navigator class="mue-button back-index" open-type="reLaunch" url="../welcome/index">返回首页</navigator>
+        <navigator class="mue-button" url="../order/index?orderid={{ orderInfo.orderid }}">订单详情</navigator>
     </view>
 </view>

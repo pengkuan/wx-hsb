@@ -28,19 +28,19 @@ Page({
     grid2Cols: [{
       text: '帮助中心',
       path: '../help/index',
-      icon: '../../../img/icon_help.svg',
+      icon: '../../../img/person/icon_help.svg',
     }, {
       text: '400-080-9966',
       path: '',
-      icon: '../../../img/icon_phone.svg',
+      icon: '../../../img/person/icon_phone.svg',
     }, {
       text: '在线客服',
       path: '',
-      icon: '../../../img/icon_contact.svg',
+      icon: '../../../img/person/icon_contact.svg',
     }, {
       text: '关于我们',
       path: '',
-      icon: '../../../img/icon_about.svg',
+      icon: '../../../img/person/icon_about.svg',
     }]
   },
 
@@ -115,5 +115,11 @@ Page({
         url: dataSet.url
       })
     }
+  },
+
+  dialNumber (e) {
+    wx.makePhoneCall({
+      phoneNumber: '4000809966'
+    })
   }
 });

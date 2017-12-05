@@ -20,7 +20,9 @@ Page({
   onShow () {
     let options = Utils.getCurPageOpt();
     let curTimeObj = Utils.formatDate();
-    let orderInfo = JSON.parse(options.orderInfo);
+    console.log(options.orderInfo);
+    let orderInfo = {};
+    if(options.orderInfo) orderInfo = JSON.parse(options.orderInfo);
     ctx.setData({
       orderInfo,
       curTime: `${curTimeObj.Y}-${curTimeObj.M}-${curTimeObj.D} ${curTimeObj.h}:${curTimeObj.m}:${curTimeObj.s}`,
@@ -33,4 +35,17 @@ Page({
       console.log(err);
     })
   },
+
+  switchPage (e) {
+    let dataset = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: dataset.url,
+      fail (res) {
+        console.log(res)
+      },
+      success (res) {
+        console.log(res);
+      }
+    })
+  }
 });

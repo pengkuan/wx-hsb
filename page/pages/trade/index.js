@@ -48,9 +48,9 @@ Page({
         value: ''
       },
     },
-    street: '测试地址',
-    nickname: '测试高雄',
-    tel: '13249064450',
+    street: '',
+    nickname: '',
+    tel: '',
     coupon: {}, // 选中的优惠券
     userInfo: {}
   },
@@ -113,9 +113,10 @@ Page({
 
   onShow () {
     let userInfo = user.getUserInfo();
+    let tel = ctx.data.tel;
     ctx.setData({
       userInfo,
-      tel: userInfo.tel ? userInfo.tel : ""
+      tel: userInfo.tel ? userInfo.tel : tel
     });
     if (userInfo.tel) {
       coupon.page({
@@ -258,40 +259,90 @@ Page({
   // 更换回收方式
   switchWay(e) {
     let dataset = e.currentTarget.dataset;
+    let options = Utils.getCurPageOpt();
+
+    if (parseInt(options.price) < 100) {
+      ctx.showModel('未满100元不支持上门回收');
+      return;
+    }
+
+    if (options.classId == 2) {
+      ctx.showModel('笔记本暂不支持上门回收');
+      return;
+    }
+
     ctx.setData({
       way: dataset.way
     })
   },
 
   handleName (e) {
-    this.setData({nickname: e.detail.value})
+    this.setData({
+      nickname: e.detail.value
+    })
   },
 
   handleTel (e) {
-    this.setData({tel: e.detail.value})
+    this.setData({
+      tel: e.detail.value
+    })
   },
 
   handleStreet (e) {
-    this.setData({street: e.detail.value})
+    this.setData({
+      street: e.detail.value
+    })
+  },
+
+  validParam (val) {
+    return val && val.length > 0;
+  },
+
+  showModel (ctn) {
+    wx.showModal({
+      title: '提示',
+      content: ctn,
+      showCancel: false
+    });
   },
 
   // 下回收宝上门单
   takeHsbVisitOrder (params) {
+
     let hsb = ctx.data.hsb;
+
     let street = ctx.data.street;
     let address = hsb.addr.value + street;
     let date = hsb.date.value;
+
+    if (!ctx.validParam(street)) {
+      ctx.showModel('请填写详细地址');
+      return false;
+    }
+
+    if (!ctx.validParam(address)) {
+      ctx.showModel('请选择城市');
+      return false;
+    }
+
+    if (!ctx.validParam(date)) {
+      ctx.showModel('请选择预约时间');
+      return false;
+    }
+
     let regionId = hsb.addr.selects[0][hsb.addr.indexs[0]]['id'];
     let visitTime = new Date(date.substr(0, 16) + ':00').getTime() / 1000;
+
     params['ordertype'] = 'visit';
     params['address'] = address;
     params['regionid'] = regionId;
     params['visitTime'] = visitTime;
     params['address'] = address;
     params['displayVisitTime'] = date; // 前端展示上门时间
+
     order.take(params).then(data => {
       Object.assign(params, data);
-      wx.navigateTo({
+      wx.reLaunch({
         url: `../success/index?orderInfo=${JSON.stringify(params)}`
       })
     }, err => {
@@ -301,14 +352,34 @@ Page({
 
   // 下顺丰单
   takeSfOrder (params) {
+
+    let sf = ctx.data.sf;
+
+    let street = ctx.data.street;
+    let address = sf.addr.value;
+    let date = sf.date.value;
+
+    if (!ctx.validParam(street)) {
+      ctx.showModel('请填写详细地址');
+      return false;
+    }
+
+    if (!ctx.validParam(address)) {
+      ctx.showModel('请选择城市');
+      return false;
+    }
+
+    if (!ctx.validParam(date)) {
+      ctx.showModel('请选择预约时间');
+      return false;
+    }
+
+    let sendtime = new Date(date).getTime() / 1000;
+    let addrArr = address.split(' ');
+
     params['ordertype'] = 'post';
+
     order.take(params).then(data => {
-      let sf = ctx.data.sf;
-      let street = ctx.data.street;
-      let address = sf.addr.value;
-      let date = sf.date.value;
-      let sendtime = new Date(date).getTime() / 1000;
-      let addrArr = address.split(' ');
       params['ordernum'] = data.ordernum;
       params['orderid'] = data.orderid; //订单号
       params['sendtime'] = sendtime; // 上门时间
@@ -317,19 +388,36 @@ Page({
       params['county'] = addrArr[2] || ''; // 区
       params['addr'] = `${address} ${street}`; // 上门地址
       params['displayVisitTime'] = date; // 前端展示上门时间
-      console.log(JSON.stringify(params));
-      wx.navigateTo({
+      wx.reLaunch({
         url: `../success/index?orderInfo=${JSON.stringify(params)}`
       })
     });
   },
 
   // 基本参数
-  getParams () {
+  submitOrder () {
 
     // 需要填写
     let tel = ctx.data.tel;
     let nickname = ctx.data.nickname;
+
+    if (nickname.length < 2) {
+      wx.showModal({
+        title: '提示',
+        content: '联系人字符长度不能小于2',
+        showCancel: false
+      });
+      return;
+    }
+
+    if (!Utils.isMobile(tel)) {
+      wx.showModal({
+        title: '提示',
+        content: '手机号码格式不正确',
+        showCancel: false
+      });
+      return;
+    }
 
     // 不需要填写
     let options = Utils.getCurPageOpt();
@@ -365,13 +453,10 @@ Page({
       // 联系电话
       tel: tel
     };
-    Object.keys(coupon).length && (params.couponId = coupon.couponID);
-    return params;
-  },
 
-  submitOrder () {
+    Object.keys(coupon).length && (params.couponId = coupon.couponID);
+
     let way = ctx.data.way;
-    let params = ctx.getParams();
     if (way === 'sf') ctx.takeSfOrder(params);
     if (way === 'visit') ctx.takeHsbVisitOrder(params);
   }

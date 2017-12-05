@@ -176,7 +176,7 @@ Page({
       selects: ids.join('-')
     }).then(data => {
       wx.navigateTo({
-        url: `../price/index?price=${data.quotation}&ids=${ids.join('-')}&desc=${desc.join('-')}&productId=${pInfo.productId}&productName=${pInfo.productName}`
+        url: `../price/index?price=${data.quotation}&ids=${ids.join('-')}&desc=${desc.join('-')}&productId=${pInfo.productId}&productName=${pInfo.productName}&classId=${pInfo.classId}`
       })
     }, res => {
       console.log(res);

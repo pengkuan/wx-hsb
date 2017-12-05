@@ -29,7 +29,8 @@ Page({
       productId,
       selects: params.ids,
       desc: params.desc.split('-'),
-      productName: params.productName
+      productName: params.productName,
+      classId: params.classId
     });
     product.priceHistory({
       price,
@@ -94,8 +95,9 @@ Page({
     let selects = ctx.data.selects;
     let price = ctx.data.price;
     let productId = ctx.data.productId;
+    let classId = ctx.data.classId;
     wx.navigateTo({
-      url: `../trade/index?selects=${selects}&price=${price}&productId=${productId}`
+      url: `../trade/index?selects=${selects}&price=${price}&productId=${productId}&classId=${classId}`
     })
   },
 
