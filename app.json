@@ -20,11 +20,11 @@
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "回收宝",
     "backgroundColor": "#f9f9fb",
-    "navigationBarBackgroundColor": "#f9f9fb"
+    "navigationBarBackgroundColor": "#ffffff"
   },
   "tabBar": {
     "color": "#888",
-    "borderStyle": "black",
+    "borderStyle": "white",
     "selectedColor": "#353535",
     "backgroundColor": "#ffffff",
     "list": [

@@ -76,9 +76,10 @@
   display: flex;
   float: none;
   width: 100%;
-  margin-top: 49rpx;
+  margin-top: 50rpx;
   color: #292e3e;
   font-size: 32rpx;
+  line-height: 1;
   align-items: center;
   justify-content: space-between;
 }
@@ -89,7 +90,14 @@
 }
 
 .select-list {
+  overflow: hidden;
+  max-height: 70rpx;
   margin-top: 49rpx;
+  transition: all 300ms;
+}
+
+.select-list.open {
+  max-height: 1000rpx;
 }
 
 .select-item {
@@ -111,7 +119,6 @@
 
 .next-predict {
   height: 70rpx;
-  margin-top: 20rpx;
   color: #7c829d;
   font-size: 26rpx;
   line-height: 70rpx;
@@ -212,11 +219,10 @@
 }
 
 .plug-canvas {
-  width: 100%;
+  width: 690rpx;
   height: 400rpx;
-  padding-left: 30rpx;
-  padding-right: 50rpx;
   margin: 0 auto;
+  margin-left:2%;
   box-sizing: border-box;
 }
 
@@ -244,4 +250,26 @@
 
 .button-take-order:after {
   display: none;
+}
+
+.arrow_dir {
+  display: flex;
+  height: 70rpx;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow_dir image {
+  width: 28rpx;
+  height: 15rpx;
+  transition: transform 400ms;
+}
+
+.arrow_dir .icon-arrow-down {
+  transform: rotate(90deg);
+}
+
+.arrow_dir .icon-arrow-up {
+  transform: rotate(-90deg);
 }

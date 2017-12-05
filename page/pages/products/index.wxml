@@ -1,5 +1,5 @@
 <import src="../../components/search-entry.wxml"/>
-<view class="page">
+<view class="container">
     <template is="search-entry" data="{{ iconSearch: iconSearch }}"/>
     <view class="category-wrapper">
         <scroll-view class="cate-cols" scroll-x="true" scroll-with-animation="true">
@@ -30,7 +30,7 @@
                     <view class="product-name text-overflow">{{item.productname}}</view>
                 </navigator>
                 <view class="product-col" wx:if="{{ productList.length === 0 }}">此品牌暂无机型</view>
-                <view class="product-col" wx:if="{{ !hasMore }}">没有更多了</view>
+                <!--<view class="product-col" wx:if="{{ !hasMore }}">没有更多了</view>-->
             </scroll-view>
         </view>
     </view>

@@ -10,7 +10,8 @@ Page({
     values: [],
     selects: [],
     productName: '',
-    productId: ''
+    productId: '',
+    isOpen: false
   },
 
   onLoad () {
@@ -95,6 +96,12 @@ Page({
     let productId = ctx.data.productId;
     wx.navigateTo({
       url: `../trade/index?selects=${selects}&price=${price}&productId=${productId}`
+    })
+  },
+
+  toggleOptions () {
+    ctx.setData({
+      isOpen: !ctx.data.isOpen
     })
   }
 });

@@ -1,8 +1,10 @@
 <template name="search-entry">
-    <navigator class="search-entry" url="../search/index">
-        <text class="left-text">iPhoneX</text>
-        <view class="icon-search">
-            <image class="icon" src="{{ iconSearch }}"></image>
+    <navigator class="search-entry-wrapper" url="../search/index">
+        <view class="search-entry">
+            <text class="left-text">iPhoneX</text>
+            <view class="icon-search">
+                <image class="icon" src="{{ iconSearch }}"></image>
+            </view>
         </view>
     </navigator>
 </template>

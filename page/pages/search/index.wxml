@@ -1,7 +1,7 @@
 <view class="container">
     <view class="mue-header search">
         <view class="search-box">
-            <input class="search-input" type="text" value="{{key}}" bindinput="handleKey"/>
+            <input class="search-input" type="text" value="{{key}}" bindinput="handleKey" placeholder="输入您要回收的机型"/>
             <image class="icon-search" src="../../../img/icon-search.svg"></image>
         </view>
         <navigator class="back" open-type="navigateBack" delta="1">取消</navigator>

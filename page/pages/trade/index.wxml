@@ -1,5 +1,5 @@
 <view class="container">
-    <view class="mue-header">确认回收后，回收款项将会在24小时内打到您的微信钱包</view>
+    <view class="mue-header"><image class="icon-face" src="../../../img/trade/icon_face.png"></image>确认回收后，回收款项将会在24小时内打到您的微信钱包</view>
     <view class="mue-content">
         <view class="grid-col grid-col-1">
             <view class="cell-item">

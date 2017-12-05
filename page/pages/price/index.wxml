@@ -18,12 +18,15 @@
                     <navigator url="../price/index?" open-type="navigateBack" delta="1">重新估价</navigator>
                 </view>
             </view>
-            <view class="select-list">
+            <view class="select-list {{ isOpen ? 'open' : '' }}">
                 <view class="select-item{{ (index+1) % 3 == 0 ? ' mr-0' : '' }}" wx:for="{{ desc }}"
                       wx:key="{{index}}">{{ item }}
                 </view>
             </view>
-            <view class="next-predict">预计下月下跌<text class="arrow_down">↓</text>{{ values[3] - values[4] }}元，与其闲置，不如换钱买买买
+            <view class="arrow_dir">
+                <image bindtap="toggleOptions" class="{{ isOpen ? 'icon-arrow-up' : 'icon-arrow-down' }}" src="../../../img/price/arrow_right.svg"></image>
+            </view>
+            <view class="next-predict">预计下月下跌<text class="arrow_down">↓</text><text style="color: #66d4bb">{{ values[3] - values[4] }}</text>元，与其闲置，不如换钱买买买
             </view>
         </view>
         <view class="chart-tit">

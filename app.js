@@ -39,9 +39,11 @@ App({
       user.getWxOpenId(code).then(data => {
         // 保存wx票据 绑定和解绑都有用到
         user.setWxToken(data);
+        console.log('setWxToken', data);
         user.login(data.openid).then(loginRes => {
           // 保存账户的回收宝信息
           user.setUserInfo(loginRes);
+          console.log('setUserInfo', loginRes);
         }, err => {
           // C++不支持errCode识别，这里假设错误都是用户没有绑定手机号
           console.log(err);

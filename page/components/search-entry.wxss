@@ -1,9 +1,13 @@
+.search-entry-wrapper {
+  padding: 20rpx 40rpx;
+  background: #fff;
+}
+
 .search-entry {
   display: flex;
   width: 670rpx;
   height: 78rpx;
   margin: 0 auto;
-  margin-top: 20rpx;
   line-height: 80rpx;
   border-radius: 6rpx;
   align-items: center;

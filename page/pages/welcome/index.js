@@ -1,5 +1,6 @@
 import user from '../../../model/user';
 import product from '../../../model/product';
+import Utils from '../../../util/utils';
 let ctx, app = getApp();
 
 Page({
@@ -37,6 +38,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '回收宝'
     });
+    Utils.setWhiteNavBar();
     this.getProduct();
   },
 
