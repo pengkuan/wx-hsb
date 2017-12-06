@@ -17,9 +17,9 @@
         <button class="button-add-cps" plain="true" size="mini" bindtap="addCoupon">添加</button>
     </view>
     <view class="grid-cols">
-        <view wx:if="{{ menuIndex == 0 }}" class="grid-col">
+        <view wx:if="{{ menuIndex == i }}" wx:for="{{ menuList }}" class="grid-col gird-col-{{ i }}" wx:for-index="i" wx:key="{{ i }}">
             <view class="coupon-item {{ item.value <= 20 ? 'coupon-20' : '' }}{{ item.value > 20 && item.value <= 50  ? 'coupon-50' : '' }}{{ item.value > 50 ? 'coupon-100' : '' }}"
-                  wx:for="{{ couponList }}">
+                  wx:for="{{ menuList[i]['data'] }}" wx:key="{{ index }}">
                 <view class="price-wrapper">
                     <view class="price-inner">
                         <view class="price-label">￥</view>
@@ -31,13 +31,19 @@
                     <view class="limit-desc">回收金额满{{ item.useLimited / 1000 }}元以上使用</view>
                 </view>
                 <view class="coupon-deadline">
-                    <view>有效期至</view>
-                    <view>{{ item.deadline }}</view>
+                    <block wx:if="{{ i == 0 }}">
+                        <view>有效期至</view>
+                        <view>{{ item.deadline }}</view>
+                    </block>
+                    <block wx:if="{{ i == 1 }}">
+                        <view>已使用</view>
+                    </block>
+                    <block wx:if="{{ i == 2 }}">
+                        <view>已过期</view>
+                    </block>
                 </view>
             </view>
         </view>
-        <view wx:if="{{ menuIndex == 1 }}" class="grid-col">1</view>
-        <view wx:if="{{ menuIndex == 2 }}" class="grid-col">2</view>
         <view wx:if="{{ menuList.length == 0 }}" class="grid-col">--您还没有优惠券哦--</view>
     </view>
 </view>

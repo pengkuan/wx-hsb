@@ -161,3 +161,7 @@
 .coupon-100 .price-label {
   left: 2rpx;
 }
+
+.grid-cols {
+  padding-bottom: 40rpx;
+}

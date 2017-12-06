@@ -374,7 +374,7 @@ Page({
       return false;
     }
 
-    let sendtime = new Date(date).getTime() / 1000;
+    let sendtime = new Date((date).replace(/-/g, '/')).getTime() / 1000;
     let addrArr = address.split(' ');
 
     params['ordertype'] = 'post';
