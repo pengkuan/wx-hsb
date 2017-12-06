@@ -10,7 +10,7 @@ export default {
           uid: params.uid,
           userkey: params.userkey,
           pageSize: params.pageSize || 6,
-          pageIndex: params.pageIndex || 1
+          pageIndex: params.pageIndex - 1
         },
         success (res) {
           res = res.data;
@@ -36,7 +36,7 @@ export default {
         },
         success (res) {
           res = res.data;
-          if (res.retcode == 0) {
+          if (res.errcode == 0) {
             resolve(res.data)
           } else {
             reject(res.retinfo);
