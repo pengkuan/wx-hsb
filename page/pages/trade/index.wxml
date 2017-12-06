@@ -31,7 +31,7 @@
         </view>
         <view class="divider"></view>
         <view class="grid-col grid-col-3">
-            <view class="cell-item">
+            <view class="cell-item fore1">
                 <view class="cell-item-inner">
                     <view class="cell-item-left">
                         <view>回收方式</view>

@@ -43,7 +43,6 @@ App({
         user.login(data.openid).then(loginRes => {
           // 保存账户的回收宝信息
           user.setUserInfo(loginRes);
-          console.log('setUserInfo', loginRes);
         }, err => {
           // C++不支持errCode识别，这里假设错误都是用户没有绑定手机号
           console.log(err);

@@ -37,7 +37,7 @@
 }
 
 .user-box .mobile {
-  margin-top: 20rpx;
+  margin-top: 18rpx;
   font-size: 26rpx;
 }
 

@@ -27,7 +27,7 @@ Page({
     }]
   },
 
-  onShow() {
+  onLoad () {
     ctx = this;
     wx.setNavigationBarTitle({
       title: '个人中心'
@@ -37,7 +37,9 @@ Page({
         wxOpenInfo: res
       })
     });
+  },
 
+  onShow() {
     let userInfo = user.getUserInfo();
     if (!(userInfo && userInfo.tel && userInfo.us_uid)) {
       ctx.login();

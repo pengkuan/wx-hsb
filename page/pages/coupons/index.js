@@ -8,6 +8,9 @@ Page({
   data: {
     menuIndex: 0,
     left: 0,
+    unUsedCoupon: [],
+    usedCoupon: [],
+    outTimeCoupon: [],
     menuList: [{
       text: '未使用',
       length: 2
@@ -31,11 +34,20 @@ Page({
       frontColor: '#000000',
       backgroundColor: '#ffffff'
     });
-    // let userInfo = wx.getStorageSync('userInfo');
     let userInfo = user.getUserInfo();
     ctx.setData({
       userInfo
     });
+    ctx.loadCoupons();
+  },
+
+  loadCoupons () {
+    let userInfo = ctx.data.userInfo;
+    let unUsedCoupon = [];
+    let usedCoupon = [];
+    let outTimeCoupon = [];
+    let curTime = Utils.curTimeStamp();
+    let menuList = ctx.data.menuList;
     coupon.page({
       uid: userInfo.us_uid,
       userkey: userInfo.userkey
@@ -46,9 +58,27 @@ Page({
         item.value = parseInt(item.faceValue) / 1000;
         return item;
       });
+      cps.map(item => {
+        if (item.status != 10) {
+          // 已经使用
+          usedCoupon.push(item);
+        } else if ((parseInt(item.invalidTime) * 1000) < curTime) {
+          // 已经过期
+          outTimeCoupon.push(item);
+        } else {
+          unUsedCoupon.push(item);
+        }
+      });
+      menuList[0]['data'] = unUsedCoupon;
+      menuList[1]['data'] = usedCoupon;
+      menuList[2]['data'] = outTimeCoupon;
       Utils.sortByKey(cps, 'value');
       ctx.setData({
-        couponList: cps
+        couponList: cps,
+        usedCoupon,
+        unUsedCoupon,
+        outTimeCoupon,
+        menuList
       })
     }, err => {
       console.log(err);
@@ -83,7 +113,8 @@ Page({
     }).then(res => {
       wx.showToast({
         title: '添加成功'
-      })
+      });
+      ctx.loadCoupons();
     }, err => {
       wx.showModal({
         title: '提示',

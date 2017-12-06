@@ -129,8 +129,11 @@ export default {
     this.sortByKey(temp, 'faceValue');
     return temp[0];
   },
-
+  // 是否为有效的手机号码
   isMobile (tel) {
     return /^1\d{10}$/.test(tel);
+  },
+  curTimeStamp () {
+    return new Date().getTime();
   }
 }

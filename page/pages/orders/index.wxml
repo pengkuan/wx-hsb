@@ -14,13 +14,14 @@
             </view>
             <view class="order-addr">如果您的手机尚未寄出，请邮寄至：广东省深圳市南山区威新软件园8号楼7楼 回收宝（收）</view>
             <view class="order-bottom">
-                <view class="detect-price">检测价：
-                    <text class="detect-number">￥5688</text>
+                <view class="detect-price">
+                    <text>预估价：</text>
+                    <text class="detect-number">￥{{ item.order_price / 100 }}</text>
                 </view>
                 <view class="button-cols">
-                    <button class="bottom-button-col" wx:if="{{ item.can_cancel }}" hover-class="mue-active" data-orderid="{{ item.order_id }}" bindtap="handleCancel">取消订单</button>
+                    <button class="bottom-button-col" wx:if="{{ item.can_cancel == 1 }}" hover-class="mue-active" data-orderid="{{ item.order_id }}" data-index="{{ index }}" bindtap="handleCancel">取消订单</button>
                     <button class="bottom-button-col" wx:if="{{ item.qt_md5num }}" hover-class="mue-active">质检报告</button>
-                    <button class="bottom-button-col" hover-class="mue-active">联系客服</button>
+                    <button class="bottom-button-col" open-type="contact" hover-class="mue-active">联系客服</button>
                 </view>
             </view>
         </view>

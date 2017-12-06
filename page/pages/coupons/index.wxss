@@ -54,7 +54,7 @@
   color: #7c829d;
   font-size: 26rpx;
   line-height: 30rpx;
-  border-radius: 35rpx;
+  border-radius: 4rpx;
   box-sizing: border-box;
   background-color: #f9f9fb;
 }

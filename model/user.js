@@ -174,7 +174,7 @@ export default {
     //   key: 'userInfo',
     //   data: params
     // });
-    console.log('设置userinfo', params);
+    console.log('setUserInfo', params);
     this.userInfo = params;
   },
 

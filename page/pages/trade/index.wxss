@@ -151,9 +151,12 @@
   line-height: 90rpx;
   border-radius: 4rpx;
   background-color: #ffffff;
-  border: solid 1rpx #cacee0;
 }
 
 .mue-footer button:after {
   display: none;
+}
+
+.grid-col-3 .fore1 .cell-item-inner {
+  border-bottom: none;
 }

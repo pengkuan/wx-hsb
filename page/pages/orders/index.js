@@ -76,10 +76,9 @@ Page({
 
   // 取消订单
   handleCancel (e) {
-    console.log()
     wx.showModal({
       title: '提示',
-      content: '这是一个模态弹窗',
+      content: '您真的要取消吗？',
       success: function (res) {
         if (res.confirm) {
           let userInfo = ctx.data.userInfo;
@@ -90,7 +89,13 @@ Page({
             userkey: userInfo.userkey,
             olduid: userInfo.old_uid
           }).then(res => {
-            console.log(res);
+            ctx.loadMore();
+          }, err => {
+            wx.showModal({
+              title: '提示',
+              content: '取消订单失败，请联系客服',
+              showCancel: false
+            })
           })
         }
       }

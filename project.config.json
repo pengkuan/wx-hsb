@@ -84,8 +84,8 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "saerch",
+					"id": 10,
+					"name": "search",
 					"pathName": "page/pages/search/index",
 					"query": ""
 				},
@@ -105,6 +105,12 @@
 					"id": -1,
 					"name": "about",
 					"pathName": "page/pages/about/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "trade",
+					"pathName": "page/pages/trade/index",
 					"query": ""
 				}
 			]
