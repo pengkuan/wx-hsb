@@ -1,9 +1,28 @@
-import trade from '../../../model/trade';
-import order from '../../../model/order';
-import user from '../../../model/user';
-import coupon from '../../../model/coupon';
-import Utils from '../../../util/utils';
-let ctx;
+'use strict';
+
+var _trade = require('../../../model/trade');
+
+var _trade2 = _interopRequireDefault(_trade);
+
+var _order = require('../../../model/order');
+
+var _order2 = _interopRequireDefault(_order);
+
+var _user = require('../../../model/user');
+
+var _user2 = _interopRequireDefault(_user);
+
+var _coupon = require('../../../model/coupon');
+
+var _coupon2 = _interopRequireDefault(_coupon);
+
+var _utils = require('../../../util/utils');
+
+var _utils2 = _interopRequireDefault(_utils);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ctx = void 0;
 
 Page({
 
@@ -25,28 +44,28 @@ Page({
         data: [],
         indexs: [0, 0, 0],
         selects: [[], [], []],
-        value: '',
+        value: ''
       },
       date: {
         data: [],
         indexs: [0, 0],
         selects: [[], []],
         value: ''
-      },
+      }
     },
     hsb: {
       addr: {
         data: [],
         indexs: [0, 0],
         selects: [[], []],
-        value: '',
+        value: ''
       },
       date: {
         data: [],
         indexs: [0, 0],
         selects: [[], []],
         value: ''
-      },
+      }
     },
     street: '',
     nickname: '',
@@ -60,17 +79,17 @@ Page({
    * 初始化回收宝上门城市
    * 初始化上门时间
    */
-  onLoad () {
+  onLoad: function onLoad() {
     ctx = this;
-    let sf = ctx.data.sf;
-    let hsb = ctx.data.hsb;
+    var sf = ctx.data.sf;
+    var hsb = ctx.data.hsb;
     wx.setNavigationBarTitle({
       title: '提交订单'
     });
 
     // 获取顺丰城市
-    trade.sfCity().then(data => {
-      let temp = {};
+    _trade2.default.sfCity().then(function (data) {
+      var temp = {};
       sf.addr.data = data;
       sf.addr.selects[0] = data;
       temp = data[0];
@@ -79,12 +98,12 @@ Page({
       if (temp.sub) sf.addr.selects[2] = temp.sub;
       sf.addr.value = ctx.sfAddrFormat(sf);
       ctx.setData({
-        sf
+        sf: sf
       });
     });
 
     // 获取上门时间
-    trade.visitTime().then(res => {
+    _trade2.default.visitTime().then(function (res) {
       sf.date.data = res.sf;
       sf.date.selects[0] = res.sf.date;
       sf.date.selects[1] = res.sf.time[0];
@@ -94,82 +113,84 @@ Page({
       hsb.date.selects[1] = res.hsb.time[0];
       hsb.date.value = ctx.formatHsbDate(hsb);
       ctx.setData({
-        sf,
-        hsb
+        sf: sf,
+        hsb: hsb
       });
     });
 
     // 回收宝城市
-    trade.hsbCity().then(data => {
+    _trade2.default.hsbCity().then(function (data) {
       hsb.addr.data = data;
       hsb.addr.selects[0] = data;
       hsb.addr.selects[1] = data[0]['sub'];
       hsb.addr.value = ctx.hsbAddrFormat(hsb);
       ctx.setData({
-        hsb
+        hsb: hsb
       });
-    })
+    });
   },
-
-  onShow () {
-    let userInfo = user.getUserInfo();
-    let tel = ctx.data.tel;
+  onShow: function onShow() {
+    var userInfo = _user2.default.getUserInfo();
+    var tel = ctx.data.tel;
     ctx.setData({
-      userInfo,
+      userInfo: userInfo,
       tel: userInfo.tel ? userInfo.tel : tel
     });
     if (userInfo.tel) {
-      coupon.page({
+      _coupon2.default.page({
         uid: userInfo.us_uid,
-        userkey: userInfo.userkey,
-      }).then(cps => {
-        let option = Utils.getCurPageOpt();
-        let coupon = Utils.getAvailableCoupon(cps, parseInt(option.price));
-        if (coupon)
-          ctx.setData({
-            coupon
-          })
-      })
+        userkey: userInfo.userkey
+      }).then(function (cps) {
+        var option = _utils2.default.getCurPageOpt();
+        var coupon = _utils2.default.getAvailableCoupon(cps, parseInt(option.price));
+        if (coupon) ctx.setData({
+          coupon: coupon
+        });
+      });
     }
   },
 
+
   // 格式化顺丰地址
-  sfAddrFormat (sf) {
-    let temp = [];
-    for (let i = 0; i < 3; i++) {
+  sfAddrFormat: function sfAddrFormat(sf) {
+    var temp = [];
+    for (var i = 0; i < 3; i++) {
       if (sf.addr.selects[i].length) temp.push(sf.addr.selects[i][sf.addr.indexs[i]]['name']);
     }
     return temp.join(" ");
   },
 
+
   // 格式化回收宝地址
-  hsbAddrFormat (hsb) {
-    let temp = [];
-    for (let i = 0; i < 2; i++) {
+  hsbAddrFormat: function hsbAddrFormat(hsb) {
+    var temp = [];
+    for (var i = 0; i < 2; i++) {
       if (hsb.addr.selects[i].length) temp.push(hsb.addr.selects[i][hsb.addr.indexs[i]]['name']);
     }
     return temp.join(" ");
   },
 
+
   // 确认顺丰地址
-  handleSfAddr (e) {
-    let sf = this.data.sf;
+  handleSfAddr: function handleSfAddr(e) {
+    var sf = this.data.sf;
     sf.addr.indexs = e.detail.value;
     this.setData({
-      sf
+      sf: sf
     });
   },
 
+
   // 监听pickerCol变化
-  handleSfAddrCol (event) {
-    let sf = ctx.data.sf;
-    let index = event.detail.value;
-    let column = event.detail.column;
+  handleSfAddrCol: function handleSfAddrCol(event) {
+    var sf = ctx.data.sf;
+    var index = event.detail.value;
+    var column = event.detail.column;
     switch (column) {
       case 0:
         sf.addr.selects[1] = sf.addr.data[index]['sub'];
         if (sf.addr.selects[1][0]['sub']) {
-          sf.addr.selects[2] = sf.addr.selects[1][0]['sub']
+          sf.addr.selects[2] = sf.addr.selects[1][0]['sub'];
         } else {
           sf.addr.selects[2] = [];
         }
@@ -178,7 +199,7 @@ Page({
         break;
       case 1:
         if (sf.addr.selects[column][index]['sub']) {
-          sf.addr.selects[2] = sf.addr.selects[column][index]['sub']
+          sf.addr.selects[2] = sf.addr.selects[column][index]['sub'];
         } else {
           sf.addr.selects[2] = [];
         }
@@ -188,15 +209,16 @@ Page({
     sf.addr.indexs[column] = index;
     sf.addr.value = ctx.sfAddrFormat(sf);
     this.setData({
-      sf,
+      sf: sf
     });
   },
 
+
   // 监听pickerCol变化
-  handleHsbAddrCol (e) {
-    let hsb = ctx.data.hsb;
-    let index = e.detail.value;
-    let column = e.detail.column;
+  handleHsbAddrCol: function handleHsbAddrCol(e) {
+    var hsb = ctx.data.hsb;
+    var index = e.detail.value;
+    var column = e.detail.column;
     switch (column) {
       case 0:
         hsb.addr.selects[1] = hsb.addr.data[index]['sub'];
@@ -209,57 +231,60 @@ Page({
     }
     hsb.addr.value = ctx.hsbAddrFormat(hsb);
     this.setData({
-      hsb
+      hsb: hsb
     });
   },
 
+
   // 监听pickerCol变化
-  handleSfDateCol (e) {
-    let sf = ctx.data.sf;
-    let index = e.detail.value;
-    let column = e.detail.column;
+  handleSfDateCol: function handleSfDateCol(e) {
+    var sf = ctx.data.sf;
+    var index = e.detail.value;
+    var column = e.detail.column;
     if (column == 0) sf.date.selects[1] = sf.date.data.time[index];
     sf.date.indexs[column] = index;
     sf.date.value = ctx.formatSfDate(sf);
     this.setData({
-      sf
+      sf: sf
     });
   },
 
+
   // 监听pickerCol变化
-  handleHsbDateCol (e) {
-    let hsb = ctx.data.hsb;
-    let index = e.detail.value;
-    let column = e.detail.column;
+  handleHsbDateCol: function handleHsbDateCol(e) {
+    var hsb = ctx.data.hsb;
+    var index = e.detail.value;
+    var column = e.detail.column;
     if (column == 0) hsb.date.selects[1] = hsb.date.data.time[index];
     hsb.date.indexs[column] = index;
     hsb.date.value = this.formatHsbDate(hsb);
     this.setData({
-      hsb
+      hsb: hsb
     });
   },
 
+
   // 格式化顺丰日期
-  formatSfDate (sf) {
-    let temp = [];
-    for (let i = 0; i < 2; i++) {
+  formatSfDate: function formatSfDate(sf) {
+    var temp = [];
+    for (var i = 0; i < 2; i++) {
       if (sf.date.selects[i].length) temp.push(sf.date.selects[i][sf.date.indexs[i]]);
     }
     return temp.join(" ");
   },
-
-  formatHsbDate (hsb) {
-    let temp = [];
-    for (let i = 0; i < 2; i++) {
+  formatHsbDate: function formatHsbDate(hsb) {
+    var temp = [];
+    for (var i = 0; i < 2; i++) {
       if (hsb.date.selects[i].length) temp.push(hsb.date.selects[i][hsb.date.indexs[i]]);
     }
     return temp.join(" ");
   },
 
+
   // 更换回收方式
-  switchWay(e) {
-    let dataset = e.currentTarget.dataset;
-    let options = Utils.getCurPageOpt();
+  switchWay: function switchWay(e) {
+    var dataset = e.currentTarget.dataset;
+    var options = _utils2.default.getCurPageOpt();
 
     if (parseInt(options.price) < 100) {
       ctx.showModel('未满100元不支持上门回收');
@@ -273,32 +298,27 @@ Page({
 
     ctx.setData({
       way: dataset.way
-    })
+    });
   },
-
-  handleName (e) {
+  handleName: function handleName(e) {
     this.setData({
       nickname: e.detail.value
-    })
+    });
   },
-
-  handleTel (e) {
+  handleTel: function handleTel(e) {
     this.setData({
       tel: e.detail.value
-    })
+    });
   },
-
-  handleStreet (e) {
+  handleStreet: function handleStreet(e) {
     this.setData({
       street: e.detail.value
-    })
+    });
   },
-
-  validParam (val) {
+  validParam: function validParam(val) {
     return val && val.length > 0;
   },
-
-  showModel (ctn) {
+  showModel: function showModel(ctn) {
     wx.showModal({
       title: '提示',
       content: ctn,
@@ -306,14 +326,15 @@ Page({
     });
   },
 
+
   // 下回收宝上门单
-  takeHsbVisitOrder (params) {
+  takeHsbVisitOrder: function takeHsbVisitOrder(params) {
 
-    let hsb = ctx.data.hsb;
+    var hsb = ctx.data.hsb;
 
-    let street = ctx.data.street;
-    let address = hsb.addr.value + street;
-    let date = hsb.date.value;
+    var street = ctx.data.street;
+    var address = hsb.addr.value + street;
+    var date = hsb.date.value;
 
     if (!ctx.validParam(street)) {
       ctx.showModel('请填写详细地址');
@@ -330,8 +351,8 @@ Page({
       return false;
     }
 
-    let regionId = hsb.addr.selects[0][hsb.addr.indexs[0]]['id'];
-    let visitTime = new Date((date.substr(0, 16) + ':00').replace(/-/g, '/')).getTime() / 1000;
+    var regionId = hsb.addr.selects[0][hsb.addr.indexs[0]]['id'];
+    var visitTime = new Date((date.substr(0, 16) + ':00').replace(/-/g, '/')).getTime() / 1000;
 
     params['ordertype'] = 'visit';
     params['address'] = address;
@@ -340,24 +361,25 @@ Page({
     params['address'] = address;
     params['displayVisitTime'] = date; // 前端展示上门时间
 
-    order.take(params).then(data => {
+    _order2.default.take(params).then(function (data) {
       Object.assign(params, data);
       wx.reLaunch({
-        url: `../success/index?orderInfo=${JSON.stringify(params)}`
-      })
-    }, err => {
+        url: '../success/index?orderInfo=' + JSON.stringify(params)
+      });
+    }, function (err) {
       console.log(err);
     });
   },
 
+
   // 下顺丰单
-  takeSfOrder (params) {
+  takeSfOrder: function takeSfOrder(params) {
 
-    let sf = ctx.data.sf;
+    var sf = ctx.data.sf;
 
-    let street = ctx.data.street;
-    let address = sf.addr.value;
-    let date = sf.date.value;
+    var street = ctx.data.street;
+    var address = sf.addr.value;
+    var date = sf.date.value;
 
     if (!ctx.validParam(street)) {
       ctx.showModel('请填写详细地址');
@@ -374,32 +396,33 @@ Page({
       return false;
     }
 
-    let sendtime = new Date(date).getTime() / 1000;
-    let addrArr = address.split(' ');
+    var sendtime = new Date(date).getTime() / 1000;
+    var addrArr = address.split(' ');
 
     params['ordertype'] = 'post';
 
-    order.take(params).then(data => {
+    _order2.default.take(params).then(function (data) {
       params['ordernum'] = data.ordernum;
       params['orderid'] = data.orderid; //订单号
       params['sendtime'] = sendtime; // 上门时间
       params['province'] = addrArr[0] || ''; // 省
       params['city'] = addrArr[1] || ''; // 市
       params['county'] = addrArr[2] || ''; // 区
-      params['addr'] = `${address} ${street}`; // 上门地址
+      params['addr'] = address + ' ' + street; // 上门地址
       params['displayVisitTime'] = date; // 前端展示上门时间
       wx.reLaunch({
-        url: `../success/index?orderInfo=${JSON.stringify(params)}`
-      })
+        url: '../success/index?orderInfo=' + JSON.stringify(params)
+      });
     });
   },
 
+
   // 基本参数
-  submitOrder () {
+  submitOrder: function submitOrder() {
 
     // 需要填写
-    let tel = ctx.data.tel;
-    let nickname = ctx.data.nickname;
+    var tel = ctx.data.tel;
+    var nickname = ctx.data.nickname;
 
     if (nickname.length < 2) {
       wx.showModal({
@@ -410,7 +433,7 @@ Page({
       return;
     }
 
-    if (!Utils.isMobile(tel)) {
+    if (!_utils2.default.isMobile(tel)) {
       wx.showModal({
         title: '提示',
         content: '手机号码格式不正确',
@@ -420,10 +443,10 @@ Page({
     }
 
     // 不需要填写
-    let options = Utils.getCurPageOpt();
-    let userInfo = user.getUserInfo();
-    let wxToken = user.getWxToken();
-    let coupon = ctx.data.coupon;
+    var options = _utils2.default.getCurPageOpt();
+    var userInfo = _user2.default.getUserInfo();
+    var wxToken = _user2.default.getWxToken();
+    var coupon = ctx.data.coupon;
 
     if (!options.productId) {
       options = {
@@ -434,7 +457,7 @@ Page({
       };
     }
 
-    let params = {
+    var params = {
       // 估价选项
       selects: options.selects,
       // 产品id
@@ -456,8 +479,9 @@ Page({
 
     Object.keys(coupon).length && (params.couponId = coupon.couponID);
 
-    let way = ctx.data.way;
+    var way = ctx.data.way;
     if (way === 'sf') ctx.takeSfOrder(params);
     if (way === 'visit') ctx.takeHsbVisitOrder(params);
   }
 });
+//# sourceMappingURL=index.js.map

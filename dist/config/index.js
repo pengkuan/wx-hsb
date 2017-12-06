@@ -1,0 +1,70 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+// 微信授权在回收宝中的授权类型ID
+var WX_AUTH_TYPE = exports.WX_AUTH_TYPE = 2;
+// 微信小程序的APPID
+var WX_APP_ID = exports.WX_APP_ID = 'wxdd35de8f647a231f';
+var host = exports.host = 'https://www.huishoubao.com/';
+
+// Model
+var user = host + 'common/user/';
+var product = host + 'common/product/';
+var order = host + 'common/order/';
+var coupon = host + 'common/coupon/';
+var help = host + 'common/help/';
+
+// Router
+var url = exports.url = {
+
+  // 获取微信openid
+  wxOpenId: user + 'wx_openid',
+  // 第三方授权登录
+  authUserLogin: user + 'authUserLogin',
+  // 绑定手机号并登录
+  bindTelLogin: user + 'authUserBindTelLogin',
+  // 获取手机验证码
+  getCode: user + 'getCode',
+  // 第三方用户手机号解除绑定(用户已经将手机号和openid绑定起来)
+  authUserUnbindTel: user + 'authUserUnbindTel',
+
+  // 订单分页查询
+  orders: user + 'getOrderList',
+  // 订单详情
+  order: user + 'getOrderDetails',
+  // 取消订单
+  cancelOrder: order + 'cancelOrder',
+
+  // 优惠券
+  coupon: coupon,
+  // 上门城市
+  hsbCity: help + 'hsbCity/',
+  // 获取上门时间
+  support_visit_time: help + 'support_visit_time/',
+
+  // 下单
+  takeOrder: host + 'common/trade/index',
+  // 顺丰同步订单
+  takeSfOrder: host + 'common/trade/takeSfOrder',
+
+  // 获取机型分类
+  categories: product + 'categories',
+  // 品牌
+  brands: product + 'brands',
+  // 机型分页
+  products: product + 'products',
+  // 获取选定机型的信息
+  product: host + 'api/get_product_param',
+  // 机型搜索
+  search: product + 'search/',
+  // 估价
+  price: host + 'v2/1196/api/products_evaluate',
+  // 历史价格走势
+  priceHistory: product + 'priceHistory/',
+  // 获取顺丰地址
+  sfCity: order + 'getSfCity/'
+  // 高速产品查找
+};
+//# sourceMappingURL=index.js.map

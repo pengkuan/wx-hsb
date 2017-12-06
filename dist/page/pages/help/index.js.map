@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../page/pages/help/index.js"],"names":["Page","onLoad"],"mappings":";;AAAAA,KAAK;AACHC,QADG,oBACO,CAET;AAHE,CAAL","file":"index.js","sourcesContent":["Page({\n  onLoad () {\n\n  }\n});"]}

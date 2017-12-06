@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../page/pages/about/index.js"],"names":["Page","onLoad","wx","setNavigationBarTitle","title"],"mappings":";;AAAAA,KAAK;AACHC,QADG,oBACM;AACPC,OAAGC,qBAAH,CAAyB;AACvBC,aAAO;AADgB,KAAzB;AAGD;AALE,CAAL","file":"index.js","sourcesContent":["Page({\n  onLoad() {\n    wx.setNavigationBarTitle({\n      title: '我们回收的手机怎么处理'\n    })\n  }\n});"]}

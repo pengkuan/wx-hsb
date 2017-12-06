@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.6.6",
 	"appid": "wxdd35de8f647a231f",
-	"projectname": "hsb",
+	"projectname": "wx",
 	"condition": {
 		"search": {
 			"current": -1,
