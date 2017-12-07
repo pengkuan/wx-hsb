@@ -20,7 +20,7 @@
             <view class="view-col-title">交易信息</view>
             <view class="view-col-content">
                 <view class="p-img-wrapper">
-                    <image class="p-img" src="{{ cdn + orderInfo.product_info.product_pic_url }}"></image>
+                    <image wx:if="{{ orderInfo.product_info }}" class="p-img" src="{{ cdn + orderInfo.product_info.product_pic_url }}"></image>
                 </view>
                 <view class="p-desc">
                     <view class="p-name">{{ orderInfo.product_info.product_name }}</view>

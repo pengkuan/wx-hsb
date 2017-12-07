@@ -9,7 +9,7 @@
     </view> 
     <view class="content"> 
       <view class="section"><image class="goto" src="../../../img/about/arrow.svg"></image><navigator hover-class="none" url="who/index">我们是谁？</navigator></view>
-      <view class="section"><image class="goto" src="../../../img/about/arrow.svg"></image><navigator hover-class="none" url="where/index">我们来至哪里？</navigator></view>
+      <view class="section"><image class="goto" src="../../../img/about/arrow.svg"></image><navigator hover-class="none" url="where/index">我们来自哪里？</navigator></view>
       <view class="section"><image class="goto" src="../../../img/about/arrow.svg"></image><navigator hover-class="none" url="how/index">我们回收的手机怎么处理？</navigator></view>
       <view class="section"><image class="goto" src="../../../img/about/arrow.svg"></image><navigator hover-class="none" url="price/index">我们的价格？</navigator></view>
     </view>

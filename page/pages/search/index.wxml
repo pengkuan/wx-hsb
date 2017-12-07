@@ -37,7 +37,7 @@
         </view>
     </view>
     <view class="mue-content" wx:if="{{ key.length }}">
-        <scroll-view class="searchList" scroll-y bindscrolltolower="loadMore">
+        <scroll-view class="searchList" wx:if="{{ searchList.length }}" scroll-y bindscrolltolower="loadMore">
             <view class="p-item" wx:for="{{ searchList }}" wx:key="{{index}}"
                   data-url="../product/index?productId={{item.productid}}"
                   data-log="true"
@@ -48,5 +48,11 @@
             </view>
             <view wx:if="{{ isShowNoMoreText }}" class="no-more">-没有更多蛋了不要再拉扯了(黑人问号)-</view>
         </scroll-view>
+        <view class="blank-wrapper" wx:if="{{ !searchList.length }}">
+            <image class="icon-blank" src="../../../img/search/blank-bg.png"></image>
+            <view class="title">没找到该机型</view>
+            <view class="desc">抱歉，请核对输入内容或进行公益回收</view>
+            <navigator class="mue-button"  url="../products/index" open-type="switchTab">立即回收</navigator>
+        </view>
     </view>
 </view>

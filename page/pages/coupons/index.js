@@ -52,6 +52,7 @@ Page({
       uid: userInfo.us_uid,
       userkey: userInfo.userkey
     }).then(cps => {
+      if (!cps) cps = [];
       cps = cps.map(item => {
         let timeObj = Utils.formatDate(parseInt(item.invalidTime) * 1000);
         item.deadline = `${timeObj.Y}-${timeObj.M}-${timeObj.D}`;

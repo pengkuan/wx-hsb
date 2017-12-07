@@ -64,6 +64,9 @@ Page({
         }, err => {
           // C++不支持errCode识别，这里假设错误都是用户没有绑定手机号
           console.log(err);
+          ctx.setData({
+            userInfo: {}
+          });
           user.setUserInfo({});
           // wx.navigateTo({ url: `../bind/index?openid=${ data.openid }&unionid=${ data.unionid }` })
         })

@@ -1,7 +1,7 @@
 Page({
   onLoad() {
     wx.setNavigationBarTitle({
-      title: '我们来至哪里'
+      title: '我们来自哪里'
     })
   }
 });

@@ -39,6 +39,6 @@
     </view>
     <view class="mue-footer">
         <navigator class="mue-button back-index" open-type="reLaunch" url="../welcome/index">返回首页</navigator>
-        <navigator class="mue-button" url="../order/index?orderid={{ orderInfo.orderid }}">订单详情</navigator>
+        <button class="mue-button" data-needlogin="true" data-url="../order/index?orderid={{ orderInfo.orderid }}" bindtap="switchPage">订单详情</button>
     </view>
 </view>

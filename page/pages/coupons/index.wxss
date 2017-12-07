@@ -165,3 +165,55 @@
 .grid-cols {
   padding-bottom: 40rpx;
 }
+
+.blank-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.blank-wrapper .icon-blank {
+    width: 326rpx;
+    height: 289rpx;
+    margin: 0 auto;
+    margin-top: 150rpx;
+}
+
+.blank-wrapper .title {
+    margin-top: 78rpx;
+	color: #292e3e;
+	line-height: 1;
+	font-size: 36rpx;
+	text-align: center;
+	font-weight: normal;
+	font-stretch: normal;
+	font-family: PingFang-SC-Bold;
+}
+
+.blank-wrapper .desc {
+    margin-top: 49rpx;
+    color: #cacee0;
+ 	font-size: 28rpx;
+ 	font-weight: normal;
+ 	font-stretch: normal;
+ 	line-height: 1;
+ 	letter-spacing: 0rpx;
+ 	text-align: center;
+}
+
+.blank-wrapper .mue-button {
+    width: 220rpx;
+    height: 80rpx;
+    padding: 0;
+    margin: 0 auto;
+    margin-top: 80rpx;
+    font-size: 32rpx;
+    line-height: 80rpx;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 4rpx;
+    background-color: #fabe00;
+}
+
+.blank-wrapper .mue-button:after {
+    display: none;
+}

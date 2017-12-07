@@ -1,5 +1,6 @@
 import user from '../../../model/user';
 import Utils from '../../../util/utils';
+
 let ctx, timeId, app = getApp();
 
 Page({
@@ -14,7 +15,7 @@ Page({
     counter: 0 // 默认只需等待0秒
   },
 
-  onShow () {
+  onShow() {
     let params = Utils.getCurPageOpt();
     ctx = this;
     let tel = user.getUserInfo().tel;
@@ -49,7 +50,7 @@ Page({
    * 获取短信验证码
    * tel 已经校验过了
    */
-  getCode () {
+  getCode() {
     let tel = ctx.data.tel;
     ctx.setData({
       counter: 30
@@ -70,7 +71,7 @@ Page({
     })
   },
 
-  counting () {
+  counting() {
     let counter = ctx.data.counter;
     if (counter === 0) return;
     timeId = setTimeout(() => {
@@ -81,7 +82,7 @@ Page({
     }, 1000)
   },
 
-  handleTel (e) {
+  handleTel(e) {
     let tel = e.detail.value;
     this.setData({
       tel,
@@ -89,14 +90,14 @@ Page({
     })
   },
 
-  handleCode (e) {
+  handleCode(e) {
     let value = e.detail.value;
     this.setData({
       code: value
     })
   },
 
-  clearTel () {
+  clearTel() {
     ctx.setData({
       tel: '',
       isValidTel: false,
@@ -105,10 +106,10 @@ Page({
   },
 
   /**
-   * 解绑手机号
-   * 需用用户登录
+   * 解绑手机号需用用户登录
+   * 解绑成功清除回收宝账户信息
    */
-  unbindTel () {
+  unbindTel() {
     let data = ctx.data;
     let userInfo = user.getUserInfo();
     console.log(userInfo);
@@ -117,29 +118,35 @@ Page({
       userkey: userInfo.userkey,
       openid: data.openid
     }).then(res => {
-      // 解绑成功清除回收宝账户信息
       user.setUserInfo({});
-      wx.reLaunch({
-        url: '../person/index',
-        success (err) {
-          console.log(err)
-        },
-        fail (err) {
-          console.log(err)
-        }
-      });
+      ctx.switchPage();
     })
   },
 
   // 绑定手机号
-  submit () {
+  submit() {
     let data = ctx.data;
-    if (data.type == 'bind') ctx.bindTelLogin();
-    if (data.type == 'unbind') ctx.unbindTel()
+    if (data.type === 'bind') ctx.bindTelLogin();
+    if (data.type === 'unbind') ctx.unbindTel()
+  },
+
+  switchPage() {
+    let pages = getCurrentPages();
+    let curPage = pages[pages.length - 1];
+    let options = curPage.options;
+    if(options.redirectUrl) {
+      wx.redirectTo({
+        url: decodeURIComponent(options.redirectUrl)
+      })
+    } else {
+      wx.navigateBack({
+        delta: 1
+      });
+    }
   },
 
   // 绑定手机号
-  bindTelLogin () {
+  bindTelLogin() {
     let data = ctx.data;
     user.bindTelLogin({
       tel: data.tel,
@@ -148,9 +155,7 @@ Page({
       unionid: data.unionid,
     }).then(data => {
       user.setUserInfo(data);
-      wx.navigateBack({
-        delta: 1
-      });
+      ctx.switchPage();
     }, err => {
       wx.showToast({
         title: err

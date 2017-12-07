@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../page/pages/address/index.js"],"names":["Page","onLoad","wx","setNavigationBarTitle","title"],"mappings":";;AAAAA,KAAK;AACHC,QADG,oBACO;AACRC,OAAGC,qBAAH,CAAyB;AACvBC,aAAO;AADgB,KAAzB;AAGD;AALE,CAAL","file":"index.js","sourcesContent":["Page({\n  onLoad () {\n    wx.setNavigationBarTitle({\n      title: '邮寄地址'\n    })\n  }\n});"]}

@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../../page/pages/about/who/index.js"],"names":["Page","onLoad","wx","setNavigationBarTitle","title"],"mappings":";;AAAAA,KAAK;AACHC,QADG,oBACM;AACPC,OAAGC,qBAAH,CAAyB;AACvBC,aAAO;AADgB,KAAzB;AAGD;AALE,CAAL","file":"index.js","sourcesContent":["Page({\n  onLoad() {\n    wx.setNavigationBarTitle({\n      title: '我们是谁'\n    })\n  }\n});"]}

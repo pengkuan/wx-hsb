@@ -59,6 +59,8 @@ Page({
           isShowLoadText: false
         });
       }
+    }, err => {
+      console.log(err);
     });
   },
 
@@ -104,9 +106,17 @@ Page({
 
   // 套页面跳转
   switchPage (e) {
-    let dataset = e.currentTarget.dataset;
+    let dataSet = e.currentTarget.dataset;
     wx.navigateTo({
-      url: dataset.url
+      url: dataSet.url
+    })
+  },
+
+  //
+  switchToTab (e) {
+    let dataSet = e.currentTarget.dataset;
+    wx.switchTab({
+      url: dataSet.url
     })
   }
 });

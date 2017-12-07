@@ -335,7 +335,7 @@ Page({
 
     params['ordertype'] = 'visit';
     params['address'] = address;
-    params['regionid'] = regionId;
+    params['regionId'] = regionId;
     params['visitTime'] = visitTime;
     params['address'] = address;
     params['displayVisitTime'] = date; // 前端展示上门时间

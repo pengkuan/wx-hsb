@@ -1,5 +1,5 @@
 <view class="container">
-    <scroll-view class="order-list" scroll-y bindscrolltolower="loadMore">
+    <scroll-view class="order-list" scroll-y bindscrolltolower="loadMore" wx:if="{{ orderList.length !== 0 }}">
         <view class="order-item" wx:for="{{ orderList }}" wx:key="{{index}}">
             <view>{{ test.name }}</view>
             <view class="order-top" data-needlogin="true" data-url="../order/index?orderid={{item.order_id}}" bindtap="switchPage">
@@ -28,4 +28,10 @@
         <view wx:if="{{ isShowNoMoreText }}">-木有更多了-</view>
         <view wx:if="{{ isShowLoadText }}">-加载中-</view>
     </scroll-view>
+    <view class="blank-wrapper" wx:if="{{ orderList.length == 0 }}">
+        <image class="icon-blank" src="../../../img/orders/blank-bg.png"></image>
+        <view class="title">暂无订单</view>
+        <view class="desc">您还没有回收单，赶紧去回收吧！</view>
+        <navigator class="mue-button"  url="../products/index" open-type="switchTab">立即回收</navigator>
+    </view>
 </view>

@@ -43,7 +43,14 @@
                     </block>
                 </view>
             </view>
+            <block wx:if="{{ (i == 0) && !(menuList[i]['data'].length) }}">
+                <view class="blank-wrapper">
+                    <image class="icon-blank" src="../../../img/coupons/blank-bg.png"></image>
+                    <view class="title">暂无加价券</view>
+                    <view class="desc">关注“回收宝”微信公众号，送万千好礼</view>
+                    <navigator class="mue-button" url="../products/index" open-type="switchTab">立即下单</navigator>
+                </view>
+            </block>
         </view>
-        <view wx:if="{{ menuList.length == 0 }}" class="grid-col">--您还没有优惠券哦--</view>
     </view>
 </view>
