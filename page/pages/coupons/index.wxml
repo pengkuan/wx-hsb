@@ -21,10 +21,12 @@
             <view class="coupon-item {{ item.value <= 20 ? 'coupon-20' : '' }}{{ item.value > 20 && item.value <= 50  ? 'coupon-50' : '' }}{{ item.value > 50 ? 'coupon-100' : '' }}"
                   wx:for="{{ menuList[i]['data'] }}" wx:key="{{ index }}">
                 <view class="price-wrapper">
-                    <view class="price-inner">
-                        <view class="price-label">￥</view>
-                        <view class="price-num">{{ item.value }}</view>
-                    </view>
+                      
+            <view class="price-num">
+              <text class="price-label">￥</text>
+              <text class="number">{{ item.value }}</text>
+              </view>
+          
                 </view>
                 <view class="coupon-desc">
                     <view class="label">加价券</view>

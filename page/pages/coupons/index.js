@@ -48,11 +48,109 @@ Page({
     let outTimeCoupon = [];
     let curTime = Utils.curTimeStamp();
     let menuList = ctx.data.menuList;
-    coupon.page({
-      uid: userInfo.us_uid,
-      userkey: userInfo.userkey
-    }).then(cps => {
-      if (!cps) cps = [];
+    // coupon.page({
+    //   uid: userInfo.us_uid,
+    //   userkey: userInfo.userkey
+    // }).then(cps => {
+    //   if (!cps) cps = [];
+    let cps = [
+      {
+        "activityBatchID": "349",
+        "bargainLimited": "20000",
+        "consumeTime": "",
+        "couponDescription": "",
+        "couponID": "8dbcc42557",
+        "faceValue": "1000",
+        "factivityDescription": "高雄测试_1130_02",
+        "invalidTime": "1512633512",
+        "pID": "1043",
+        "receptionTime": "1512028712",
+        "spreader": "18307306917",
+        "status": "20",
+        "statusDescription": "已冻结",
+        "useLimited": "20000"
+      },
+      {
+        "activityBatchID": "350",
+        "bargainLimited": "20000",
+        "consumeTime": "",
+        "couponDescription": "",
+        "couponID": "2f3e7a0369",
+        "faceValue": "20000",
+        "factivityDescription": "年底促销活动",
+        "invalidTime": "1512633898",
+        "pID": "1043",
+        "receptionTime": "1512029098",
+        "spreader": "18307306917",
+        "status": "20",
+        "statusDescription": "已冻结",
+        "useLimited": "20000"
+      },
+      {
+        "activityBatchID": "351",
+        "bargainLimited": "20000",
+        "consumeTime": "",
+        "couponDescription": "",
+        "couponID": "e840bbeb24",
+        "faceValue": "5000",
+        "factivityDescription": "国庆大促销",
+        "invalidTime": "1512633965",
+        "pID": "1043",
+        "receptionTime": "1512029165",
+        "spreader": "18307306917",
+        "status": "20",
+        "statusDescription": "已冻结",
+        "useLimited": "20000"
+      },
+      {
+        "activityBatchID": "352",
+        "bargainLimited": "20000",
+        "consumeTime": "",
+        "couponDescription": "",
+        "couponID": "000a37cf72",
+        "faceValue": "100000",
+        "factivityDescription": "测试",
+        "invalidTime": "1512636385",
+        "pID": "1043",
+        "receptionTime": "1512031585",
+        "spreader": "18307306917",
+        "status": "20",
+        "statusDescription": "已冻结",
+        "useLimited": "20000"
+      },
+      {
+        "activityBatchID": "353",
+        "bargainLimited": "20000",
+        "consumeTime": "",
+        "couponDescription": "",
+        "couponID": "3010968eed",
+        "faceValue": "60000",
+        "factivityDescription": "测试",
+        "invalidTime": "1512636468",
+        "pID": "1043",
+        "receptionTime": "1512031668",
+        "spreader": "18307306917",
+        "status": "20",
+        "statusDescription": "已冻结",
+        "useLimited": "20000"
+      },
+      {
+        "activityBatchID": "354",
+        "bargainLimited": "20000",
+        "consumeTime": "",
+        "couponDescription": "",
+        "couponID": "26fc0534dd",
+        "faceValue": "30000",
+        "factivityDescription": "点点滴滴",
+        "invalidTime": "1512637206",
+        "pID": "1043",
+        "receptionTime": "1512032406",
+        "spreader": "18307306917",
+        "status": "20",
+        "statusDescription": "已冻结",
+        "useLimited": "20000"
+      }
+    ];
       cps = cps.map(item => {
         let timeObj = Utils.formatDate(parseInt(item.invalidTime) * 1000);
         item.deadline = `${timeObj.Y}-${timeObj.M}-${timeObj.D}`;
@@ -69,7 +167,7 @@ Page({
         } else {
           unUsedCoupon.push(item);
         }
-      });
+      }, err => {});
       menuList[0]['data'] = unUsedCoupon;
       menuList[1]['data'] = usedCoupon;
       menuList[2]['data'] = outTimeCoupon;
@@ -81,9 +179,9 @@ Page({
         outTimeCoupon,
         menuList
       })
-    }, err => {
-      console.log(err);
-    });
+    // }, err => {
+    //   console.log(err);
+    // });
   },
 
   setLeft () {

@@ -68,6 +68,7 @@
 }
 
 .coupon-item {
+  position: relative;
   width: 670rpx;
   height: 176rpx;
   margin: 0 auto;
@@ -88,20 +89,32 @@
   border-radius: 50%;
   color: #fff;
   text-align: center;
-  line-height: 126rpx;
+  display: flex;
+  align-items: center;
+ justify-content: center;
 }
 
 .price-wrapper .price-num {
-  font-size: 66rpx;
+  position: relative;
+  display:flex;
+  overflow: visible;
+  font-family: PingFang-SC-Heavy;
 }
 
 .price-wrapper .price-label {
   position: absolute;
-  left: 8rpx;
-  top: 36rpx;
-  height: 30rpx;
+  left: -15rpx;
+  width: 15rpx;
+  height: 18rpx;
   font-size:24rpx;
-  line-height: 30rpx;
+  font-family: PingFang-SC-Heavy;
+}
+
+.price-wrapper .number {
+font-size:66rpx;
+line-height:62rpx;
+font-family:PingFang-SC-Heavy;
+vertical-align:top;
 }
 
 .coupon-desc {
@@ -154,12 +167,12 @@
   background: #d9d8fd;
 }
 
-.coupon-100 .price-num {
+.coupon-100 .number {
   font-size: 50rpx;
 }
 
 .coupon-100 .price-label {
-  left: 2rpx;
+  top: 7rpx;
 }
 
 .grid-cols {
@@ -216,4 +229,23 @@
 
 .blank-wrapper .mue-button:after {
     display: none;
+}
+
+.gird-col-1 .coupon-deadline,
+.gird-col-2 .coupon-deadline{
+    font-size:34rpx;
+    font-family:PingFang-SC-Bold;
+    transform:rotate(-35deg);
+    transform-origin:30px 30px;
+}
+
+.gird-col-1 .coupon-item::after,
+.gird-col-2 .coupon-item::after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(255, 255, 255, .4);
 }

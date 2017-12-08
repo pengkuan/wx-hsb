@@ -102,6 +102,7 @@
     margin-right: 0;
     margin-bottom: 49rpx;
     font-size: 0;
+    line-height: 1;
     text-align: center;
     border-radius: 6rpx;
 	background-color: #ffffff;
@@ -218,9 +219,6 @@
 
 .partner .sec-content {
     font-size: 0;
-    margin-left: 30rpx;
-    margin-right: 30rpx;
-    margin-bottom: 40rpx;
 }
 .partner .grid-cols {
     display: flex;
@@ -235,7 +233,7 @@
     display: flex;
     width: 210rpx;
     height: 120rpx;
-    margin: 10px;
+    margin: 10rpx 0;
     border-radius: 6rpx;
     margin-bottom: 60rpx;
     align-items: center;
@@ -247,4 +245,13 @@
 .partner .icon {
     width: 149rpx;
     height: 41rpx;
+}
+
+.partner .sec-content {
+  margin-left: 0rpx;
+  margin-right: 0rpx;
+}
+
+.grid-cols-3 {
+  padding: 0 40rpx;
 }

@@ -1,6 +1,8 @@
 import Utils from '../../../util/utils';
 import product from '../../../model/product';
+
 let ctx, app = getApp();
+
 Page({
 
   data: {
@@ -14,13 +16,22 @@ Page({
     cdn: app.globalData.cdn,
     baseSelect: [],
     funcSelect: [],
-    len: 0
+    len: 0,
+    pics: [{
+      picturename: '国行.JPG'
+    }],
+    alertInfo: {
+      title: '',
+      desc: '',
+      pictureUrl: ''
+    }
   },
 
   onLoad() {
     ctx = this;
     Utils.setWhiteNavBar();
     let params = Utils.getCurPageOpt();
+    if (!params.productId) params.productId = 30748;
     product.productInfo({
       productId: params.productId
     }).then(res => {
@@ -60,9 +71,9 @@ Page({
   funcHandler(list) {
     let func = [];
     list.map((item) => {
-      let kid = item.id, did, oid, desc, picture, otext, dtext;
+      let kid = item.id, did, oid, desc, picture, otext, dtext, ptext = item.name;
       let ques = item.question;
-      ques.map((q) => {
+      ques.map(q => {
         if (q.show == 0) {
           did = q.id;
           dtext = q.name;
@@ -73,7 +84,7 @@ Page({
           otext = q.name;
         }
       });
-      func.push({kid, did, oid, desc, picture, otext, dtext})
+      func.push({kid, did, oid, desc, picture, otext, dtext, ptext})
     });
     return func;
   },
@@ -82,7 +93,7 @@ Page({
    * 基本选项 外观选项 切换
    * @param {*} e
    */
-  baseTapHandler (e) {
+  baseTapHandler(e) {
     let dataset = e.currentTarget.dataset;
     let baseSelect = ctx.data.baseSelect;
     for (let i = 0; i < baseSelect.length; i++) {
@@ -97,7 +108,7 @@ Page({
     ctx.onSelectsChanged();
   },
 
-  setValues (data, type = 'base') {
+  setValues(data, type = 'base') {
     let select = [];
     data.map((item) => {
       let temp = {};
@@ -115,8 +126,8 @@ Page({
       }
       select.push(temp);
     });
-    if (type == 'base') ctx.setData({baseSelect: select});
-    if (type == 'func') ctx.setData({funcSelect: select});
+    if (type === 'base') ctx.setData({baseSelect: select});
+    if (type === 'func') ctx.setData({funcSelect: select});
     ctx.onSelectsChanged();
   },
 
@@ -124,7 +135,7 @@ Page({
    * 功能选项切换
    * @param {*} e
    */
-  funcTapHandler (e) {
+  funcTapHandler(e) {
     let dataset = e.currentTarget.dataset;
     let funcSelect = ctx.data.funcSelect;
     console.log(dataset);
@@ -150,21 +161,22 @@ Page({
    * 监听 selects 做一些猥琐的操作
    * 改变进度条 限制一些选项等等...
    */
-  onSelectsChanged () {
+  onSelectsChanged() {
     let len = 0,
       baseSelect = ctx.data.baseSelect;
     for (let i = 0; i < baseSelect.length; i++) {
       if (baseSelect[i]['cid'].length) len++;
     }
     ctx.setData({
-      len
+      len,
+      toView: 'view' + (len + 1)
     })
   },
 
   /**
    * 估价
    */
-  onSubmit () {
+  onSubmit() {
     let pInfo = ctx.data.pInfo;
     let bs = ctx.data.baseSelect;
     let fs = ctx.data.funcSelect;
@@ -183,7 +195,37 @@ Page({
     })
   },
 
-  showPictures (e) {
-    console.log(e);
+  showPictures(e) {
+    let dataSet = e.currentTarget.dataset;
+    let base = ctx.data.base;
+    let item = base[dataSet.iindex];
+    let q = item['question'][dataSet.qindex];
+    let title = `${item.name}`;
+    let pictureUrl = q['picture'][0]['picturename'];
+    let desc = q.name;
+    ctx.setData({
+      alertInfo: {
+        desc,
+        title,
+        pictureUrl
+      }
+    })
+  },
+
+  showFunPictures(e) {
+    let dataSet = e.currentTarget.dataset;
+    ctx.setData({
+      alertInfo: {
+        desc: dataSet.desc,
+        title: dataSet.title,
+        pictureUrl: dataSet.img
+      }
+    })
+  },
+
+  closeAlert() {
+    ctx.setData({
+      alertInfo: {}
+    })
   }
 });

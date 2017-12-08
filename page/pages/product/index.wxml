@@ -1,7 +1,9 @@
 <view class="container">
     <view class="header">
         <view class="progress">
-            <view class="progress-inner" style="width: {{ len / baseSelect.length * 100 + '%' }}">{{ len }}/{{ baseSelect.length }}</view>
+            <view class="progress-inner" style="width: {{ len / baseSelect.length * 100 + '%' }}">{{ len }}/{{
+                baseSelect.length }}
+            </view>
         </view>
         <view class="product-banner">
             <image wx:if="{{ pInfo.picUrl }}" class="p-img" src="{{ cdn + pInfo.picUrl }}"></image>
@@ -12,56 +14,82 @@
         </view>
     </view>
     <view class="mue-content">
-        <view class="item-cols">
-            <view class="item-col" wx:for="{{ base }}" wx:for-item="i" wx:for-index="pIndex" wx:key="{{ i.id }}">
-                <view class="item-col-hd">{{ pIndex + 1 }}. {{ i.name }}</view>
-                <view class="item-col-option">
-                    <view class="option-cols">
-                        <view class="option-col {{ baseSelect[pIndex]['cid'] == j.id ? 'selected' : ''}} {{ index == (i.question.length - 1) ? 'last' : '' }}"
-                              wx:for="{{ i.question }}"
-                              wx:for-item="j"
-                              wx:key="{{ j.id }}">
-                            <view class="option-col-hd"
-                                  bindtap="baseTapHandler"
-                                  data-cname="{{ j.name }}"
-                                  data-pid="{{ i.id }}"
-                                  data-cid="{{ j.id }}">
-                                <view class="text">{{ j.name }}</view>
+        <scroll-view class="scroll-wrapper" scroll-y scroll-with-animation="true"
+                     scroll-into-view="{{ 'view' + (len - 1) }}">
+            <view class="item-cols">
+                <view id="view{{ pIndex }}" class="item-col" wx:for="{{ base }}" wx:for-item="i" wx:for-index="pIndex"
+                      wx:key="{{ i.id }}" wx:if="{{ pIndex <= len }}">
+                    <view class="item-col-hd">{{ pIndex + 1 }}. {{ i.name }}</view>
+                    <view class="item-col-option">
+                        <view class="option-cols">
+                            <view class="option-col {{ baseSelect[pIndex]['cid'] == j.id ? 'selected' : ''}} {{ index == (i.question.length - 1) ? 'last' : '' }}"
+                                  wx:for="{{ i.question }}"
+                                  wx:for-item="j"
+                                  wx:key="{{ j.id }}">
+                                <view class="option-col-hd"
+                                      bindtap="baseTapHandler"
+                                      data-cname="{{ j.name }}"
+                                      data-pid="{{ i.id }}"
+                                      data-cid="{{ j.id }}">
+                                    <view class="text">{{ j.name }}</view>
+                                    <view class="radio"></view>
+                                    <image class="radio icon-select" src="../../../img/product/icon_select.svg"></image>
+                                    <image wx:if="{{ j.picture.length }}" data-qindex="{{ index }}"
+                                           src="../../../img/product/icon_query.svg"
+                                           data-iindex="{{ pIndex }}"
+                                           class="icon-query" catchtap="showPictures">详情
+                                    </image>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view id="view{{ base.length + 1 }}" wx:if="{{ func.length && (len == base.length) }}" class="item-cols">
+                <view class="item-col-hd">{{ base.length + 1 }} 功能选项 (可多选，若无问题点击估价)</view>
+                <view class="item-col" wx:for="{{ func }}" wx:key="{{ index }}">
+                    <view class="item-col-option">
+                        <view class="option-cols">
+                            <view class="option-col {{ funcSelect[index]['cid'] == item.oid ? 'selected' : ''}} {{ index == (func.length - 1) ? 'last' : '' }}">
                                 <view class="radio"></view>
                                 <image class="radio icon-select" src="../../../img/product/icon_select.svg"></image>
-                                <!--<view class="query" catchtap="showPictures">详情</view>-->
+                                <view class="option-col-hd"
+                                      bindtap="funcTapHandler"
+                                      data-kid="{{ item.kid }}"
+                                      data-did="{{ item.did }}"
+                                      data-otext="{{ item.otext }}"
+                                      data-dtext="{{ item.dtext }}"
+                                      data-oid="{{ item.oid }}">
+                                    <view class="radio"></view>
+                                    <view class="text">{{ item.desc }}{{ selects[item.kid] }}</view>
+                                    <image src="../../../img/product/icon_query.svg"
+                                           wx:if="{{ item.picture.length }}"
+                                           data-title="{{ item.ptext }}"
+                                           data-desc="{{ item.desc }}"
+                                           data-img="{{ item.picture[0].picturename }}"
+                                           class="icon-query" catchtap="showFunPictures">详情
+                                    </image>
+                                </view>
                             </view>
                         </view>
                     </view>
                 </view>
             </view>
-        </view>
-        <view wx:if="{{ func.length }}" class="item-cols">
-            <view class="item-col-hd">{{ base.length + 1}} 功能选项 (可多选，若无问题点击估价)</view>
-            <view class="item-col" wx:for="{{ func }}" wx:key="{{ index }}">
-                <view class="item-col-option">
-                    <view class="option-cols">
-                        <view class="option-col {{ funcSelect[index]['cid'] == item.oid ? 'selected' : ''}} {{ index == (func.length - 1) ? 'last' : '' }}">
-                            <view class="radio"></view>
-                            <image class="radio icon-select" src="../../../img/product/icon_select.svg"></image>
-                            <view class="option-col-hd"
-                                  bindtap="funcTapHandler"
-                                  data-kid="{{ item.kid }}"
-                                  data-did="{{ item.did }}"
-                                  data-otext="{{ item.otext }}"
-                                  data-dtext="{{ item.dtext }}"
-                                  data-oid="{{ item.oid }}">
-                                <view class="radio"></view>
-                                <view class="text">{{ item.desc }}{{ selects[item.kid] }}</view>
-                                <!--<view class="query" catchtap="showPictures">详情</view>-->
-                            </view>
-                        </view>
-                    </view>
-                </view>
-            </view>
-        </view>
+        </scroll-view>
     </view>
     <view class="mue-footer">
         <button class="mue-button" bindtap="onSubmit" disabled="{{ len != base.length }}">估价</button>
+    </view>
+    <view class="mue-modal" wx:if="{{ alertInfo.title }}">
+        <view class="mue-alert">
+            <view class="mue-alert-hd">
+                <text class="title">{{ alertInfo.title }}</text>
+                <image class="icon-close" src="../../../img/product/icon_close.svg" bindtap="closeAlert"></image>
+            </view>
+            <view class="mue-alert-bd">
+                <image class="image-item" mode="aspectFit" src="{{ cdn + alertInfo.pictureUrl }}"></image>
+                <view>{{ alertInfo.desc }}</view>
+            </view>
+        </view>
     </view>
 </view>

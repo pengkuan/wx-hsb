@@ -1,7 +1,8 @@
 <view class="container">
     <view class="mue-header search">
         <view class="search-box">
-            <input class="search-input" type="text" value="{{key}}" bindinput="handleKey" placeholder="输入您要回收的机型"/>
+            <input class="search-input" type="text" value="{{key}}" bindinput="handleKey" placeholder="输入您要回收的机型"
+                   placeholder-class='input-ph'/>
             <image class="icon-search" src="../../../img/icon-search.svg"></image>
         </view>
         <navigator class="back" open-type="navigateBack" delta="1">取消</navigator>
@@ -52,7 +53,7 @@
             <image class="icon-blank" src="../../../img/search/blank-bg.png"></image>
             <view class="title">没找到该机型</view>
             <view class="desc">抱歉，请核对输入内容或进行公益回收</view>
-            <navigator class="mue-button"  url="../products/index" open-type="switchTab">立即回收</navigator>
+            <navigator class="mue-button" url="../products/index" open-type="switchTab">立即回收</navigator>
         </view>
     </view>
 </view>

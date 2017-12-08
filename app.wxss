@@ -2,12 +2,11 @@ view {
   overflow: hidden;
   font-weight: normal;
   box-sizing: border-box;
-  font-family: PingFang-SC-Medium;
+  font-stretch: normal;
 }
 
 button, input {
   font-weight: normal;
-  font-family: PingFang-SC-Medium;
 }
 
 page {
@@ -92,6 +91,14 @@ page {
 .input-ph {
   color: #cacee0;
   font-size: 26rpx;
+}
+
+.font-medium {
+  font-family: PingFang-SC-Medium;
+}
+
+.font-bold {
+  font-family: PingFang-SC-Bold;
 }
 
 /** 底部提交按钮 **/

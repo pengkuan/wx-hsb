@@ -10,14 +10,14 @@
     </view>
     <view class="view-cols">
         <view class="view-col view-col-1">
-            <view class="view-col-title">邮寄地址</view>
+            <view class="view-col-title font-medium">邮寄地址</view>
             <view class="view-col-content">
                 <view>广东省深圳市南山区威新软件园8号楼7楼 回收宝（收）</view>
                 <view>Tel：400-080-9966</view>
             </view>
         </view>
         <view class="view-col view-col-2">
-            <view class="view-col-title">交易信息</view>
+            <view class="view-col-title font-medium">交易信息</view>
             <view class="view-col-content">
                 <view class="p-img-wrapper">
                     <image wx:if="{{ orderInfo.product_info }}" class="p-img" src="{{ cdn + orderInfo.product_info.product_pic_url }}"></image>
@@ -36,8 +36,8 @@
                 <view class="order-time">下单时间：{{ orderInfo.order_time }}</view>
                 <view class="">回收方式：{{ orderInfo.recycle_type_name }}</view>
                 <view class="">收款方式：{{ orderInfo.pay_info.payway_name }}</view>
-                <view class="">质检报告：{{ orderInfo.qt_md5num || '暂无' }}</view>
-                <view class="">质检报告：{{ orderInfo.pay_info.addpay_price || '无加价券' }}</view>
+                <!-- <view class="">质检报告：{{ orderInfo.qt_md5num || '暂无' }}</view> -->
+                <view class="">加价：{{ orderInfo.pay_info.addpay_price || '无加价券' }}</view>
                 <view class="">成交价：{{ orderInfo.pay_info.trans_price || '订单未完成' }}</view>
             </view>
         </view>

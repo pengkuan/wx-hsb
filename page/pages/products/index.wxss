@@ -39,6 +39,7 @@
 .cate-col.current {
   color: #000;
   font-weight: bold;
+  font-family: PingFang-SC-Medium;
 }
 
 .category-wrapper .line {

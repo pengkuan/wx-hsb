@@ -1,5 +1,8 @@
 <view class="container">
-    <view class="mue-header"><image class="icon-face" src="../../../img/trade/icon_face.png"></image>确认回收后，回收款项将会在24小时内打到您的微信钱包</view>
+    <view class="mue-header">
+        <image class="icon-face" src="../../../img/trade/icon_face.png"></image>
+        确认回收后，回收款项将会在24小时内打到您的微信钱包
+    </view>
     <view class="mue-content">
         <view class="grid-col grid-col-1">
             <view class="cell-item">
@@ -8,23 +11,35 @@
                 </view>
             </view>
             <view class="inline-list">
-                <input class="input" type="text" value="{{nickname}}" bindinput="handleName" placeholder="姓名"
-                       placeholder-class="input-ph"/>
-                <input class="input" type="number" value="{{tel}}" bindinput="handleTel" placeholder="联系电话"
-                       placeholder-class="input-ph"/>
+                <view class="form-control {{ nicknameFocus ? 'mue-focus' : '' }} {{ nickname ? 'has-value' : '' }}">
+                    <view class="label">联系人</view>
+                    <input class="input" type="text" focus="nicknameFocus" value="{{ nickname }}" bindinput="handleName" bindfocus="onNicknameFocus" bindblur="onNicknameBlur" placeholder-class="input-ph"/>
+                </view>
+                <view class="form-control {{ telFocus ? 'mue-focus' : '' }} {{ tel ? 'has-value' : '' }}">
+                    <view class="label">联系电话</view>
+                    <input class="input" type="number" focus="telFocus" value="{{ tel }}" bindinput="handleTel"  bindfocus="onTelFocus" bindblur="onTelBlur"/>
+                </view>
             </view>
         </view>
         <view class="divider"></view>
         <view class="grid-col grid-col-2">
             <view class="cell-item">
                 <view class="cell-item-inner">
-                    <view class="cell-item-left">我的现金券</view>
+                    <view class="cell-item-left">
+                        <text>我的现金券</text>
+                        <image class='icon-query' bindtap='showCoupDesc'
+                               src='../../../img/product/icon_query.svg'></image>
+                    </view>
                     <view class="cell-item-right pink">
-                        <block wx:if="{{ userInfo.tel }}">
-                            <block wx:if="{{ coupon.faceValue }}">{{ coupon.faceValue / 1000 }}元</block>
-                            <block wx:else>暂无</block>
-                        </block>
-                        <navigator wx:else url="../bind/index?type=bind">绑定手机号领取</navigator>
+                        <navigator class='mue-button' wx:if="{{ userInfo.tel }}" url="../coupons/index">
+                            <text wx:if="{{ coupon.faceValue }}">+{{ coupon.faceValue / 1000 }} 元</text>
+                            <text wx:else>+0 元</text>
+                            <image class="icon-link" src="../../../img/trade/icon_arrow_right.svg"></image>
+                        </navigator>
+                        <navigator class='mue-button' wx:else url="../bind/index?type=bind">
+                            <text>绑定手机号</text>
+                            <image class="icon-link" src="../../../img/trade/icon_arrow_right.svg"></image>
+                        </navigator>
                     </view>
                 </view>
             </view>

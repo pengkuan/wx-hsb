@@ -25,7 +25,7 @@
 
     <view class="sec products-wrapper">
         <view class="sec-title common-padding sub-title">
-            <view class="left">热门回收</view>
+            <view class="left font-medium">热门回收</view>
             <navigator class="right" url="../products/index" open-type="switchTab">更多</navigator>
         </view>
         <view class="sec-content">
@@ -45,7 +45,7 @@
 
     <view class="sec recycle-process">
         <view class="sec-title common-padding sub-title">
-            <view class="left">回收流程</view>
+            <view class="left font-medium">回收流程</view>
         </view>
         <view class="sec-content">
             <view class="grid-cols">
@@ -70,7 +70,7 @@
     </view>
     <view class="sec service-ensure">
         <view class="sec-title common-padding sub-title">
-            <view class="left">服务保障</view>
+            <view class="left font-medium">服务保障</view>
         </view>
         <view class="sec-content">
             <view class="grid-cols grid-cols-2">
@@ -99,13 +99,13 @@
         </view>
         <view class="sec-content">
             <view class="grid-cols grid-cols-3">
-                <view class="grid-col">
+                <view class="grid-col col-1">
                     <image class="icon" src="../../../img/logo-hw.png"></image>
                 </view>
-                <view class="grid-col">
+                <view class="grid-col col-2">
                     <image class="icon" src="../../../img/logo-wx.png"></image>
                 </view>
-                <view class="grid-col">
+                <view class="grid-col col-3">
                     <image class="icon" src="../../../img/logo-58.png"></image>
                 </view>
             </view>
