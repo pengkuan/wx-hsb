@@ -65,7 +65,7 @@ export default {
    * @param appid 第三方应用号/公众号/生活号，可空 必填
    * @return {Promise}
    */
-  login (openid, auth_type = WX_AUTH_TYPE, appid = WX_APP_ID) {
+  login (openid, unionid, auth_type = WX_AUTH_TYPE, appid = WX_APP_ID) {
     return new Promise((resolve, reject) => {
       Utils.post({
         url: url.authUserLogin,
@@ -73,6 +73,7 @@ export default {
           appid,
           openid,
           auth_type,
+          unionid,
           valid_days: 0.1
         },
         success (res) {

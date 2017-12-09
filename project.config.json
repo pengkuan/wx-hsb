@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 15,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -117,6 +117,7 @@
 					"id": -1,
 					"name": "icare",
 					"pathName": "page/pages/person/index",
+					"query": "",
 					"scene": "1037",
 					"referrerInfo": {
 						"appId": "wxeb46e3105e6634c5",

@@ -14,8 +14,7 @@
         </view>
     </view>
     <view class="mue-content">
-        <scroll-view class="scroll-wrapper" scroll-y scroll-with-animation="true"
-                     scroll-into-view="{{ 'view' + (len - 1) }}">
+        <scroll-view class="scroll-wrapper" scroll-y scroll-with-animation="true" scroll-into-view="{{ toView }}">
             <view class="item-cols">
                 <view id="view{{ pIndex }}" class="item-col" wx:for="{{ base }}" wx:for-item="i" wx:for-index="pIndex"
                       wx:key="{{ i.id }}" wx:if="{{ pIndex <= len }}">
@@ -51,8 +50,6 @@
                     <view class="item-col-option">
                         <view class="option-cols">
                             <view class="option-col {{ funcSelect[index]['cid'] == item.oid ? 'selected' : ''}} {{ index == (func.length - 1) ? 'last' : '' }}">
-                                <view class="radio"></view>
-                                <image class="radio icon-select" src="../../../img/product/icon_select.svg"></image>
                                 <view class="option-col-hd"
                                       bindtap="funcTapHandler"
                                       data-kid="{{ item.kid }}"
@@ -61,6 +58,7 @@
                                       data-dtext="{{ item.dtext }}"
                                       data-oid="{{ item.oid }}">
                                     <view class="radio"></view>
+                                    <image class="radio icon-select" src="../../../img/product/icon_select.svg"></image>
                                     <view class="text">{{ item.desc }}{{ selects[item.kid] }}</view>
                                     <image src="../../../img/product/icon_query.svg"
                                            wx:if="{{ item.picture.length }}"

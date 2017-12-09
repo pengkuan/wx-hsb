@@ -17,6 +17,7 @@ Page({
     baseSelect: [],
     funcSelect: [],
     len: 0,
+    toView: 'view0',
     pics: [{
       picturename: '国行.JPG'
     }],
@@ -103,9 +104,9 @@ Page({
       }
     }
     ctx.setData({
-      baseSelect
+      baseSelect,
     });
-    ctx.onSelectsChanged();
+    ctx.onSelectsChanged(true);
   },
 
   setValues(data, type = 'base') {
@@ -161,16 +162,24 @@ Page({
    * 监听 selects 做一些猥琐的操作
    * 改变进度条 限制一些选项等等...
    */
-  onSelectsChanged() {
+  onSelectsChanged(setView) {
     let len = 0,
-      baseSelect = ctx.data.baseSelect;
+    base = ctx.data.base,
+    baseSelect = ctx.data.baseSelect
     for (let i = 0; i < baseSelect.length; i++) {
       if (baseSelect[i]['cid'].length) len++;
     }
-    ctx.setData({
-      len,
-      toView: 'view' + (len + 1)
-    })
+    if(setView) {
+      let toView = len === base.length ? `view${len + 1}` : `view${len}`;
+      ctx.setData({
+        len,
+        toView
+      })
+    } else {
+     ctx.setData({
+        len
+      })
+    }
   },
 
   /**
