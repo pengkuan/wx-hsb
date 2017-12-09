@@ -1,12 +1,14 @@
 import user from './model/user';
 import partner from './model/partner';
 App({
+
   globalData: {
     cid: 1,
     bid: -1,
     pid: 1196,
     cdn: 'http://s1.huishoubao.com/img/phone/'
   },
+
   // 用户切换到后台时 清除登录态
   onHide () {
     this.clearUserInfo();
@@ -15,12 +17,14 @@ App({
       extraData: {}
     })
   },
+
   // 清除登录态
   clearUserInfo () {
     wx.removeStorage({
       key: 'userInfo'
     });
   },
+
   onShow (data) {
     // 小程序打开小程序
     if(data.scene == 1037) {
@@ -30,10 +34,11 @@ App({
         appId,
         extraData
       });
-      this.globalData.pid = extraData.pid;
+      this.globalData.pid = extraData.pid ? extraData.pid : 1173;
     }
     this.login();
   },
+
   login () {
     user.getWxCode().then(code => {
       user.getWxOpenId(code).then(data => {

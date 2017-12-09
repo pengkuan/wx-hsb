@@ -1,4 +1,6 @@
+import md5 from '../util/md5';
 import Utils from '../util/utils';
+
 const icare = {
   /**
    * sid 促销员 id 非必填
@@ -11,19 +13,25 @@ const icare = {
    * pmoney 估价金额 必须（单位分）
    */
   trade (params) {
+    params = {
+      sid: params.sid ? parseInt(params.sid) : 0,
+      uid: params.uid ? parseInt(params.uid) : 1,
+      pid: params.pid,
+      order: params.orderNum,
+      tel: params.tel,
+      product: params.productName,
+      productid: parseInt(params.productId),
+      pmoney: params.price,
+      time: new Date().getTime()
+    };
+    let queryString = Utils.qs(params);
+    queryString = queryString + '&key=test';
+    console.log(queryString);
+    params.token = md5(queryString);
     return new Promise((resolve, reject) => {
      Utils.post({
         url: 'https://www.icarephone.com/business/hsb/recover_order',
-        data: {
-          sid: parseInt(params.sid) || 0,
-          uid: parseInt(params.uid) || 0,
-          pid: params.pid,
-          order: params.orderNum,
-          tel: params.tel,
-          product: params.productName,
-          productid: parseInt(params.productId),
-          pmoney: params.price
-        },
+        data: params,
         success (res) {
           resolve(res)
         },
@@ -40,7 +48,8 @@ const icare = {
  */
 const partMap = {
   'wxeb46e3105e6634c5': icare, // icare 用户端
-  'wx3b23b2ebeec25313': icare // icare 促销员端
+  'wx3b23b2ebeec25313': icare, // icare 促销员端
+  '1173': icare
 };
 
 const store = {
@@ -57,6 +66,6 @@ export default {
     this.store.pid = extraData.pid ? extraData.pid : 1196;
   },
   getPartnerApi () {
-    return partMap[this.store.appid]
+    return partMap[this.store.pid]
   }
 }

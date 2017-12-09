@@ -95,7 +95,7 @@
     </view>
     <view class="sec partner">
         <view class="sec-title common-padding sub-title">
-            <view class="left">合作伙伴</view>
+            <view class="left font-medium">合作伙伴</view>
         </view>
         <view class="sec-content">
             <view class="grid-cols grid-cols-3">

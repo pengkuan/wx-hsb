@@ -96,8 +96,8 @@
 
 .product-col {
     display: inline-block;
-    width: 286rpx;
-	height: 406rpx;
+    width: 285rpx;
+	height: 386rpx;
     margin: 20rpx;
     margin-right: 0;
     margin-bottom: 49rpx;

@@ -14,12 +14,14 @@ Page({
     isShowNoMoreText: false
   },
 
-  onShow () {
+  onLoad () {
     ctx = this;
     wx.setNavigationBarTitle({
       title: '订单中心'
     });
-    // let userInfo = wx.getStorageSync('userInfo');
+  },
+
+  onShow () {
     let userInfo = user.getUserInfo();
     ctx.setData({
       isShowLoadText: true,

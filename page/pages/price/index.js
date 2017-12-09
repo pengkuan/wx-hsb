@@ -92,12 +92,14 @@ Page({
 
   // 跳转到下单页面
   switchTrade () {
-    let selects = ctx.data.selects;
-    let price = ctx.data.price;
-    let productId = ctx.data.productId;
-    let classId = ctx.data.classId;
+    let data = ctx.data;
+    let selects = data.selects;
+    let price = data.price;
+    let productId = data.productId;
+    let classId = data.classId;
+    let productName = data.productName;
     wx.navigateTo({
-      url: `../trade/index?selects=${selects}&price=${price}&productId=${productId}&classId=${classId}`
+      url: `../trade/index?selects=${selects}&price=${price}&productId=${productId}&classId=${classId}&productName=${productName}`
     })
   },
 
