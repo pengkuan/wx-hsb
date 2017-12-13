@@ -2,7 +2,9 @@
 export const WX_AUTH_TYPE = 2;
 // 微信小程序的APPID
 export const WX_APP_ID = 'wxdd35de8f647a231f';
+
 export const host = 'https://www.huishoubao.com/';
+export const mobileHost = 'https://mobile.huishoubao.com/';
 
 // Model
 const user = `${host}common/user/`;
@@ -15,7 +17,7 @@ const help = `${host}common/help/`;
 export const url = {
 
   // 获取微信openid
-  wxOpenId: `${user}wx_openid`,
+  wxOpenId: `${user}wxAppOpenId`,
   // 第三方授权登录
   authUserLogin: `${user}authUserLogin`,
   // 绑定手机号并登录
@@ -31,9 +33,10 @@ export const url = {
   order: `${user}getOrderDetails`,
   // 取消订单
   cancelOrder: `${order}cancelOrder`,
-
   // 优惠券
   coupon,
+  // 添加优惠券
+  addCoupon: `${mobileHost}api/receiveCoupon2/`,
   // 上门城市
   hsbCity: `${help}hsbCity/`,
   // 获取上门时间

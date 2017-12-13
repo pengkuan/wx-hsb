@@ -9,7 +9,7 @@ export default {
     } else {
       config.header = {"Content-Type": "application/x-www-form-urlencoded"};
     }
-    config.url += `?pid=${ PID }`;
+    config.url += `?pid=${ PID }&client=wxApp`;
     return wx.request(config);
   },
   // Get Request

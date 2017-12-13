@@ -80,6 +80,8 @@ Page({
 
   // 取消订单
   handleCancel (e) {
+    let dataset = e.currentTarget.dataset;
+    let orderList = ctx.data.orderList;
     wx.showModal({
       title: '提示',
       content: '您真的要取消吗？',
@@ -93,7 +95,11 @@ Page({
             userkey: userInfo.userkey,
             olduid: userInfo.old_uid
           }).then(res => {
-            ctx.loadMore();
+            orderList[dataset.index].can_cancel = 0;
+            orderList[dataset.index].order_status_name = '已取消';
+            ctx.setData({
+              orderList
+            })
           }, err => {
             wx.showModal({
               title: '提示',

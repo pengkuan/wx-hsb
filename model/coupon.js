@@ -27,7 +27,7 @@ export default {
   add ({uid, token}) {
     return new Promise((resolve, reject) => {
       Utils.post({
-        url: `${url.coupon}add/${token}`,
+        url: `${url.addCoupon}${token}`,
         data: {
           uid
         },
