@@ -30,7 +30,7 @@
                 </view>
                 <view class="coupon-desc">
                     <view class="label">加价券</view>
-                    <view class="limit-desc">回收金额满{{ item.useLimited / 1000 }}元以上使用</view>
+                    <view class="limit-desc">回收金额满{{ item.useLimited / 100 }}元以上使用</view>
                 </view>
                 <view class="coupon-deadline">
                     <block wx:if="{{ i == 0 }}">

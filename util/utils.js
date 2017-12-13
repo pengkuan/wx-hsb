@@ -119,8 +119,7 @@ export default {
       cps[i]['useLimited'] = parseInt(cps[i]['useLimited']);
       cps[i['faceValue']] = parseInt(cps[i['faceValue']]);
       if (cps[i]['status'] == 10) {
-        let couponPrice = cps[i]['useLimited'] / 1000;
-        if (price >= couponPrice) {
+        if (price >= cps[i]['useLimited'] / 100) {
           temp.push(cps[i]);
         }
       }

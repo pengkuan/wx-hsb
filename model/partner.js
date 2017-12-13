@@ -21,13 +21,12 @@ const icare = {
       tel: params.tel,
       product: params.productName,
       productid: parseInt(params.productId),
-      pmoney: params.price,
-      time: new Date().getTime()
+      pmoney: parseInt(params.price) * 100,
+      time: parseInt(new Date().getTime() / 1000)
     };
-    let queryString = Utils.qs(params);
-    queryString = queryString + '&key=test';
-    console.log(queryString);
-    params.token = md5(queryString);
+    // 公钥生成规则
+    let key = `order=${ params.order }&pmoney=${ params.pmoney }&time=${ params.time }&key=test`; // 线上的key=6k$Mu86@AN9
+    params.token = md5(key);
     return new Promise((resolve, reject) => {
      Utils.post({
         url: 'https://www.icarephone.com/business/hsb/recover_order',

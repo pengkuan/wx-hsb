@@ -97,6 +97,15 @@ Page({
   baseTapHandler(e) {
     let dataset = e.currentTarget.dataset;
     let baseSelect = ctx.data.baseSelect;
+    console.log(dataset);
+    if(dataset.pid === "81" && dataset.cid === "82") {
+      wx.showModal({
+        title: '提示',
+        content: '暂不回收未解锁机型',
+        showCancel: false
+      })
+      return;
+    }
     for (let i = 0; i < baseSelect.length; i++) {
       if (baseSelect[i]['pid'] === dataset.pid) {
         baseSelect[i]['cid'] = dataset.cid;
@@ -127,8 +136,14 @@ Page({
       }
       select.push(temp);
     });
-    if (type === 'base') ctx.setData({baseSelect: select});
-    if (type === 'func') ctx.setData({funcSelect: select});
+    if (type === 'base') 
+      ctx.setData({
+        baseSelect: select
+      });
+    if (type === 'func') 
+      ctx.setData({
+        funcSelect: select
+      });
     ctx.onSelectsChanged();
   },
 

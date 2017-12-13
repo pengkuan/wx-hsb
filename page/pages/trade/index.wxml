@@ -32,7 +32,7 @@
                     </view>
                     <view class="cell-item-right pink">
                         <navigator class='mue-button' wx:if="{{ userInfo.tel }}" url="../coupons/index">
-                            <text wx:if="{{ coupon.faceValue }}">+{{ coupon.faceValue / 1000 }} 元</text>
+                            <text wx:if="{{ coupon.faceValue }}">+{{ coupon.faceValue / 100 }} 元</text>
                             <text wx:else>+0 元</text>
                             <image class="icon-link" src="../../../img/trade/icon_arrow_right.svg"></image>
                         </navigator>

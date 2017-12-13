@@ -38,7 +38,7 @@
                 <view class="">收款方式：{{ orderInfo.pay_info.payway_name }}</view>
                 <!-- <view class="">质检报告：{{ orderInfo.qt_md5num || '暂无' }}</view> -->
                 <view class="">加价：{{ orderInfo.pay_info.addpay_price || '无加价券' }}</view>
-                <view class="">成交价：{{ orderInfo.pay_info.trans_price || '订单未完成' }}</view>
+                <view class="">成交价：{{ orderInfo.pay_info.trans_price / 100 || '订单未完成' }}</view>
             </view>
         </view>
     </view>
