@@ -13,11 +13,11 @@
             <view class="inline-list">
                 <view class="form-control {{ nicknameFocus ? 'mue-focus' : '' }} {{ nickname ? 'has-value' : '' }}">
                     <view class="label">联系人</view>
-                    <input class="input" type="text" focus="nicknameFocus" value="{{ nickname }}" bindinput="handleName" bindfocus="onNicknameFocus" bindblur="onNicknameBlur" placeholder-class="input-ph"/>
+                    <input class="input" type="text" focus="{{ nicknameFocus }}" value="{{ nickname }}" bindinput="handleName" bindfocus="onNicknameFocus" bindblur="onNicknameBlur" placeholder-class="input-ph"/>
                 </view>
                 <view class="form-control {{ telFocus ? 'mue-focus' : '' }} {{ tel ? 'has-value' : '' }}">
                     <view class="label">联系电话</view>
-                    <input class="input" type="number" focus="telFocus" value="{{ tel }}" bindinput="handleTel"  bindfocus="onTelFocus" bindblur="onTelBlur"/>
+                    <input class="input" type="number" focus="{{ telFocus }}" value="{{ tel }}" bindinput="handleTel"  bindfocus="onTelFocus" bindblur="onTelBlur" maxlength="11"/>
                 </view>
             </view>
         </view>

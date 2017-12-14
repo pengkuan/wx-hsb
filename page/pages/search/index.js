@@ -50,9 +50,10 @@ Page({
       isShowLoadText: true
     });
     product.search({
-      key: ctx.data.key,
+      key: encodeURIComponent(ctx.data.key),
       pageIndex: index
     }).then(res => {
+      console.log(res);
       let total = res.pdtcount;
       searchList = searchList.concat(res.productlist);
       let hasMore = total > searchList.length;

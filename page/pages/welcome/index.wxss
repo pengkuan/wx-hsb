@@ -155,6 +155,10 @@
     background-color: #fff;
 }
 
+.recycle-process .sec-content {
+    padding-bottom: 18px;
+}
+
 .recycle-process .icon {
     width: 90rpx;
     height: 90rpx;

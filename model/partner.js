@@ -15,7 +15,7 @@ const icare = {
   trade (params) {
     params = {
       sid: params.sid ? parseInt(params.sid) : 0,
-      uid: params.uid ? parseInt(params.uid) : 1,
+      uid: params.uid ? parseInt(params.uid) : 0,
       pid: params.pid,
       order: params.orderNum,
       tel: params.tel,
@@ -25,7 +25,7 @@ const icare = {
       time: parseInt(new Date().getTime() / 1000)
     };
     // 公钥生成规则
-    let key = `order=${ params.order }&pmoney=${ params.pmoney }&time=${ params.time }&key=test`; // 线上的key=6k$Mu86@AN9
+    let key = `order=${ params.order }&pmoney=${ params.pmoney }&time=${ params.time }&key=6k$Mu86@AN9`; // 线上的key=6k$Mu86@AN9 测试环境用test
     params.token = md5(key);
     return new Promise((resolve, reject) => {
      Utils.post({

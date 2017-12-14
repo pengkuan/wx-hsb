@@ -472,6 +472,7 @@ Page({
   },
 
   onNicknameFocus(e) {
+    console.log(e);
     ctx.setData({
       nicknameFocus: true
     })

@@ -79,8 +79,6 @@
 .grid-col-1 .input {
   display: inline-block;
   width: 315rpx;
-  height: 34rpx;
-  min-height: 0;
   color: #292e3e;
   font-size: 30rpx;
   margin-top: 10rpx;
@@ -177,7 +175,7 @@
 
 .grid-col-1 .form-control {
   position: relative;
-  padding-bottom: 20rpx;
+  padding-bottom: 10rpx;
   margin-bottom: 50rpx;
   border-bottom: 1rpx solid #cacee0;
 }

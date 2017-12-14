@@ -7,12 +7,8 @@
             <view class="mobile" wx:if="{{!userInfo.tel}}">未绑定手机号</view>
         </view>
         <view class="box-right">
-            <button size="mini" wx:if="{{ !userInfo.tel }}" plain="true" bindtap="switchBind" data-type="bind"
-                    class="button">绑定
-            </button>
-            <button size="mini" wx:if="{{ userInfo.tel }}" plain="true" bindtap="switchBind" data-type="unbind"
-                    class="button">解绑
-            </button>
+            <button size="mini" wx:if="{{ !userInfo.tel }}" plain="true" bindtap="switchBind" data-type="bind" class="button">绑定</button>
+            <button size="mini" wx:if="{{ userInfo.tel }}" plain="true" bindtap="unbindTel" data-type="unbind" class="button">解绑</button>
         </view>
     </view>
     <view class="grid-cols grid-fore1">

@@ -112,7 +112,6 @@ Page({
   unbindTel() {
     let data = ctx.data;
     let userInfo = user.getUserInfo();
-    console.log(userInfo);
     user.authUserUnbindTel({
       uid: userInfo.us_uid,
       userkey: userInfo.userkey,

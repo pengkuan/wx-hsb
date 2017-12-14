@@ -36,8 +36,7 @@ Page({
   asyncSfOrder (orderInfo) {
     if (orderInfo.ordertype !== 'post') return;
     order.takeSfOrder(orderInfo).then(data => {
-      console.log(data);
-      orderInfo.trackNum = 186451212345;
+      orderInfo.trackNum = mailno.data;
     }, err => {
       console.log(err);
     })
