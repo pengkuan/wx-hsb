@@ -1,6 +1,6 @@
 <import src="../../components/search-entry.wxml"/>
 <view class="container">
-    <template is="search-entry" data="{{ iconSearch: iconSearch }}"/>
+    <template is="search-entry" data="{{ iconSearch: iconSearch, key: '输入您要搜索的机型' }}"/>
     <view class="category-wrapper">
         <scroll-view class="cate-cols" scroll-x="true" scroll-with-animation="true">
             <view bindtap="cateTapHandler"

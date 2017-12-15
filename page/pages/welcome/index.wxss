@@ -67,9 +67,10 @@
 .sec-title {
     display: flex;
     padding-top: 50rpx;
-    padding-bottom: 40rpx;
+    padding-bottom: 50rpx;
     line-height: 36rpx;
     align-items: center;
+    color: #292e3e;
     justify-content: space-between;
 }
 
@@ -122,12 +123,14 @@
     margin-top: 30rpx;
     color: #292e3e;
     font-size: 26rpx;
+    font-family: PingFang-SC-Bold;
 }
 
 .product-col .p-desc {
-    margin-top: 20rpx;
+    margin-top: 16rpx;
    	color: #cacee0;
     font-size: 22rpx;
+    line-height: 22rpx;
 }
 
 .product-col .p-price {
@@ -140,7 +143,7 @@
     width: 112rpx;
     height: 40rpx;
     margin:  0 auto;
-    margin-top: 28rpx;
+    margin-top: 29rpx;
     color: #fabe00;
     font-size: 20rpx;
     line-height: 40rpx;
@@ -152,11 +155,12 @@
 
 /** recycle-process **/
 .recycle-process {
-    background-color: #fff;
+  padding-top: 20rpx;
+  background-color: #fff;
 }
 
 .recycle-process .sec-content {
-    padding-bottom: 18px;
+    padding-bottom: 18rpx;
 }
 
 .recycle-process .icon {
@@ -165,6 +169,8 @@
 }
 
 .recycle-process .grid-col {
+  overflow: visible;
+  position: relative;
     color: #7c829d;
     font-size: 0;
     text-align: center;
@@ -172,6 +178,7 @@
 
 .recycle-process .col-text {
     margin-top: 20rpx;
+    color: #7c829d;
     font-size: 24rpx;
 }
 
@@ -208,7 +215,7 @@
 
 .service-ensure .col-text {
     position: absolute;
-    left: 50rpx;
+    left: 29rpx;
     top: 20rpx;
     color: #fff;
     font-size: 26rpx;
@@ -225,7 +232,9 @@
     font-size: 0;
 }
 .partner .grid-cols {
+    overflow: visible;
     display: flex;
+    margin-top: -12rpx;
     justify-content: space-around;
 }
 
@@ -234,10 +243,11 @@
 }
 
 .partner .grid-col {
+    overflow: visible;
     display: flex;
     width: 210rpx;
     height: 120rpx;
-    margin: 10rpx 0;
+    margin: 20rpx 0;
     border-radius: 6rpx;
     margin-bottom: 60rpx;
     align-items: center;
@@ -258,4 +268,41 @@
 
 .grid-cols-3 {
   padding: 0 40rpx;
+}
+
+.recycle-process .has-arrow .arrow-right {
+  position: absolute;
+  width: 20rpx;
+  height: 20rpx;
+  right:-6rpx;
+  top:26%;
+}
+
+.index-search-wrapper {
+  display: flex;
+  padding:20rpx 40rpx;
+}
+
+.index-search-wrapper .right-button {
+  width: 94rpx;
+  height:78rpx;
+  padding: 0;
+  color: #7c829d;  
+  font-size: 26rpx;
+  line-height: 78rpx;
+  text-align: right;
+  background: transparent;
+}
+
+.index-search-wrapper .right-button::after {
+  display: none;
+}
+
+.search-entry-wrapper {
+  flex: 1;
+}
+
+.index-search-wrapper .search-entry-wrapper {
+  padding: 0;
+  width: 576rpx;
 }

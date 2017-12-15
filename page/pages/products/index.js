@@ -14,7 +14,7 @@ Page({
     brandScrollTop: 0,
     productScrollTop: 0,
     left: 0,
-    iconSearch: '../../../img/icon-search.svg',
+    iconSearch: '../../../img/icon-search.svg'
   },
 
   onLoad() {

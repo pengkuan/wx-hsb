@@ -6,7 +6,8 @@ App({
     cid: 1,
     bid: -1,
     pid: 1196,
-    cdn: 'http://s1.huishoubao.com/img/phone/'
+    cdn: 'http://s1.huishoubao.com/img/phone/',
+    isConnected: true
   },
 
   // 用户切换到后台时 清除登录态
@@ -37,6 +38,9 @@ App({
       this.globalData.pid = extraData.pid ? extraData.pid : 1173;
     }
     this.login();
+    wx.onNetworkStatusChange((res) => {
+      this.globalData.isConnected = res.isConnected;
+    })
   },
 
   login () {

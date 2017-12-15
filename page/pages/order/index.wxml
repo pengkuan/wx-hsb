@@ -23,7 +23,7 @@
                     <image wx:if="{{ orderInfo.product_info }}" class="p-img" src="{{ cdn + orderInfo.product_info.product_pic_url }}"></image>
                 </view>
                 <view class="p-desc">
-                    <view class="p-name">{{ orderInfo.product_info.product_name }}</view>
+                    <view class="p-name text-overflow">{{ orderInfo.product_info.product_name }}</view>
                     <view class="user-price">自主估价：
                         <text class="color-pink">￥{{ orderInfo.pay_info.order_price/100 }}</text>
                     </view>

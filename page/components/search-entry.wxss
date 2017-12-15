@@ -5,7 +5,6 @@
 
 .search-entry {
   display: flex;
-  width: 670rpx;
   height: 78rpx;
   margin: 0 auto;
   line-height: 80rpx;
@@ -13,21 +12,20 @@
   align-items: center;
   box-sizing: border-box;
   background-color: #ffffff;
-  justify-content: space-between;
   box-shadow: 0rpx 8rpx 27rpx 3rpx rgba(135, 142, 160, 0.15);
 }
 
 .search-entry .left-text {
-  margin-left: 30rpx;
-  color: #7c829d;
+  color: #cacee0;
   font-size: 26rpx;
 }
 
 .search-entry .icon-search {
   position: relative;
-  margin-right: 26rpx;
+  margin-right: 14rpx;
   width: 28rpx;
   height: 28rpx;
+  margin-left: 20rpx;
 }
 
 .search-entry .icon-search .icon {

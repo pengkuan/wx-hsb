@@ -166,7 +166,7 @@
     margin-left: -315rpx;
     margin-top: -340rpx;
     width: 630rpx;
-    height: 680rpx;
+    height: 620rpx;
     padding: 0 49rpx;
     border-radius: 12rpx;
     background-color: #ffffff;
@@ -183,11 +183,12 @@
 }
 
 .mue-alert-hd .icon-close {
-    position: absolute;
-    right: 30rpx;
-    top: 30rpx;
-   	width: 27rpx;
-   	height: 27rpx;
+  position:absolute;
+  right:10rpx;
+  top:10rpx;
+  width:27rpx;
+  height:27rpx;
+  padding:20rpx;
 }
 
 .image-item {
@@ -203,6 +204,9 @@
 }
 
 .icon-query {
-    width: 42rpx;
-    height: 42rpx;
+  position:absolute;
+  right:0;
+  width:42rpx;
+  height:42rpx;
+  padding:12px;
 }

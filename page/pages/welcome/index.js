@@ -30,7 +30,9 @@ Page({
       text: '笔记本回收',
       path: '../products/index',
       imgSrc: '../../../img/icon-notebook.png'
-    }]
+    }],
+    curModel: 'iPhone5s', // 默认当前的设备名
+    curModelInfo: null
   },
 
   onLoad () {
@@ -40,6 +42,15 @@ Page({
     });
     Utils.setWhiteNavBar();
     this.getProduct();
+    wx.getSystemInfo({
+      success (res) {
+        let name = res.model.split("<")[0];
+        ctx.setData({
+          curModel: name
+        })
+        ctx.getModelInfo(name);
+      }
+    })
   },
 
   // 获取热门机型
@@ -69,6 +80,32 @@ Page({
     app.globalData.bid = dataSet.bid;
     wx.switchTab({
       url: '../products/index'
+    })
+  },
+
+  getModelInfo (key) {
+    product.search({
+      key: encodeURIComponent(key),
+      pageIndex: 20
+    }).then(res => {
+      if (!(res.productlist && res.productlist.length)) return;
+        let list = res.productlist;
+        list.forEach(item => {
+          if (item.productname === key) {
+            ctx.setData({
+              curModelInfo: item
+            })
+          }
+        })
+    }, err => {
+      console.log(err);
+    })
+  },
+
+  switchPage (e) {
+    let dataset = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: dataset.url,
     })
   }
 });

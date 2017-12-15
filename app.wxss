@@ -108,7 +108,7 @@ page {
   bottom: 0;
   width: 100%;
   padding: 20rpx 40rpx;
-  background-color: #ffff;
+  background-color: #fff;
 }
 
 .mue-footer .mue-button {
@@ -127,10 +127,6 @@ page {
 .mue-footer .mue-button:after {
   border-radius: 4rpx;
   border-color: transparent;
-}
-
-.mue-footer .mue-button.button-hover {
-
 }
 
 /** disabled button */

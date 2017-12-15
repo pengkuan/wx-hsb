@@ -112,8 +112,8 @@
 }
 
 .col-visit .icon {
-  width: 56rpx;
-  height: 64rpx;
+  width: 50rpx;
+  height: 50rpx;
   margin: 16rpx auto;
 }
 
@@ -159,7 +159,7 @@
   display: flex;
   height: 60rpx;
   padding: 0 20rpx;
-  color: #ff5c7f;
+  color: #5498ff;
   align-items: center;
 }
 
@@ -193,4 +193,8 @@
   color: #5498ff;
   font-size: 22rpx;
   transform: translateY(0);
+}
+
+.input-ph {
+  color: #cacee0;
 }

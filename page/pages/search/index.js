@@ -14,6 +14,15 @@ Page({
     timeId: null
   },
 
+  onLoad (options) {
+    ctx = this;
+    if (options.key !== '输入您要搜索的机型') {
+      ctx.setData({
+        key: options.key
+      })
+    }
+  },
+
   onShow () {
     ctx = this;
     wx.setNavigationBarTitle({
@@ -29,6 +38,7 @@ Page({
       history: history.length ? history : [],
       hotList: hotList.length ? hotList : []
     });
+    if (ctx.data.key) ctx.loadMore();
   },
 
   loadMore () {
@@ -53,7 +63,6 @@ Page({
       key: encodeURIComponent(ctx.data.key),
       pageIndex: index
     }).then(res => {
-      console.log(res);
       let total = res.pdtcount;
       searchList = searchList.concat(res.productlist);
       let hasMore = total > searchList.length;
@@ -122,6 +131,12 @@ Page({
     wx.setStorage({
       key: 'search',
       data: []
+    })
+  },
+
+  clearKey() {
+    ctx.setData({
+      key: ''
     })
   }
 });

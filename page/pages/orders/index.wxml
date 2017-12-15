@@ -7,7 +7,7 @@
                     <image class="p-img" src="{{ cdn + item.product_pic_url }}"></image>
                 </view>
                 <view class="p-desc">
-                    <view class="p-name">{{ item.product_name }}</view>
+                    <view class="p-name text-overflow">{{ item.product_name }}</view>
                     <view class="user-price">自主估价：￥{{ item.order_price/100 }}</view>
                 </view>
                 <view class="order-status">{{ item.order_status_name }}</view>

@@ -92,7 +92,7 @@
 .select-list {
   overflow: hidden;
   max-height: 70rpx;
-  margin-top: 49rpx;
+  margin-top: 39rpx;
   transition: all 300ms;
 }
 
@@ -156,7 +156,7 @@
 .mrk-price .line,
 .mine-price .line {
   width: 38rpx;
-  height: 8rpx;
+  height: 4rpx;
   margin: 0 auto;
   margin-bottom: 19rpx;
 }
@@ -219,6 +219,7 @@
 }
 
 .plug-canvas {
+  z-index: 2;
   width: 690rpx;
   height: 400rpx;
   margin: 0 auto;
@@ -262,7 +263,8 @@
 
 .arrow_dir image {
   width: 28rpx;
-  height: 15rpx;
+  height: 28rpx;
+  padding: 20rpx;
   transition: transform 400ms;
 }
 
@@ -272,4 +274,26 @@
 
 .arrow_dir .icon-arrow-up {
   transform: rotate(-90deg);
+}
+
+.arrow-button {
+  height: 64rpx;
+  padding: 0 20rpx;
+  background: transparent;
+  border: none;
+  line-height: 62rpx;
+}
+
+.arrow-button::after {
+  display: none;
+}
+
+.button-back {
+  padding: 20rpx;
+  padding-right: 0;  
+  border-radius: 4rpx;
+}
+
+.select-info .grid-col {
+  margin-top: 30rpx;
 }

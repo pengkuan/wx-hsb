@@ -47,6 +47,8 @@ Page({
   // 价格走势图
   refreshChart: () => {
     let windowWidth = 320;
+    let months = ctx.data.months;
+    months = months.map(item => item + '月')
     try {
       let res = wx.getSystemInfoSync();
       windowWidth = res.windowWidth;
@@ -56,7 +58,7 @@ Page({
     let chart = new Chart({
       canvasId: 'lineCanvas',
       type: 'line',
-      categories: ctx.data.months,
+      categories: months,
       animation: true,
       legend: false,
       dataLabel: false,
@@ -73,7 +75,8 @@ Page({
       }],
       xAxis: {
         disableGrid: true,
-        fontColor: '#cacee0'
+        fontColor: '#cacee0',
+        format: (val) => parseInt(val),
       },
       yAxis: {
         fontColor: '#cacee0',
@@ -107,5 +110,9 @@ Page({
     ctx.setData({
       isOpen: !ctx.data.isOpen
     })
+  },
+
+  goBack () {
+    wx.navigateBack()
   }
 });

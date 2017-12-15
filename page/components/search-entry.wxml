@@ -1,10 +1,10 @@
 <template name="search-entry">
-    <navigator class="search-entry-wrapper" url="../search/index">
+    <navigator class="search-entry-wrapper" url="../search/index?key={{ key }}">
         <view class="search-entry">
-            <text class="left-text">iPhoneX</text>
             <view class="icon-search">
                 <image class="icon" src="{{ iconSearch }}"></image>
             </view>
+            <text class="left-text">{{ key }}</text>
         </view>
     </navigator>
 </template>

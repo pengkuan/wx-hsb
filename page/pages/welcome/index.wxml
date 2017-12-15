@@ -1,9 +1,12 @@
 <import src="../../components/search-entry.wxml"/>
 <view class="container">
-    <template is="search-entry" data="{{ iconSearch: iconSearch }}"/>
+    <view class="index-search-wrapper">
+      <template is="search-entry" data="{{ iconSearch: iconSearch, key: '输入您要搜索的机型' }}"/>
+      <button class="right-button" wx:if="{{ curModelInfo }}" bindtap="switchPage" data-url="../product/index?productId={{ curModelInfo.productid }}">估本机</button>
+      <button class="right-button" wx:else bindtap="switchPage" data-url="../search/index">估本机</button>
+    </view>
     <view class="banner">
-        <swiper class="swiper-wrapper" indicator-dots="true" autoplay="true" interval="2000" indicator-color="#cda8df"
-                indicator-active-color="#fff">
+        <swiper class="swiper-wrapper" indicator-dots="true" autoplay="true" interval="2000" indicator-color="#cda8df" indicator-active-color="#fff">
             <navigator open-type="switchTab" url="../products/index" wx:for="{{imgUrls}}" wx:key="{{index}}">
                 <swiper-item>
                     <image mode="aspectFit" src="{{item}}" class="slide-image"/>
@@ -11,7 +14,6 @@
             </navigator>
         </swiper>
     </view>
-
     <view class="cate-cols">
         <button class="cate-col mue-navigator" bindtap="switchProducts"
                 data-cid="{{ item.cid }}"
@@ -49,17 +51,20 @@
         </view>
         <view class="sec-content">
             <view class="grid-cols">
-                <view class="grid-col">
+                <view class="grid-col has-arrow">
                     <image class="icon" src="../../../img/icon-evaluate.png"></image>
                     <view class="col-text">在线估价</view>
+                    <image class="arrow-right" src="../../../img/arrow_right.svg"></image>
                 </view>
-                <view class="grid-col">
+                <view class="grid-col has-arrow">
                     <image class="icon" src="../../../img/icon-post.png"></image>
                     <view class="col-text">顺丰邮寄</view>
+                    <image class="arrow-right" src="../../../img/arrow_right.svg"></image>
                 </view>
-                <view class="grid-col">
+                <view class="grid-col has-arrow">
                     <image class="icon" src="../../../img/icon-check.png"></image>
                     <view class="col-text">专业检测</view>
+                    <image class="arrow-right" src="../../../img/arrow_right.svg"></image>
                 </view>
                 <view class="grid-col">
                     <image class="icon" src="../../../img/icon-cash.png"></image>

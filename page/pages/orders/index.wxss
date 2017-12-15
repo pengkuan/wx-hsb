@@ -43,6 +43,7 @@ page {
 
 .order-item .p-desc {
   float: left;
+  width: 242rpx;
   margin-left: 30rpx;
   margin-top: 22rpx;
   font-size: 0;
