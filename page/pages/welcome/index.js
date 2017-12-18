@@ -40,7 +40,6 @@ Page({
     wx.setNavigationBarTitle({
       title: '回收宝'
     });
-    Utils.setWhiteNavBar();
     this.getProduct();
     wx.getSystemInfo({
       success (res) {

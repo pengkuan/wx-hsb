@@ -221,7 +221,8 @@
 }
 
 .plug-canvas {
-  z-index: 2;
+  position: relative;
+  z-index: 99;
   width: 690rpx;
   height: 400rpx;
   margin: 0 auto;
@@ -230,7 +231,7 @@
 }
 
 .mue-footer {
-  z-index: 99;
+  z-index: 10000;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -239,6 +240,8 @@
 }
 
 .mue-content {
+  position: relative;
+  z-index: 1;
   padding-bottom: 140rpx;
 }
 

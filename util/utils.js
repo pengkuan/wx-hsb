@@ -61,10 +61,12 @@ export default {
   },
   // 设置顶部为白底的通用
   setWhiteNavBar() {
-    wx.setNavigationBarColor({
-      frontColor: '#000000',
-      backgroundColor: '#ffffff'
-    })
+    if (wx.setNavigationBarColor) {
+      wx.setNavigationBarColor({
+        frontColor: '#000000',
+        backgroundColor: '#ffffff'
+      })
+    }
   },
   //数组去重
   unique(arr) {

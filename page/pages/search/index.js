@@ -28,10 +28,6 @@ Page({
     wx.setNavigationBarTitle({
       title: '搜索'
     });
-    wx.setNavigationBarColor({
-      frontColor: '#000000',
-      backgroundColor: '#ffffff'
-    });
     let history = wx.getStorageSync('search');
     let hotList = wx.getStorageSync('hotList');
     ctx.setData({

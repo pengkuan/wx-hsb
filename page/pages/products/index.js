@@ -20,8 +20,21 @@ Page({
   onLoad() {
     ctx = this;
     product.category().then(category => {
+      let cateList = category.classlist;
+      let cid = app.globalData.cid;
+      let bid = app.globalData.bid;
       ctx.setData({
         cateList: category.classlist
+      });
+      let index = 0;
+      for (let i = 0; i < cateList.length; i++) {
+        if (cateList[i]['classid'] == cid) {
+          index = i;
+          break;
+        }
+      }
+      ctx.setData({
+        left: `${parseInt(index) / cateList.length * 100}%`
       });
     });
   },
@@ -40,7 +53,7 @@ Page({
     ctx.setData({
       cid,
       bid,
-      left: index / cateList.length * 100 + '%'
+      left: `${parseInt(index) / cateList.length * 100}%`
     });
     ctx.onCidChanged(bid);
   },
@@ -50,9 +63,10 @@ Page({
    */
   cateTapHandler(event) {
     let dataSet = event.currentTarget.dataset;
+    let cateList = ctx.data.cateList
     ctx.setData({
       cid: dataSet.cid,
-      left: (dataSet.index / ctx.data.cateList.length * 100 + '%' )
+      left: (dataSet.index / cateList.length * 100 + '%' )
     });
     ctx.onCidChanged();
   },
@@ -119,6 +133,7 @@ Page({
   },
 
   loadMoreProduct () {
+    console.log(1);
     if(!ctx.data.hasMore) { return }
     let num = ++ctx.data.num;
     product.products({

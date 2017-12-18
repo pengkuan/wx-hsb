@@ -39,7 +39,9 @@
                 <text>市场均价</text>
             </view>
         </view>
+        <view>
         <canvas canvas-id="lineCanvas" disable-scroll="true" class="plug-canvas"></canvas>
+        </view>
     </view>
     <view class="mue-footer">
         <button class="button-take-order" bindtap="switchTrade">立即回收</button>

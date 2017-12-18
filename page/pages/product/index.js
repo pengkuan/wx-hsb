@@ -28,11 +28,9 @@ Page({
     }
   },
 
-  onLoad() {
-    ctx = this;
+  onLoad(params) {
     Utils.setWhiteNavBar();
-    let params = Utils.getCurPageOpt();
-    if (!params.productId) params.productId = 30748;
+    ctx = this;
     product.productInfo({
       productId: params.productId
     }).then(res => {

@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
@@ -114,14 +114,14 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 15,
 					"name": "icare",
 					"pathName": "page/pages/person/index",
 					"query": "",
 					"scene": "1037",
 					"referrerInfo": {
 						"appId": "wxeb46e3105e6634c5",
-						"extraData": "{\"pid\": \"1173\"}"
+						"extraData": "{\"pid\": \"1173\", \"page\": \"welcome\"}"
 					}
 				}
 			]

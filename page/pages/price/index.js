@@ -13,15 +13,9 @@ Page({
     productId: '',
     isOpen: false
   },
-
-  onLoad () {
+  
+  onLoad(params) {
     ctx = this;
-  },
-
-  onShow () {
-    let pages = getCurrentPages();
-    let curPage = pages[pages.length - 1];
-    let params = curPage.options;
     let price = parseInt(params.price) / 100;
     let productId = params.productId;
     ctx.setData({

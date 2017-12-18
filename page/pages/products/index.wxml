@@ -15,22 +15,20 @@
     </view>
     <view class="content-wrapper">
         <view class="brand-cols-wrapper">
-            <scroll-view class="brand-cols" scroll-y="true" scroll-top="{{brandScrollTop}}">
+            <scroll-view class="brand-cols" scroll-y="true" scroll-top="{{ brandScrollTop }}">
                 <view bindtap="brandTapHandler" wx:for="{{brandList}}" wx:key="{{index}}"
                       class="brand-col text-overflow{{ item.brandid == bid ? ' current': '' }}" data-bid="{{item.brandid}}">{{item.brandname}}
                 </view>
             </scroll-view>
         </view>
         <view class="product-cols-wrapper">
-            <scroll-view class="product-cols" scroll-y="true" scroll-top="{{productScrollTop}}"
-                         bindscrolltoupper="refreshProduct" bindscrolltolower="loadMoreProduct">
+            <scroll-view class="product-cols" scroll-y="true" scroll-top="{{ productScrollTop }}" bindscrolltolower="loadMoreProduct">
                 <navigator class="product-col" wx:for="{{productList}}" wx:key="{{index}}"
                            url="../product/index?productId={{item.productid}}&name={{item.productname}}">
                     <view class="sort-number fore{{index+1}}">{{index + 1}}</view>
                     <view class="product-name text-overflow">{{item.productname}}</view>
                 </navigator>
                 <view class="product-col" wx:if="{{ productList.length === 0 }}">此品牌暂无机型</view>
-                <!--<view class="product-col" wx:if="{{ !hasMore }}">没有更多了</view>-->
             </scroll-view>
         </view>
     </view>
