@@ -11,19 +11,16 @@ Page({
     curTime: '',
   },
 
-  onLoad() {
+  onLoad(options) {
     ctx = this;
     wx.setNavigationBarTitle({
       title: '提交结果'
     })
-  },
-
-  onShow() {
-    let options = Utils.getCurPageOpt();
     let curTimeObj = Utils.formatDate();
-    console.log(options.orderInfo);
     let orderInfo = {};
-    if (options.orderInfo) orderInfo = JSON.parse(options.orderInfo);
+    if (options.orderInfo) {
+      orderInfo = JSON.parse(options.orderInfo);
+    }
     ctx.setData({
       orderInfo,
       curTime: `${curTimeObj.Y}-${curTimeObj.M}-${curTimeObj.D} ${curTimeObj.h}:${curTimeObj.m}:${curTimeObj.s}`,

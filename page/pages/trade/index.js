@@ -54,7 +54,8 @@ Page({
     coupon: {}, // 选中的优惠券
     userInfo: {},
     telFocus: false,
-    nicknameFocus: false
+    nicknameFocus: false,
+    options: {}
   },
 
   /**
@@ -62,7 +63,7 @@ Page({
    * 初始化回收宝上门城市
    * 初始化上门时间
    */
-  onLoad() {
+  onLoad(options) {
     ctx = this;
     let sf = ctx.data.sf;
     let hsb = ctx.data.hsb;
@@ -110,6 +111,10 @@ Page({
       ctx.setData({
         hsb
       });
+    }),
+
+    ctx.setData({
+      options
     })
   },
 
@@ -261,7 +266,7 @@ Page({
   // 更换回收方式
   switchWay(e) {
     let dataset = e.currentTarget.dataset;
-    let options = Utils.getCurPageOpt();
+    let options = ctx.data.options;
 
     if (parseInt(options.price) < 100) {
       ctx.showModel('未满100元不支持上门回收');
@@ -387,7 +392,7 @@ Page({
       });
     }
     // 不需要填写
-    let options = Utils.getCurPageOpt();
+    let options = ctx.data.options;
     let userInfo = user.getUserInfo();
     let wxToken = user.getWxToken();
     let coupon = ctx.data.coupon;

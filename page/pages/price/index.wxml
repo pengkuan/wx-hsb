@@ -13,7 +13,7 @@
         </view>
         <view class="select-info">
             <view class="grid-col">
-                <view class="grid-col-tit font-medium">评估机型：{{ productName }}</view>
+                <view class="grid-col-tit font-medium text-overflow">评估机型：{{ productName }}</view>
                 <view class="grid-col-rit">
                     <view class="button-back" bindtap="goBack">重新估价</view>
                 </view>

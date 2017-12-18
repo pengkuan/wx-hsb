@@ -302,3 +302,7 @@
 .select-info .grid-col {
   margin-top: 30rpx;
 }
+
+.grid-col-tit {
+  width: 80%;
+}
