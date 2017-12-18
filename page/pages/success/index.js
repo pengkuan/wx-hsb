@@ -36,7 +36,10 @@ Page({
   asyncSfOrder (orderInfo) {
     if (orderInfo.ordertype !== 'post') return;
     order.takeSfOrder(orderInfo).then(data => {
-      orderInfo.trackNum = mailno.data;
+      orderInfo.trackNum = data.mailno;
+      ctx.setData({
+        orderInfo: orderInfo
+      })
     }, err => {
       console.log(err);
     })
@@ -45,6 +48,7 @@ Page({
   asyncPartnerOrder (orderInfo) {
     const partnerApi = partner.getPartnerApi();
     const extraData = partner.store.extraData;
+    if (!partnerApi) return false;
     partnerApi.trade({
       sid: extraData.sid,
       uid: extraData.uid,

@@ -80,7 +80,7 @@ Page({
       },
       yAxis: {
         fontColor: '#cacee0',
-        gridColor: '#dddddd',
+        gridColor: '#f0f1f7',
         format: (val) => parseInt(val),
         min: ctx.data.values[ctx.data.values.length - 1],
       },

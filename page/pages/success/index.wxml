@@ -33,7 +33,7 @@
         </view>
         <view class="pro-item">
             <image class="icon" src="../../../img/success/icon_01.png"></image>
-            <view class="pro-item-hd">1.清理数据，解锁账号</view>
+            <view class="pro-item-hd">3.清理数据，解锁账号</view>
             <view class="pro-item-bd">请备份手机内重要数据，解锁账户及开机密码，将手机恢复出厂设置</view>
         </view>
     </view>

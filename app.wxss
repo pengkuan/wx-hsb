@@ -1,3 +1,4 @@
+/* 覆盖默认样式 */
 view {
   overflow: hidden;
   font-weight: normal;
@@ -15,6 +16,16 @@ page {
   background: #f9f9fb;
 }
 
+.modal-dialog {
+  background: #fff !important;
+}
+
+.modal-content {
+  padding: 50rpx 32rpx;
+  background: #fff !important;
+}
+
+/* 自定义公共样式 */
 .container {
   display: flex;
   flex: 1;
@@ -99,6 +110,10 @@ page {
 
 .font-bold {
   font-family: PingFang-SC-Bold;
+}
+
+.font-heavy {
+  font-family: PingFang-SC-Heavy;
 }
 
 /** 底部提交按钮 **/

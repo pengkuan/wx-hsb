@@ -5,11 +5,10 @@ page {
 .order-head {
   display: flex;
   width: 670rpx;
-  height: 190rpx;
   margin: 0 auto;
   margin-top: 20rpx;
   border-radius: 10rpx;
-  background-image: linear-gradient(0deg, #6dd8ff 0%, #64a6ff 100%);
+  background-image: linear-gradient(to right, #6dd8ff 0%, #64a6ff 100%);
 }
 
 .icon_order-state {

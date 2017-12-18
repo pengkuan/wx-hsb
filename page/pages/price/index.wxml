@@ -13,13 +13,13 @@
         </view>
         <view class="select-info">
             <view class="grid-col">
-                <view class="grid-col-tit">评估机型：{{ productName }}</view>
+                <view class="grid-col-tit font-medium">评估机型：{{ productName }}</view>
                 <view class="grid-col-rit">
                     <view class="button-back" bindtap="goBack">重新估价</view>
                 </view>
             </view>
             <view class="select-list {{ isOpen ? 'open' : '' }}">
-                <view class="select-item{{ (index+1) % 3 == 0 ? ' mr-0' : '' }}" wx:for="{{ desc }}"
+                <view class="select-item text-overflow {{ (index+1) % 3 == 0 ? ' mr-0' : '' }}" wx:for="{{ desc }}"
                       wx:key="{{index}}">{{ item }}
                 </view>
             </view>

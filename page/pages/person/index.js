@@ -134,7 +134,8 @@ Page({
         wx.showModal({
             title: '提示',
             content: '您真的要取消吗？',
-            success: function () {
+            success: function (res) {
+              if (!res.confirm) return false;
                 user.authUserUnbindTel({
                     uid: userInfo.us_uid,
                     userkey: userInfo.userkey,

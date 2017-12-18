@@ -7,7 +7,7 @@
         <view class="grid-col grid-col-1">
             <view class="cell-item">
                 <view class="cell-item-inner">
-                    <view class="cell-item-left">联系方式</view>
+                    <view class="cell-item-left font-medium">联系方式</view>
                 </view>
             </view>
             <view class="inline-list">
@@ -25,7 +25,7 @@
         <view class="grid-col grid-col-2">
             <view class="cell-item">
                 <view class="cell-item-inner">
-                    <view class="cell-item-left">
+                    <view class="cell-item-left font-medium">
                         <text>我的现金券</text>
                         <image class='icon-query' bindtap='showCoupDesc'
                                src='../../../img/product/icon_query.svg'></image>
@@ -49,7 +49,7 @@
             <view class="cell-item fore1">
                 <view class="cell-item-inner">
                     <view class="cell-item-left">
-                        <view>回收方式</view>
+                        <view class='font-medium'>回收方式</view>
                         <view class="label">北京、上海、深圳、杭州推荐使用上门回收</view>
                     </view>
                 </view>

@@ -8,7 +8,7 @@
         <view class="product-banner">
             <image wx:if="{{ pInfo.picUrl }}" class="p-img" src="{{ cdn + pInfo.picUrl }}"></image>
             <view class="right-info">
-                <view class="p-name">{{ pInfo.productName }}</view>
+                <view class="p-name font-medium">{{ pInfo.productName }}</view>
                 <view class="p-desc">如实填写详细信息，预估更准确，收款更快速！</view>
             </view>
         </view>
@@ -18,7 +18,7 @@
             <view class="item-cols">
                 <view id="view{{ pIndex }}" class="item-col" wx:for="{{ base }}" wx:for-item="i" wx:for-index="pIndex"
                       wx:key="{{ i.id }}" wx:if="{{ pIndex <= len }}">
-                    <view class="item-col-hd">{{ pIndex + 1 }}. {{ i.name }}</view>
+                    <view class="item-col-hd font-medium">{{ pIndex + 1 }}. {{ i.name }}</view>
                     <view class="item-col-option">
                         <view class="option-cols">
                             <view class="option-col {{ baseSelect[pIndex]['cid'] == j.id ? 'selected' : ''}} {{ index == (i.question.length - 1) ? 'last' : '' }}"

@@ -77,6 +77,8 @@
 .sec-title .right {
     color: #7c829d;
     font-size: 26rpx;
+    font-weight: normal;
+    font-family: PingFang-SC-Heavy;
 }
 
 /** product **/
@@ -123,7 +125,6 @@
     margin-top: 30rpx;
     color: #292e3e;
     font-size: 26rpx;
-    font-family: PingFang-SC-Bold;
 }
 
 .product-col .p-desc {
@@ -177,7 +178,7 @@
 }
 
 .recycle-process .col-text {
-    margin-top: 20rpx;
+    margin-top: 16rpx;
     color: #7c829d;
     font-size: 24rpx;
 }
@@ -220,6 +221,10 @@
     color: #fff;
     font-size: 26rpx;
     font-weight: bold;
+}
+
+.service-ensure .sec-title {
+  padding-top:44rpx;
 }
 
 /** partner **/
@@ -274,8 +279,8 @@
   position: absolute;
   width: 20rpx;
   height: 20rpx;
-  right:-6rpx;
-  top:26%;
+  right: -10rpx;
+  top: 26%;
 }
 
 .index-search-wrapper {

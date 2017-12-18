@@ -61,7 +61,7 @@ Page({
       ctx.setData({
         productList: hotList
       });
-    product.products({cid: 1, bid: -1, num: 8, pageSize: 8}).then(data => {
+    product.products({cid: 1, bid: -1, num: 1, pageSize: 8}).then(data => {
       let productList = data.productlist.splice(0, 8);
       ctx.setData({
         productList

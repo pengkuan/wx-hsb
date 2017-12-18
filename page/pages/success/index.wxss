@@ -10,7 +10,7 @@
   border-radius: 12rpx;
   color: #ffffff;
   font-size: 0;
-  background-image: linear-gradient(0deg, #5be79c 0%, #5dd9ac 100%);
+  background-image: linear-gradient(to right, #5be79c 0%, #5dd9ac 100%);
 }
 
 .order-banner .icon-success {

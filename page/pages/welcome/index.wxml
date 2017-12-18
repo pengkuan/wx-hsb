@@ -35,7 +35,7 @@
                 <navigator url="../product/index?productId={{item.productid}}" class="product-col" wx:for="{{productList}}" wx:key="{{index}}"
                            data-pid="{{item.productid}}">
                     <image class="p-img" src="{{ cdn + item.productlogo}}"></image>
-                    <view class="p-name">{{item.productname}}</view>
+                    <view class="p-name font-medium">{{item.productname}}</view>
                     <view class="p-desc">最高回收价 |
                         <text class="p-price">￥{{item.maxprice / 100}}</text>
                     </view>
