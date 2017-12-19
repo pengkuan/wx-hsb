@@ -3,8 +3,8 @@
         <image class="icon_order-state" src="../../../img/order-state.png"></image>
         <view class="order-state-cols">
             <view class="order-state-col" wx:if="{{ orderInfo.order_status_list.length }}">
-                <view class="order-state-name">{{ orderInfo.order_status_list[orderInfo.order_status_list.length - 1].order_status_name }}</view>
-                <view class="order-state-time">{{ orderInfo.order_status_list[orderInfo.order_status_list.length - 1].order_status_time }}</view>
+                <view class="order-state-name">{{ orderInfo.order_status_list[0].order_status_name }}</view>
+                <view class="order-state-time">{{ orderInfo.order_status_list[0].order_status_time }}</view>
             </view>
         </view>
     </view>

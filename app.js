@@ -41,6 +41,11 @@ App({
     wx.onNetworkStatusChange((res) => {
       this.globalData.isConnected = res.isConnected;
     })
+    wx.getSystemInfo({
+      success (res) {
+        console.log(res);
+      }
+    })
   },
 
   login () {

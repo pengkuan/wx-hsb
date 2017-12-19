@@ -28,10 +28,10 @@
             <image class="grid-col-icon" src="../../../img/person/icon_phone.svg"></image>
             <view class="grid-col-text">400-080-9966</view>
         </button>
-        <button class="grid-col mue-button" open-type="contact" session-from="weapp">
+        <!-- <button class="grid-col mue-button" open-type="contact" session-from="weapp">
             <image class="grid-col-icon" src="../../../img/person/icon_contact.svg"></image>
             <view class="grid-col-text">在线客服</view>
-        </button>
+        </button> -->
         <navigator class="grid-col mue-button" url="../about/index">
             <image class="grid-col-icon" src="../../../img/person/icon_about.svg"></image>
             <view class="grid-col-text">关于我们</view>

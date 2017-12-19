@@ -1,0 +1,1 @@
+ <web-view src="https://mobile.huishoubao.com/mobile/qtreport_{{reportId}}.html"></web-view>
