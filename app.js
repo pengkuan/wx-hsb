@@ -30,7 +30,8 @@ App({
     // 小程序打开小程序
     if (data.scene == 1037) {
       let appId = data.referrerInfo.appId;
-      let extraData = JSON.parse(data.referrerInfo.extraData);
+      let extraData = data.referrerInfo.extraData;
+      if (typeof extraData === 'string') extraData = JSON.parse(extraData);
       partner.setPartnerInfo({
         appId,
         extraData
@@ -38,14 +39,6 @@ App({
       this.globalData.pid = extraData.pid ? extraData.pid : 1196;
     }
     this.login();
-    wx.onNetworkStatusChange((res) => {
-      this.globalData.isConnected = res.isConnected;
-    })
-    wx.getSystemInfo({
-      success (res) {
-        console.log(res);
-      }
-    })
   },
 
   login () {

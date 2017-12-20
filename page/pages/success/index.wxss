@@ -88,6 +88,7 @@
 
 .mue-footer .mue-button {
   width: 325rpx;
+  margin: 0;
   box-sizing: border-box;
 }
 
