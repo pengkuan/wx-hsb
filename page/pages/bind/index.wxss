@@ -7,6 +7,13 @@ page {
   background-color: #fff;
 }
 
+.bottom-bg {
+  position: fixed;
+  bottom: 12rpx;
+  width: 100%;
+  height: 118rpx;
+}
+
 .form {
   height: 100%;
   width: 580rpx;
@@ -45,7 +52,7 @@ page {
   height: 56rpx;
   padding: 16rpx;
   margin-right: 0;
-  color: #aab0cb !important;
+  color: #fabe00;
   font-size: 24rpx;
   line-height: 24rpx;
   border-radius: 4rpx;
@@ -54,6 +61,14 @@ page {
 
 .form .button-code:after {
   border-radius: 4rpx;
+   border: solid 1rpx #fabe00;
+}
+
+.form .button-code[disabled] {
+  color: #aab0cb;
+}
+
+.form .button-code[disabled]:after {
   border: solid 1rpx #cacee0;
 }
 
@@ -70,11 +85,4 @@ page {
 
 .form .mue-button-primary:after {
   display: none;
-}
-
-.bottom-bg {
-  position: fixed;
-  bottom: 12rpx;
-  width: 100%;
-  height: 118rpx;
 }
