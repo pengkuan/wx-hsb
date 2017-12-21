@@ -139,6 +139,6 @@
         </view>
     </view>
     <view class="mue-footer">
-        <button class="mue-button" bindtap="submitOrder">提交订单</button>
+        <button class="mue-button" hover-class="mue-active" bindtap="submitOrder">提交订单</button>
     </view>
 </view>

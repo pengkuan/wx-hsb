@@ -153,3 +153,8 @@ page {
 .mue-footer .mue-button[disabled]:after {
   border-color: #cacee0;
 }
+
+/** 点击效果 **/
+.mue-active {
+  opacity: .7;
+}

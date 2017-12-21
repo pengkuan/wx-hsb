@@ -24,12 +24,12 @@
                             <view class="option-col {{ baseSelect[pIndex]['cid'] == j.id ? 'selected' : ''}} {{ index == (i.question.length - 1) ? 'last' : '' }}"
                                   wx:for="{{ i.question }}"
                                   wx:for-item="j"
-                                  wx:key="{{ j.id }}">
-                                <view class="option-col-hd"
-                                      bindtap="baseTapHandler"
-                                      data-cname="{{ j.name }}"
-                                      data-pid="{{ i.id }}"
-                                      data-cid="{{ j.id }}">
+                                  wx:key="{{ j.id }}"
+                                  bindtap="baseTapHandler"
+                                  data-cname="{{ j.name }}"
+                                  data-pid="{{ i.id }}"
+                                  data-cid="{{ j.id }}">
+                                <view class="option-col-hd">
                                     <view class="text">{{ j.name }}</view>
                                     <view class="radio"></view>
                                     <image class="radio icon-select" src="../../../img/product/icon_select.svg"></image>
@@ -49,14 +49,14 @@
                 <view class="item-col" wx:for="{{ func }}" wx:key="{{ index }}">
                     <view class="item-col-option">
                         <view class="option-cols">
-                            <view class="option-col {{ funcSelect[index]['cid'] == item.oid ? 'selected' : ''}} {{ index == (func.length - 1) ? 'last' : '' }}">
-                                <view class="option-col-hd"
-                                      bindtap="funcTapHandler"
-                                      data-kid="{{ item.kid }}"
-                                      data-did="{{ item.did }}"
-                                      data-otext="{{ item.otext }}"
-                                      data-dtext="{{ item.dtext }}"
-                                      data-oid="{{ item.oid }}">
+                            <view class="option-col {{ funcSelect[index]['cid'] == item.oid ? 'selected' : ''}} {{ index == (func.length - 1) ? 'last' : '' }}"
+                                  bindtap="funcTapHandler"
+                                  data-kid="{{ item.kid }}"
+                                  data-did="{{ item.did }}"
+                                  data-otext="{{ item.otext }}"
+                                  data-dtext="{{ item.dtext }}"
+                                  data-oid="{{ item.oid }}">
+                                <view class="option-col-hd">
                                     <view class="radio"></view>
                                     <image class="radio icon-select" src="../../../img/product/icon_select.svg"></image>
                                     <view class="text">{{ item.desc }}{{ selects[item.kid] }}</view>
@@ -76,7 +76,7 @@
         </scroll-view>
     </view>
     <view class="mue-footer">
-        <button class="mue-button" bindtap="onSubmit" disabled="{{ len != base.length }}">估价</button>
+        <button class="mue-button" bindtap="onSubmit"  hover-class="mue-active" disabled="{{ len != base.length }}">估价</button>
     </view>
     <view class="mue-modal" wx:if="{{ alertInfo.title }}">
         <view class="mue-alert">

@@ -18,14 +18,12 @@ Page({
     funcSelect: [],
     len: 0,
     toView: 'view0',
-    pics: [{
-      picturename: '国行.JPG'
-    }],
     alertInfo: {
       title: '',
       desc: '',
       pictureUrl: ''
-    }
+    },
+    canClick: true
   },
 
   onLoad(params) {
@@ -96,7 +94,7 @@ Page({
     let dataset = e.currentTarget.dataset;
     let baseSelect = ctx.data.baseSelect;
     console.log(dataset);
-    if(dataset.pid === "81" && dataset.cid === "82") {
+    if (dataset.pid === "81" && dataset.cid === "82") {
       wx.showModal({
         title: '提示',
         content: '暂不回收未解锁机型',
@@ -134,11 +132,11 @@ Page({
       }
       select.push(temp);
     });
-    if (type === 'base') 
+    if (type === 'base')
       ctx.setData({
         baseSelect: select
       });
-    if (type === 'func') 
+    if (type === 'func')
       ctx.setData({
         funcSelect: select
       });
@@ -177,19 +175,19 @@ Page({
    */
   onSelectsChanged(setView) {
     let len = 0,
-    base = ctx.data.base,
-    baseSelect = ctx.data.baseSelect
+      base = ctx.data.base,
+      baseSelect = ctx.data.baseSelect
     for (let i = 0; i < baseSelect.length; i++) {
       if (baseSelect[i]['cid'].length) len++;
     }
-    if(setView) {
+    if (setView) {
       let toView = len === base.length ? `view${len + 1}` : `view${len}`;
       ctx.setData({
         len,
         toView
       })
     } else {
-     ctx.setData({
+      ctx.setData({
         len
       })
     }
@@ -199,6 +197,9 @@ Page({
    * 估价
    */
   onSubmit() {
+    ctx.setData({
+      canClick: false
+    });
     let pInfo = ctx.data.pInfo;
     let bs = ctx.data.baseSelect;
     let fs = ctx.data.funcSelect;
@@ -209,11 +210,17 @@ Page({
       productId: ctx.data.pInfo.productId,
       selects: ids.join('-')
     }).then(data => {
+      ctx.setData({
+        canClick: true
+      });
       wx.navigateTo({
         url: `../price/index?price=${data.quotation}&ids=${ids.join('-')}&desc=${desc.join('-')}&productId=${pInfo.productId}&productName=${pInfo.productName}&classId=${pInfo.classId}`
       })
     }, res => {
       console.log(res);
+      ctx.setData({
+        canClick: true
+      });
     })
   },
 

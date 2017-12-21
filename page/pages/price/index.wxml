@@ -44,6 +44,6 @@
         </view>
     </view>
     <view class="mue-footer">
-        <button class="button-take-order" bindtap="switchTrade">立即回收</button>
+        <button class="button-take-order" hover-class="mue-active" bindtap="switchTrade">立即回收</button>
     </view>
 </view>
