@@ -121,10 +121,16 @@ Page({
   onShow() {
     let userInfo = user.getUserInfo();
     let tel = ctx.data.tel;
-    ctx.setData({
-      userInfo,
-      tel: userInfo.tel ? userInfo.tel : tel
-    });
+    if (userInfo && userInfo.tel) {
+      ctx.setData({
+        userInfo,
+        tel: userInfo.tel
+      });
+    } else {
+      ctx.setData({
+        userInfo
+      });
+    }
     if (userInfo.tel) {
       coupon.page({
         uid: userInfo.us_uid,

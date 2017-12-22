@@ -6,32 +6,29 @@ let ctx, timeId, app = getApp();
 Page({
 
   data: {
-    type: 'bind',
     tel: '',
     code: "",
     openid: "",
     unionid: "",
     isValidTel: false,
-    counter: 0 // 默认只需等待0秒
+    counter: 0, // 默认只需等待0秒,
+    options: {}
   },
 
-  onShow() {
-    let params = Utils.getCurPageOpt();
+  onLoad(options) {
     ctx = this;
     let tel = user.getUserInfo().tel;
-    let title = params.type === 'bind' ? '绑定手机' : '解绑手机';
     wx.setNavigationBarTitle({
-      title,
+      title: '绑定手机'
     });
-    Utils.setWhiteNavBar();
     // 有可能没有token 比如直接编译当前页面
     let wxToken = user.getWxToken();
     ctx.setData({
-      type: params.type,
+      options,
       tel: tel ? tel : '',
       openid: wxToken.openid,
       unionid: wxToken.unionid,
-      isValidTel: tel && tel.length === 11
+      isValidTel: tel && tel.length === 11,
     });
     if (Object.keys(wxToken).length === 0) {
       user.getWxCode().then(code => {
@@ -56,7 +53,7 @@ Page({
       counter: 30
     });
     ctx.counting();
-    user.getCode({tel}).then(data => {
+    user.getCode({ tel}).then(data => {
       let showInfo = {
         title: '提示',
         icon: 'loading',
@@ -105,34 +102,14 @@ Page({
     })
   },
 
-  /**
-   * 解绑手机号需用用户登录
-   * 解绑成功清除回收宝账户信息
-   */
-  unbindTel() {
-    let data = ctx.data;
-    let userInfo = user.getUserInfo();
-    user.authUserUnbindTel({
-      uid: userInfo.us_uid,
-      userkey: userInfo.userkey,
-      openid: data.openid
-    }).then(res => {
-      user.setUserInfo({});
-      ctx.switchPage();
-    })
-  },
-
   // 绑定手机号
   submit() {
     let data = ctx.data;
-    if (data.type === 'bind') ctx.bindTelLogin();
-    if (data.type === 'unbind') ctx.unbindTel()
+    ctx.bindTelLogin();
   },
 
   switchPage() {
-    let pages = getCurrentPages();
-    let curPage = pages[pages.length - 1];
-    let options = curPage.options;
+    let options = ctx.data.options;
     if(options.redirectUrl) {
       wx.redirectTo({
         url: decodeURIComponent(options.redirectUrl)
