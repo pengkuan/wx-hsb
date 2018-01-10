@@ -408,14 +408,6 @@ Page({
     let userInfo = user.getUserInfo();
     let wxToken = user.getWxToken();
     let coupon = ctx.data.coupon;
-    if (!options.productId) {
-      options = {
-        selects: "137-123-12-73-68-61-65-59-55-53-30-23-21-9-10",
-        price: "96400",
-        productId: "30800",
-        desc: '大陆国行-保修一个月以上-128G-金色-无拆机无维修-显示正常-屏幕完好-外观完好-iCloud已注销-A1586-机身完好-二手-正常开机-非官换机-液晶正常-指纹功能正常-WIFI正常-无进水-通话正常'
-      };
-    }
     let params = {
       // 估价选项
       selects: options.selects,

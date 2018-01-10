@@ -37,7 +37,7 @@ page {
 }
 
 .order-item .p-img {
-  width: 43rpx;
+  width: 86rpx;
   height: 86rpx;
 }
 

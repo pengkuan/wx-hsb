@@ -38,7 +38,7 @@
 
 .product-banner .p-img {
   float: left;
-  width: 43rpx;
+  width: 86rpx;
   height: 86rpx;
   margin: 37rpx 44rpx;
 }

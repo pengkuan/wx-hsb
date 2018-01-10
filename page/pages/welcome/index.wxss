@@ -115,7 +115,7 @@
 
 .product-col .p-img {
     display: block;
-    width: 80rpx;
+    width: 146rpx;
     height: 146rpx;
     margin: 0 auto;
     margin-top: 40rpx;

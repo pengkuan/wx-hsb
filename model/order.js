@@ -95,7 +95,8 @@ export default {
           address: params.address,
           couponId: params.couponId || "",
           wechatpayouttype: "9", // 区分小程序
-          nickname: params.nickname
+          nickname: params.nickname,
+          price: params.price
         },
         success(res) {
           res = res.data;
