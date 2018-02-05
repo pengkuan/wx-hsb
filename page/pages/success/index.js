@@ -13,9 +13,6 @@ Page({
 
   onLoad(options) {
     ctx = this;
-    wx.setNavigationBarTitle({
-      title: '提交结果'
-    })
     let curTimeObj = Utils.formatDate();
     let orderInfo = {};
     if (options.orderInfo) {

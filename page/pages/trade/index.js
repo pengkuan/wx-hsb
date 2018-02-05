@@ -67,10 +67,7 @@ Page({
     ctx = this;
     let sf = ctx.data.sf;
     let hsb = ctx.data.hsb;
-    wx.setNavigationBarTitle({
-      title: '提交订单'
-    });
-
+    
     // 获取顺丰城市
     trade.sfCity().then(data => {
       let temp = {};

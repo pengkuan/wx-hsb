@@ -37,9 +37,6 @@ Page({
 
   onLoad () {
     ctx = this;
-    wx.setNavigationBarTitle({
-      title: '回收宝'
-    });
     this.getProduct();
     wx.getSystemInfo({
       success (res) {
