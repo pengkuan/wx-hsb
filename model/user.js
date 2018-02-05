@@ -1,4 +1,4 @@
-import {url, WX_APP_ID, WX_AUTH_TYPE} from '../config/index';
+import { url, WX_APP_ID, WX_AUTH_TYPE, WX_SECRET} from '../config/index';
 import Utils from '../util/utils';
 
 export default {
@@ -46,16 +46,69 @@ export default {
    * @return {Promise}
    */
   getWxOpenId (code) {
+    let _this = this;
     return new Promise((resolve, reject) => {
-      Utils.get({
-        url: `${ url.wxOpenId }/${code}`,
+      _this.getWxUnionId().then(getWxUnionIdRet => {
+        _this.decryptWxInfo({
+          code,
+          iv: getWxUnionIdRet.iv,
+          encryptedData: getWxUnionIdRet.encryptedData
+        }).then(res => {
+          let data = res.data.data;
+          data['openid'] = data['openId'];
+          data['unionid'] = data['unionId'];
+          wx.setStorageSync('wxAuth', data);
+          resolve(data);
+        }, err => {
+          wx.showModal({
+            title: '系统提示',
+            content: '网络异常',
+          })
+        })
+      })
+      // Utils.get({
+      //   url: `${ url.wxOpenId }/${code}`,
+      //   success (res) {
+      //     resolve(res.data.data);
+      //   },
+      //   fail (res) {
+      //     reject(res.errMsg);
+      //   }
+      // });
+    })
+  },
+
+
+  // 获取小程序unionId
+  getWxUnionId () {
+    let _this = this;
+    return new Promise((resolve, reject) => {
+      wx.getUserInfo({
+        withCredentials: true,
+        lang: 'zh_CN',
         success (res) {
-          resolve(res.data.data);
-        },
-        fail (res) {
-          reject(res.errMsg);
+          resolve(res)
         }
-      });
+      })
+    })
+  },
+  
+  // resolveWx
+  decryptWxInfo({ code, iv, encryptedData}) {
+    return new Promise((resolve, reject) => {
+      Utils.post({
+        url: url.decryptWxUserInfo,
+        data: {
+          code,
+          WX_SECRET,
+          WX_APP_ID,
+          iv,
+          encryptedData
+        },
+        success(res) {
+          resolve(res)
+        }
+      })
     })
   },
 

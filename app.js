@@ -46,7 +46,7 @@ App({
       user.getWxOpenId(code).then(data => {
         // 保存wx票据 绑定和解绑都有用到
         user.setWxToken(data);
-        user.login(data.openid, data.unionid).then(loginRes => {
+        user.login(data.openId, data.unionId).then(loginRes => {
           // 保存账户的回收宝信息
           user.setUserInfo(loginRes);
         }, err => {
