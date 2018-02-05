@@ -2,8 +2,10 @@
 export const WX_AUTH_TYPE = 2;
 // 微信小程序的APPID
 export const WX_APP_ID = 'wxdd35de8f647a231f';
+export const WX_SECRET = '61c5b34bbb3742402d0920baa193a2d3';
 
 export const host = 'https://www.huishoubao.com/';
+// export const host = 'http://gaox.www.huishoubao.com/';
 export const mobileHost = 'https://mobile.huishoubao.com/';
 
 // Model
@@ -64,4 +66,7 @@ export const url = {
   // 获取顺丰地址
   sfCity: `${order}getSfCity/`,
   // 高速产品查找
+
+  // 微信信息解密
+  decryptWxUserInfo: `${host}common/wxapp/index`
 };

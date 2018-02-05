@@ -8,6 +8,7 @@ page {
 
 .order-list {
   height: 100%;
+  overflow: hidden;
 }
 
 .order-item {

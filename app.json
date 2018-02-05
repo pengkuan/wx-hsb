@@ -21,7 +21,9 @@
     "page/pages/about/price/index",
     "page/pages/help/index",
     "page/pages/address/index",
-    "page/pages/contact/index"
+    "page/pages/contact/index",
+
+    "page/pages/test/index"
 
   ],
   "window": {

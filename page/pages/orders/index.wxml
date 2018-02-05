@@ -26,8 +26,8 @@
                 </view>
             </view>
         </view>
-        <view wx:if="{{ isShowNoMoreText }}">-木有更多了-</view>
-        <view wx:if="{{ isShowLoadText }}">-加载中-</view>
+        <!-- <view wx:if="{{ isShowNoMoreText }}">-木有更多了-</view>
+        <view wx:if="{{ isShowLoadText }}">-加载中-</view> -->
     </scroll-view>
     <view class="blank-wrapper" wx:if="{{ orderList.length == 0 }}">
         <image class="icon-blank" src="../../../img/orders/blank-bg.png"></image>

@@ -25,9 +25,6 @@ Page({
 
   onShow () {
     ctx = this;
-    wx.setNavigationBarTitle({
-      title: '搜索'
-    });
     let history = wx.getStorageSync('search');
     let hotList = wx.getStorageSync('hotList');
     ctx.setData({

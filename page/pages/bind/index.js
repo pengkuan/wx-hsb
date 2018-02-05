@@ -31,14 +31,13 @@ Page({
       isValidTel: tel && tel.length === 11,
     });
     if (Object.keys(wxToken).length === 0) {
-      user.getWxCode().then(code => {
-        user.getWxOpenId(code).then(wxToken => {
-          user.setWxToken(wxToken);
-          ctx.setData({
-            openid: wxToken.openid,
-            unionid: wxToken.unionid
-          });
-        })
+      user.getWxOpenId().then(wxToken => {
+        console.log(wxToken);
+        user.setWxToken(wxToken);
+        ctx.setData({
+          openid: wxToken.openid,
+          unionid: wxToken.unionid
+        });
       })
     }
   },
@@ -53,7 +52,7 @@ Page({
       counter: 30
     });
     ctx.counting();
-    user.getCode({ tel}).then(data => {
+    user.getCode({ tel }).then(data => {
       let showInfo = {
         title: '提示',
         icon: 'loading',
@@ -110,7 +109,7 @@ Page({
 
   switchPage() {
     let options = ctx.data.options;
-    if(options.redirectUrl) {
+    if (options.redirectUrl) {
       wx.redirectTo({
         url: decodeURIComponent(options.redirectUrl)
       })
