@@ -1,40 +1,56 @@
-import { url, WX_APP_ID, WX_AUTH_TYPE, WX_SECRET} from '../config/index';
+import {
+  url,
+  WX_APP_ID,
+  WX_AUTH_TYPE,
+  WX_SECRET
+} from '../config/index';
+
 import Utils from '../util/utils';
 
 export default {
 
   // 微信开放信息
   wxOpenInfo: {},
+
   // 回收宝账户信息
   userInfo: {},
+
   // 微信票据
-  wxToken: {}, // {openid, unionid}
+  wxToken: {},
 
   // 获取微信用户的 微信开发信息
-  getWxOpenInfo () {
+  getWxOpenInfo() {
     let ctx = this;
     return new Promise((resolve, reject) => {
-      if (Object.keys(this.wxOpenInfo).length !== 0) resolve(this.wxOpenInfo);
+      if (this.wxOpenInfo.nickName !== undefined) {
+        resolve(this.wxOpenInfo);
+      }
       wx.getUserInfo({
         lang: 'zh_CN',
         withCredentials: false,
         success(res) {
-          ctx.wxOpenInfo = res.userInfo;
-          resolve(ctx.wxOpenInfo)
+          let data = res.userInfo;
+          if (data !== undefined) {
+            ctx.wxOpenInfo = data;
+            resolve(data);
+          } else {
+            reject(res);
+          }
         }
       });
     });
   },
 
   // 获取code
-  getWxCode () {
+  getWxCode() {
     return new Promise((resolve, reject) => {
       wx.login({
-        success (res) {
-          resolve(res.code);
-        },
-        fail (res) {
-          resolve(res.errMsg);
+        success(res) {
+          if (res.code) {
+            resolve(res.code);
+          } else {
+            reject(res);
+          }
         }
       })
     })
@@ -45,7 +61,7 @@ export default {
    * @param code
    * @return {Promise}
    */
-  getWxOpenId (code) {
+  getWxOpenId(code) {
     let _this = this;
     return new Promise((resolve, reject) => {
       _this.getWxUnionId().then(getWxUnionIdRet => {
@@ -54,45 +70,58 @@ export default {
           iv: getWxUnionIdRet.iv,
           encryptedData: getWxUnionIdRet.encryptedData
         }).then(res => {
-          let data = res.data.data;
-          data['openid'] = data['openId'];
-          data['unionid'] = data['unionId'];
-          wx.setStorageSync('wxAuth', data);
-          resolve(data);
+          let data = res.data;
+          if (data.errNo === "0") {
+            data = data.data;
+            data['openid'] = data['openId'];
+            data['unionid'] = data['unionId'];
+            wx.setStorageSync('wxAuth', data);
+            resolve(data);
+          } else {
+            reject(data);
+          }
         }, err => {
           wx.showModal({
             title: '系统提示',
             content: '网络异常',
           })
         })
+      }, err => {
+        wx.showToast({
+          title: '',
+        })
       })
-      // Utils.get({
-      //   url: `${ url.wxOpenId }/${code}`,
-      //   success (res) {
-      //     resolve(res.data.data);
-      //   },
-      //   fail (res) {
-      //     reject(res.errMsg);
-      //   }
-      // });
     })
   },
 
 
   // 获取小程序unionId
-  getWxUnionId () {
+  getWxUnionId() {
     let _this = this;
     return new Promise((resolve, reject) => {
       wx.getUserInfo({
         withCredentials: true,
         lang: 'zh_CN',
-        success (res) {
+        success(res) {
           resolve(res)
         }
       })
     })
   },
-  
+
+  newGetUnionId () {
+    let _this = this;
+    return new Promise((resolve, reject) => {
+      wx.getUserInfo({
+        withCredentials: true,
+        lang: 'zh_CN',
+        success(res) {
+          resolve(res)
+        }
+      })
+    })
+  },
+
   // resolveWx
   decryptWxInfo({ code, iv, encryptedData}) {
     return new Promise((resolve, reject) => {
@@ -118,7 +147,7 @@ export default {
    * @param appid 第三方应用号/公众号/生活号，可空 必填
    * @return {Promise}
    */
-  login (openid, unionid, auth_type = WX_AUTH_TYPE, appid = WX_APP_ID) {
+  login(openid, unionid, auth_type = WX_AUTH_TYPE, appid = WX_APP_ID) {
     return new Promise((resolve, reject) => {
       Utils.post({
         url: url.authUserLogin,
@@ -129,7 +158,7 @@ export default {
           unionid,
           valid_days: 0.1
         },
-        success (res) {
+        success(res) {
           res = res.data;
           if (res.retcode == 0) {
             resolve(res.data)
@@ -137,19 +166,21 @@ export default {
             reject(res.retinfo)
           }
         },
-        fail (res) {
-            console.log(res);
+        fail(res) {
+          console.log(res);
         }
       })
     })
   },
 
   // 获取手机验证码
-  getCode ({tel}) {
+  getCode({ tel }) {
     return new Promise((resolve, reject) => {
       Utils.post({
         url: url.getCode,
-        data: {tel},
+        data: {
+          tel
+        },
         success(res) {
           resolve(res.data);
         }
@@ -166,7 +197,13 @@ export default {
    * @param valid_days
    * @return {Promise}
    */
-  bindTelLogin ({tel, code, openid, unionid, valid_days}) {
+  bindTelLogin({
+    tel,
+    code,
+    openid,
+    unionid,
+    valid_days
+  }) {
     return new Promise((resolve, reject) => {
       Utils.post({
         url: url.bindTelLogin,
@@ -178,7 +215,7 @@ export default {
           appid: WX_APP_ID,
           auth_type: WX_AUTH_TYPE,
         },
-        success (res) {
+        success(res) {
           res = res.data;
           if (res.retcode == 0) {
             resolve(res.data)
@@ -197,7 +234,11 @@ export default {
    * @param openid
    * @return {Promise}
    */
-  authUserUnbindTel ({uid, userkey, openid}) {
+  authUserUnbindTel({
+    uid,
+    userkey,
+    openid
+  }) {
     return new Promise((resolve, reject) => {
       Utils.post({
         url: url.authUserUnbindTel,
@@ -207,7 +248,7 @@ export default {
           userkey,
           auth_type: WX_AUTH_TYPE
         },
-        success (res) {
+        success(res) {
           res = res.data;
           if (res.retcode == 0) {
             resolve(res.data)
@@ -223,7 +264,7 @@ export default {
    * 将登录后的用户信息存到本地
    * @param params
    */
-  setUserInfo (params = {}) {
+  setUserInfo(params = {}) {
     // wx.setStorage({
     //   key: 'userInfo',
     //   data: params
@@ -236,21 +277,21 @@ export default {
    * 获取用户的登录信息
    * @return {*}
    */
-  getUserInfo () {
+  getUserInfo() {
     return this.userInfo;
   },
 
   /**
    * 设置微信token {openid, unionid}
    */
-  setWxToken (wxToken) {
+  setWxToken(wxToken) {
     this.wxToken = wxToken;
   },
 
   /**
    * 获取微信token
    */
-  getWxToken () {
+  getWxToken() {
     return this.wxToken;
   },
 }
