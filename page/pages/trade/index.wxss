@@ -2,6 +2,10 @@
   background: #fff;
 }
 
+.mue-content {
+  padding-bottom: 120rpx;
+}
+
 .mue-header {
   display: flex;
   width: 750rpx;
@@ -29,6 +33,7 @@
 }
 
 /** cell-item**/
+
 .cell-item {
   position: relative;
 }
@@ -62,13 +67,13 @@
   font-size: 26rpx;
 }
 
-
 .pink {
   color: #ff5c7f;
   font-size: 28rpx;
 }
 
 /** .grid-col-1 .input **/
+
 .grid-col-1 .inline-list {
   display: flex;
   padding: 0 40rpx;
@@ -82,11 +87,11 @@
   color: #292e3e;
   font-size: 30rpx;
   margin-top: 10rpx;
-	font-family: PingFang-SC-Medium;
+  font-family: PingFang-SC-Medium;
 }
 
 .recycle-cols {
-  overflow:visible;
+  overflow: visible;
   display: flex;
   padding: 0 27rpx;
   align-items: center;
@@ -117,12 +122,13 @@
   margin: 16rpx auto;
 }
 
-.recycle-col.selected{
-  color: #ffffff;
+.recycle-col.selected {
+  color: #fff;
   background-color: #fabe00;
 }
 
 /** picker **/
+
 .grid-col-3 .cell-item-inner {
   border-bottom: 1rpx solid #eff0f6;
 }
@@ -137,6 +143,7 @@
 }
 
 /** footer **/
+
 .mue-footer button {
   width: 670rpx;
   height: 90rpx;
@@ -144,7 +151,7 @@
   font-size: 32rpx;
   line-height: 90rpx;
   border-radius: 4rpx;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .mue-footer button:after {
@@ -189,7 +196,7 @@
 }
 
 .grid-col-1 .form-control.mue-focus .label,
-.grid-col-1 .form-control.has-value .label  {
+.grid-col-1 .form-control.has-value .label {
   color: #5498ff;
   font-size: 22rpx;
   transform: translateY(0);
