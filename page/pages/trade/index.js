@@ -277,16 +277,23 @@ Page({
     let dataset = e.currentTarget.dataset;
     let options = ctx.data.options;
 
-    if (parseInt(options.price) < 100) {
-      ctx.showModel('未满100元不支持上门回收');
-      return;
+    if (dataset.way === 'visit') {
+      // 放假了不支持上门回收
+      var deadline = (new Date("Feb 22, 2018 00:00:00")).getTime();
+      var curTime = (new Date()).getTime();
+      if (curTime < deadline) {
+        ctx.showModel('由于春节放假，2018年2月22号以前无工作人员上门，回收宝祝您春节快乐，阖家幸福！');
+        return;
+      }
+      if (parseInt(options.price) < 100) {
+        ctx.showModel('未满100元不支持上门回收');
+        return;
+      }
+      if (options.classId == 2) {
+        ctx.showModel('笔记本暂不支持上门回收');
+        return;
+      }
     }
-
-    if (options.classId == 2) {
-      ctx.showModel('笔记本暂不支持上门回收');
-      return;
-    }
-
     ctx.setData({
       way: dataset.way
     })

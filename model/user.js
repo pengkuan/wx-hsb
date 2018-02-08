@@ -67,19 +67,16 @@ export default {
     let _this = this;
     return new Promise((resolve, reject) => {
       let code;
-      _this.getWxCode()
-        .then(codeRet => {
+      _this.getWxCode().then(codeRet => {
           code = codeRet;
           return _this.getWxUnionId(code)
-        })
-        .then(unionIdRet => {
+        }).then(unionIdRet => {
           return _this.decryptWxInfo({
             code,
             iv: unionIdRet.iv,
             encryptedData: unionIdRet.encryptedData
           })
-        })
-        .then(res => {
+        }).then(res => {
           let ret = res.data;
           let data = ret.data;
           data['openid'] = data['openId'];
@@ -138,9 +135,9 @@ export default {
         url: url.authUserLogin,
         data: {
           appid: appid ? appid : '',
-          openid: openid ? openid: '',
+          openid: openid ? openid : '',
           auth_type: auth_type ? auth_type : '',
-          unionid: unionid ? unionid: '',
+          unionid: unionid ? unionid : '',
           valid_days: 1
         },
         success(res) {
