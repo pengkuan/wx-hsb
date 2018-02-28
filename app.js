@@ -6,7 +6,7 @@ App({
     cid: 1,
     bid: -1,
     pid: 1196,
-    cdn: 'http://s1.huishoubao.com/img/phone/',
+    cdn: 'https://s1.huishoubao.com/img/phone/',
     isConnected: true
   },
 
