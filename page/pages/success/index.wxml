@@ -33,8 +33,8 @@
         </view>
         <view class="pro-item">
             <image class="icon" src="../../../img/success/icon_01.png"></image>
-            <view class="pro-item-hd">3.清理数据，解锁账号</view>
-            <view class="pro-item-bd">请备份手机内重要数据，解锁账户及开机密码，将手机恢复出厂设置</view>
+            <view class="pro-item-hd">3.确认交易</view>
+            <view class="pro-item-bd">收到手机后，我们会在24小时内完成检测并且给您付款。若不满意检测结果，我们将免费寄回您的手机</view>
         </view>
     </view>
     <view class="mue-footer">
