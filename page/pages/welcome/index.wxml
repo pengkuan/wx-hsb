@@ -6,7 +6,7 @@
       <button class="right-button" wx:else bindtap="switchPage" data-url="../search/index">估本机</button>
     </view>
     <view class="banner">
-        <swiper class="swiper-wrapper" indicator-dots="true" autoplay="true" interval="2000" indicator-color="#cda8df" indicator-active-color="#fff">
+        <swiper class="swiper-wrapper" indicator-dots="{{imgUrls.length > 1}}" autoplay="true" interval="2000" indicator-color="#cda8df" indicator-active-color="#fff">
             <navigator open-type="switchTab" url="../products/index" wx:for="{{imgUrls}}" wx:key="{{index}}">
                 <swiper-item>
                     <image mode="aspectFit" src="{{item}}" class="slide-image"/>
@@ -31,7 +31,7 @@
             <navigator class="right" url="../products/index" open-type="switchTab">更多</navigator>
         </view>
         <view class="sec-content">
-            <scroll-view class="product-cols" scroll-x="true" scroll-with-animation="true">
+            <scroll-view class="product-cols" scroll-y="true" scroll-with-animation="true">
                 <navigator url="../product/index?productId={{item.productid}}" class="product-col" wx:for="{{productList}}" wx:key="{{index}}"
                            data-pid="{{item.productid}}">
                     <image class="p-img" src="{{ cdn + item.productlogo}}"></image>

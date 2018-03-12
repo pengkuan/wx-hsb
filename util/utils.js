@@ -1,3 +1,5 @@
+import md5 from './md5.js';
+
 export default {
   // POST Request
   post(config) {
@@ -146,5 +148,35 @@ export default {
       }
     }
     return tempArr.join('&');
+  },
+  createAppParams (interfaceName, data) {
+    const baseDate = {
+      head: {
+        interface: interfaceName,
+        version: '0.01',
+        msgtype: 'request',
+      },
+      params: {
+        system: 'HSB',
+        time: parseInt(+new Date() / 1000).toString(),
+      }
+    };
+
+    baseDate.params = Object.assign({}, baseDate.params, data);
+    const tmp = Object.assign({}, baseDate.head, baseDate.params);
+    const signArr = Object.keys(tmp).map(key => {
+      if (tmp[key] === '' || typeof tmp[key] === 'object') {
+        return '';
+      }
+      return key + '=' + tmp[key];
+    });
+
+    const t = signArr.filter(a => a);
+    const sign = t.sort((a, b) => (a.charCodeAt(0) - b.charCodeAt(0))).join('&');
+    console.log(sign + '&key=m2cjgx46md5973n4ymeoxa4v195iwwmb');
+    const md5Sign = md5(sign + '&key=m2cjgx46md5973n4ymeoxa4v195iwwmb').toLowerCase();
+    console.log(md5Sign);
+    baseDate.params.sign = md5Sign;
+    return baseDate;
   }
 }

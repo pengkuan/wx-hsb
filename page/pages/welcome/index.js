@@ -43,11 +43,17 @@ Page({
     this.getProduct();
     wx.getSystemInfo({
       success (res) {
-        let name = res.model.split("<")[0];
+        let brand = res.brand;
+        let model = res.model;
+
+        if (!brand) {
+          brand = model.split(' ')[0];
+        }
+
         ctx.setData({
-          curModel: name
+          curModel: model
         })
-        ctx.getModelInfo(name);
+        ctx.brandMap(brand, model);
       }
     });
   },
@@ -99,6 +105,10 @@ Page({
     }, err => {
       console.log(err);
     })
+  },
+
+  brandMap (brand, model) {
+    product.queryModel(brand, model);
   },
 
   switchPage (e) {

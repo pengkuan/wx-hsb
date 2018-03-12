@@ -64,4 +64,7 @@ export const url = {
   // 获取顺丰地址
   sfCity: `${order}getSfCity/`,
   // 高速产品查找
+
+  // 机型映射
+  modelMap: 'https://dev-app.huanjixia.com/api/appstore'
 };

@@ -90,4 +90,18 @@
             </view>
         </view>
     </view>
+
+    <view class="mue-modal" wx:if="{{alertTip}}">
+        <view class="mue-alert">
+            <view class="mue-alert-title">提示</view>
+            <view class="mue-alert-body">
+                暂不回收未解锁机型
+                <view class="evaluate-tip">如何解锁？</view>
+            </view>
+            <view class="mue-alert-footer">
+                <button class="mue-button" bindtap="alertTipTapHandler">确认</button>
+            </view>
+        </view>
+    </view>
+
 </view>

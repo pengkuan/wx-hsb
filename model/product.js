@@ -115,5 +115,31 @@ export default {
                 }
             });
         })
+    },
+    queryModel(brand, model) {
+        return new Promise((resolve, reject) => {
+            const data = Utils.createAppParams('evamap-queryModel', {
+                modelArray: [{
+                    model,
+                    brand
+                }]
+            });
+            wx.request({
+                url: url.modelMap,
+                header: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'post',
+                data: JSON.stringify(data),
+                success: function (res) {
+                    console.log(res);
+                    if (res.data) {
+                        resolve(res.data.data)
+                    } else {
+                        reject(res)
+                    }
+                }
+            });
+        })
     }
 }

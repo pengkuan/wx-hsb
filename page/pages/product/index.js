@@ -55,7 +55,8 @@ Page({
           maxPrice: res.maxprice,
           productName: res.productname,
           standardPrice: res.standardprice
-        }
+        },
+        alertTip:false
       });
     })
   },
@@ -86,6 +87,12 @@ Page({
     return func;
   },
 
+  alertTipTapHandler() {
+    ctx.setData({
+      alertTip: false
+    });
+  },
+
   /**
    * 基本选项 外观选项 切换
    * @param {*} e
@@ -95,11 +102,14 @@ Page({
     let baseSelect = ctx.data.baseSelect;
     console.log(dataset);
     if (dataset.pid === "81" && dataset.cid === "82") {
-      wx.showModal({
-        title: '提示',
-        content: '暂不回收未解锁机型',
-        showCancel: false
-      })
+      ctx.setData({
+        alertTip: true
+      });
+      // wx.showModal({
+      //   title: '提示',
+      //   content: '暂不回收未解锁机型',
+      //   showCancel: false
+      // })
       return;
     }
     for (let i = 0; i < baseSelect.length; i++) {

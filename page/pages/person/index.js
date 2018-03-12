@@ -110,7 +110,12 @@ Page({
                 wx.showModal({
                     title: '提示',
                     content: '请先绑定手机号',
-                    showCancel: false
+                    showCancel: false,
+                    success: function (res) {
+                        wx.navigateTo({
+                            url: `../bind/index?type=${dataSet.type}`
+                        });
+                    }
                 })
             } else {
                 wx.navigateTo({

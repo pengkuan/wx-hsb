@@ -26,6 +26,29 @@ App({
     });
   },
 
+  onLaunch () {
+    /**
+     * 重载小程序Page函数， 设置每个页面的默认操作。如分享。
+     * @Author   TMQ
+     * @DateTime 2018-03-07T17:21:57+0800
+     * @param    {[type]}                 name [description]
+     * @return   {[type]}                      [description]
+     */
+    var ctr = Page;
+    Page = function (obj) {
+      if (!obj.onShareAppMessage) {
+        obj.onShareAppMessage = function () {
+          return {
+            title: '回收宝',
+            path: '/',
+          };
+        }
+      }
+      return ctr(obj);
+    };
+
+  },
+
   onShow (data) {
     // 小程序打开小程序
     if (data.scene == 1037) {
