@@ -68,5 +68,8 @@ export const url = {
   // 高速产品查找
 
   // 微信信息解密
-  decryptWxUserInfo: `${host}common/wxapp/index`
+  decryptWxUserInfo: `${host}common/wxapp/index`,
+  
+  // 机型映射
+  modelMap: 'https://dev-app.huanjixia.com/api/appstore'
 };

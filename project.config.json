@@ -21,11 +21,10 @@
 			"list": []
 		},
 		"game": {
-			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -95,10 +94,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 11,
 					"name": "product",
 					"pathName": "page/pages/product/index",
-					"query": ""
+					"query": "productId=38200"
 				},
 				{
 					"id": -1,
