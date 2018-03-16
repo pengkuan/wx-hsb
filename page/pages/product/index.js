@@ -16,6 +16,7 @@ Page({
     cdn: app.globalData.cdn,
     baseSelect: [],
     funcSelect: [],
+    fullChoice: 0,
     len: 0,
     toView: 'view0',
     alertInfo: {
@@ -58,6 +59,9 @@ Page({
         },
         alertTip:false
       });
+      wx.setNavigationBarTitle({
+        title: `${ctx.data.pInfo.productName} 估价`//页面标题为路由参数
+      })
     })
   },
 
@@ -192,10 +196,22 @@ Page({
     }
     if (setView) {
       let toView = len === base.length ? `view${len + 1}` : `view${len}`;
-      ctx.setData({
-        len,
-        toView
-      })
+      if (len === base.length) {
+        let fullChoice = ctx.data.fullChoice+1;
+        ctx.setData({
+          fullChoice
+        })
+      }
+      if (ctx.data.fullChoice > 1){
+        ctx.setData({
+          len
+        })
+      }else{
+        ctx.setData({
+          len,
+          toView
+        })
+      }
     } else {
       ctx.setData({
         len

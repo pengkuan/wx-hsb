@@ -1,1 +1,23 @@
-<web-view src="https://mobile.huishoubao.com/static/m/2017/html/hsb-help-center.html?date=20171025"></web-view>
+<!-- <web-view src="https://mobile.huishoubao.com/static/m/2017/html/hsb-help-center.html?date=20171025"></web-view> -->
+<view class="container">
+  <view class="header clearfix">
+    <view wx:for="{{helps}}" 
+          data-tip="{{item.tip}}" 
+          class="helps {{ item.tip == tip ? 'selected' : '' }}" 
+          bindtap="switchTip">
+    <image class="tip-icon" wx:if="{{item.tip == tip}}" src="{{item.imgFocusUrl}}"></image>
+    <image class="tip-icon" wx:else src="{{item.imgUrl}}"></image>
+    <text>{{item.name}}</text>
+    </view>
+  </view>
+  <view class='content'>
+    <view wx:for="{{helps}}" 
+          data-tip="{{item.tip}}" 
+          class="txt {{ item.tip == tip ? 'show' : '' }}" >
+      <view wx:for="{{item.txts}}">
+        <view data-index="{{index}}" bindtap="showAnswer" class="clearfix"><text class="question">{{item.q}}</text></view>
+        <view  animation="{{animationData}}" data-index="{{index}}"class="clearfix"><text class="answer {{index == currentIndex?'show':''}}">{{item.a}}</text></view>
+      </view>
+    </view>
+  </view>
+</view>

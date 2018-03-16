@@ -129,9 +129,11 @@ Page({
       openid: data.openid,
       unionid: data.unionid,
     }).then(data => {
+      console.log(data);
       user.setUserInfo(data);
       ctx.switchPage();
     }, err => {
+      console.log(err);
       wx.showToast({
         title: err
       })

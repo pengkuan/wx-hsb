@@ -2,12 +2,12 @@
 <view class="container">
     <view class="index-search-wrapper">
       <template is="search-entry" data="{{ iconSearch: iconSearch, key: '输入您要搜索的机型' }}"/>
-      <button class="right-button" wx:if="{{ curModelInfo }}" bindtap="switchPage" data-url="../product/index?productId={{ curModelInfo.productid }}">估本机</button>
+      <button class="right-button" wx:if="{{ curModelInfo }}" bindtap="switchPage" data-url="../product/index?productId={{ curModelInfo.productId }}">估本机</button>
       <button class="right-button" wx:else bindtap="switchPage" data-url="../search/index">估本机</button>
     </view>
     <view class="banner">
         <swiper class="swiper-wrapper" indicator-dots="{{imgUrls.length > 1}}" autoplay="true" interval="2000" indicator-color="#cda8df" indicator-active-color="#fff">
-            <navigator open-type="switchTab" url="../products/index" wx:for="{{imgUrls}}" wx:key="{{index}}">
+            <navigator url="../products/index" wx:for="{{imgUrls}}" wx:key="{{index}}">
                 <swiper-item>
                     <image mode="aspectFit" src="{{item}}" class="slide-image"/>
                 </swiper-item>
@@ -28,18 +28,20 @@
     <view class="sec products-wrapper">
         <view class="sec-title common-padding sub-title">
             <view class="left font-medium">热门回收</view>
-            <navigator class="right" url="../products/index" open-type="switchTab">更多</navigator>
+            <navigator class="right" hover-class="none" url="../products/index">更多</navigator>
         </view>
         <view class="sec-content">
             <scroll-view class="product-cols" scroll-y="true" scroll-with-animation="true">
                 <navigator url="../product/index?productId={{item.productid}}" class="product-col" wx:for="{{productList}}" wx:key="{{index}}"
                            data-pid="{{item.productid}}">
-                    <image class="p-img" src="{{ cdn + item.productlogo}}"></image>
-                    <view class="p-name font-medium">{{item.productname}}</view>
-                    <view class="p-desc">最高回收价 |
-                        <text class="p-price">￥{{item.maxprice / 100}}</text>
+                    <view class="p-img">
+                      <image class="img" src="{{ cdn + item.productlogo}}"></image>
                     </view>
-                    <view class="p-button">马上回收</view>
+                    <view class='p-content'>
+                      <view class="name font-medium">{{item.productname}}</view>
+                      <view class="price">￥{{item.maxprice / 100}}</view>
+                      <view class="desc">最高回收价</view>
+                    </view>
                 </navigator>
             </scroll-view>
         </view>
@@ -49,25 +51,25 @@
         <view class="sec-title common-padding sub-title">
             <view class="left font-medium">回收流程</view>
         </view>
-        <view class="sec-content">
+        <view class="sec-content" data-url="../recycle/index" bindtap='switchPage'>
             <view class="grid-cols">
                 <view class="grid-col has-arrow">
-                    <image class="icon" src="../../../img/icon-evaluate.png"></image>
+                    <image class="icon" src="../../../img/icon-evaluate-1.png"></image>
                     <view class="col-text">在线估价</view>
                     <image class="arrow-right" src="../../../img/arrow_right.svg"></image>
                 </view>
                 <view class="grid-col has-arrow">
-                    <image class="icon" src="../../../img/icon-post.png"></image>
+                    <image class="icon" src="../../../img/icon-post-1.png"></image>
                     <view class="col-text">顺丰邮寄</view>
                     <image class="arrow-right" src="../../../img/arrow_right.svg"></image>
                 </view>
                 <view class="grid-col has-arrow">
-                    <image class="icon" src="../../../img/icon-check.png"></image>
+                    <image class="icon" src="../../../img/icon-check-1.png"></image>
                     <view class="col-text">专业检测</view>
                     <image class="arrow-right" src="../../../img/arrow_right.svg"></image>
                 </view>
                 <view class="grid-col">
-                    <image class="icon" src="../../../img/icon-cash.png"></image>
+                    <image class="icon" src="../../../img/icon-cash-1.png"></image>
                     <view class="col-text">坐等收款</view>
                 </view>
             </view>
@@ -80,20 +82,20 @@
         <view class="sec-content">
             <view class="grid-cols grid-cols-2">
                 <view class="grid-col">
-                    <image class="icon" src="../../../img/icon-qgby.png"></image>
-                    <view class="col-text">全国包邮</view>
+                    <image class="icon" src="../../../img/icon-qgby-1.png"></image>
+                     <view class="col-text">全国包邮</view> 
                 </view>
                 <view class="grid-col">
-                    <image class="icon" src="../../../img/icon-qtbj.png"></image>
-                    <view class="col-text">七天保价</view>
+                    <image class="icon" src="../../../img/icon-qtbj-1.png"></image>
+                     <view class="col-text">七天保价</view> 
                 </view>
                 <view class="grid-col">
-                    <image class="icon" src="../../../img/icon-sddk.png"></image>
-                    <view class="col-text">闪电打款</view>
+                    <image class="icon" src="../../../img/icon-sddk-1.png"></image>
+                     <view class="col-text">闪电打款</view> 
                 </view>
                 <view class="grid-col">
-                    <image class="icon" src="../../../img/icon-ysbh.png"></image>
-                    <view class="col-text">隐私保护</view>
+                    <image class="icon" src="../../../img/icon-ysbh-1.png"></image>
+                     <view class="col-text">隐私保护</view> 
                 </view>
             </view>
         </view>
@@ -105,10 +107,10 @@
         <view class="sec-content">
             <view class="grid-cols grid-cols-3">
                 <view class="grid-col col-1">
-                    <image class="icon" src="../../../img/logo-hw.png"></image>
+                    <image class="icon" src="../../../img/logo-wx.png"></image>
                 </view>
                 <view class="grid-col col-2">
-                    <image class="icon" src="../../../img/logo-wx.png"></image>
+                    <image class="icon" src="../../../img/logo-xianyu.png"></image>
                 </view>
                 <view class="grid-col col-3">
                     <image class="icon" src="../../../img/logo-58.png"></image>

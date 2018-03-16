@@ -28,7 +28,7 @@ Page({
   },
 
   asyncSfOrder (orderInfo) {
-    if (orderInfo.ordertype !== 'post') return;
+    if (orderInfo.ordertype !== 'post' || orderInfo.postway == 'self') return;
     order.takeSfOrder(orderInfo).then(data => {
       orderInfo.trackNum = data.mailno;
       ctx.setData({

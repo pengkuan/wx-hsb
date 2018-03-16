@@ -78,7 +78,7 @@
     <view class="mue-footer">
         <button class="mue-button" bindtap="onSubmit"  hover-class="mue-active" disabled="{{ len != base.length }}">估价</button>
     </view>
-    <view class="mue-modal" wx:if="{{ alertInfo.title }}">
+    <view class="mue-modal" catchtouchmove="none;" wx:if="{{ alertInfo.title }}">
         <view class="mue-alert">
             <view class="mue-alert-hd">
                 <text class="title">{{ alertInfo.title }}</text>
@@ -91,16 +91,14 @@
         </view>
     </view>
 
-    <view class="mue-modal" wx:if="{{alertTip}}">
+    <view class="mue-modal-deblock" catchtouchmove="none;" wx:if="{{alertTip}}">
         <view class="mue-alert">
             <view class="mue-alert-title">提示</view>
             <view class="mue-alert-body">
                 暂不回收未解锁机型
-                <view class="evaluate-tip">如何解锁？</view>
+                <navigator hover-class="none" class="evaluate-tip" url="../deblock/index">如何解锁？</navigator>
             </view>
-            <view class="mue-alert-footer">
-                <button class="mue-button" bindtap="alertTipTapHandler">确认</button>
-            </view>
+            <view class="mue-alert-footer" bindtap="alertTipTapHandler">确认</view>
         </view>
     </view>
 

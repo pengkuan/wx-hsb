@@ -1,0 +1,93 @@
+/* page/pages/deblock/index.wxss */
+.header{
+  height: 88rpx;
+  background-color: #fff;
+  /* box-shadow: 0rpx 6rpx 24rpx 3rpx rgba(135, 142, 160, 0.15); */
+}
+.phones{
+  width: 25%;
+  display: inline-block;
+  line-height: 88rpx;
+  color: #7c829d;
+  font-size: 28rpx;
+  text-align: center;
+  position: relative;
+}
+.selected.phones{
+  color: #fabe00;
+}
+.selected.phones::after{
+  content: '';
+  position: absolute;
+  width: 50rpx;
+  height: 4rpx;
+  background: #fabe00;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.content{
+  margin: 50rpx auto 0;
+  width: 460rpx; 
+  height: 989rpx;
+  position: relative;
+   overflow: visible; 
+}
+.content swiper,.content swiper .slide-image{
+  width: 460rpx; 
+  height: 819rpx;
+  overflow: hidden;
+  border-radius: 12rpx;
+   overflow: hidden; 
+  }
+.content swiper{
+  box-shadow: 0rpx 2rpx 25rpx 5rpx rgba(135, 142, 160, 0.15);
+}
+
+
+.dots{  
+  position: absolute;
+  width: 100%; 
+  height: 100rpx; 
+  bottom: 50rpx;  
+  display: flex;  
+  justify-content: center; 
+  overflow: visible; 
+} 
+.dots .dot{  
+  display: inline-block;
+  font-size: 20rpx;
+  color: #cacee0;  
+  width: 46rpx;  
+  height: 46rpx; 
+  border-radius: 50%;
+  text-align: center;
+  line-height: 46rpx;  
+} 
+.dots .dot.active{  
+  border: 3rpx solid #fabe00;
+  color: #fabe00;
+} 
+.dots .txt{  
+  position: absolute;
+  display: none;
+  font-size: 32rpx;
+  color: #292e3e; 
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 200%;
+  text-align: center;
+} 
+.dots .txt.active{  
+  display: block;
+} 
+
+
+.footer{
+  color: #b2b6cb;
+  font-size: 24rpx;
+  width: 100%;
+  text-align: center;
+  /* margin-top: 80rpx; */
+}

@@ -14,6 +14,9 @@
     "page/pages/success/index",
     "page/pages/report/index",
 
+    "page/pages/recycle/index",
+    "page/pages/deblock/index",
+
     "page/pages/about/index",
     "page/pages/about/who/index",
     "page/pages/about/where/index",
@@ -42,11 +45,6 @@
         "pagePath": "page/pages/welcome/index",
         "iconPath": "img/icon_home_gray_60.png",
         "selectedIconPath": "img/icon_home_black_60.png"
-      },
-      {
-        "pagePath": "page/pages/products/index",
-        "iconPath": "img/icon_product_gray_60.png",
-        "selectedIconPath": "img/icon_product_black_60.png"
       },
       {
         "pagePath": "page/pages/person/index",

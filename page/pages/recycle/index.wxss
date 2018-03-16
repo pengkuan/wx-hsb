@@ -1,0 +1,11 @@
+/* page/pages/recycle/index.wxss */
+.mue-content .bg{
+  width: 750rpx;
+  height: 1584rpx;
+}
+.mue-content{
+  padding-bottom: 100rpx;
+}
+.mue-footer{
+  box-shadow: 0rpx -6rpx 24rpx 3rpx rgba(135, 142, 160, 0.1);
+}

@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -24,7 +24,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 18,
 			"list": [
 				{
 					"id": 0,
@@ -139,6 +139,24 @@
 					"id": -1,
 					"name": "test",
 					"pathName": "page/pages/test/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "recycle",
+					"pathName": "page/pages/recycle/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "deblock",
+					"pathName": "page/pages/deblock/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "help",
+					"pathName": "page/pages/help/index",
 					"query": ""
 				}
 			]

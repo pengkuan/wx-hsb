@@ -66,7 +66,7 @@
 /** product **/
 .sec-title {
     display: flex;
-    padding-top: 50rpx;
+    padding-top: 44rpx;
     padding-bottom: 50rpx;
     line-height: 36rpx;
     align-items: center;
@@ -94,68 +94,63 @@
 .product-cols {
     width: 100%;
     padding-left: 20rpx;
+    margin-bottom: 30rpx;
+    margin-top: 20rpx;
 }
 
 .product-col {
     display: inline-block;
-    width: 285rpx;
-	height: 386rpx;
-    margin: 20rpx;
-    margin-right: 0;
-    margin-bottom: 49rpx;
+    width: 325rpx;
+	  height: 180rpx;
+    margin: 0 0 20rpx 20rpx;
     font-size: 0;
     line-height: 1;
-    text-align: center;
+    /* text-align: center; */
+    vertical-align: middle;
     border-radius: 6rpx;
-	background-color: #ffffff;
+	  background-color: #ffffff;
     overflow: visible;
-	box-shadow: 0rpx 8rpx 27rpx 3rpx rgba(135, 142, 160, 0.15);
+	  box-shadow: 0rpx 8rpx 20rpx 3rpx rgba(135, 142, 160, 0.15);
 }
-
 .product-col .p-img {
-    display: block;
-    width: 146rpx;
-    height: 146rpx;
-    margin: 0 auto;
-    margin-top: 40rpx;
+    display: inline-block;
+    width: 124rpx;
+    height: 180rpx;
+}
+.product-col .img{
+  width: 124rpx;
+  height: 124rpx;
+  margin-top: 28rpx;
+}
+.product-col .p-content{
+  display: inline-block;
+  height: 180rpx;
+  padding-top: 42rpx;
 }
 
-.product-col .p-name {
-    margin-top: 30rpx;
+.product-col .name {
     color: #292e3e;
     font-size: 26rpx;
+    line-height: 26rpx;
+    margin-bottom: 15rpx;
 }
 
-.product-col .p-desc {
-    margin-top: 16rpx;
+.product-col .desc {
    	color: #cacee0;
     font-size: 22rpx;
     line-height: 22rpx;
 }
 
-.product-col .p-price {
-   	color: #cacee0;
+.product-col .price {
+   	color: #fabe00;
     font-size: 24rpx;
-}
-
-.product-col .p-button {
-    display: flex;
-    width: 112rpx;
-    height: 40rpx;
-    margin:  0 auto;
-    margin-top: 29rpx;
-    color: #fabe00;
-    font-size: 20rpx;
-    line-height: 40rpx;
-    border-radius: 20rpx;
-    align-items: center;
-    justify-content: center;
-    border: solid 1rpx #fabe00;
+    line-height: 24rpx;
+    margin-bottom: 10rpx;
 }
 
 /** recycle-process **/
 .recycle-process {
-  padding-top: 20rpx;
+  /* padding-top: 20rpx; */
   background-color: #fff;
 }
 
@@ -189,7 +184,7 @@
 
 .service-ensure .icon {
     width: 325rpx;
-    height: 144rpx;
+    height: 120rpx;
 }
 
 .service-ensure .sec-content {
@@ -208,8 +203,8 @@
 .service-ensure .grid-col {
     position: relative;
     width: 325rpx;
-    height: 144rpx;
-    margin-bottom: 20rpx;
+    height: 140rpx;
+    /* margin-bottom: 20rpx; */
     border-radius: 6rpx;
 }
 
@@ -217,9 +212,9 @@
     position: absolute;
     left: 29rpx;
     top: 20rpx;
-    color: #fff;
+    color: #999;
     font-size: 26rpx;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 .service-ensure .sec-title {
@@ -250,14 +245,15 @@
     overflow: visible;
     display: flex;
     width: 210rpx;
-    height: 120rpx;
+    height: 110rpx;
     margin: 20rpx 0;
     border-radius: 6rpx;
     margin-bottom: 60rpx;
     align-items: center;
     justify-content: center;
-    background-color: #ffffff;
-    box-shadow: 0rpx 10rpx 27rpx 3rpx rgba(135, 142, 160, 0.12);
+    /* background-color: #ffffff; */
+    background-color: #f9f9fb;
+    /* box-shadow: 0rpx 10rpx 27rpx 3rpx rgba(135, 142, 160, 0.12); */
 }
 
 .partner .icon {
@@ -271,7 +267,7 @@
 }
 
 .grid-cols-3 {
-  padding: 0 40rpx;
+  padding: 10rpx 40rpx 0;
 }
 
 .recycle-process .has-arrow .arrow-right {
@@ -285,6 +281,7 @@
 .index-search-wrapper {
   display: flex;
   padding:20rpx 40rpx;
+  z-index: 99;
 }
 
 .index-search-wrapper .right-button {

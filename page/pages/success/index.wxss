@@ -36,7 +36,7 @@
 }
 
 .right-info-desc {
-  margin-top: 19rpx;
+  margin-top: 16rpx;
   font-size: 24rpx;
 }
 
@@ -51,12 +51,23 @@
   border-radius: 10rpx;
   background-color: #f8fafa;
 }
-
+.order-tip{
+  padding:20rpx 0;
+  color:#aab0cb;
+  font-size:22rpx;
+  background-color:#f8fafa;
+  text-align:center;
+  height:220rpx;
+}
 .pro-list {
   overflow: hidden;
-  padding: 0 40rpx;
+  padding: 0 40rpx 50rpx;
 }
-
+.pro-tip{
+  margin-top: 50rpx;
+  font-size: 28rpx;
+  color: #aab0cb;
+}
 .pro-item {
   position: relative;
   padding-left: 120rpx;
@@ -80,7 +91,7 @@
 }
 
 .pro-item-bd {
-  margin-top: 30rpx;
+  margin-top: 20rpx;
   color: #aab0cb;
   font-size: 22rpx;
   line-height: 38rpx;
@@ -101,4 +112,9 @@
   color: #8187a1;
   background-color: #fff;
   border: solid 1rpx #8187a1;
+}
+.deblock-tip{
+  display: inline-block;
+  color:#5498ff;
+  font-size: 22rpx;
 }

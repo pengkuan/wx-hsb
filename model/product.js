@@ -134,7 +134,7 @@ export default {
                 success: function (res) {
                     console.log(res);
                     if (res.data) {
-                        resolve(res.data.data)
+                        resolve(res.data.body.data)
                     } else {
                         reject(res)
                     }
