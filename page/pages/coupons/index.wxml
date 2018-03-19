@@ -1,5 +1,6 @@
 <view class="container">
-    <view class="grid-rows cps-menu">
+    <view class="fixed">
+      <view class="grid-rows cps-menu">
         <view class="grid-row {{ menuIndex == index ? 'current' : '' }}"
               wx:for="{{ menuList }}"
               wx:key="{{ index }}"
@@ -8,13 +9,14 @@
             item.data.length }})
         </view>
         <view class="line" style="left: {{ (menuIndex / menuList.length) * 100 + '%' }}"></view>
-    </view>
-    <view class="input-wrapper">
-        <input class="input-add-cps" type="text" value="{{token}}"
-               placeholder="请输入现金券号码"
-               bindinput="handleToken"
-               placeholder-style="font-size: 26rpx;color: #7c829d;"/>
-        <button class="button-add-cps" plain="true" size="mini" bindtap="addCoupon">添加</button>
+      </view>
+      <view class="input-wrapper">
+          <input class="input-add-cps" type="text" value="{{token}}"
+                placeholder="请输入现金券号码"
+                bindinput="handleToken"
+                placeholder-style="font-size: 26rpx;color: #7c829d;"/>
+          <button class="button-add-cps" plain="true" size="mini" bindtap="addCoupon">添加</button>
+      </view>
     </view>
     <view class="grid-cols">
         <view wx:if="{{ menuIndex == i }}" wx:for="{{ menuList }}" class="grid-col gird-col-{{ i }}" wx:for-index="i" wx:key="{{ i }}">

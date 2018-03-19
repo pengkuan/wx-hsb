@@ -108,7 +108,7 @@
                   <view class="cell-item" wx:if="{{ postway == 'sf' }}">
                       <view class="cell-item-inner">
                           <view class="cell-item-left input-outer">
-                              <input type="text" bindinput="handleSfStreet" bindblur="onStreetBlur" value="{{sf.street}}" placeholder="街道门牌号"
+                              <input type="text" bindblur="onSfStreetBlur" value="{{sf.street}}" placeholder="街道门牌号"
                                     placeholder-style="color: #cacee0;font-size:26rpx"/>
                           </view>
                       </view>
@@ -184,7 +184,7 @@
                   <view class="cell-item">
                       <view class="cell-item-inner">
                           <view class="cell-item-left input-outer">
-                              <input type="text" bindinput="handleHsbStreet"  bindblur="onStreetBlur" value="{{hsb.street}}" placeholder="街道门牌号"
+                              <input type="text" bindblur="onHsbStreetBlur" value="{{hsb.street}}" placeholder="街道门牌号"
                                     placeholder-style="color: #cacee0;font-size:26rpx"/>
                           </view>
                       </view>

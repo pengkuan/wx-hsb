@@ -656,7 +656,7 @@ Page({
 
     let hsb = ctx.data.hsb;
 
-    let street = ctx.data.street;
+    let street = hsb.street;
     let address = hsb.addr.value + street;
     let date = hsb.date.value;
 
@@ -698,7 +698,7 @@ Page({
   // 下顺丰单
   takeSfOrder(params) {
     let sf = ctx.data.sf;
-    let street = ctx.data.street;
+    let street = sf.street;
     let address = sf.addr.value;
     let date = sf.date.value;
     if (!ctx.validParam(street)) {
@@ -837,20 +837,20 @@ Page({
     })
   },
 
-  handleSfStreet(e) {
-    let sf = ctx.data.sf;
-    sf.street = e.detail.value;
-    this.setData({
-      sf
-    })
-  },
-  handleHsbStreet(e) {
-    let hsb = ctx.data.hsb;
-    hsb.street = e.detail.value;
-    this.setData({
-      hsb
-    })
-  },
+  // handleSfStreet(e) {
+  //   let sf = ctx.data.sf;
+  //   sf.street = e.detail.value;
+  //   this.setData({
+  //     sf
+  //   })
+  // },
+  // handleHsbStreet(e) {
+  //   let hsb = ctx.data.hsb;
+  //   hsb.street = e.detail.value;
+  //   this.setData({
+  //     hsb
+  //   })
+  // },
 
   onTelFocus(e) {
     ctx.setData({
@@ -864,7 +864,20 @@ Page({
     })
     ctx.submitFull();
   },
-  onStreetBlur(){
+  onSfStreetBlur(e){
+    let sf = ctx.data.sf;
+    sf.street = e.detail.value;
+    this.setData({
+      sf
+    })
+    ctx.submitFull();
+  },
+  onHsbStreetBlur(e){
+    let hsb = ctx.data.hsb;
+    hsb.street = e.detail.value;
+    this.setData({
+      hsb
+    })
     ctx.submitFull();
   },
   onNicknameBlur(e) {

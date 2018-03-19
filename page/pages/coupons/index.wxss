@@ -2,7 +2,13 @@
   min-height: 100%;
   background: #fff;
 }
-
+.fixed{
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top:0;
+  background-color: #fff;
+}
 /** cps-menu **/
 .cps-menu {
   position: relative;
@@ -44,7 +50,7 @@
 .input-wrapper {
   display: flex;
   padding: 0 40rpx;
-  margin-top: 40rpx;
+  margin: 20rpx 0;
 }
 
 .input-wrapper .input-add-cps {
@@ -176,7 +182,7 @@ vertical-align:top;
 }
 
 .grid-cols {
-  padding-bottom: 40rpx;
+  padding: 200rpx 0 40rpx;
 }
 
 .blank-wrapper {

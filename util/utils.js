@@ -161,7 +161,7 @@ export default {
         time: parseInt(+new Date() / 1000).toString(),
       }
     };
-
+    console.log(baseDate.params.time);
     baseDate.params = Object.assign({}, baseDate.params, data);
     const tmp = Object.assign({}, baseDate.head, baseDate.params);
     const signArr = Object.keys(tmp).map(key => {
