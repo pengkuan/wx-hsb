@@ -71,5 +71,5 @@ export const url = {
   decryptWxUserInfo: `${host}common/wxapp/index`,
   
   // 机型映射
-  modelMap: 'https://dev-app.huanjixia.com/api/appstore'
+  modelMap: 'https://app.huanjixia.com/api/appstore'
 };
