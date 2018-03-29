@@ -13,7 +13,16 @@
   color: #ffffff;
   font-size: 0;
 }
-
+.findfc{
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  color: #fff;
+  z-index: 99;
+}
+.findfc text{
+  font-size: 24rpx;
+}
 .wrapper-bg {
   position: absolute;
   top: 0;

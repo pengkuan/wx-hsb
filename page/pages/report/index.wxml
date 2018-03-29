@@ -1,1 +1,2 @@
- <web-view src="https://mobile.huishoubao.com/mobile/qtreport_{{reportId}}.html"></web-view>
+<!-- <web-view src="https://mobile.huishoubao.com/mobile/qtreport_088c0a98a28a7ccae5263df99a0c6261.html"></web-view>  -->
+<web-view src="{{reportUrl}}"></web-view>  

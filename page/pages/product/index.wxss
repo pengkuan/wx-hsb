@@ -146,6 +146,9 @@
     right: 0;
     padding-bottom: 20rpx;
 }
+.mue-content.iphoneX{
+  bottom: 198rpx;
+}
 
 .mue-content .scroll-wrapper {
     height: 100%;

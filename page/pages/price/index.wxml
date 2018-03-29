@@ -1,5 +1,5 @@
 <view class="container">
-    <view class="mue-content">
+    <view class="mue-content {{isIphoneX?'iphoneX':''}}">
         <view class="price-result">
             <view class="price-result-inner">
                 <image class="icon-money" mode="aspectFill" src="../../../img/price/icon_money-1.png"></image>
@@ -15,10 +15,10 @@
         <view class="grid-col grid-col-1">
             <view class="cell-item">
                 <view class="cell-item-inner">
-                    <view class="cell-item-left">
+                    <view class="cell-item-left font-medium">
                         <text>我的现金券</text>
                         <image class='icon-query' bindtap='showCoupDesc'
-                               src='../../../img/product/icon_query.svg'></image>
+                               src='../../../img/price/wenhao.svg'></image>
                     </view>
                     <view class="cell-item-right pink">
                         <navigator hover-class="none" class='mue-button' wx:if="{{ userInfo.tel }}" url="../coupons/index">
@@ -52,14 +52,14 @@
             </view>
         </view>
         <view class="grid-col grid-col-3">
-            <view class="cell-item fore1">
+              <view class="cell-item fore1">
                 <view class="cell-item-inner">
                     <view class="cell-item-left font-medium">
-                        <view>回收方式</view>
-                        <!-- <view class="label">北京、上海、深圳、杭州推荐使用上门回收</view> -->
+                        <!-- <view>回收方式</view>
+                         <view class="label">北京、上海、深圳、杭州推荐使用上门回收</view> -->
                     </view>
                 </view>
-            </view>
+            </view>  
             <view class="recycle-cols">
                 <view class="recycle-col col-{{ item.way }} {{ item.way == way ? 'selected' : '' }}"
                       data-way="{{ item.way }}" bindtap="switchWay" wx:for="{{ ways }}" wx:key="{{index}}">
@@ -70,7 +70,7 @@
                     </view>
                 </view>
             </view>
-            <view class="recycle"  wx:if="{{ way != 'visit' }}">
+            <view class="recycle"  wx:if="{{ way == 'post' }}">
               <view class="inner">
                 <block>
                   <view class="cell-item cell-title">
@@ -206,9 +206,64 @@
                 </block>
               </view>
             </view>
+
+            <view class="recycle"  wx:if="{{ way == 'fengchao' }}">
+              <view class="inner">
+                <block>
+                  <view class="cell-item cell-title">
+                    <view class="cell-item-inner nobb">
+                      <view class="cell-item-left font-medium">
+                        <text>丰巢回收</text>
+                        <image class='icon-query' bindtap='showFcDesc'
+                               src='../../../img/price/wenhao.svg'></image>
+                      </view>
+                      <view class="cell-item-right pink">
+                          <view class='mue-button' data-url='../fcmap/index' bindtap="switchPage">
+                              <text>查看附近柜机</text>
+                          </view>
+                      </view>
+                    </view>
+                  </view>   
+                  <!--身份证号码-->
+                  <view class="cell-item">
+                      <view class="cell-item-inner">
+                          <view class="cell-item-left input-outer">
+                              <input type="text" bindblur="onFcCardidBlur" value="{{fc.cardid}}" placeholder="请输入您的身份证号码"
+                                    placeholder-style="color: #cacee0;font-size:26rpx"/>
+                          </view>
+                      </view>
+                  </view>
+                  <!--顺丰城市-->
+                  <picker class="cell-item picker {{ fc.addr.value.length ? 'picker-selected' : '' }}"
+                          mode="multiSelector"
+                          value="{{ fc.addr.indexs }}"
+                          bindchange="handleFcAddr"
+                          bindcolumnchange="handleFcAddrCol"
+                          range="{{fc.addr.selects}}"
+                          range-key="name">
+                      <view class="cell-item-inner">
+                          <view class="cell-item-left">
+                              <view wx:if="{{ !fc.addr.value.length }}">丰巢回收地址</view>
+                              <view>{{ fc.addr.value }}</view>
+                          </view>
+                          <image class="icon-link" src="../../../img/trade/icon_arrow_right.svg"></image>
+                      </view>
+                  </picker>
+                  <!--详细地址-->
+                  <view class="cell-item">
+                      <view class="cell-item-inner">
+                          <view class="cell-item-left input-outer">
+                              <input type="text" bindblur="onFcStreetBlur" value="{{fc.street}}" placeholder="街道门牌号"
+                                    placeholder-style="color: #cacee0;font-size:26rpx"/>
+                          </view>
+                      </view>
+                  </view>
+                </block>
+              </view>
+            </view>
         </view>
     </view>
-    <view class="mue-footer">
+    <view class="mue-footer {{isIphoneX?'fix-iphonex-button':''}}">
         <button class="button-take-order {{submitNow?'now':''}}" hover-class="mue-active" bindtap="submitOrder">立即回收</button>
     </view>
 </view>

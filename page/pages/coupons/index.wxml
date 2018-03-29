@@ -52,7 +52,7 @@
                     <image class="icon-blank" src="../../../img/coupons/blank-bg.png"></image>
                     <view class="title">暂无加价券</view>
                     <view class="desc">关注“回收宝”微信公众号，送万千好礼</view>
-                    <navigator class="mue-button" url="../products/index" open-type="switchTab">立即下单</navigator>
+                    <navigator class="mue-button" url="../products/index">立即下单</navigator>
                 </view>
             </block>
         </view>

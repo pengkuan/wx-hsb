@@ -32,8 +32,12 @@
         </view>
         <view class="sec-content">
             <scroll-view class="product-cols" scroll-y="true" scroll-with-animation="true">
-                <navigator url="../product/index?productId={{item.productid}}" class="product-col" wx:for="{{productList}}" wx:key="{{index}}"
-                           data-pid="{{item.productid}}">
+                <view data-url="../product/index?productId={{item.productid}}" 
+                      bindtap="switchPage"  
+                      class="product-col" 
+                      wx:for="{{productList}}" 
+                      wx:key="{{index}}"
+                      data-pid="{{item.productid}}">
                     <view class="p-img">
                       <image class="img" src="{{ cdn + item.productlogo}}"></image>
                     </view>
@@ -42,7 +46,7 @@
                       <view class="price">￥{{item.maxprice / 100}}</view>
                       <view class="desc">最高回收价</view>
                     </view>
-                </navigator>
+                </view>
             </scroll-view>
         </view>
     </view>

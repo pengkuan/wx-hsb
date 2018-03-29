@@ -24,7 +24,8 @@ Page({
       desc: '',
       pictureUrl: ''
     },
-    canClick: true
+    canClick: true,
+    isIphoneX: app.globalData.isIphoneX
   },
 
   onLoad(params) {

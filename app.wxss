@@ -121,7 +121,8 @@ page {
   z-index: 2;
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 100%; 
+  /* height: constant(safe-area-inset-bottom); */
   padding: 20rpx 40rpx;
   background-color: #fff;
 }
@@ -143,6 +144,20 @@ page {
   border-radius: 4rpx;
   border-color: transparent;
 }
+.fix-iphonex-button {
+  bottom:68rpx !important;
+}
+.fix-iphonex-button::after {
+  content: '';
+  position: fixed;
+  bottom: 0 !important;
+  height: 68rpx!important;
+  width: 100%;
+  background: #fff;
+}
+.position{
+  height: 68rpx;
+}
 
 /** disabled button */
 .mue-footer .mue-button[disabled] {
@@ -154,7 +169,40 @@ page {
   border-color: #cacee0;
 }
 
+
+.hover-tap{
+/*执行动画*/
+-webkit-animation:showBtn 0.5s 1;
+animation:showBtn 0.5s 1;
+/*停止在最后一帧*/
+-webkit-animation-fill-mode:forwards;
+animation-fill-mode:forwards;
+}
+/*
+定义动画
+*/
+@-webkit-keyframes showBtn{10%{
+background:-webkit-radial-gradient(Circle,#f8f8f6 20%,#f9f9fb 30%,#f9f9fb 40%,#fff 60%); 
+background:radial-gradient(Circle,#f8f8f6 20%,#f9f9fb 30%,#f9f9fb 40%,#fff 60%); 
+}25%{
+background:-webkit-radial-gradient(Circle,#f8f8f6 30%,#f9f9fb 38%,#f9f9fb 46%,#fff 64%);
+background:radial-gradient(Circle,#f8f8f6 30%,#f9f9fb 38%,#f9f9fb 46%,#fff 64%); 
+}50%{
+background:-webkit-radial-gradient(Circle,#f8f8f6 40%,#f9f9fb 46%,#f9f9fb 52%,#fff 68%);
+background:radial-gradient(Circle,#f8f8f6 40%,#f9f9fb 46%,#f9f9fb 52%,#fff 68%);
+}75%{
+background:-webkit-radial-gradient(Circle,#f8f8f6 50%,#f9f9fb 54%,#f9f9fb 58%,#fff 72%);
+background:radial-gradient(Circle,#f8f8f6 50%,#f9f9fb 54%,#f9f9fb 58%,#fff 72%);
+}100%{
+background:-webkit-radial-gradient(Circle,#f8f8f6 60%,#f9f9fb 62%,#f9f9fb 64%,#fff 76%);
+background:radial-gradient(Circle,#f8f8f6 60%,#f9f9fb 62%,#f9f9fb 64%,#fff 76%);
+}
+}
+
 /** 点击效果 **/
 .mue-active {
   opacity: .7;
 }
+
+/*加载外部字体*/
+@import "font/stylesheet.wxss";

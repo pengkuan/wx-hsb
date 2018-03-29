@@ -13,7 +13,7 @@
             </view>
         </view>
     </view>
-    <view class="mue-content">
+    <view class="mue-content {{isIphoneX?'iphoneX':''}}">
         <scroll-view class="scroll-wrapper" scroll-y scroll-with-animation="true" scroll-into-view="{{ toView }}">
             <view class="item-cols">
                 <view id="view{{ pIndex }}" class="item-col" wx:for="{{ base }}" wx:for-item="i" wx:for-index="pIndex"
@@ -75,7 +75,7 @@
             </view>
         </scroll-view>
     </view>
-    <view class="mue-footer">
+    <view class="mue-footer {{isIphoneX?'fix-iphonex-button':''}}">
         <button class="mue-button" bindtap="onSubmit"  hover-class="mue-active" disabled="{{ len != base.length }}">估价</button>
     </view>
     <view class="mue-modal" catchtouchmove="none;" wx:if="{{ alertInfo.title }}">

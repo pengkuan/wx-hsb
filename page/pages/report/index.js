@@ -1,10 +1,10 @@
 Page({
   data: {
-    reportId: ""
+    reportUrl: ""
   },
   onLoad(options) {
     this.setData({
-      reportId: options.reportId
+      reportUrl: 'https://mobile.huishoubao.com/mobile/qtreport_' + options.reportId +'.html'
     })
   }
 });

@@ -1,9 +1,9 @@
 <!--page/pages/recycle/index.wxml-->
 <view class="container">
-  <view class="mue-content">
+  <view class="mue-content {{isIphoneX?'iphoneX':''}}">
     <image class="bg" src="../../../img/recycle/sibu.png"></image>
   </view>
-  <view class="mue-footer">
+  <view class="mue-footer {{isIphoneX?'fix-iphonex-button':''}}">
       <navigator class="mue-button" url="../products/index">立即回收</navigator>
   </view>
 </view>

@@ -1,5 +1,6 @@
 <view class="container">
-    <view class="order-head">
+    <view class="header">
+      <view class="order-head" bindtap="showDetails">
         <image class="icon_order-state" src="../../../img/order-state.png"></image>
         <view class="order-state-cols">
             <view class="order-state-col" wx:if="{{ orderInfo.order_status_list.length }}">
@@ -7,12 +8,39 @@
                 <view class="order-state-time">{{ orderInfo.order_status_list[0].order_status_time }}</view>
             </view>
         </view>
+      </view>
+      <view class="fc-code" wx:if="{{orderInfo.fc_send_code}}">
+          <view class="left">寄件码</view>
+          <view class="right">{{orderInfo.fc_send_code}}</view>
+      </view>
     </view>
-    <view class="view-cols">
-        <view class="view-col view-col-1">
+    <view class="view-cols {{orderInfo.fc_send_code?'nearFc':''}} {{isIphoneX?'iphoneX':''}}">
+        <view class="view-col view-col-1 route" wx:if="{{orderInfo.sfRouteInfo}}">
+            <view class="view-col-title font-medium">物流信息</view>
+            <view class="view-col-content">
+                <view  wx:for="{{orderInfo.sfRouteInfo}}" wx:key="{{index}}" class="route-li {{index==0?'first':''}} {{index==1?'second':''}} {{showAll?'showAll':''}}">
+                  <view class="remark">{{item.remark}}</view>
+                  <view class="acceptTime">{{item.acceptTime}}</view>
+                </view>
+                <view class="more {{showAll?'hide':''}}" wx:if="{{!onlyTwo}}" bindtap="showAll">展开全部</view>
+                <view class="more {{!showAll?'hide':''}}" bindtap="hideSome">收起</view>
+            </view>
+        </view>
+        <view class="view-col view-col-1 route" wx:if="{{orderInfo.fcRouteInfo}}">
+            <view class="view-col-title font-medium">物流信息</view>
+            <view class="view-col-content">
+                <view  wx:for="{{orderInfo.fcRouteInfo}}" wx:key="{{index}}" class="route-li {{index==0?'first':''}} {{index==1?'second':''}} {{showAll?'showAll':''}}">
+                  <view class="remark">{{item.remark}}</view>
+                  <view class="acceptTime">{{item.acceptTime}}</view>
+                </view>
+                <view class="more {{showAll?'hide':''}}" wx:if="{{!onlyTwo}}" bindtap="showAll">展开全部</view>
+                <view class="more {{!showAll?'hide':''}}" bindtap="hideSome">收起</view>
+            </view>
+        </view>
+        <view class="view-col view-col-1" wx:if="{{!orderInfo.sfRouteInfo && !orderInfo.fcRouteInfo}}">
             <view class="view-col-title font-medium">邮寄地址</view>
             <view class="view-col-content">
-                <view>广东省深圳市南山区威新软件园8号楼7楼 回收宝（收）</view>
+                <view>广东省深圳市南山区威新软件园8栋7楼 回收宝(收)</view>
                 <view>Tel： 13530189007</view>
             </view>
         </view>
@@ -35,11 +63,36 @@
                 <view class="order-num">订单编号：{{ orderInfo.order_num }}</view>
                 <view class="order-time">下单时间：{{ orderInfo.order_time }}</view>
                 <view class="">回收方式：{{ orderInfo.recycle_type_name }}</view>
+                <view class="" wx:if="{{orderInfo.fc_send_code}}">寄件码：{{ orderInfo.fc_send_code }}</view>
                 <view class="">收款方式：{{ orderInfo.pay_info.payway_name }}</view>
                 <!-- <view class="">质检报告：{{ orderInfo.qt_md5num || '暂无' }}</view> -->
                 <!-- <view class="">加价：{{ orderInfo.pay_info.addpay_price || '无加价券' }}</view> -->
                 <view class="">成交价：{{ orderInfo.pay_info.trans_price / 100 || '订单未完成' }}</view>
             </view>
+        </view>
+    </view>
+    <view class="mue-footer {{isIphoneX?'fix-iphonex-button':''}}" wx:if="{{orderInfo.fc_send_code}}">
+        <button class="button-take-order" hover-class="mue-active" data-url="../fcmap/index" bindtap="switchPage">查看附近柜机</button>
+    </view>
+    <!-- <view class="mue-footer" wx:if="{{!orderInfo.fcRouteInfo && orderInfo.can_cancel == '1'}}">
+        <button class="button-take-order" hover-class="mue-active" bindtap="handleCancel">取消订单</button>
+    </view> -->
+
+    <view class="mue-modal-orderinfo" catchtouchmove="none;" wx:if="{{alertTip}}">
+        <view class="mue-alert">
+            <view class="mue-alert-title">
+            <text>订单状态</text>
+            <view bindtap="closeMue" class="close"><image src="../../../img/order/guanbi.svg"></image></view>
+            </view>
+            <view class="mue-alert-body">
+                <view class="info {{index==0?'first':''}} {{onlyOne?'onlyOne':''}}" wx:for="{{orderInfo.order_status_list}}" wx:key="{{index}}">
+                  <image class="status" wx:if="{{index==0}}" src="../../../img/order/current.svg"></image>
+                  <view class="status" wx:if="{{index!=0}}"></view>
+                  <text class="left">{{item.order_status_name}}</text>
+                  <text class="right">{{item.order_status_time}}</text>
+                </view>
+            </view>
+             <!-- <view class="mue-alert-footer">确认</view>  -->
         </view>
     </view>
 </view>

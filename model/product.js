@@ -138,6 +138,9 @@ export default {
                     } else {
                         reject(res)
                     }
+                },
+                fail: function (res){
+                  console.log(res);
                 }
             });
         })

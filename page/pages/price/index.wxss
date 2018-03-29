@@ -316,6 +316,9 @@ page{
 .mue-content {
   padding-bottom: 140rpx;
 }
+.mue-content.iphoneX {
+  padding-bottom: 208rpx;
+}
 
 .mue-header {
   display: flex;
@@ -373,6 +376,7 @@ page{
 }
 .recycle .cell-item-left{
   font-size: 28rpx;
+  color:#292e3e;
 }
 
 .cell-item-left .label {
@@ -393,62 +397,84 @@ page{
   padding: 0 40rpx;
   align-items: center;
   justify-content: space-between;
+  overflow: visible;
 }
 
 .grid-col-2 .input {
   display: inline-block;
-  width: 315rpx;
+  width: 305rpx;
   color: #292e3e;
   font-size: 30rpx;
-  margin-top: 10rpx;
+  /* margin-top: 10rpx; */
   font-family: PingFang-SC-Medium;
+  transform: translateY(-15rpx);
 }
 
 .recycle-cols {
-  margin: 0 40rpx 30rpx;
+  margin: 0 40rpx;
   /* border: 1rpx solid #cacee0; */
   /* border-radius: 6rpx; */
   position: relative;
 }
 .recycle-col {
-  width: 50%;
-  height: 80rpx;
+  width: 33.33%;
+  /* height: 80rpx; */
   font-size: 26rpx;
   font-weight: bold;
   color: #7c829d;
   box-sizing: border-box;
   display: inline-block;
-  border: 1rpx solid #dde0ec;
+  /* border: 1rpx solid #dde0ec; */
 }
 .recycle-col .inner{
   text-align: center;
+  position: relative;
 }
 .recycle-col:first-child {
   border-radius: 6rpx 0 0 6rpx;
-  border-right: 1rpx solid #fabe00; 
+  /* border-right: 1rpx solid #fabe00;  */
 }
 .recycle-col:last-child {
   border-radius: 0 6rpx 6rpx 0;
   border-left: none; 
 }
 .recycle-col .inner view{
-  display: inline-block;
+  /* display: inline-block; */
   overflow: visible;
-  line-height: 80rpx;
-  margin-left: 10rpx;
+  height: 70rpx;
+  font-size: 28rpx;
+  line-height: 59rpx;
+  /* margin-left: 10rpx; */
+  color: #7c829d;
+}
+.recycle-col.selected .inner::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 50rpx;
+  height: 4rpx;
+  background: #7c829d;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .col-post .icon {
-   width: 32rpx; 
-  height: 30rpx;
+   width: 43rpx; 
+  height: 43rpx;
   vertical-align: middle;
-  margin-top: -5rpx;
+  /* margin-top: -5rpx; */
 }
 
 .col-visit .icon {
-   width: 36rpx; 
-  height: 30rpx;
+   width: 45rpx; 
+  height: 43rpx;
   vertical-align: middle;
-  margin-top: -5rpx;
+  /* margin-top: -5rpx; */
+}
+.col-fengchao .icon {
+   width: 49rpx; 
+  height: 43rpx;
+  vertical-align: middle;
+  /* margin-top: -5rpx; */
 }
 
 .recycle-col.selected {
@@ -460,6 +486,16 @@ page{
 
 .grid-col-3 .cell-item-inner {
   border-bottom: 1rpx solid #eff0f6;
+}
+.cell-item-inner.nobb{
+  border-bottom: none;
+}
+.cell-item-inner.nobb .cell-item-left{
+  color: #292e3e;
+  margin-left: 20rpx;
+}
+.cell-item-inner.nobb .cell-item-right .mue-button{
+  color: #5498ff;
 }
 
 .picker .cell-item-left {
@@ -502,6 +538,8 @@ page{
 
 .grid-col-3 .fore1 .cell-item-inner {
   border-bottom: none;
+  height: 0;
+  padding: 20rpx 0;
 }
 
 .cell-item-right .mue-button {
@@ -517,8 +555,8 @@ page{
 }
 
 .cell-item-left .icon-query {
-  width: 40rpx;
-  height: 40rpx;
+  width: 30rpx;
+  height: 30rpx;
   margin-left: 10rpx;
 }
 .recycle .cell-item-left .icon-query {
@@ -529,19 +567,29 @@ page{
 
 .grid-col-2 .form-control {
   position: relative;
-  padding-bottom: 10rpx;
+  /* padding-bottom: 10rpx; */
+  padding-left: 20rpx;
   margin-bottom: 10rpx;
-  border-bottom: 1rpx solid #cacee0;
-  /* border-radius: 4px;
-	border: solid 1rpx #dde0ec; */
+  border: 1rpx solid #cacee0;
+  border-radius: 4rpx;
+  overflow: visible;
+}
+.grid-col-2 .form-control:first-child{
+  margin-right: 10rpx;
+}
+.grid-col-2 .form-control:last-child{
+  margin-left: 10rpx;
 }
 
 .grid-col-2 .form-control .label {
+  display: inline-block;
+  background: #fff;
+  /* padding: 0 10rpx; */
   height: 26rpx;
   color: #cacee0;
   font-size: 26rpx;
   transition: all 300ms;
-  transform: translateY(40rpx);
+  transform: translateY(20rpx);
 }
 
 .grid-col-2 .form-control.mue-focus .label,
@@ -549,7 +597,7 @@ page{
   /* color: #5498ff; */
   color: #cacee0;
   font-size: 22rpx;
-  transform: translateY(0);
+  transform: translateY(-15rpx);
 }
 
 .input-ph {
@@ -558,7 +606,7 @@ page{
 
 
 .recycle{
-  background-color: #f9f9fb;
+  background-color: #f5f5f7;
 }
 .recycle .inner {
   background-color: #fff;

@@ -6,6 +6,9 @@
 .mue-content{
   padding-bottom: 100rpx;
 }
+.mue-content.iphoneX {
+  padding-bottom: 168rpx;
+}
 .mue-footer{
   box-shadow: 0rpx -6rpx 24rpx 3rpx rgba(135, 142, 160, 0.1);
 }

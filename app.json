@@ -16,6 +16,8 @@
 
     "page/pages/recycle/index",
     "page/pages/deblock/index",
+    "page/pages/cabinet/index",
+    "page/pages/fcmap/index",
 
     "page/pages/about/index",
     "page/pages/about/who/index",

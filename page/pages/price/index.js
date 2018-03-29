@@ -6,11 +6,11 @@ import order from '../../../model/order';
 import user from '../../../model/user';
 import coupon from '../../../model/coupon';
 import Utils from '../../../util/utils';
-import QQMapWX  from '../../../util/qqmap-wx-jssdk.min.js';
 let ctx, app = getApp();
 Page({
 
   data: {
+    firstTap: 0,
     desc: [],
     price: 0,
     months: [],
@@ -27,13 +27,18 @@ Page({
       name: '快递回收(包邮)',
       way: 'post',
       iconBlack: '../../../img/price/kuaidi.svg',
-      iconWhite: '../../../img/price/kuaidi-w.svg'
-    }, {
+      iconWhite: '../../../img/price/kuaidi-f.svg'
+      }, {
       name: '上门回收',
       way: 'visit',
-      iconBlack: '../../../img/price/shangmen-w.svg',
-      iconWhite: '../../../img/price/shangmen.svg'
-    }],
+      iconBlack: '../../../img/price/shangmen.svg',
+      iconWhite: '../../../img/price/shangmen-f.svg'
+      }, {
+        name: '丰巢回收',
+        way: 'fengchao',
+        iconBlack: '../../../img/price/fengchao.svg',
+        iconWhite: '../../../img/price/fengchao-f.svg'
+      },],
     way: 'post',
     postway: 'sf',
     sf: {
@@ -66,13 +71,30 @@ Page({
       },
       street: '',
     },
+    fc: {
+      cardid: '',
+      addr: {
+        data: [],
+        indexs: [0, 0, 0],
+        selects: [[], [], []],
+        value: '',
+      },
+      street: ''
+    },
     nickname: '',
     tel: '',
     coupon: {}, // 选中的优惠券
     userInfo: {},
     telFocus: false,
     nicknameFocus: false,
-    options: {}
+    options: {},
+    initCityData:{
+      province: '',
+      city: '',
+      district: ''
+    },
+    location: '' ,
+    isIphoneX: app.globalData.isIphoneX
   },
   
   onLoad(params) {
@@ -137,6 +159,130 @@ Page({
       });
       // this.refreshChart();
     });
+    Utils.getLocation().then(res=>{
+      console.log(res)
+      // let addressComponent = res.result.address_component;
+      let addressComponent = res[0].regeocodeData.addressComponent;
+      let initCityData = ctx.data.initCityData;
+      initCityData.province = addressComponent.province;
+      initCityData.city = addressComponent.city;
+      initCityData.district = addressComponent.district;
+      ctx.setData({
+        initCityData,
+        location: res[0].longitude + ',' + res[0].latitude
+      })
+      let sf = ctx.data.sf;
+      let hsb = ctx.data.hsb;
+      let fc = ctx.data.fc;
+      // 获取顺丰城市
+      trade.sfCity().then(data => {
+        // console.log(data)
+        let temp = {};
+        sf.addr.data = data;
+        sf.addr.selects[0] = data;
+        temp = data[0];
+        if (temp.sub) sf.addr.selects[1] = temp.sub;
+        temp = temp.sub[0];
+        if (temp.sub) sf.addr.selects[2] = temp.sub;
+        sf.addr.value = ctx.sfAddrFormat(sf);
+        ctx.setData({
+          sf
+        });
+        let initCityData = ctx.data.initCityData;
+        if (initCityData.city) {
+          if (initCityData.province == initCityData.city) {
+            initCityData.city = initCityData.district;
+          }
+          console.log(initCityData);
+          sf.addr.indexs[0] = ctx.provinceToIndex(initCityData.province, data);
+          console.log(sf.addr.indexs[0]);
+          temp = data[sf.addr.indexs[0]];
+          if (temp.sub) sf.addr.selects[1] = temp.sub;
+          sf.addr.indexs[1] = ctx.cityToIndex(initCityData.city, data);
+          console.log(sf.addr.indexs[1]);
+          temp = temp.sub[sf.addr.indexs[1]];
+          if (temp.sub) sf.addr.selects[2] = temp.sub;
+          sf.addr.indexs[2] = ctx.districtToIndex(initCityData.district, data);
+          console.log(sf.addr.indexs[2]);
+          sf.addr.value = ctx.sfAddrFormat(sf);
+          console.log(sf);
+          ctx.setData({
+            sf
+          });
+        }
+
+      });
+
+      // 获取丰巢的顺丰城市
+      trade.sfCity().then(data => {
+        // console.log(data)
+        let temp = {};
+        fc.addr.data = data;
+        fc.addr.selects[0] = data;
+        temp = data[0];
+        if (temp.sub) fc.addr.selects[1] = temp.sub;
+        temp = temp.sub[0];
+        if (temp.sub) fc.addr.selects[2] = temp.sub;
+        fc.addr.value = ctx.sfAddrFormat(fc);
+        ctx.setData({
+          fc
+        });
+        let initCityData = ctx.data.initCityData;
+        if (initCityData) {
+          if (initCityData.province == initCityData.city) {
+            initCityData.city = initCityData.district;
+          }
+          fc.addr.indexs[0] = ctx.provinceToIndex(initCityData.province, data);
+          temp = data[fc.addr.indexs[0]];
+          if (temp.sub) fc.addr.selects[1] = temp.sub;
+          fc.addr.indexs[1] = ctx.cityToIndex(initCityData.city, data);
+          temp = temp.sub[fc.addr.indexs[1]];
+          if (temp.sub) fc.addr.selects[2] = temp.sub;
+          fc.addr.indexs[2] = ctx.districtToIndex(initCityData.district, data);
+          fc.addr.value = ctx.sfAddrFormat(fc);
+          ctx.setData({
+            fc
+          });
+        }
+      });
+      // 回收宝城市
+      trade.hsbCity().then(data => {
+        hsb.addr.data = data;
+        hsb.addr.selects[0] = data;
+        hsb.addr.selects[1] = data[0]['sub'];
+        hsb.addr.value = ctx.hsbAddrFormat(hsb);
+        ctx.setData({
+          hsb
+        });
+        let initCityData = ctx.data.initCityData;
+        if (initCityData) {
+          hsb.addr.indexs[0] = ctx.provinceToIndex(initCityData.city, data);
+          hsb.addr.indexs[1] = ctx.cityToIndex(initCityData.district, data);
+          hsb.addr.selects[1] = data[hsb.addr.indexs[0]]['sub'];
+          hsb.addr.value = ctx.hsbAddrFormat(hsb);
+          ctx.setData({
+            hsb
+          });
+        }
+      });
+
+      // 获取上门时间
+      trade.visitTime().then(res => {
+        sf.date.data = res.sf;
+        sf.date.selects[0] = res.sf.date;
+        sf.date.selects[1] = res.sf.time[0];
+        sf.date.value = ctx.formatSfDate(sf);
+        hsb.date.data = res.hsb;
+        hsb.date.selects[0] = res.hsb.date;
+        hsb.date.selects[1] = res.hsb.time[0];
+        hsb.date.value = ctx.formatHsbDate(hsb);
+        ctx.setData({
+          sf,
+          hsb
+        });
+      });
+    })
+    
 
     ctx.setData({
       options: params
@@ -203,7 +349,12 @@ Page({
   //     url: `../trade/index?selects=${selects}&price=${price}&productId=${productId}&classId=${classId}&productName=${productName}`
   //   })
   // },
-
+  switchPage(e){
+    let dataset = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: dataset.url+'?location='+ctx.data.location
+    })
+  },
   toggleOptions () {
     ctx.setData({
       isOpen: !ctx.data.isOpen
@@ -214,148 +365,7 @@ Page({
     wx.navigateBack()
   },
 
-
   onShow() {
-    let sf = ctx.data.sf;
-    let hsb = ctx.data.hsb;
-
-    // 获取顺丰城市
-    trade.sfCity().then(data => {
-      console.log(data)
-      let temp = {};
-      sf.addr.data = data;
-      sf.addr.selects[0] = data;
-      temp = data[0];
-      if (temp.sub) sf.addr.selects[1] = temp.sub;
-      temp = temp.sub[0];
-      if (temp.sub) sf.addr.selects[2] = temp.sub;
-      sf.addr.value = ctx.sfAddrFormat(sf);
-      ctx.setData({
-        sf
-      });
-      if (wx.getLocation) {
-        wx.getLocation({
-          success: function (res) {
-            console.log(res);
-            var latitude = res.latitude
-            var longitude = res.longitude
-            // 实例化API核心类
-            var demo = new QQMapWX({
-              key: 'ZYQBZ-27RKG-JW6Q6-IWA2I-IJA2S-QKFN4' // 必填
-            });
-            // 调用接口
-            demo.reverseGeocoder({
-              location: {
-                latitude,
-                longitude
-              },
-              success: function (res) {
-                console.log(res);
-                if (res.result.address_component.province == res.result.address_component.city) {
-                  res.result.address_component.city = res.result.address_component.district;
-                }
-                sf.addr.indexs[0] = ctx.provinceToIndex(res.result.address_component.province, data);
-                temp = data[sf.addr.indexs[0]];
-                if (temp.sub) sf.addr.selects[1] = temp.sub;
-                sf.addr.indexs[1] = ctx.cityToIndex(res.result.address_component.city, data);
-                temp = temp.sub[sf.addr.indexs[1]];
-                if (temp.sub) sf.addr.selects[2] = temp.sub;
-                sf.addr.indexs[2] = ctx.districtToIndex(res.result.address_component.district, data);
-                sf.addr.value = ctx.sfAddrFormat(sf);
-                ctx.setData({
-                  sf
-                });
-              },
-              fail: function (res) {
-                // console.log(res);
-
-              },
-              complete: function (res) {
-                // console.log(res);
-              }
-            });
-          }
-        })
-      }
-
-
-      // wx.openSetting({
-      //   success: (res) => {
-      //     /*
-      //      * res.authSetting = {
-      //      *   "scope.userInfo": true,
-      //      *   "scope.userLocation": true
-      //      * }
-      //      */
-      //     console.log(res);
-      //   }
-      // })
-    });
-
-    // 获取上门时间
-    trade.visitTime().then(res => {
-      sf.date.data = res.sf;
-      sf.date.selects[0] = res.sf.date;
-      sf.date.selects[1] = res.sf.time[0];
-      sf.date.value = ctx.formatSfDate(sf);
-      hsb.date.data = res.hsb;
-      hsb.date.selects[0] = res.hsb.date;
-      hsb.date.selects[1] = res.hsb.time[0];
-      hsb.date.value = ctx.formatHsbDate(hsb);
-      ctx.setData({
-        sf,
-        hsb
-      });
-    });
-
-    // 回收宝城市
-    trade.hsbCity().then(data => {
-      hsb.addr.data = data;
-      hsb.addr.selects[0] = data;
-      hsb.addr.selects[1] = data[0]['sub'];
-      hsb.addr.value = ctx.hsbAddrFormat(hsb);
-      ctx.setData({
-        hsb
-      });
-      if (wx.getLocation) {
-        wx.getLocation({
-          success: function (res) {
-            console.log(res);
-            var latitude = res.latitude;
-            var longitude = res.longitude;
-            // 实例化API核心类
-            var demo = new QQMapWX({
-              key: 'ZYQBZ-27RKG-JW6Q6-IWA2I-IJA2S-QKFN4' // 必填
-            });
-            // 调用接口
-            demo.reverseGeocoder({
-              location: {
-                latitude,
-                longitude
-              },
-              success: function (res) {
-                console.log(res);
-                hsb.addr.indexs[0] = ctx.provinceToIndex(res.result.address_component.city, data);
-                hsb.addr.indexs[1] = ctx.cityToIndex(res.result.address_component.district, data);
-                hsb.addr.selects[1] = data[hsb.addr.indexs[0]]['sub'];
-                hsb.addr.value = ctx.hsbAddrFormat(hsb);
-                ctx.setData({
-                  hsb
-                });
-              },
-              fail: function (res) {
-                console.log(res);
-              },
-              complete: function (res) {
-                console.log(res)
-              }
-            });
-          }
-        })
-      }
-    })
-
-
     let userInfo = user.getUserInfo();
     let tel = ctx.data.tel;
     if (userInfo && userInfo.tel) {
@@ -400,36 +410,32 @@ Page({
   },
   //判断表单填写完毕
   submitFull(e){
-    if (ctx.data.way == 'visit'){
-      if (ctx.data.nickname && ctx.data.tel && ctx.data.hsb.street) {
+    switch (ctx.data.way){
+      case 'visit': 
+        let hsbFullFlag = ctx.data.nickname && ctx.data.tel && ctx.data.hsb.street
         ctx.setData({
-          submitNow: true
+          submitNow: hsbFullFlag
         })
-      } else {
+        break;
+      case 'post': 
+        if (ctx.data.postway == 'sf') {
+          let sfFullFlag = ctx.data.nickname && ctx.data.tel && ctx.data.sf.street
+          ctx.setData({
+            submitNow: sfFullFlag
+          })
+        } else {
+          let selfFullFlag = ctx.data.nickname && ctx.data.tel
+          ctx.setData({
+            submitNow: selfFullFlag
+          })
+        }
+        break;
+      case 'fengchao': 
+        let fcFullFlag = ctx.data.nickname && ctx.data.tel && ctx.data.fc.cardid && ctx.data.fc.street
         ctx.setData({
-          submitNow: false
+          submitNow: fcFullFlag
         })
-      }
-    }else if (ctx.data.way == 'post' && ctx.data.postway == 'sf'){
-      if (ctx.data.nickname && ctx.data.tel && ctx.data.sf.street){
-        ctx.setData({
-          submitNow: true
-        })
-      }else{
-        ctx.setData({
-          submitNow: false
-        })
-      }
-    }else{
-      if (ctx.data.nickname && ctx.data.tel) {
-        ctx.setData({
-          submitNow: true
-        })
-      }else{
-        ctx.setData({
-          submitNow: false
-        })
-      }
+        break;
     }
   },
   animationShow: function () {
@@ -507,6 +513,15 @@ Page({
     });
   },
 
+  // 确认丰巢的顺丰地址
+  handleFcAddr(e) {
+    let fc = this.data.fc;
+    fc.addr.indexs = e.detail.value;
+    this.setData({
+      fc
+    });
+  },
+
   // 监听pickerCol变化
   handleSfAddrCol(event) {
     let sf = ctx.data.sf;
@@ -536,6 +551,37 @@ Page({
     sf.addr.value = ctx.sfAddrFormat(sf);
     this.setData({
       sf,
+    });
+  },
+  // 监听丰巢的pickerCol变化
+  handleFcAddrCol(event) {
+    let fc = ctx.data.fc;
+    let index = event.detail.value;
+    let column = event.detail.column;
+    switch (column) {
+      case 0:
+        fc.addr.selects[1] = fc.addr.data[index]['sub'];
+        if (fc.addr.selects[1][0]['sub']) {
+          fc.addr.selects[2] = fc.addr.selects[1][0]['sub']
+        } else {
+          fc.addr.selects[2] = [];
+        }
+        fc.addr.indexs[column + 1] = 0;
+        fc.addr.indexs[column + 2] = 0;
+        break;
+      case 1:
+        if (fc.addr.selects[column][index]['sub']) {
+          fc.addr.selects[2] = fc.addr.selects[column][index]['sub']
+        } else {
+          fc.addr.selects[2] = [];
+        }
+        fc.addr.indexs[column + 1] = 0;
+        break;
+    }
+    fc.addr.indexs[column] = index;
+    fc.addr.value = ctx.sfAddrFormat(fc);
+    this.setData({
+      fc,
     });
   },
 
@@ -609,6 +655,7 @@ Page({
     let options = ctx.data.options;
 
     if (dataset.way === 'visit') {
+      console.log(options);
       // 放假了不支持上门回收
       var deadline = (new Date("Feb 22, 2018 00:00:00")).getTime();
       var curTime = (new Date()).getTime();
@@ -616,7 +663,7 @@ Page({
         ctx.showModel('由于春节放假，2018年2月22号以前无工作人员上门，回收宝祝您春节快乐，阖家幸福！');
         return;
       }
-      if (parseInt(options.price) < 100) {
+      if (parseInt(options.price) < 10000) {
         ctx.showModel('未满100元不支持上门回收');
         return;
       }
@@ -684,6 +731,7 @@ Page({
     params['visitTime'] = visitTime;
     params['address'] = address;
     params['displayVisitTime'] = date; // 前端展示上门时间
+    params['way'] = 'shangmen'; // 回收方式
 
     order.take(params).then(data => {
       Object.assign(params, data);
@@ -710,7 +758,8 @@ Page({
     if (!ctx.validParam(date)) {
       return ctx.showModel('请选择预约时间');
     }
-    let sendtime = new Date((date).replace(/-/g, '/')).getTime() / 1000;
+    console.log(date);
+    let sendtime = new Date((date.substring(0, 16) + ':00').replace(/-/g, '/')).getTime() / 1000;
     let addrArr = address.split(' ');
     params['ordertype'] = 'post';
     order.take(params).then(data => {
@@ -722,6 +771,8 @@ Page({
       params['county'] = addrArr[2] || ''; // 区
       params['addr'] = `${address} ${street}`; // 上门地址
       params['displayVisitTime'] = date; // 前端展示上门时间
+      params['way'] = 'shunfeng'; // 回收方式
+      
       wx.reLaunch({
         url: `../success/index?orderInfo=${JSON.stringify(params)}`
       })
@@ -734,6 +785,42 @@ Page({
       params['postway'] = 'self';
       params['ordernum'] = data.ordernum;
       params['orderid'] = data.orderid; //订单号
+      params['way'] = 'self'; // 回收方式
+      wx.reLaunch({
+        url: `../success/index?orderInfo=${JSON.stringify(params)}`
+      })
+    });
+  },
+  // 下丰巢单
+  takeFcOrder(params) {
+    let fc = ctx.data.fc;
+    let street = fc.street;
+    let cardid = fc.cardid;
+    let address = fc.addr.value;
+    if (!Utils.isCardid(cardid)) {
+      return ctx.showModel('请输入正确的身份证号码');
+    }
+    if (!ctx.validParam(street)) {
+      return ctx.showModel('请填写详细地址');
+    }
+    if (!ctx.validParam(address)) {
+      return ctx.showModel('请选择城市');
+    }
+    // if (!ctx.validParam(cardid)) {
+    //   return ctx.showModel('请填写身份证号码');
+    // }
+    let addrArr = address.split(' ');
+    params['ordertype'] = 'post';
+    console.log(params);
+    order.take(params).then(data => {
+      params['ordernum'] = data.ordernum;
+      params['orderid'] = data.orderid; //订单号
+      params['cardid'] = cardid; //身份证号
+      params['province'] = addrArr[0] || ''; // 省
+      params['city'] = addrArr[1] || ''; // 市
+      params['county'] = addrArr[2] || ''; // 区
+      params['addr'] = `${address} ${street}`; // 丰巢地址
+      params['way'] = 'fengchao'; // 回收方式
       wx.reLaunch({
         url: `../success/index?orderInfo=${JSON.stringify(params)}`
       })
@@ -742,6 +829,9 @@ Page({
 
   // 基本参数
   submitOrder() {
+    let firstTap = ctx.data.firstTap;
+    firstTap++;
+    if(firstTap > 1)return;
     // 需要填写
     let tel = ctx.data.tel;
     let nickname = ctx.data.nickname;
@@ -800,12 +890,24 @@ Page({
       }
     }
     if (way === 'visit') ctx.takeHsbVisitOrder(params);
+    if (way === 'fengchao') ctx.takeFcOrder(params);
+
+    ctx.setData({
+      firstTap
+    })
   },
 
   showCoupDesc() {
     wx.showModal({
       title: '现金券说明',
       content: '系统自动使用您的可以使用的最大面值现金券\r\n关注"回收宝"公众号,送千万大礼',
+      showCancel: false
+    })
+  },
+  showFcDesc(){
+    wx.showModal({
+      title: '丰巢回收说明',
+      content: '您可以根据我们的推荐选择任意快递柜，将手机放入格口，无需等待，快递小哥自动取件邮寄到目的地',
       showCancel: false
     })
   },
@@ -877,6 +979,22 @@ Page({
     hsb.street = e.detail.value;
     this.setData({
       hsb
+    })
+    ctx.submitFull();
+  },
+  onFcCardidBlur(e){
+    let fc = ctx.data.fc;
+    fc.cardid = e.detail.value;
+    this.setData({
+      fc
+    })
+    ctx.submitFull();
+  },
+  onFcStreetBlur(e) {
+    let fc = ctx.data.fc;
+    fc.street = e.detail.value;
+    this.setData({
+      fc
     })
     ctx.submitFull();
   },

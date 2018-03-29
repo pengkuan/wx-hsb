@@ -1,11 +1,12 @@
 // page/pages/recycle/index.js
+let app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    isIphoneX: app.globalData.isIphoneX
   },
 
   /**

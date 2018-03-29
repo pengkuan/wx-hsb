@@ -1,4 +1,7 @@
 import md5 from './md5.js';
+import QQMapWX from './qqmap-wx-jssdk.min.js';
+import amapFile from './amap-wx.js';
+import { gdKey } from '../config/index';
 
 export default {
   // POST Request
@@ -40,6 +43,31 @@ export default {
       timer = setTimeout(function () {
         fn.apply(context, args);
       }, delay);
+    }
+  },
+  // 防抖函数
+  debouce(func, delay, immediate){
+    var timer = null;
+    return function () {
+      var context = this;
+      var args = arguments;
+      if (timer) clearTimeout(time);
+      if (immediate) {
+        //根据距离上次触发操作的时间是否到达delay来决定是否要现在执行函数
+        var doNow = !timer;
+        //每一次都重新设置timer，就是要保证每一次执行的至少delay秒后才可以执行
+        timer = setTimeout(function () {
+          timer = null;
+        }, delay);
+        //立即执行
+        if (doNow) {
+          func.apply(context, args);
+        }
+      } else {
+        timer = setTimeout(function () {
+          func.apply(context, args);
+        }, delay);
+      }
     }
   },
   // 是否存在于数组
@@ -136,6 +164,11 @@ export default {
   isMobile(tel) {
     return /^1\d{10}$/.test(tel);
   },
+  // 是否为有效的手机号码
+  isCardid(cardid) {
+    return /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(cardid);
+  },
+
   curTimeStamp() {
     return new Date().getTime();
   },
@@ -177,5 +210,57 @@ export default {
     console.log(md5Sign);
     baseDate.params.sign = md5Sign;
     return baseDate;
+  },
+
+  createBoxParams(interfaceName, data) {
+    const baseDate = {
+      _head: {
+        _interface: interfaceName,
+        _version: '1.0',
+        _msgtype: 'request',
+        _time: parseInt(+new Date() / 1000).toString(),
+        _remark: ''
+      },
+      _param: {
+        
+      }
+    };
+    baseDate._param = Object.assign({}, baseDate._param, data);
+    return baseDate;
+  },
+
+  getLocation(){
+    return new Promise((resolve, reject) => {
+      //通过定位获取城市信息
+      // 实例化API核心类
+      // var myQQMap = new QQMapWX({
+      //   key: 'ZYQBZ-27RKG-JW6Q6-IWA2I-IJA2S-QKFN4' // 必填
+      // });
+      var myAmapFun = new amapFile.AMapWX({ key: gdKey });
+      wx.getLocation({
+        success: function (res) {
+          console.log(res);
+          var latitude = res.latitude
+          var longitude = res.longitude
+          // 调用接口
+          // myQQMap.reverseGeocoder({
+          myAmapFun.getRegeo({
+            // location: {
+            //   latitude,
+            //   longitude
+            // },
+            success: function (res) {
+              console.log(res);
+              if (res) {
+                resolve(res);
+              } else {
+                reject(res);
+              }
+            }
+          });
+        }
+      })
+    })
+    
   }
 }

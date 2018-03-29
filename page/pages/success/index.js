@@ -9,6 +9,8 @@ Page({
   data: {
     orderInfo: {},
     curTime: '',
+    isIphoneX: app.globalData.isIphoneX,
+    location: ''
   },
 
   onLoad(options) {
@@ -18,21 +20,46 @@ Page({
     if (options.orderInfo) {
       orderInfo = JSON.parse(options.orderInfo);
     }
+
+    Utils.getLocation().then(res => {
+      console.log(res)
+      ctx.setData({
+        location: res[0].longitude + ',' + res[0].latitude
+      })
+    });
+
     ctx.setData({
       orderInfo,
       curTime: `${curTimeObj.Y}-${curTimeObj.M}-${curTimeObj.D} ${curTimeObj.h}:${curTimeObj.m}:${curTimeObj.s}`,
     });
     console.log(orderInfo);
     ctx.asyncSfOrder(orderInfo);
+    ctx.asyncFcOrder(orderInfo);
     ctx.asyncPartnerOrder(orderInfo);
   },
 
   asyncSfOrder (orderInfo) {
-    if (orderInfo.ordertype !== 'post' || orderInfo.postway == 'self') return;
+    // console.log(orderInfo);
+    if (orderInfo.way != 'shunfeng') return;
     order.takeSfOrder(orderInfo).then(data => {
       orderInfo.trackNum = data.mailno;
       ctx.setData({
-        orderInfo: orderInfo
+        orderInfo
+      })
+    }, err => {
+      console.log(err);
+    })
+  },
+
+  asyncFcOrder(orderInfo) {
+    // console.log(orderInfo);return;
+    if (orderInfo.way != 'fengchao') return;
+    order.takeFcOrder(orderInfo).then(data => {
+      console.log(data);
+      orderInfo.sendCode = data.sendCode;
+      orderInfo.sendId = data.sendId;
+      ctx.setData({
+        orderInfo
       })
     }, err => {
       console.log(err);
@@ -74,7 +101,7 @@ Page({
       }
     } else {
       wx.navigateTo({
-        url: dataSet.url
+        url: dataSet.url + '?location=' + ctx.data.location
       });
     }
   },

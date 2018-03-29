@@ -115,6 +115,7 @@ Page({
   // 套页面跳转
   switchPage (e) {
     let dataSet = e.currentTarget.dataset;
+    console.log(dataSet.url);
     wx.navigateTo({
       url: dataSet.url
     })

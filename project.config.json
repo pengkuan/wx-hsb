@@ -162,6 +162,20 @@
 					"name": "help",
 					"pathName": "page/pages/help/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "cabinet",
+					"pathName": "page/pages/cabinet/index",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "fcmap",
+					"pathName": "page/pages/fcmap/index",
+					"query": "",
+					"scene": "1001"
 				}
 			]
 		}

@@ -57,6 +57,7 @@ export default {
           order_id: orderid
         },
         success(res) {
+          console.log(res)
           res = res.data;
           if (parseInt(res.retcode) === ERROR_CODE) {
             resolve(res.data)
@@ -99,6 +100,32 @@ export default {
           price: params.price
         },
         success(res) {
+          res = res.data;
+          if (parseInt(res.errcode) === ERROR_CODE) {
+            resolve(res.data)
+          } else {
+            reject(res.errmsg);
+          }
+        }
+      })
+    })
+  },
+  takeFcOrder(params){
+    return new Promise((resolve, reject) => {
+      Utils.post({
+        url: url.takeFcOrder,
+        data: {
+          tel: params.tel || '',
+          orderid: params.orderid || '',
+          nickname: params.nickname || '',
+          province: params.province || '',
+          city: params.city || '',
+          county: params.county || '',
+          addr: params.addr || '',
+          cardid: params.cardid || ''
+        },
+        success(res) {
+          console.log(res)
           res = res.data;
           if (parseInt(res.errcode) === ERROR_CODE) {
             resolve(res.data)

@@ -7,7 +7,8 @@ App({
     bid: -1,
     pid: 1196,
     cdn: 'https://s1.huishoubao.com/img/phone/',
-    isConnected: true
+    isConnected: true,
+    isIphoneX: false
   },
 
   // 用户切换到后台时 清除登录态
@@ -60,6 +61,15 @@ App({
       });
       this.globalData.pid = extraData.pid ? extraData.pid : 1196;
     }
+    wx.getSystemInfo({
+      success: res => {  
+        let modelmes = res.model;
+        console.log(modelmes);
+        if (modelmes.search('iPhone X') != -1) {
+          this.globalData.isIphoneX = true
+        }
+      }
+    })
     this.login();
   },
   

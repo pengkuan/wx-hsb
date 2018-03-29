@@ -1,0 +1,45 @@
+<!--page/pages/cabinet/index.wxml-->
+<view class="container">
+    <view class="mue-header search">
+        <view class="search-box">
+            <input class="search-input" type="text" focus="true" value="{{key}}" bindinput="handleKey" placeholder="请输入地址搜索" placeholder-style="color: #7c829d"/>
+            <image wx:if="{{ !key }}" class="icon-search" src="../../../img/icon-search.svg"></image>
+            <image wx:if="{{ key }}" bindtap="clearKey" class="icon-search" src="../../../img/icon_close.svg"></image>
+        </view>
+        <navigator class="back" open-type="navigateBack" delta="1">取消</navigator>
+    </view>
+    <view class="mue-content" wx:if="{{ !key.length }}">
+        <view class="search-history" wx:if="{{ history.length }}">
+            <view class="hd">
+                <view>最近搜索</view>
+                <image class="icon-delete" src="../../../img/delete.svg" bindtap="clearHistory"></image>
+            </view>
+            <view class="bd">
+                <view wx:for="{{ history }}"
+                      class="p-item"
+                      data-url="../fcmap/index?location={{item.location}}"
+                      data-location="{{item.location}}"
+                      bindtap="switchPageOnly"
+                      wx:key="{{index}}">
+                    <view>{{ item.name }}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="mue-content" wx:if="{{ key.length }}">
+        <view class="searchList" wx:if="{{ searchList.length }}">
+            <view class="p-item" wx:for="{{ searchList }}" wx:key="{{index}}"
+                  data-url="../fcmap/index?location={{item.location}}"
+                  data-name="{{item.name}}"
+                  data-location="{{item.location}}"
+                  bindtap="switchPage">
+                <view>{{ item.name }}</view>
+            </view>
+        </view>
+        <view class="blank-wrapper" wx:if="{{ !searchList.length }}">
+            <image class="icon-blank" src="../../../img/search/blank-bg.png"></image>
+            <view class="title">没找到您想要的位置</view>
+            <view class="desc">抱歉，请核对好您输入内容</view>
+        </view>
+    </view>
+</view>

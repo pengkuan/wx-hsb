@@ -1,0 +1,32 @@
+<!--page/pages/fcmap/index.wxml-->
+<view class="container" bindtouchmove='none;'>
+    <view class="mue-header search">
+        <view class="search-box">
+          <image class="icon-search" src="../../../img/icon-search.svg"></image>
+          <view class="search-input" value="{{key}}" data-url="../cabinet/index" bindtap="switchPage" placeholder-style="color: #7c829d">请输入地址搜索</view>
+            
+        </view>
+    </view>
+    <view class="mue-content" style="height:{{mapHeight}}rpx">
+      <map id="myMap" 
+          controls="{{controls}}" 
+          bindcontroltap="controltap" 
+          scale="{{scale}}" 
+          bindregionchange="regionchange" 
+          longitude="{{longitude}}" 
+          latitude="{{latitude}}" 
+          show-location 
+          markers="{{markers}}"></map>  
+    </view>
+    <view class="mue-footer">
+      <scroll-view class="scroll" scroll-y bindscroll="scroll" style="max-height: {{footerMaxHeight}}rpx;"> 
+         <view class="scroll-inner" bindtouchstart="touchStart" bindtouchend="touchEnd" bindtouchmove="touchMove"> 
+          <view class="map-count" catchtouchstart="takeOpen" wx:if="{{!open || !textData.length}}">共<text>{{textData.length}}</text>个结果</view>
+          <view class="map-text" data-latitude="{{item.latitude}}" data-longitude="{{item.longitude}}" data-id="{{index}}" bindtap="takeMarker" wx:for="{{textData}}" wx:key="{{index}}" wx:if="{{textData.length && open}}" hover-class="hover-tap">
+            <text class="h1">{{item.name}}</text>
+            <text>可用:大柜{{item.bigBoxCount}}个、中柜{{item.middleBoxCount}}个、小柜{{item.smallBoxCount}}个</text>
+          </view>
+         </view> 
+      </scroll-view>
+    </view>
+</view>

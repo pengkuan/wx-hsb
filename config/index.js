@@ -4,9 +4,11 @@ export const WX_AUTH_TYPE = 2;
 export const WX_APP_ID = 'wxdd35de8f647a231f';
 export const WX_SECRET = '61c5b34bbb3742402d0920baa193a2d3';
 
+// export const host = 'http://xiaozhilong.www.huishoubao.com/';
 export const host = 'https://www.huishoubao.com/';
-// export const host = 'http://gaox.www.huishoubao.com/';
 export const mobileHost = 'https://mobile.huishoubao.com/';
+
+export const gdKey = '19932279131320c2dbbbd31c7a8a05e7';
 
 // Model
 const user = `${host}common/user/`;
@@ -48,6 +50,8 @@ export const url = {
   takeOrder: `${host}common/trade/index`,
   // 顺丰同步订单
   takeSfOrder: `${host}common/trade/takeSfOrder`,
+  // 丰巢同步订单
+  takeFcOrder: `${host}common/trade/takeFcOrder`,
 
   // 获取机型分类
   categories: `${product}categories`,
@@ -71,5 +75,7 @@ export const url = {
   decryptWxUserInfo: `${host}common/wxapp/index`,
   
   // 机型映射
-  modelMap: 'https://app.huanjixia.com/api/appstore'
+  modelMap: 'https://app.huanjixia.com/api/appstore',
+
+  getBoxInfo: 'https://api.huishoubao.com/api'
 };

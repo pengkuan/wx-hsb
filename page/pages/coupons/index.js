@@ -125,5 +125,11 @@ Page({
                 showCancel: false
             })
         })
-    }
+    },
+    // switchPage(e) {
+    //   let dataset = e.currentTarget.dataset;
+    //   wx.navigateTo({
+    //     url: dataset.url
+    //   })
+    // }
 });
