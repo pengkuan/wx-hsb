@@ -9,7 +9,18 @@
         </view>
     </view>
     <view class="view-cols">
-        <view class="view-col view-col-1">
+        <view class="view-col view-col-1 route" wx:if="{{orderInfo.sfRouteInfo}}">
+            <view class="view-col-title font-medium">物流信息</view>
+            <view class="view-col-content">
+                <view  wx:for="{{orderInfo.sfRouteInfo}}" wx:key="{{index}}" class="route-li {{index==0?'first':''}} {{index==1?'second':''}} {{showAll?'showAll':''}}">
+                  <view class="remark">{{item.remark}}</view>
+                  <view class="acceptTime">{{item.acceptTime}}</view>
+                </view>
+                <view class="more {{showAll?'hide':''}}" bindtap="showAll">展开全部</view>
+                <view class="more {{!showAll?'hide':''}}" bindtap="hideSome">收起</view>
+            </view>
+        </view>
+        <view class="view-col view-col-1" wx:if="{{!orderInfo.sfRouteInfo}}">
             <view class="view-col-title font-medium">邮寄地址</view>
             <view class="view-col-content">
                 <view>广东省深圳市南山区威新软件园8号楼7楼 回收宝（收）</view>

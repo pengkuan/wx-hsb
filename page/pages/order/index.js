@@ -23,11 +23,22 @@ Page({
       userkey: userInfo.userkey,
       orderid: options.orderid,
     }).then(orderInfo => {
+      orderInfo.sfRouteInfo = orderInfo.sfRouteInfo && orderInfo.sfRouteInfo.routelist && orderInfo.sfRouteInfo.routelist.reverse();
       this.setData({
         orderInfo
       });
     }, err => {
       console.log(err);
     });
-  }
+  },
+  showAll() {
+    this.setData({
+      showAll: true
+    });
+  },
+  hideSome() {
+    this.setData({
+      showAll: false
+    });
+  },
 });

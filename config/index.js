@@ -5,7 +5,7 @@ export const WX_APP_ID = 'wxdd35de8f647a231f';
 export const WX_SECRET = '61c5b34bbb3742402d0920baa193a2d3';
 
 export const host = 'https://www.huishoubao.com/';
-// export const host = 'http://gaox.www.huishoubao.com/';
+// export const host = 'http://xiaozhilong.www.huishoubao.com/';
 export const mobileHost = 'https://mobile.huishoubao.com/';
 
 // Model
