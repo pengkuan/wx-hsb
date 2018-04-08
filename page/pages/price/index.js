@@ -616,7 +616,7 @@ Page({
         ctx.showModel('由于春节放假，2018年2月22号以前无工作人员上门，回收宝祝您春节快乐，阖家幸福！');
         return;
       }
-      if (parseInt(options.price) < 100) {
+      if (parseInt(options.price) < 10000) {
         ctx.showModel('未满100元不支持上门回收');
         return;
       }
